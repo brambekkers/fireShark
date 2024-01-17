@@ -1,6 +1,6 @@
 <script setup>
-  import { ref } from 'vue'
-  const one = ref('1️⃣')
+import { ref } from "vue"
+const one = ref("1️⃣")
 </script>
 
 <template>

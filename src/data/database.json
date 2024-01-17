@@ -1,0 +1,48 @@
+{
+  "users": {
+    "id1": {
+      "name": "Kenan",
+      "id": "id1",
+      "email": "kenan.amatradjak@nl.abnamro.com",
+      "settings": {
+        "language": "nl",
+        "darkModeActive": false
+      },
+      "topics": [
+        {
+          "id": "tid1",
+          "key": "general",
+          "score": 0.0
+        },
+        {
+          "id": "tid2",
+          "key": "javascript",
+          "score": 0.0
+        },
+        {
+          "id": "tid3",
+          "key": "emerald",
+          "score": 0.0
+        },
+        {
+          "id": "tid4",
+          "key": "vue",
+          "score": 0.0
+        },
+        {
+          "id": "tid5",
+          "key": "devops",
+          "score": 0.0
+        },
+        {
+          "id": "tid6",
+          "key": "debug",
+          "score": 0.0
+        }
+      ]
+    }
+  },
+  "questions": {
+
+  }
+}
