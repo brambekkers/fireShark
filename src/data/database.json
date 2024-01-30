@@ -43,6 +43,60 @@
     }
   },
   "questions": {
-
+    "subjects": {
+      "General": {
+        "topicId": "General",
+        "questions": [
+          {
+            "type": "singleChoice",
+            "subject": "Javascript",
+            "headerImg": "../images/background/javascript_code.png",
+            "question": "<div>In which year was Javascript developed</div>",
+            "answers": [
+              {
+                "text": "1994",
+                "value": false
+              },
+              {
+                "text": "1995",
+                "value": true
+              },
+              {
+                "text": "1996",
+                "value": false
+              },
+              {
+                "text": "1997",
+                "value": false
+              }
+            ]
+          },
+          {
+            "type": "multipleChoice",
+            "subject": "Javascript",
+            "headerImg": "../images/background/primitive.png",
+            "question": "<div>What is <strong>NOT</strong> a Javascript primitive type</div>",
+            "answers": [
+              {
+                "text": "string",
+                "value": false
+              },
+              {
+                "text": "longint",
+                "value": true
+              },
+              {
+                "text": "text",
+                "value": false
+              },
+              {
+                "text": "null",
+                "value": false
+              }
+            ]
+          }
+        ]
+      }
+    }
   }
 }
