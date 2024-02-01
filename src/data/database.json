@@ -94,6 +94,30 @@
                 "value": false
               }
             ]
+          },
+          {
+            "type": "multipleChoice",
+            "subject": "Vuejs component architecture",
+            "headerImg": "",
+            "question": "<div>In Vue.js, what is the key difference between mixins and scoped slots?</div>",
+            "answers": [
+              {
+                "text": "Mixins allow you to reuse component logic, while scoped slots enable parent components to distribute their template structure to child components.",
+                "value": false
+              },
+              {
+                "text": "Scoped slots are used for global state management, while mixins provide a way to define custom event handlers within components.",
+                "value": false
+              },
+              {
+                "text": " Mixins are primarily used for handling asynchronous operations, while scoped slots are designed for dynamic styling in Vue components.",
+                "value": false
+              },
+              {
+                "text": "Scoped slots allow you to share template markup between components, while mixins enable components to encapsulate and reuse behavior logic.",
+                "value": true
+              }
+            ]
           }
         ]
       }
