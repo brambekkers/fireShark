@@ -13,7 +13,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <main class="">
+  <main>
     <!-- Accent on top -->
     <div
       aria-hidden="true"
@@ -34,18 +34,32 @@ watchEffect(() => {
         </h2>
         <div class="grid grid-cols-3 gap-6 mt-12">
           <TopicButton
-            v-for="topic in userStore.user?.topics"
+            v-for="topic in topics"
             :key="topic.id"
             :title="topic.key"
             :progress="rand(1, 100)"
           />
         </div>
-        <div>Quiz Performance: {{ userStore.stats?.percentage }}%</div>
+        <div>
+          <p class="text-center mt-8">
+            Your performance is at
+            <span class="text-2xl font-bold text-blue-700"
+              >{{ percentage }}%</span
+            >
+          </p>
+        </div>
       </section>
+
+      <div class="flex align-center justify-center mt-12">
+        <router-link to="/practice">
+          <button
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
+            :disable="!selectedTopics.length"
+          >
+            start
+          </button>
+        </router-link>
+      </div>
     </div>
   </main>
-
-  <!-- <div class="bg-red-500 p-12">
-    <h1>Hello {{ world }}</h1>
-  </div> -->
 </template>
