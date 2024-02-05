@@ -1,10 +1,10 @@
-import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { defineStore } from 'pinia';
+import { ref } from 'vue';
 
 export const useLayoutStore = defineStore('layout', () => {
-  const isDarkMode = ref(false)
+  const isDarkMode = ref(false);
 
-  return { isDarkMode }
-})
+  return { isDarkMode };
+});
 
-export default useLayoutStore
+export default useLayoutStore;
