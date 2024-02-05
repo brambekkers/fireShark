@@ -3,6 +3,7 @@ import { watchEffect } from 'vue';
 import { rand } from '@vueuse/core';
 import { storeToRefs } from 'pinia';
 import TopicButton from '../components/TopicButton.vue';
+import OverviewHeader from '../components/overview/Header.vue';
 import useUserStore from '@/stores/userStore';
 import useQuestionStore from '@/stores/question';
 
@@ -19,19 +20,9 @@ watchEffect(() => {
 <template>
   <main>
     <!-- Accent on top -->
-    <div
-      aria-hidden="true"
-      style="clip-path: ellipse(130% 248% at 50% -150%)"
-      class="bg-secondary h-44 absolute w-screen left-0"
-    ></div>
+    <OverviewHeader />
+
     <div class="max-w-screen-lg mx-auto">
-      <section class="h-44 flex justify-between relative z-10 pt-8">
-        <div class="mt-4">
-          <h1 class="font-extrabold text-2xl text-white">Hi Ernie!</h1>
-          <p class="text-xl font-bold text-white">Welcome back.</p>
-        </div>
-        <div class="rounded-full h-32 w-32 bg-accent shadow-2xl"></div>
-      </section>
       <section class="flex justify-center flex-col mt-8">
         <h2 class="text-lg italic text-center">
           Select the topics you want to practice
