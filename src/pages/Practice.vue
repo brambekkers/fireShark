@@ -16,9 +16,19 @@ fetchQuestions()
 </script>
 
 <template>
-  <div>
+  <div class="question">
     <QuestionHeader :questionData="questions[0]" />
     <QuestionForm :questionData="questions[0]" />
     <QuestionSlideIn />
   </div>
 </template>
+
+<style lang="scss" scoped>
+.question {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+</style>
