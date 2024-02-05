@@ -5,6 +5,9 @@ import QuestionSlideIn from "../components/questions/SlideIn/SlideIn.vue"
 import { ref } from "vue"
 
 const questions = ref({})
+const title = ref("very long title with a lot of text");
+const content = ref("very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of textvery long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text");
+
 const fetchQuestions = async () =>
   await fetch("http://192.168.0.172:3000/questions")
     .then((res) => res.json())
@@ -14,11 +17,10 @@ const fetchQuestions = async () =>
     })
 fetchQuestions()
 </script>
-
 <template>
   <div>
     <QuestionHeader :questionData="questions[0]" />
     <QuestionForm :questionData="questions[0]" />
-    <QuestionSlideIn />
+    <QuestionSlideIn :title="title" :content="content" />
   </div>
 </template>
