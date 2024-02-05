@@ -32,6 +32,8 @@ module.exports = {
     // ESlint does not get the root folder set up by vite
     'import/no-unresolved': 'off',
     'vue/multi-word-component-names': 'off',
+    // a11y seems redundant
+    'vuejs-accessibility/form-control-has-label': 'off',
   },
   root: true,
   env: {
