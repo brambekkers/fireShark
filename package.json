@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "json-server": "json-server --watch src/data/database.json",
-    "json-server-host": "json-server --host 192.168.0.84 src/data/database.json",
+    "json-server-host": "json-server --host 192.168.0.172 src/data/database.json",
     "tsc": "tsc"
   },
   "dependencies": {
