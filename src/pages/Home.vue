@@ -12,12 +12,12 @@ const unansweredQuestions = ref(1);
 const world = ref("world")
 
 watchEffect(() => {
-  calculatePerformancePercentage({
-    totalQuestions: totalQuestions.value,
-    correctAnswers: correctAnswers.value,
-    wrongAnswers: wrongAnswers.value,
-    unansweredQuestions: unansweredQuestions.value,
-  });
+  calculatePerformancePercentage(
+    totalQuestions.value,
+    correctAnswers.value,
+    wrongAnswers.value,
+    unansweredQuestions.value,
+  );
 });
 
 const topics = ref()

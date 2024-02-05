@@ -21,7 +21,10 @@ export default function useQuizPerformance() {
    * @param {number} unansweredQuestions - The number of questions not answered.
    */
   const calculatePerformancePercentage = (totalQuestions, correctAnswers, wrongAnswers, unansweredQuestions) => {
-    console.log(totalQuestions, correctAnswers, wrongAnswers, unansweredQuestions)
+    console.log("totalQuestions", totalQuestions)
+    console.log("correctAnswers", correctAnswers)
+    console.log("wrongAnswers", wrongAnswers)
+    console.log("unansweredQuestions", unansweredQuestions)
     // Type checking to ensure all inputs are numbers
     if (typeof totalQuestions !== 'number' || typeof correctAnswers !== 'number' ||
         typeof wrongAnswers !== 'number' || typeof unansweredQuestions !== 'number') {
