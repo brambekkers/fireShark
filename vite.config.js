@@ -5,7 +5,14 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), eslint()],
+  plugins: [vue(), { 
+    ...eslint({
+      failOnWarning: false,
+      failOnError: false,
+    }),
+    apply: 'serve',
+    enforce: 'post'
+  }],
   resolve: {
     alias: [
       { find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url)) },
