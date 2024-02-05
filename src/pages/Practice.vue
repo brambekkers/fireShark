@@ -6,7 +6,7 @@ import { ref } from "vue"
 
 const questions = ref({})
 const fetchQuestions = async () =>
-  await fetch("http://localhost:3000/questions")
+  await fetch("http://192.168.0.172:3000/questions")
     .then((res) => res.json())
     .then((json) => {
       console.log(json);
@@ -18,6 +18,7 @@ fetchQuestions()
 <template>
   <div>
     <QuestionHeader :questions="questions"/>
+    <QuestionForm :questionData="questions[0]" />
     <QuestionSlideIn />
   </div>
 </template>
