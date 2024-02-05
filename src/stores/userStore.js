@@ -19,7 +19,7 @@ export const useUserStore = defineStore('user', () => {
 
   const updateUser = async (userObj) => {
     try {
-      await fetch(`http://192.168.0.192:3000/users/${user.id}`, {
+      await fetch(`http://192.168.0.192:3000/users/${user.value.id}`, {
         method: 'PATCH',
         body: JSON.stringify(userObj),
       });
@@ -35,18 +35,17 @@ export const useUserStore = defineStore('user', () => {
     console.log('unansweredQuestions', stats.value?.unansweredQuestions);
     // Type checking to ensure all inputs are numbers
     if (
-      typeof stats.value?.totalQuestions !== 'number' ||
-      typeof stats.value?.correctAnswers !== 'number' ||
-      typeof stats.value?.wrongAnswers !== 'number' ||
-      typeof stats.value?.unansweredQuestions !== 'number'
+      typeof stats.value?.totalQuestions !== 'number'
+      || typeof stats.value?.correctAnswers !== 'number'
+      || typeof stats.value?.wrongAnswers !== 'number'
+      || typeof stats.value?.unansweredQuestions !== 'number'
     ) {
       console.error('All inputs must be numbers');
       return;
     }
 
     // Calculate the percentage of correct answers
-    const calculatedPercentage =
-      (stats.value?.correctAnswers / stats.value?.totalQuestions) * 100;
+    const calculatedPercentage = (stats.value.correctAnswers / stats.value.totalQuestions) * 100;
 
     // Update the reactive percentage ref, rounded to one decimal place
     stats.value.percentage = Math.round(calculatedPercentage * 10) / 10;
