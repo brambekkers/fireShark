@@ -12,7 +12,6 @@ const totalQuestions = ref(30);
 const correctAnswers = ref(24);
 const wrongAnswers = ref(5);
 const unansweredQuestions = ref(1);
-const world = ref('world');
 const topics = ref(null);
 
 watchEffect(() => {
@@ -54,7 +53,7 @@ fetchUsers();
         <h2 class="text-lg italic text-center">
           Select the topics you want to practice
         </h2>
-        <div class="grid grid-cols-3 gap-6 mt-12">
+        <div class="grid grid-cols-3 gap-x-6 gap-y-10 mt-12">
           <TopicButton
             v-for="topic in topics"
             :key="topic.id"

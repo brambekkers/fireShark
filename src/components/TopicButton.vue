@@ -24,7 +24,7 @@ watch(isChecked, (check) => {
 
 <template>
   <div
-    class="shadow-xl cursor-pointer transition-all duration-500 hover:shadow-2xl"
+    class="cursor-pointer"
     @click="checkbox.click()"
     @keyup.enter="checkbox.click()"
   >
@@ -41,7 +41,10 @@ watch(isChecked, (check) => {
       </div>
     </div>
     <!-- Title -->
-    <div class="bg-white px-12 py-8 rounded-b-2xl">
+    <div
+      class="bg-white px-12 py-8 rounded-b-2xl transition-all duration-500 hover:shadow-xl"
+      :class="isChecked ? 'shadow-xl' : 'shadow-lg'"
+    >
       <label for="selected"></label>
       <input
         id="selected"
@@ -54,14 +57,16 @@ watch(isChecked, (check) => {
       <h3 class="text-xl text-center font-bold text-primary">
         {{ title }}
       </h3>
-      <section class="percentage-section">
-        <div class="mt-6 h-2 rounded bg-slate-200 relative overflow-hidden">
+      <section class="percentage-section flex mt-6 align-center">
+        <div
+          class="h-2 mt-1 rounded bg-slate-200 relative overflow-hidden grow"
+        >
           <div
             :style="{ width: `${progress}%` }"
             class="from-primary to-secondary bg-gradient-to-r h-full"
           ></div>
         </div>
-        <p class="percentage">{{ progress }}%</p>
+        <p class="percentage ms-4">{{ progress }}%</p>
       </section>
     </div>
   </div>
