@@ -42,7 +42,7 @@ watchEffect(() => {
         </h2>
         <div class="grid grid-cols-3 gap-6 mt-12">
           <TopicButton
-            v-for="topic in topics"
+            v-for="topic in userStore.topics"
             :key="topic.id"
             :title="topic.key"
             :progress="rand(1, 100)"
