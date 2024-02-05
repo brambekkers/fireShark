@@ -2,7 +2,9 @@
 import { watchEffect } from 'vue';
 import { rand } from '@vueuse/core';
 import { storeToRefs } from 'pinia';
+import Button from '@components/Button.vue';
 import TopicButton from '../components/TopicButton.vue';
+
 import useUserStore from '@/stores/userStore';
 import useQuestionStore from '@/stores/question';
 
