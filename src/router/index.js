@@ -6,6 +6,7 @@ import Duel from '@/pages/Duel.vue'
 import Admin from '@/pages/Admin.vue'
 import Login from '@/pages/Login.vue'
 import Settings from '@/pages/Settings.vue'
+import Practice from '@/pages/Practice.vue'
 
 const routes = [
   {
@@ -16,6 +17,8 @@ const routes = [
   {
     path: '/practice',
     name: 'Practice',
+    component: Practice,
+  
   }, 
   {
     path: '/duel',
