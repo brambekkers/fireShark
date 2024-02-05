@@ -2,6 +2,7 @@
 import { watchEffect } from 'vue';
 import { rand } from '@vueuse/core';
 import { storeToRefs } from 'pinia';
+import Button from '@components/Button.vue';
 import TopicButton from '../components/TopicButton.vue';
 import OverviewHeader from '../components/overview/Header.vue';
 import useUserStore from '@/stores/userStore';
@@ -15,6 +16,15 @@ const { selectedTopics } = storeToRefs(useQuestionStore());
 watchEffect(() => {
   userStore.calculatePerformancePercentage();
 });
+
+const fetchUsers = async () => {
+  const userId = 'id1';
+  const res = await fetch(`http://192.168.0.192:3000/users/${userId}`);
+  const user = await res.json();
+  topics.value = user.topics || [];
+  console.log(topics.value);
+};
+fetchUsers();
 </script>
 
 <template>
@@ -47,14 +57,27 @@ watchEffect(() => {
 
       <div class="flex align-center justify-center mt-12">
         <router-link to="/practice">
-          <button
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
+          <Button
             :disable="!selectedTopics.length"
+            title="Practice this selection"
+            class="text-black bg-yellow-400 hover:bg-yellow-500 rounded-full text-sm px-5 py-5 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
           >
-            start
-          </button>
+          </Button>
         </router-link>
+      </div>
+      <div class="flex align-center justify-center mt-12">
+        <Button
+          title="Select all"
+          class="text-green bg-transparent border-solid border-4 border-green hover:text-green rounded-full text-sm px-2 py-2 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
+          @click="selectAll"
+        >
+        </Button>
       </div>
     </div>
   </main>
 </template>
+
+<style lang="scss" scoped>
+.practice-button {
+}
+</style>
