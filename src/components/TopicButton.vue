@@ -35,7 +35,9 @@ watch(isChecked, (check) => {
         class="bg-slate-200 absolute z-10 rounded-full p-4 max-h-1 max-w-1 flex justify-center"
         :class="isChecked ? 'checked' : 'circle'"
       >
-        <span v-if="isChecked" class="icon"><IconCheck /></span>
+        <span v-if="isChecked" class="icon">
+          <IconCheck />
+        </span>
       </div>
     </div>
     <!-- Title -->
@@ -48,7 +50,7 @@ watch(isChecked, (check) => {
         class="hidden"
         type="checkbox"
         aria-labelledby="selected"
-      >
+      />
       <h3 class="text-xl text-center font-bold text-primary">
         {{ title }}
       </h3>
@@ -59,9 +61,7 @@ watch(isChecked, (check) => {
             class="from-primary to-secondary bg-gradient-to-r h-full"
           ></div>
         </div>
-        <p class="percentage">
-          {{ progress }}%
-        </p>
+        <p class="percentage">{{ progress }}%</p>
       </section>
     </div>
   </div>
@@ -73,6 +73,7 @@ watch(isChecked, (check) => {
   transform: translate(-50%, -50%);
   border: 0.4rem solid #f2f9f9;
 }
+
 .checked {
   left: 50%;
   transform: translate(-50%, -50%);
@@ -89,5 +90,4 @@ watch(isChecked, (check) => {
   font-weight: 700;
   line-height: 1.2;
 }
-
 </style>
