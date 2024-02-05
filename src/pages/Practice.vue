@@ -10,18 +10,18 @@ import QuestionSlideIn from "../components/questions/SlideIn/SlideIn.vue"
 const store = useQuestionStore();
 const { selectedTopics, selectedQuestion } = storeToRefs(store);
 const {getQuestions} = store;
+const title = ref("very long title with a lot of text");
+const content = ref("very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of textvery long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text");
 
 getQuestions();
 </script>
-
 <template>
   <div class="question">
     <h1>I'm the practice page</h1>
     <p>{{ selectedTopics }}</p>
-    {{ questions }}
     <QuestionHeader :questionData="selectedQuestion" />
     <QuestionForm :questionData="selectedQuestion" />
-    <QuestionSlideIn />
+    <QuestionSlideIn :title="title" :content="content" />
   </div>
 </template>
 
@@ -32,5 +32,4 @@ getQuestions();
   align-items: center;
   justify-content: center;
 }
-
 </style>
