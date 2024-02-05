@@ -3,7 +3,7 @@
   managed by the IBRS team. All changes to this file will be overwritten when invoking the plugin.
 */
 
-export default {
+module.exports = {
   rules: {
     /*
       The slot attribute was deprecated in Vue in favor of v-slot.
@@ -28,42 +28,42 @@ export default {
       ignore: ['isOpen'],
     }],
   },
-  overrides: [
-    {
-      rules: {
-        'import/no-extraneous-dependencies': [
-          'error',
-          {
-            devDependencies: true,
-          },
-        ],
-      },
-    },
-    {
-      files: [
-        './src/**/*.spec.{j,t}s?(x)',
-      ],
-      rules: {
-        'import/order': ['warn'],
-      },
-    },
+  // overrides: [
+  //   {
+  //     rules: {
+  //       'import/no-extraneous-dependencies': [
+  //         'error',
+  //         {
+  //           devDependencies: true,
+  //         },
+  //       ],
+  //     },
+  //   },
+  //   {
+  //     files: [
+  //       './src/**/*.spec.{j,t}s?(x)',
+  //     ],
+  //     rules: {
+  //       'import/order': ['warn'],
+  //     },
+  //   },
     
-    {
-      files: [
-        './src/**/*.{j,t}s?(x)',
-        './src/**/**/*.vue',
-      ],
-      rules: {
-        'max-len': [
-          'error',
-          {
-            code: 140,
-            ignoreUrls: true,
-          },
-        ],
-      },
-    },
-  ],
+  //   {
+  //     files: [
+  //       './src/**/*.{j,t}s?(x)',
+  //       './src/**/**/*.vue',
+  //     ],
+  //     rules: {
+  //       'max-len': [
+  //         'error',
+  //         {
+  //           code: 140,
+  //           ignoreUrls: true,
+  //         },
+  //       ],
+  //     },
+  //   },
+  // ],
   root: true,
   env: {
     node: true,
@@ -72,7 +72,7 @@ export default {
     'plugin:vue/vue3-recommended',
     '@vue/airbnb',
   ],
-  parserOptions: {
-    parser: '@babel/eslint-parser',
-  },
+  // parserOptions: {
+  //   parser: '@babel/eslint-parser',
+  // },
 };
