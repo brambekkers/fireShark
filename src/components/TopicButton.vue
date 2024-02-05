@@ -50,7 +50,7 @@ watch(isChecked, (check) => {
       <input
         id="selected"
         ref="checkbox"
-        v-model="test"
+        v-model="isChecked"
         class="hidden"
         type="checkbox"
         aria-labelledby="selected"
