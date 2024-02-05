@@ -1,5 +1,7 @@
 <script setup>
 import QuestionHeader from "../components/questions/QuestionHeader.vue"
+import QuestionForm from "../components/questions/QuestionForm.vue"
+import QuestionSlideIn from "../components/questions/SlideIn/SlideIn.vue"
 import { ref } from "vue"
 
 const questions = ref({})
@@ -15,7 +17,7 @@ fetchQuestions()
 
 <template>
   <div>
-    <h1>Q1</h1>
     <QuestionHeader :questions="questions"/>
+    <QuestionSlideIn />
   </div>
 </template>
