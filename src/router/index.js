@@ -7,7 +7,7 @@ import PageOne from '@/pages/PageOne.vue'
 
 const routes = [
     {
-        path: '/',
+        path: '/overview',
         name: 'Home',
         component: Home,
     },
@@ -16,7 +16,11 @@ const routes = [
       name: 'PageOne',
       component: PageOne,
   },
-]
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/overview',
+  }];
+
 
 const router = createRouter({
     history: createWebHistory(),
