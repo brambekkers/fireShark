@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watchEffect } from "vue"
+import { onMounted, ref, watchEffect } from "vue"
 import { rand } from "@vueuse/core";
 import TopicButton from "../components/TopicButton.vue"
 import useQuizPerformanceVue from "../composable/useQuizPerformance.js";
@@ -10,6 +10,7 @@ const correctAnswers = ref(24);
 const wrongAnswers = ref(5);
 const unansweredQuestions = ref(1);
 const world = ref("world")
+const topics = ref(null)
 
 watchEffect(() => {
   calculatePerformancePercentage(
@@ -20,12 +21,21 @@ watchEffect(() => {
   );
 });
 
-const topics = ref()
-const fetchUsers = async () =>
-  await fetch("http://192.168.0.172:3000/users")
-    .then((res) => res.json())
-    .then((json) => (topics.value = json.id1.topics))
-fetchUsers()
+const fetchTopics = async () => {
+  try {
+    const res = await fetch("http://192.168.0.172:3000/users/id1")
+    const json = await res.json()
+    console.log(json)
+    topics.value = json.topics
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+onMounted(() => {
+  fetchTopics()
+})
+
 </script>
 
 <template>
