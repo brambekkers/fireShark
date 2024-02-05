@@ -1,8 +1,24 @@
 <script setup>
-import { ref } from "vue"
-import TopicButton from "../components/TopicButton.vue"
+import { ref, watchEffect } from "vue"
 import { rand } from "@vueuse/core";
+import TopicButton from "../components/TopicButton.vue"
+import useQuizPerformanceVue from "../composables/useQuizPerformance.js";
 const world = ref("world")
+
+const { percentage, calculatePerformancePercentage } = useQuizPerformanceVue();
+const totalQuestions = ref(30);
+const correctAnswers = ref(24);
+const wrongAnswers = ref(5);
+const unansweredQuestions = ref(1);
+
+watchEffect(() => {
+  calculatePerformancePercentage({
+    totalQuestions: totalQuestions.value,
+    correctAnswers: correctAnswers.value,
+    wrongAnswers: wrongAnswers.value,
+    unansweredQuestions: unansweredQuestions.value,
+  });
+});
 
 const topics = ref()
 const fetchUsers = async () =>
@@ -39,6 +55,9 @@ fetchUsers()
             :title="topic.key"
             :progress="rand(1, 100)"
           />
+        </div>
+        <div>
+          Quiz Performance: {{ percentage }}%
         </div>
       </section>
     </div>
