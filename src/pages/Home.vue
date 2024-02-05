@@ -1,37 +1,19 @@
 <script setup>
-import { storeToRefs } from 'pinia';
-import { useQuestionStore } from '@stores/question';
-import { ref, watchEffect } from 'vue';
+import { watchEffect } from 'vue';
 import { rand } from '@vueuse/core';
-import TopicButton from '@/components/TopicButton.vue';
-import useQuizPerformanceVue from '../composable/useQuizPerformance.js';
+import { storeToRefs } from 'pinia';
+import TopicButton from '../components/TopicButton.vue';
+import useUserStore from '@/stores/userStore';
+import useQuestionStore from '@/stores/question';
 
-const { percentage, calculatePerformancePercentage } = useQuizPerformanceVue();
+const userStore = useUserStore();
+userStore.fetchUser('id1');
+
 const { selectedTopics } = storeToRefs(useQuestionStore());
-const totalQuestions = ref(30);
-const correctAnswers = ref(24);
-const wrongAnswers = ref(5);
-const unansweredQuestions = ref(1);
-const world = ref('world');
-const topics = ref(null);
 
 watchEffect(() => {
-  calculatePerformancePercentage(
-    totalQuestions.value,
-    correctAnswers.value,
-    wrongAnswers.value,
-    unansweredQuestions.value,
-  );
+  userStore.calculatePerformancePercentage();
 });
-
-const fetchUsers = async () => {
-  const userId = 'id1';
-  const res = await fetch(`http://192.168.0.192:3000/users/${userId}`);
-  const user = await res.json();
-  topics.value = user.topics || [];
-  console.log(topics.value);
-};
-fetchUsers();
 </script>
 
 <template>
@@ -45,8 +27,12 @@ fetchUsers();
     <div class="max-w-screen-lg mx-auto">
       <section class="h-44 flex justify-between relative z-10 pt-8">
         <div class="mt-4">
-          <h1 class="font-extrabold text-2xl text-white">Hi Ernie!</h1>
-          <p class="text-xl font-bold text-white">Welcome back.</p>
+          <h1 class="font-extrabold text-2xl text-white">
+            Hi Ernie!
+          </h1>
+          <p class="text-xl font-bold text-white">
+            Welcome back.
+          </p>
         </div>
         <div class="rounded-full h-32 w-32 bg-accent shadow-2xl"></div>
       </section>
@@ -65,9 +51,7 @@ fetchUsers();
         <div>
           <p class="text-center mt-8">
             Your performance is at
-            <span class="text-2xl font-bold text-blue-700"
-              >{{ percentage }}%</span
-            >
+            <span class="text-2xl font-bold text-blue-700">{{ percentage }}%</span>
           </p>
         </div>
       </section>
