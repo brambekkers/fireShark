@@ -51,7 +51,7 @@
             "type": "singleChoice",
             "subject": "Javascript",
             "headerImg": "../images/background/javascript_code.png",
-            "question": "<div>In which year was Javascript developed</div>",
+            "question": "In which year was Javascript developed",
             "answers": [
               {
                 "text": "1994",
@@ -75,7 +75,7 @@
             "type": "multipleChoice",
             "subject": "Javascript",
             "headerImg": "../images/background/primitive.png",
-            "question": "<div>What is <strong>NOT</strong> a Javascript primitive type</div>",
+            "question": "What is NOT a Javascript primitive type",
             "answers": [
               {
                 "text": "string",
@@ -99,7 +99,7 @@
             "type": "multipleChoice",
             "subject": "Vuejs component architecture",
             "headerImg": "",
-            "question": "<div>In Vue.js, what is the key difference between mixins and scoped slots?</div>",
+            "question": "In Vue.js, what is the key difference between mixins and scoped slots?",
             "answers": [
               {
                 "text": "Mixins allow you to reuse component logic, while scoped slots enable parent components to distribute their template structure to child components.",
