@@ -1,9 +1,9 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 import { ref, watch } from 'vue';
-import IconCheck from '~icons/material-symbols/trophy-outline';
-
 import { useQuestionStore } from '@stores/question';
+
+import IconCheck from '~icons/material-symbols/trophy-outline';
 
 const props = defineProps({
   title: { type: String, required: true },
@@ -41,7 +41,9 @@ watch(isChecked, (check) => {
         class="bg-slate-200 min-h-6 min-w-6 absolute z-10 rounded-full p-4"
         :class="isChecked ? 'checked' : 'circle'"
       >
-        <span v-if="isChecked"><IconCheck /></span>
+        <span v-if="isChecked">
+          <IconCheck />
+        </span>
       </div>
     </div>
     <!-- Title -->
@@ -74,6 +76,7 @@ watch(isChecked, (check) => {
   transform: translate(-50%, -50%);
   border: 0.4rem solid #f2f9f9;
 }
+
 .checked {
   left: 50%;
   transform: translate(-50%, -50%);

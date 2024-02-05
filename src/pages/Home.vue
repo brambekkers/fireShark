@@ -4,7 +4,7 @@ import { useQuestionStore } from '@stores/question';
 import { ref, watchEffect } from 'vue';
 import { rand } from '@vueuse/core';
 import TopicButton from '@/components/TopicButton.vue';
-import useQuizPerformanceVue from "../composable/useQuizPerformance.js";
+import useQuizPerformanceVue from '../composable/useQuizPerformance.js';
 
 const { percentage, calculatePerformancePercentage } = useQuizPerformanceVue();
 const { selectedTopics } = storeToRefs(useQuestionStore());
@@ -12,8 +12,8 @@ const totalQuestions = ref(30);
 const correctAnswers = ref(24);
 const wrongAnswers = ref(5);
 const unansweredQuestions = ref(1);
-const world = ref("world")
-const topics = ref(null)
+const world = ref('world');
+const topics = ref(null);
 
 watchEffect(() => {
   calculatePerformancePercentage(
@@ -26,7 +26,7 @@ watchEffect(() => {
 
 const fetchUsers = async () => {
   const userId = 'id1';
-  const res = await fetch(`http://192.168.0.172:3000/users/${userId}`);
+  const res = await fetch(`http://192.168.0.192:3000/users/${userId}`);
   const user = await res.json();
   topics.value = user.topics || [];
   console.log(topics.value);
@@ -65,7 +65,9 @@ fetchUsers();
         <div>
           <p class="text-center mt-8">
             Your performance is at
-            <span class="text-2xl font-bold text-blue-700">{{ percentage }}%</span>
+            <span class="text-2xl font-bold text-blue-700"
+              >{{ percentage }}%</span
+            >
           </p>
         </div>
       </section>
