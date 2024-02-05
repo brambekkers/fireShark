@@ -1,22 +1,24 @@
 <script setup>
-  import { computed } from 'vue'
-  import { useLayoutStore } from '@stores/layout'
-  import Navbar from '@components/Navbar.vue'
+import { computed } from 'vue';
+import { useLayoutStore } from '@stores/layout';
+import Navbar from '@components/Navbar.vue';
 
-  const layoutStore = useLayoutStore()
-  const background = computed(() => (layoutStore.isDarkMode ? '#242424' : '#f2f9f9'))
-  const text = computed(() => (layoutStore.isDarkMode ? '#f2f9f9' : '#242424'))
+const layoutStore = useLayoutStore();
+const background = computed(() =>
+    layoutStore.isDarkMode ? '#242424' : '#f2f9f9',
+);
+const text = computed(() => (layoutStore.isDarkMode ? '#f2f9f9' : '#242424'));
 </script>
 
 <template>
-  <div id="main">
     <Navbar />
-    <slot />
-  </div>
+    <div id="main" class="mt-12">
+        <slot />
+    </div>
 </template>
 
 <style lang="scss" scoped>
-  #main {
+#main {
     // display: flex;
     // justify-content: center;
     // align-items: center;
@@ -24,5 +26,5 @@
 
     background-color: v-bind(background);
     color: v-bind(text);
-  }
+}
 </style>
