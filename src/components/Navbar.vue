@@ -1,27 +1,26 @@
 <script setup>
-import { storeToRefs } from 'pinia';
-import { useLayoutStore } from '@stores/layout';
 import IconBrain from '~icons/lucide/brain';
 import IconTrophy from '~icons/material-symbols/trophy-outline';
 import IconSettings from '~icons/tdesign/setting-1';
-
-const { isDarkMode } = storeToRefs(useLayoutStore());
 </script>
 
 <template>
   <nav class="bg-sharp-navbar-bg z-50">
     <section class="sharp">
-      <router-link to="/">SHARP<span class="mark">!</span></router-link>
+      <router-link to="/">
+        SHARP
+        <span class="mark">!</span>
+      </router-link>
     </section>
     <section class="links">
       <router-link to="/"
-        ><span class="link"><icon-brain /> practice</span></router-link
+        ><span class="link"> <icon-brain /> Practice</span></router-link
       >
       <router-link to="/duel"
-        ><span class="link"><icon-trophy /> duel</span></router-link
+        ><span class="link"><icon-trophy /> Duel</span></router-link
       >
       <router-link to="/settings"
-        ><span class="link"><icon-settings /> settings</span></router-link
+        ><span class="link"><icon-settings /> Settings</span></router-link
       >
     </section>
   </nav>

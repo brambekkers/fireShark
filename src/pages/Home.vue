@@ -1,13 +1,21 @@
 <script setup>
-import { ref } from 'vue';
-import TopicButton from '../components/TopicButton.vue';
-import { rand } from '@vueuse/core';
+import { storeToRefs } from 'pinia';
+import { useQuestionStore } from '@stores/question';
 
-const topics = ref();
-const fetchUsers = async () =>
-  await fetch('http://192.168.0.172:3000/users')
-    .then((res) => res.json())
-    .then((json) => (topics.value = json.id1.topics));
+import { ref } from 'vue';
+import { rand } from '@vueuse/core';
+import TopicButton from '@/components/TopicButton.vue';
+
+const { selectedTopics } = storeToRefs(useQuestionStore());
+const topics = ref([]);
+
+const fetchUsers = async () => {
+  const userId = 'id1';
+  const res = await fetch(`http://192.168.0.172:3000/users/${userId}`);
+  const user = await res.json();
+  topics.value = user.topics || [];
+  console.log(topics.value);
+};
 fetchUsers();
 </script>
 
@@ -42,11 +50,14 @@ fetchUsers();
       </section>
 
       <div class="flex align-center justify-center mt-12">
-        <button
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-        >
-          start
-        </button>
+        <router-link to="/practice">
+          <button
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
+            :disable="!selectedTopics.length"
+          >
+            start
+          </button>
+        </router-link>
       </div>
     </div>
   </main>

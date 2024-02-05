@@ -4,8 +4,8 @@ import { ref, watch } from 'vue';
 import { useQuestionStore } from '@stores/question';
 
 const props = defineProps({
-  title: String,
-  progress: Number,
+  title: { type: String, required: true },
+  progress: { type: Number, required: true },
 });
 
 const { selectedTopics } = storeToRefs(useQuestionStore());
@@ -25,6 +25,7 @@ watch(isChecked, (check) => {
   <div
     class="shadow-xl cursor-pointer transition-all duration-500 hover:shadow-2xl"
     @click="checkbox.click()"
+    @keyup.enter="checkbox.click()"
   >
     <!-- header -->
     <div class="flex relative">
