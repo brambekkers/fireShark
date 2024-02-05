@@ -5,13 +5,16 @@ import { useQuestionStore } from '@stores/question';
 import { ref } from 'vue';
 import { rand } from '@vueuse/core';
 import TopicButton from '@/components/TopicButton.vue';
+import Button from '@/components/Button.vue';
 
 const { selectedTopics } = storeToRefs(useQuestionStore());
 const topics = ref([]);
 
+const selectAll = () => {
+};
 const fetchUsers = async () => {
   const userId = 'id1';
-  const res = await fetch(`http://192.168.0.172:3000/users/${userId}`);
+  const res = await fetch(`http://192.168.0.192:3000/users/${userId}`);
   const user = await res.json();
   topics.value = user.topics || [];
   console.log(topics.value);
@@ -30,8 +33,12 @@ fetchUsers();
     <div class="max-w-screen-lg mx-auto">
       <section class="h-44 flex justify-between relative z-10 pt-8">
         <div class="mt-4">
-          <h1 class="font-extrabold text-2xl text-white">Hi Ernie!</h1>
-          <p class="text-xl font-bold text-white">Welcome back.</p>
+          <h1 class="font-extrabold text-2xl text-white">
+            Hi Ernie!
+          </h1>
+          <p class="text-xl font-bold text-white">
+            Welcome back.
+          </p>
         </div>
         <div class="rounded-full h-32 w-32 bg-accent shadow-2xl"></div>
       </section>
@@ -51,14 +58,28 @@ fetchUsers();
 
       <div class="flex align-center justify-center mt-12">
         <router-link to="/practice">
-          <button
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
+          <Button
             :disable="!selectedTopics.length"
+            title="Practice this selection"
+            class="text-black bg-yellow-400 hover:bg-yellow-500 rounded-full text-sm px-5 py-5 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
           >
-            start
-          </button>
+          </Button>
         </router-link>
+      </div>
+      <div class="flex align-center justify-center mt-12">
+        <Button
+          title="Select all"
+          class="text-green bg-transparent border-solid border-4 border-green hover:text-green rounded-full text-sm px-2 py-2 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
+          @click="selectAll"
+        >
+        </Button>
       </div>
     </div>
   </main>
 </template>
+
+<style lang="scss" scoped>
+.practice-button {
+
+}
+</style>

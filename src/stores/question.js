@@ -1,10 +1,10 @@
-import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { defineStore } from 'pinia';
+import { ref } from 'vue';
 
 export const useQuestionStore = defineStore('question', () => {
-  const selectedTopics = ref(['general', 'javascript', 'debug'])
+  const selectedTopics = ref(['general', 'javascript', 'debug']);
 
-  return { selectedTopics }
-})
+  return { selectedTopics };
+});
 
-export default useQuestionStore
+export default useQuestionStore;
