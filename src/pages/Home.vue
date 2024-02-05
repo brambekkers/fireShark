@@ -1,27 +1,18 @@
 <script setup>
-import { storeToRefs } from 'pinia';
-import { useQuestionStore } from '@stores/question';
-import { ref, watchEffect } from 'vue';
+import { watchEffect } from 'vue';
 import { rand } from '@vueuse/core';
-import TopicButton from '@/components/TopicButton.vue';
-import useQuizPerformanceVue from "../composable/useQuizPerformance.js";
+import { storeToRefs } from 'pinia';
+import TopicButton from '../components/TopicButton.vue';
+import useUserStore from '@/stores/userStore';
+import useQuestionStore from '@/stores/question';
 
-const { percentage, calculatePerformancePercentage } = useQuizPerformanceVue();
+const userStore = useUserStore();
+userStore.fetchUser('id1');
+
 const { selectedTopics } = storeToRefs(useQuestionStore());
-const totalQuestions = ref(30);
-const correctAnswers = ref(24);
-const wrongAnswers = ref(5);
-const unansweredQuestions = ref(1);
-const world = ref("world")
-const topics = ref(null)
 
 watchEffect(() => {
-  calculatePerformancePercentage(
-    totalQuestions.value,
-    correctAnswers.value,
-    wrongAnswers.value,
-    unansweredQuestions.value,
-  );
+  userStore.calculatePerformancePercentage();
 });
 
 const fetchUsers = async () => {
@@ -51,13 +42,20 @@ fetchUsers();
         <h2 class="text-lg italic text-center">
           Select the topics you want to practice
         </h2>
-        <div class="grid grid-cols-3 gap-6 mt-12">
-          <TopicButton v-for="topic in topics" :key="topic.id" :title="topic.key" :progress="rand(1, 100)" />
+        <div class="grid grid-cols-3 gap-x-6 gap-y-10 mt-12">
+          <TopicButton
+            v-for="topic in userStore.topics"
+            :key="topic.id"
+            :title="topic.key"
+            :progress="rand(1, 100)"
+          />
         </div>
         <div>
           <p class="text-center mt-8">
             Your performance is at
-            <span class="text-2xl font-bold text-blue-700">{{ percentage }}%</span>
+            <span class="text-2xl font-bold text-blue-700"
+              >{{ userStore.stats?.percentage }}%</span
+            >
           </p>
         </div>
       </section>
