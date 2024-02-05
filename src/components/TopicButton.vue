@@ -1,10 +1,23 @@
 <script setup>
-import { ref } from 'vue';
-const checkbox = ref(null);
-const test = ref(false);
-defineProps({
+import { storeToRefs } from 'pinia';
+import { ref, watch } from 'vue';
+import { useQuestionStore } from '@stores/question';
+
+const props = defineProps({
     title: String,
     progress: Number,
+});
+
+const { selectedTopics } = storeToRefs(useQuestionStore());
+const checkbox = ref(null);
+const isChecked = ref(false);
+
+watch(isChecked, (check) => {
+    if (check) selectedTopics.value.push(props.title);
+    else {
+        const index = selectedTopics.value.indexOf(props.title);
+        selectedTopics.value.splice(index, 1);
+    }
 });
 </script>
 
@@ -28,13 +41,13 @@ defineProps({
         <!-- Title -->
         <div class="bg-white px-12 py-8 rounded-b-2xl">
             <input
-                v-model="test"
+                v-model="isChecked"
                 class="hidden"
                 ref="checkbox"
                 type="checkbox"
             />
             <h3 class="text-xl text-center font-bold text-primary">
-                {{ title }} {{ test ? 'on' : 'off' }}
+                {{ title }} - {{ isChecked }}
             </h3>
             <div class="mt-6 h-2 rounded bg-slate-200 relative overflow-hidden">
                 <div

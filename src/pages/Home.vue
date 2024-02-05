@@ -2,7 +2,6 @@
 import { ref } from 'vue';
 import TopicButton from '../components/TopicButton.vue';
 import { rand } from '@vueuse/core';
-const world = ref('world');
 
 const topics = ref();
 const fetchUsers = async () =>
@@ -13,7 +12,7 @@ fetchUsers();
 </script>
 
 <template>
-    <main class="">
+    <main>
         <!-- Accent on top -->
         <div
             aria-hidden="true"
@@ -45,8 +44,4 @@ fetchUsers();
             </section>
         </div>
     </main>
-
-    <!-- <div class="bg-red-500 p-12">
-    <h1>Hello {{ world }}</h1>
-  </div> -->
 </template>
