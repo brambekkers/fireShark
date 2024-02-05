@@ -2,14 +2,14 @@
 import { ref, watchEffect } from "vue"
 import { rand } from "@vueuse/core";
 import TopicButton from "../components/TopicButton.vue"
-import useQuizPerformanceVue from "../composables/useQuizPerformance.js";
-const world = ref("world")
+import useQuizPerformanceVue from "../composable/useQuizPerformance.js";
 
 const { percentage, calculatePerformancePercentage } = useQuizPerformanceVue();
 const totalQuestions = ref(30);
 const correctAnswers = ref(24);
 const wrongAnswers = ref(5);
 const unansweredQuestions = ref(1);
+const world = ref("world")
 
 watchEffect(() => {
   calculatePerformancePercentage({

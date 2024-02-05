@@ -8,7 +8,7 @@ import { ref } from 'vue';
  * 
  * @returns {Object} An object containing the `calculatePerformancePercentage` method and reactive `percentage` ref.
  */
-export function useQuizPerformance() {
+export default function useQuizPerformance() {
   // Reactive ref to store the performance percentage
   const percentage = ref(0);
 
@@ -21,6 +21,7 @@ export function useQuizPerformance() {
    * @param {number} unansweredQuestions - The number of questions not answered.
    */
   const calculatePerformancePercentage = (totalQuestions, correctAnswers, wrongAnswers, unansweredQuestions) => {
+    console.log(totalQuestions, correctAnswers, wrongAnswers, unansweredQuestions)
     // Type checking to ensure all inputs are numbers
     if (typeof totalQuestions !== 'number' || typeof correctAnswers !== 'number' ||
         typeof wrongAnswers !== 'number' || typeof unansweredQuestions !== 'number') {
