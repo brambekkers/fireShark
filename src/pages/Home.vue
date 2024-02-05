@@ -1,16 +1,13 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 import { useQuestionStore } from '@stores/question';
-
-import { ref } from 'vue';
+import { ref, watchEffect } from 'vue';
 import { rand } from '@vueuse/core';
 import TopicButton from '@/components/TopicButton.vue';
-
-const { selectedTopics } = storeToRefs(useQuestionStore());
-
 import useQuizPerformanceVue from "../composable/useQuizPerformance.js";
 
 const { percentage, calculatePerformancePercentage } = useQuizPerformanceVue();
+const { selectedTopics } = storeToRefs(useQuestionStore());
 const totalQuestions = ref(30);
 const correctAnswers = ref(24);
 const wrongAnswers = ref(5);
@@ -64,6 +61,12 @@ fetchUsers();
             :title="topic.key"
             :progress="rand(1, 100)"
           />
+        </div>
+        <div>
+          <p class="text-center mt-8">
+            Your performance is at
+            <span class="text-2xl font-bold text-blue-700">{{ percentage }}%</span>
+          </p>
         </div>
       </section>
 
