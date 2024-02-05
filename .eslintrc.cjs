@@ -28,8 +28,13 @@ module.exports = {
     'vue/attribute-hyphenation': ['warn', 'always', {
       ignore: ['isOpen'],
     }],
+    'import/extensions': ['error', { js: 'always', vue: 'always', scss: 'always' }],
+    // ESlint does not get the root folder set up by vite
+    'import/no-unresolved': 'off',
+    'vue/multi-word-component-names': 'off',
+    // a11y seems redundant
+    'vuejs-accessibility/form-control-has-label': 'off',
   },
-
   root: true,
   env: {
     node: true,
@@ -38,5 +43,4 @@ module.exports = {
     'plugin:vue/vue3-recommended',
     '@vue/airbnb',
   ],
-
 };
