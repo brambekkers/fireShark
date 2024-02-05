@@ -1,14 +1,15 @@
 <script setup>
-import { ref, watchEffect } from "vue"
-import { rand } from "@vueuse/core";
+import { onMounted, ref, watchEffect } from "vue"
+import { rand } from "@vueuse/core"
 import TopicButton from "../components/TopicButton.vue"
-import useQuizPerformanceVue from "../composable/useQuizPerformance.js";
+import useQuizPerformanceVue from "../composable/useQuizPerformance.js"
+import useUserStore from "../stores/userStore"
 
-const { percentage, calculatePerformancePercentage } = useQuizPerformanceVue();
-const totalQuestions = ref(30);
-const correctAnswers = ref(24);
-const wrongAnswers = ref(5);
-const unansweredQuestions = ref(1);
+const { percentage, calculatePerformancePercentage } = useQuizPerformanceVue()
+const totalQuestions = ref(30)
+const correctAnswers = ref(24)
+const wrongAnswers = ref(5)
+const unansweredQuestions = ref(1)
 const world = ref("world")
 
 watchEffect(() => {
@@ -16,16 +17,12 @@ watchEffect(() => {
     totalQuestions.value,
     correctAnswers.value,
     wrongAnswers.value,
-    unansweredQuestions.value,
-  );
-});
+    unansweredQuestions.value
+  )
+})
 
-const topics = ref()
-const fetchUsers = async () =>
-  await fetch("http://192.168.0.172:3000/users")
-    .then((res) => res.json())
-    .then((json) => (topics.value = json.id1.topics))
-fetchUsers()
+const userStore = useUserStore()
+userStore.fetchUser("id1")
 </script>
 
 <template>
@@ -50,15 +47,13 @@ fetchUsers()
         </h2>
         <div class="grid grid-cols-3 gap-6 mt-12">
           <TopicButton
-            v-for="topic in topics"
+            v-for="topic in userStore.user?.topics"
             :key="topic.id"
             :title="topic.key"
             :progress="rand(1, 100)"
           />
         </div>
-        <div>
-          Quiz Performance: {{ percentage }}%
-        </div>
+        <div>Quiz Performance: {{ percentage }}%</div>
       </section>
     </div>
   </main>
