@@ -17,7 +17,7 @@ fetchQuestions()
 
 <template>
   <div>
-    <QuestionHeader :questions="questions"/>
+    <QuestionHeader :questionData="questions[0]" />
     <QuestionForm :questionData="questions[0]" />
     <QuestionSlideIn />
   </div>

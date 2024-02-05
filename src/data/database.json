@@ -51,7 +51,7 @@
             "type": "singleChoice",
             "subject": "Javascript",
             "headerImg": "../images/background/javascript_code.png",
-            "question": "In which year was Javascript developed",
+            "question": "In which year was Javascript developed?",
             "answers": [
               {
                 "text": "1994",
@@ -75,7 +75,7 @@
             "type": "multipleChoice",
             "subject": "Javascript",
             "headerImg": "../images/background/primitive.png",
-            "question": "What is NOT a Javascript primitive type",
+            "question": "What is NOT a Javascript primitive type?",
             "answers": [
               {
                 "text": "string",
