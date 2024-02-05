@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, watchEffect } from "vue"
+import { ref, watchEffect } from "vue"
 import { rand } from "@vueuse/core"
 import TopicButton from "../components/TopicButton.vue"
 import useQuizPerformanceVue from "../composable/useQuizPerformance.js"
@@ -49,7 +49,7 @@ userStore.fetchUser("id1")
                 </h2>
                 <div class="grid grid-cols-3 gap-6 mt-12">
                     <TopicButton
-                        v-for="topic in topics"
+                        v-for="topic in userStore.user.topics"
                         :key="topic.id"
                         :title="topic.key"
                         :progress="rand(1, 100)"
