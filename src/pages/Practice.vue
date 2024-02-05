@@ -12,7 +12,7 @@ const title = ref("very long title with a lot of text");
 const content = ref("very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of textvery long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text");
 
 const fetchQuestions = async () =>
-  await fetch("http://192.168.0.172:3000/questions")
+  await fetch("http://192.168.0.192:3000/questions")
     .then((res) => res.json())
     .then((json) => {
       console.log(json);
@@ -39,5 +39,4 @@ const { selectedTopics } = storeToRefs(useQuestionStore());
   align-items: center;
   justify-content: center;
 }
-
 </style>

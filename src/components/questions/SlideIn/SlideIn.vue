@@ -2,12 +2,12 @@
   <div class="fixed inset-x-0 flex flex-col items-center bottom-0 slide-in-container" :class="show ? 'show' : ''">
 
     <div class="btn-container">
-      <div @click="handleShow(false)" v-if="show" class="bg-yellow-200 rounded-full p-2 cursor-pointer">
+      <div @click="handleShow(false)" v-if="show" class="bg-[#F3C000] rounded-full p-2 cursor-pointer">
         <div class="border-2 border-black rounded-full p-1">
           <ArrowDownward class="icon-size" />
         </div>
       </div>
-      <div @click="handleShow(true)" v-if="!show" class="bg-yellow-200 rounded-full p-2 cursor-pointer">
+      <div @click="handleShow(true)" v-if="!show" class="bg-[#F3C000] rounded-full p-2 cursor-pointer">
         <div class="border-2 border-black rounded-full p-1">
           <ArrowUpward class="icon-size" />
         </div>
