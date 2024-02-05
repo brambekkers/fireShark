@@ -6,7 +6,7 @@ const world = ref('world');
 
 const topics = ref();
 const fetchUsers = async () =>
-    await fetch('http://localhost:3000/users')
+    await fetch('http://192.168.0.172:3000/users')
         .then((res) => res.json())
         .then((json) => (topics.value = json.id1.topics));
 fetchUsers();
