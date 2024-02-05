@@ -3,7 +3,7 @@
     <form>
       <fieldset>
         <legend>{{title}}</legend>
-        <Answer v-for="answer in data.answers" :answer="answer" :type="data.type" />
+        <Answer v-for="answer in questionData.answers" :answer="answer" :type="questionData.type" />
       </fieldset>
     </form>
   </section>
@@ -11,5 +11,10 @@
 
 <script setup>
 import Answer from "./Answer.vue"
-const title = data.type === 'singleChoice' ? 'Choose one option.' : 'You may choose multiple options.'
+
+const props = defineProps({
+  questionData: Object,
+});
+
+const title = props.questionData?.type === 'singleChoice' ? 'Choose one option.' : 'You may choose multiple options.'
 </script>

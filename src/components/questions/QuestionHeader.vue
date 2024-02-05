@@ -1,14 +1,19 @@
 <script setup>
+//import { storeToRefs } from 'pinia';
+// import { useQuestionStore } from '@stores/question';
+
 defineProps({
-  questions: Array,
+  questionData: Object,
 })
+
+// const {selectedQuestion} = storeToRefs(useQuestionStore());
 </script>
 
 <template>
-    <div v-for="question in questions">
-       <img :src="question.headerImg"/>
-      <p>{{ question.question }}</p>
-    </div>
+      <div>
+       <img :src="questionData.headerImg"/>
+       <p>{{ questionData.question }}</p>
+      </div>
 </template>
 
 <style lang="scss" scoped>

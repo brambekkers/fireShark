@@ -4,12 +4,12 @@
 </template>
 
 <script setup>
-  defineProps({
+  const props = defineProps({
     answer: Object,
     type: String,
-  })
+  });
 
-  const inputType = this?.type === 'singleChoice' ? 'radio' : 'checkbox';
-  const {text, value} = this.answer;
-  const questionId = `q-${this?.text}`;
+  const inputType = props?.type === 'singleChoice' ? 'radio' : 'checkbox';
+  const {text, value} = props?.answer || '';
+  const questionId = `q-${props?.text}`;
 </script>
