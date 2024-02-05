@@ -11,7 +11,7 @@ const topics = ref([]);
 
 const fetchUsers = async () => {
   const userId = 'id1';
-  const res = await fetch(`http://192.168.0.172:3000/users/${userId}`);
+  const res = await fetch(`http://192.168.0.192:3000/users/${userId}`);
   const user = await res.json();
   topics.value = user.topics || [];
   console.log(topics.value);
