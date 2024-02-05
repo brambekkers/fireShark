@@ -16,16 +16,22 @@ const { selectedTopics } = storeToRefs(useQuestionStore());
 watchEffect(() => {
   userStore.calculatePerformancePercentage();
 });
+
+const fetchUsers = async () => {
+  const userId = 'id1';
+  const res = await fetch(`http://192.168.0.192:3000/users/${userId}`);
+  const user = await res.json();
+  topics.value = user.topics || [];
+  console.log(topics.value);
+};
+fetchUsers();
 </script>
 
 <template>
   <main>
     <!-- Accent on top -->
-    <div
-      aria-hidden="true"
-      style="clip-path: ellipse(130% 248% at 50% -150%)"
-      class="bg-secondary h-44 absolute w-screen left-0"
-    ></div>
+    <div aria-hidden="true" style="clip-path: ellipse(130% 248% at 50% -150%)"
+      class="bg-secondary h-44 absolute w-screen left-0"></div>
     <div class="max-w-screen-lg mx-auto">
       <section class="h-44 flex justify-between relative z-10 pt-8">
         <div class="mt-4">
