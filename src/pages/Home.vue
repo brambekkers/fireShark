@@ -18,7 +18,7 @@ fetchUsers()
     <div
       aria-hidden="true"
       style="clip-path: ellipse(130% 248% at 50% -150%)"
-      class="bg-secondary h-44 absolute w-screen top-14 left-0"
+      class="bg-secondary h-44 absolute w-screen left-0"
     ></div>
     <div class="max-w-screen-lg mx-auto">
       <section class="h-44 flex justify-between relative z-10 pt-8">
