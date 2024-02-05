@@ -1,11 +1,15 @@
 <script setup>
-import { ref, watchEffect } from 'vue';
+import { watchEffect } from 'vue';
 import { rand } from '@vueuse/core';
+import { storeToRefs } from 'pinia';
 import TopicButton from '../components/TopicButton.vue';
-import useUserStore from '../stores/userStore'
+import useUserStore from '@/stores/userStore';
+import useQuestionStore from '@/stores/question';
 
 const userStore = useUserStore();
 userStore.fetchUser('id1');
+
+const { selectedTopics } = storeToRefs(useQuestionStore());
 
 watchEffect(() => {
   userStore.calculatePerformancePercentage();
@@ -23,8 +27,12 @@ watchEffect(() => {
     <div class="max-w-screen-lg mx-auto">
       <section class="h-44 flex justify-between relative z-10 pt-8">
         <div class="mt-4">
-          <h1 class="font-extrabold text-2xl text-white">Hi Ernie!</h1>
-          <p class="text-xl font-bold text-white">Welcome back.</p>
+          <h1 class="font-extrabold text-2xl text-white">
+            Hi Ernie!
+          </h1>
+          <p class="text-xl font-bold text-white">
+            Welcome back.
+          </p>
         </div>
         <div class="rounded-full h-32 w-32 bg-accent shadow-2xl"></div>
       </section>
@@ -43,9 +51,7 @@ watchEffect(() => {
         <div>
           <p class="text-center mt-8">
             Your performance is at
-            <span class="text-2xl font-bold text-blue-700"
-              >{{ percentage }}%</span
-            >
+            <span class="text-2xl font-bold text-blue-700">{{ percentage }}%</span>
           </p>
         </div>
       </section>

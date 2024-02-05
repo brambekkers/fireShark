@@ -17,11 +17,11 @@ export const useUserStore = defineStore('user', () => {
     }
   };
 
-  const updateUser = async (user) => {
+  const updateUser = async (userObj) => {
     try {
       await fetch(`http://192.168.0.192:3000/users/${user.id}`, {
         method: 'PATCH',
-        body: JSON.stringify(user),
+        body: JSON.stringify(userObj),
       });
     } catch (error) {
       console.log(error);
