@@ -1,6 +1,8 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 import { ref, watch } from 'vue';
+import IconCheck from '~icons/material-symbols/trophy-outline';
+
 import { useQuestionStore } from '@stores/question';
 
 const props = defineProps({
@@ -36,23 +38,29 @@ watch(isChecked, (check) => {
 
       <!-- check circle -->
       <div
-        class="circle bg-slate-400 min-h-6 min-w-6 absolute z-10 rounded-full"
-      />
+        class="bg-slate-200 min-h-6 min-w-6 absolute z-10 rounded-full p-4"
+        :class="isChecked ? 'checked' : 'circle'"
+      >
+        <span v-if="isChecked"><IconCheck /></span>
+      </div>
     </div>
     <!-- Title -->
     <div class="bg-white px-12 py-8 rounded-b-2xl">
+      <label for="selected"></label>
       <input
-        v-model="isChecked"
-        class="hidden"
+        id="selected"
         ref="checkbox"
+        v-model="test"
+        class="hidden"
         type="checkbox"
+        aria-labelledby="selected"
       />
       <h3 class="text-xl text-center font-bold text-primary">
-        {{ title }} - {{ isChecked }}
+        {{ title }} {{ isChecked ? 'on' : 'off' }}
       </h3>
       <div class="mt-6 h-2 rounded bg-slate-200 relative overflow-hidden">
         <div
-          :style="{ width: progress + '%' }"
+          :style="{ width: `${progress}%` }"
           class="from-primary to-secondary bg-gradient-to-r h-full"
         ></div>
       </div>
@@ -64,5 +72,12 @@ watch(isChecked, (check) => {
 .circle {
   left: 50%;
   transform: translate(-50%, -50%);
+  border: 0.4rem solid #f2f9f9;
+}
+.checked {
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #1fc364;
+  border: 0.4rem solid #f2f9f9;
 }
 </style>
