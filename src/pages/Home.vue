@@ -5,43 +5,49 @@ import { rand } from '@vueuse/core';
 
 const topics = ref();
 const fetchUsers = async () =>
-    await fetch('http://192.168.0.172:3000/users')
-        .then((res) => res.json())
-        .then((json) => (topics.value = json.id1.topics));
+  await fetch('http://192.168.0.172:3000/users')
+    .then((res) => res.json())
+    .then((json) => (topics.value = json.id1.topics));
 fetchUsers();
 </script>
 
 <template>
-    <main>
-        <!-- Accent on top -->
-        <div
-            aria-hidden="true"
-            style="clip-path: ellipse(130% 248% at 50% -150%)"
-            class="bg-secondary h-44 absolute w-screen left-0"
-        ></div>
-        <div class="max-w-screen-lg mx-auto">
-            <section class="h-44 flex justify-between relative z-10 pt-8">
-                <div class="mt-4">
-                    <h1 class="font-extrabold text-2xl text-white">
-                        Hi Ernie!
-                    </h1>
-                    <p class="text-xl font-bold text-white">Welcome back.</p>
-                </div>
-                <div class="rounded-full h-32 w-32 bg-accent shadow-2xl"></div>
-            </section>
-            <section class="flex justify-center flex-col mt-8">
-                <h2 class="text-lg italic text-center">
-                    Select the topics you want to practice
-                </h2>
-                <div class="grid grid-cols-3 gap-6 mt-12">
-                    <TopicButton
-                        v-for="topic in topics"
-                        :key="topic.id"
-                        :title="topic.key"
-                        :progress="rand(1, 100)"
-                    />
-                </div>
-            </section>
+  <main>
+    <!-- Accent on top -->
+    <div
+      aria-hidden="true"
+      style="clip-path: ellipse(130% 248% at 50% -150%)"
+      class="bg-secondary h-44 absolute w-screen left-0"
+    ></div>
+    <div class="max-w-screen-lg mx-auto">
+      <section class="h-44 flex justify-between relative z-10 pt-8">
+        <div class="mt-4">
+          <h1 class="font-extrabold text-2xl text-white">Hi Ernie!</h1>
+          <p class="text-xl font-bold text-white">Welcome back.</p>
         </div>
-    </main>
+        <div class="rounded-full h-32 w-32 bg-accent shadow-2xl"></div>
+      </section>
+      <section class="flex justify-center flex-col mt-8">
+        <h2 class="text-lg italic text-center">
+          Select the topics you want to practice
+        </h2>
+        <div class="grid grid-cols-3 gap-6 mt-12">
+          <TopicButton
+            v-for="topic in topics"
+            :key="topic.id"
+            :title="topic.key"
+            :progress="rand(1, 100)"
+          />
+        </div>
+      </section>
+
+      <div class="flex align-center justify-center mt-12">
+        <button
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+        >
+          start
+        </button>
+      </div>
+    </div>
+  </main>
 </template>

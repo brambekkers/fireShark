@@ -10,7 +10,7 @@ const props = defineProps({
 
 const { selectedTopics } = storeToRefs(useQuestionStore());
 const checkbox = ref(null);
-const isChecked = ref(false);
+const isChecked = ref(selectedTopics.value.includes(props.title));
 
 watch(isChecked, (check) => {
   if (check) selectedTopics.value.push(props.title);
