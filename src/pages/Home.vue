@@ -27,12 +27,8 @@ watchEffect(() => {
     <div class="max-w-screen-lg mx-auto">
       <section class="h-44 flex justify-between relative z-10 pt-8">
         <div class="mt-4">
-          <h1 class="font-extrabold text-2xl text-white">
-            Hi Ernie!
-          </h1>
-          <p class="text-xl font-bold text-white">
-            Welcome back.
-          </p>
+          <h1 class="font-extrabold text-2xl text-white">Hi Ernie!</h1>
+          <p class="text-xl font-bold text-white">Welcome back.</p>
         </div>
         <div class="rounded-full h-32 w-32 bg-accent shadow-2xl"></div>
       </section>
@@ -40,7 +36,7 @@ watchEffect(() => {
         <h2 class="text-lg italic text-center">
           Select the topics you want to practice
         </h2>
-        <div class="grid grid-cols-3 gap-6 mt-12">
+        <div class="grid grid-cols-3 gap-x-6 gap-y-10 mt-12">
           <TopicButton
             v-for="topic in userStore.topics"
             :key="topic.id"
@@ -51,7 +47,9 @@ watchEffect(() => {
         <div>
           <p class="text-center mt-8">
             Your performance is at
-            <span class="text-2xl font-bold text-blue-700">{{ userStore.stats?.percentage }}%</span>
+            <span class="text-2xl font-bold text-blue-700"
+              >{{ userStore.stats?.percentage }}%</span
+            >
           </p>
         </div>
       </section>

@@ -2,8 +2,7 @@
 import { storeToRefs } from 'pinia';
 import { ref, watch } from 'vue';
 import { useQuestionStore } from '@stores/question';
-
-import IconCheck from '~icons/material-symbols/trophy-outline';
+import IconCheck from '~icons/lucide/check';
 
 const props = defineProps({
   title: { type: String, required: true },
@@ -25,29 +24,27 @@ watch(isChecked, (check) => {
 
 <template>
   <div
-    class="shadow-xl cursor-pointer transition-all duration-500 hover:shadow-2xl"
+    class="cursor-pointer"
     @click="checkbox.click()"
     @keyup.enter="checkbox.click()"
   >
     <!-- header -->
     <div class="flex relative">
-      <!-- background -->
-      <div class="bg-white rounded-tl-2xl min-h-6 flex-1"></div>
-      <div class="min-h-6 min-w-6"></div>
-      <div class="bg-white rounded-tr-2xl min-h-6 flex-1"></div>
-
       <!-- check circle -->
       <div
-        class="bg-slate-200 min-h-6 min-w-6 absolute z-10 rounded-full p-4"
+        class="bg-slate-200 absolute z-10 rounded-full p-4 max-h-1 max-w-1 flex justify-center"
         :class="isChecked ? 'checked' : 'circle'"
       >
-        <span v-if="isChecked">
+        <span v-if="isChecked" class="icon">
           <IconCheck />
         </span>
       </div>
     </div>
     <!-- Title -->
-    <div class="bg-white px-12 py-8 rounded-b-2xl">
+    <div
+      class="bg-white px-12 py-8 rounded-b-2xl transition-all duration-500 hover:shadow-xl"
+      :class="isChecked ? 'shadow-xl' : 'shadow-lg'"
+    >
       <label for="selected"></label>
       <input
         id="selected"
@@ -58,14 +55,19 @@ watch(isChecked, (check) => {
         aria-labelledby="selected"
       />
       <h3 class="text-xl text-center font-bold text-primary">
-        {{ title }} {{ isChecked ? 'on' : 'off' }}
+        {{ title }}
       </h3>
-      <div class="mt-6 h-2 rounded bg-slate-200 relative overflow-hidden">
+      <section class="percentage-section flex mt-6 align-center">
         <div
-          :style="{ width: `${progress}%` }"
-          class="from-primary to-secondary bg-gradient-to-r h-full"
-        ></div>
-      </div>
+          class="h-2 mt-1 rounded bg-slate-200 relative overflow-hidden grow"
+        >
+          <div
+            :style="{ width: `${progress}%` }"
+            class="from-primary to-secondary bg-gradient-to-r h-full"
+          ></div>
+        </div>
+        <p class="percentage ms-4">{{ progress }}%</p>
+      </section>
     </div>
   </div>
 </template>
@@ -82,5 +84,15 @@ watch(isChecked, (check) => {
   transform: translate(-50%, -50%);
   background-color: #1fc364;
   border: 0.4rem solid #f2f9f9;
+}
+.icon {
+  color: #ffffff;
+  font-size: 1rem;
+  align-self: center;
+}
+.percentage {
+  color: #009286;
+  font-weight: 700;
+  line-height: 1.2;
 }
 </style>
