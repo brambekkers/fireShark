@@ -8,10 +8,10 @@
     "build": "vite build",
     "preview": "vite preview",
     "json-server": "json-server --watch src/data/database.json",
+    "json-server-host": "json-server --host 192.168.0.172 src/data/database.json",
     "tsc": "tsc"
   },
   "dependencies": {
-    "@vue/eslint-config-airbnb": "^8.0.0",
     "@iconify-json/carbon": "^1.1.28",
     "@iconify-json/lucide": "^1.1.162",
     "@iconify-json/material-symbols": "^1.1.72",
@@ -25,6 +25,9 @@
     "vue-router": "^4.2.4"
   },
   "devDependencies": {
+    "eslint-plugin-vue": "^9.21.1",
+    "@vue/eslint-config-airbnb": "^8.0.0",
+    "@iconify-json/material-symbols-light": "^1.1.12",
     "@vitejs/plugin-vue": "^4.2.3",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.56.0",

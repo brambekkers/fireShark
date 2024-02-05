@@ -1,12 +1,65 @@
 {
-  "users": {
-    "id1": {
+  "users": [
+    {
       "name": "Kenan",
       "id": "id1",
       "email": "kenan.amatradjak@nl.abnamro.com",
       "settings": {
         "language": "nl",
         "darkModeActive": false
+      },
+      "stats": {
+        "totalQuestions": 87, 
+        "correctAnswers": 32, 
+        "wrongAnswers": 59, 
+        "unansweredQuestions": 43
+      },
+      "topics": [
+        {
+          "id": "tid1",
+          "key": "general",
+          "score": 21
+        },
+        {
+          "id": "tid2",
+          "key": "javascript",
+          "score": 99
+        },
+        {
+          "id": "tid3",
+          "key": "emerald",
+          "score": 45
+        },
+        {
+          "id": "tid4",
+          "key": "vue",
+          "score": 99
+        },
+        {
+          "id": "tid5",
+          "key": "devops",
+          "score": 10
+        },
+        {
+          "id": "tid6",
+          "key": "debug",
+          "score": 9
+        }
+      ]
+    },
+    {
+      "name": "John",
+      "id": "id2",
+      "email": "kenan.amatradjak@nl.abnamro.com",
+      "settings": {
+        "language": "en",
+        "darkModeActive": true
+      },
+      "stats": {
+        "totalQuestions": 87, 
+        "correctAnswers": 32, 
+        "wrongAnswers": 59, 
+        "unansweredQuestions": 43
       },
       "topics": [
         {
@@ -41,13 +94,14 @@
         }
       ]
     }
-  },
+  ],
   "questions": {
     "subjects": {
-      "General": {
-        "topicId": "General",
+      "general": {
+        "topicId": "general",
         "questions": [
           {
+            "id": "gen-q1",
             "type": "singleChoice",
             "subject": "Javascript",
             "headerImg": "../images/background/javascript_code.png",
@@ -72,6 +126,7 @@
             ]
           },
           {
+            "id": "gen-q2",
             "type": "multipleChoice",
             "subject": "Javascript",
             "headerImg": "../images/background/primitive.png",
@@ -96,6 +151,7 @@
             ]
           },
           {
+            "id": "gen-q3",
             "type": "multipleChoice",
             "subject": "Vuejs component architecture",
             "headerImg": "",
@@ -110,13 +166,455 @@
                 "value": false
               },
               {
-                "text": " Mixins are primarily used for handling asynchronous operations, while scoped slots are designed for dynamic styling in Vue components.",
+                "text": "Mixins are primarily used for handling asynchronous operations, while scoped slots are designed for dynamic styling in Vue components.",
                 "value": false
               },
               {
                 "text": "Scoped slots allow you to share template markup between components, while mixins enable components to encapsulate and reuse behavior logic.",
                 "value": true
               }
+            ]
+          }
+        ]
+      },
+      "javaScript": {
+        "topicId": "javaScript",
+        "questions": [
+          {
+            "id": "js-q1",
+            "type": "singleChoice",
+            "subject": "JavaScript",
+            "headerImg": "",
+            "question": "What symbol is used to end statements in JavaScript",
+            "answers": [
+              { "text": "A) .", "value": false },
+              { "text": "B) ,", "value": false },
+              { "text": "C) ;", "value": true },
+              { "text": "D) :", "value": false }
+            ]
+          },
+          {
+            "id": "js-q2",
+            "type": "multipleChoice",
+            "subject": "JavaScript",
+            "headerImg": "",
+            "question": "Which of the following are primitive data types in JavaScript",
+            "answers": [
+              { "text": "A) string", "value": true },
+              { "text": "B) object", "value": false },
+              { "text": "C) boolean", "value": true },
+              { "text": "D) undefined", "value": true }
+            ]
+          },
+          {
+            "id": "js-q3",
+            "type": "singleChoice",
+            "subject": "JavaScript",
+            "headerImg": "",
+            "question": "Which keyword is used to declare a function in JavaScript",
+            "answers": [
+              { "text": "A) function", "value": true },
+              { "text": "B) method", "value": false },
+              { "text": "C) proc", "value": false },
+              { "text": "D) func", "value": false }
+            ]
+          },
+          {
+            "id": "js-q4",
+            "type": "multipleChoice",
+            "subject": "JavaScript",
+            "headerImg": "",
+            "question": "Which of the following scopes are available in JavaScript",
+            "answers": [
+              { "text": "A) Global", "value": true },
+              { "text": "B) Local", "value": true },
+              { "text": "C) Block", "value": true },
+              { "text": "D) Private", "value": false }
+            ]
+          },
+          {
+            "id": "js-q5",
+            "type": "singleChoice",
+            "subject": "JavaScript",
+            "headerImg": "",
+            "question": "How do you add an element to the end of an array in JavaScript",
+            "answers": [
+              { "text": "A) array.end(element);", "value": false },
+              { "text": "B) array.push(element);", "value": true },
+              { "text": "C) array.add(element);", "value": false },
+              { "text": "D) array.appendTo(element);", "value": false }
+            ]
+          },
+          {
+            "id": "js-q6",
+            "type": "singleChoice",
+            "subject": "JavaScript",
+            "headerImg": "",
+            "question": "Which method can be used to convert a string to uppercase in JavaScript",
+            "answers": [
+              { "text": "A) toUpperCase()", "value": true },
+              { "text": "B) toUpper()", "value": false },
+              { "text": "C) uppercase()", "value": false },
+              { "text": "D) toUpperCaseString()", "value": false }
+            ]
+          },
+          {
+            "id": "js-q7",
+            "type": "multipleChoice",
+            "subject": "JavaScript",
+            "headerImg": "",
+            "question": "Which of the following are comparison operators in JavaScript",
+            "answers": [
+              { "text": "A) ==", "value": true },
+              { "text": "B) =", "value": false },
+              { "text": "C) ===", "value": true },
+              { "text": "D) !=", "value": true }
+            ]
+          },
+          {
+            "id": "js-q8",
+            "type": "singleChoice",
+            "subject": "JavaScript",
+            "headerImg": "",
+            "question": "How do you access the value of the property `age` in the object `person`",
+            "answers": [
+              { "text": "A) person[age];", "value": false },
+              { "text": "B) person.age;", "value": true },
+              { "text": "C) person->age;", "value": false },
+              { "text": "D) person{age};", "value": false }
+            ]
+          },
+          {
+            "id": "js-q9",
+            "type": "multipleChoice",
+            "subject": "JavaScript",
+            "headerImg": "",
+            "question": "Which of the following are valid ways to attach an event handler to an element in JavaScript",
+            "answers": [
+              { "text": "A) addEventListener()", "value": true },
+              { "text": "B) onClick property", "value": true },
+              { "text": "C) attachEvent()", "value": false },
+              { "text": "D) onEvent()", "value": false }
+            ]
+          },
+          {
+            "id": "js-q10",
+            "type": "singleChoice",
+            "subject": "JavaScript",
+            "headerImg": "",
+            "question": "What is used in JavaScript to handle asynchronous operations",
+            "answers": [
+              { "text": "A) Async/Await", "value": false },
+              { "text": "B) Callback", "value": false },
+              { "text": "C) Promise", "value": true },
+              { "text": "D) Thread", "value": false }
+            ]
+          },
+          {
+            "id": "js-q11",
+            "type": "singleChoice",
+            "subject": "JavaScript",
+            "headerImg": "",
+            "question": "Which method is used to round a number to the nearest integer in JavaScript",
+            "answers": [
+              { "text": "A) Math.round()", "value": true },
+              { "text": "B) Math.floor()", "value": false },
+              { "text": "C) Math.ceil()", "value": false },
+              { "text": "D) Math.toInt()", "value": false }
+            ]
+          },
+          {
+            "id": "js-q12",
+            "type": "multipleChoice",
+            "subject": "JavaScript",
+            "headerImg": "",
+            "question": "Which of the following are correct ways to declare a variable in JavaScript",
+            "answers": [
+              { "text": "A) var", "value": true },
+              { "text": "B) let", "value": true },
+              { "text": "C) const", "value": true },
+              { "text": "D) varlet", "value": false }
+            ]
+          },
+          {
+            "id": "js-q13",
+            "type": "singleChoice",
+            "subject": "JavaScript",
+            "headerImg": "",
+            "question": "What is the output of '2' + 3 + 5 in JavaScript",
+            "answers": [
+              { "text": "A) 10", "value": false },
+              { "text": "B) '235'", "value": true },
+              { "text": "C) '10'", "value": false },
+              { "text": "D) 235", "value": false }
+            ]
+          },
+          {
+            "id": "js-q14",
+            "type": "multipleChoice",
+            "subject": "JavaScript",
+            "headerImg": "",
+            "question": "Which of the following keywords are used for error handling in JavaScript",
+            "answers": [
+              { "text": "A) try", "value": true },
+              { "text": "B) catch", "value": true },
+              { "text": "C) error", "value": false },
+              { "text": "D) finally", "value": true }
+            ]
+          },
+          {
+            "id": "js-q15",
+            "type": "singleChoice",
+            "subject": "JavaScript",
+            "headerImg": "",
+            "question": "Which object in JavaScript is used to work with dates",
+            "answers": [
+              { "text": "A) Date", "value": true },
+              { "text": "B) Calendar", "value": false },
+              { "text": "C) Time", "value": false },
+              { "text": "D) DateTime", "value": false }
+            ]
+          },
+          {
+            "id": "js-q16",
+            "type": "singleChoice",
+            "subject": "JavaScript",
+            "headerImg": "",
+            "question": "Which of the following is not a valid JavaScript event",
+            "answers": [
+              { "text": "A) onclick", "value": false },
+              { "text": "B) onmouseover", "value": false },
+              { "text": "C) onmouse", "value": true },
+              { "text": "D) onkeydown", "value": false }
+            ]
+          },
+          {
+            "id": "js-q17",
+            "type": "multipleChoice",
+            "subject": "JavaScript",
+            "headerImg": "",
+            "question": "What are the purposes of the 'map' function in JavaScript",
+            "answers": [
+              { "text": "A) Iterating over an array", "value": true },
+              { "text": "B) Parsing an integer", "value": false },
+              {
+                "text": "C) Modifying each element in an array",
+                "value": true
+              },
+              {
+                "text": "D) Reducing an array to a single value",
+                "value": false
+              }
+            ]
+          },
+          {
+            "id": "js-q18",
+            "type": "singleChoice",
+            "subject": "JavaScript",
+            "headerImg": "",
+            "question": "What does the 'this' keyword refer to in a JavaScript function",
+            "answers": [
+              { "text": "A) The function itself", "value": false },
+              {
+                "text": "B) The global object in non-strict mode",
+                "value": true
+              },
+              { "text": "C) The document object", "value": false },
+              { "text": "D) null", "value": false }
+            ]
+          },
+          {
+            "id": "js-q19",
+            "type": "multipleChoice",
+            "subject": "JavaScript",
+            "headerImg": "",
+            "question": "Which ES6 features are widely used in modern JavaScript",
+            "answers": [
+              { "text": "A) Arrow functions", "value": true },
+              { "text": "B) var keyword", "value": false },
+              { "text": "C) Promises", "value": true },
+              { "text": "D) Template literals", "value": true }
+            ]
+          },
+          {
+            "id": "js-q20",
+            "type": "singleChoice",
+            "subject": "JavaScript",
+            "headerImg": "",
+            "question": "How do you declare a class in JavaScript",
+            "answers": [
+              { "text": "A) function ClassName() {}", "value": false },
+              { "text": "B) class ClassName {}", "value": true },
+              { "text": "C) create ClassName() {}", "value": false },
+              { "text": "D) ClassName() : class {}", "value": false }
+            ]
+          }
+        ]
+      },
+      "vue": {
+        "topicId": "vue",
+        "questions": [
+          {
+            "id": "vue-q1",
+            "type": "singleChoice",
+            "subject": "Vue.js",
+            "headerImg": "",
+            "question": "What is the Vue.js directive used to bind data to the text content of an HTML element",
+            "answers": [
+              { "text": "A) v-bind", "value": false },
+              { "text": "B) v-model", "value": false },
+              { "text": "C) v-text", "value": true },
+              { "text": "D) v-html", "value": false }
+            ]
+          },
+          {
+            "id": "vue-q2",
+            "type": "multipleChoice",
+            "subject": "Vue.js",
+            "headerImg": "",
+            "question": "Which of the following are Vue.js lifecycle hooks",
+            "answers": [
+              { "text": "A) created", "value": true },
+              { "text": "B) mounted", "value": true },
+              { "text": "C) updated", "value": true },
+              { "text": "D) destroyed", "value": true }
+            ]
+          },
+          {
+            "id": "vue-q3",
+            "type": "singleChoice",
+            "subject": "Vue.js",
+            "headerImg": "",
+            "question": "Which Vue.js directive is used to display an element conditionally",
+            "answers": [
+              { "text": "A) v-show", "value": false },
+              { "text": "B) v-if", "value": true },
+              { "text": "C) v-for", "value": false },
+              { "text": "D) v-bind", "value": false }
+            ]
+          },
+          {
+            "id": "vue-q4",
+            "type": "multipleChoice",
+            "subject": "Vue.js",
+            "headerImg": "",
+            "question": "What features does Vue.js provide for building web interfaces",
+            "answers": [
+              { "text": "A) Reactive data binding", "value": true },
+              { "text": "B) Component-based architecture", "value": true },
+              { "text": "C) Virtual DOM", "value": true },
+              { "text": "D) MVC architecture", "value": false }
+            ]
+          },
+          {
+            "id": "vue-q5",
+            "type": "singleChoice",
+            "subject": "Vue.js",
+            "headerImg": "",
+            "question": "What is the purpose of the v-model directive in Vue.js",
+            "answers": [
+              {
+                "text": "A) To create a two-way data binding on form input, textarea, and select elements.",
+                "value": true
+              },
+              {
+                "text": "B) To bind the HTML class attributes to the data.",
+                "value": false
+              },
+              { "text": "C) To conditionally render a block.", "value": false },
+              { "text": "D) To iterate over an array of items.", "value": false }
+            ]
+          },
+          {
+            "id": "vue-q6",
+            "type": "singleChoice",
+            "subject": "Vue.js",
+            "headerImg": "",
+            "question": "Which method is used to programmatically navigate to a different route in a Vue.js SPA",
+            "answers": [
+              { "text": "A) this.$router.go()", "value": false },
+              { "text": "B) this.$router.navigate()", "value": false },
+              { "text": "C) this.$router.push()", "value": true },
+              { "text": "D) this.$navigate.to()", "value": false }
+            ]
+          },
+          {
+            "id": "vue-q7",
+            "type": "multipleChoice",
+            "subject": "Vue.js",
+            "headerImg": "",
+            "question": "Which of the following options are true regarding Vue.js components",
+            "answers": [
+              {
+                "text": "A) Components are reusable Vue instances.",
+                "value": true
+              },
+              { "text": "B) Components can accept props.", "value": true },
+              { "text": "C) Components cannot emit events.", "value": false },
+              {
+                "text": "D) Components can only be registered globally.",
+                "value": false
+              }
+            ]
+          },
+          {
+            "id": "vue-q8",
+            "type": "singleChoice",
+            "subject": "Vue.js",
+            "headerImg": "",
+            "question": "How do you declare a reactive property in a Vue component's data function",
+            "answers": [
+              { "text": "A) data: { property: 'value' }", "value": false },
+              {
+                "text": "B) data() { return { property: 'value' } }",
+                "value": true
+              },
+              {
+                "text": "C) React.createProperty('property', 'value')",
+                "value": false
+              },
+              { "text": "D) this.property = 'value'", "value": false }
+            ]
+          },
+          {
+            "id": "vue-q9",
+            "type": "multipleChoice",
+            "subject": "Vue.js",
+            "headerImg": "",
+            "question": "What are the advantages of using Vue.js for web development",
+            "answers": [
+              { "text": "A) Easy to learn and understand", "value": true },
+              {
+                "text": "B) Integrates well with other libraries or existing projects",
+                "value": true
+              },
+              {
+                "text": "C) Limited to small-scale applications",
+                "value": false
+              },
+              {
+                "text": "D) Offers a flexible and modular architecture",
+                "value": true
+              }
+            ]
+          },
+          {
+            "id": "vue-q10",
+            "type": "singleChoice",
+            "subject": "Vue.js",
+            "headerImg": "",
+            "question": "In Vue.js, what is Vuex used for",
+            "answers": [
+              {
+                "text": "A) To manage state in a Vue application.",
+                "value": true
+              },
+              { "text": "B) To style Vue components.", "value": false },
+              {
+                "text": "C) To configure routing in a Vue application.",
+                "value": false
+              },
+              { "text": "D) To compile Vue components.", "value": false }
             ]
           }
         ]
