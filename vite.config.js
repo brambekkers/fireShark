@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), eslint({eslintPath: '.eslintrc.js'})],
+  plugins: [vue(), eslint()],
   resolve: {
     alias: [
       { find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url)) },
@@ -14,4 +14,5 @@ export default defineConfig({
       { find: '@components', replacement: fileURLToPath(new URL('./src/components', import.meta.url)) },
     ],
   },
+
 })

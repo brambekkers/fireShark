@@ -3,7 +3,7 @@
   managed by the IBRS team. All changes to this file will be overwritten when invoking the plugin.
 */
 
-module.exports = {
+export default {
   rules: {
     /*
       The slot attribute was deprecated in Vue in favor of v-slot.
