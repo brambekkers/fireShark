@@ -28,4 +28,4 @@ export const useQuestionStore = defineStore('question', () => {
   return { selectedQuestion, selectedQuestions, selectedTopics, getQuestions }
 })
 
-export default useQuestionStore
+export default useQuestionStore;
