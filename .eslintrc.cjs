@@ -13,6 +13,7 @@ module.exports = {
     'vue/no-deprecated-slot-attribute': [
       'off',
     ],
+    'linebreak-style': 'off',
     /*
       The default setting clashes with the HTML and Web Component spec regarding
       self-closing-tags and void elements which might cause problems for the Emerald Web Components.
@@ -28,42 +29,6 @@ module.exports = {
       ignore: ['isOpen'],
     }],
   },
-  // overrides: [
-  //   {
-  //     rules: {
-  //       'import/no-extraneous-dependencies': [
-  //         'error',
-  //         {
-  //           devDependencies: true,
-  //         },
-  //       ],
-  //     },
-  //   },
-  //   {
-  //     files: [
-  //       './src/**/*.spec.{j,t}s?(x)',
-  //     ],
-  //     rules: {
-  //       'import/order': ['warn'],
-  //     },
-  //   },
-    
-  //   {
-  //     files: [
-  //       './src/**/*.{j,t}s?(x)',
-  //       './src/**/**/*.vue',
-  //     ],
-  //     rules: {
-  //       'max-len': [
-  //         'error',
-  //         {
-  //           code: 140,
-  //           ignoreUrls: true,
-  //         },
-  //       ],
-  //     },
-  //   },
-  // ],
   root: true,
   env: {
     node: true,
@@ -72,7 +37,4 @@ module.exports = {
     'plugin:vue/vue3-recommended',
     '@vue/airbnb',
   ],
-  // parserOptions: {
-  //   parser: '@babel/eslint-parser',
-  // },
 };
