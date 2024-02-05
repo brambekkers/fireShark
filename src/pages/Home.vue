@@ -1,25 +1,19 @@
 <script setup>
-import { storeToRefs } from 'pinia';
-import { useQuestionStore } from '@stores/question';
-
-import { ref } from 'vue';
+import { watchEffect } from 'vue';
 import { rand } from '@vueuse/core';
-import TopicButton from '@/components/TopicButton.vue';
-import Button from '@/components/Button.vue';
+import { storeToRefs } from 'pinia';
+import TopicButton from '../components/TopicButton.vue';
+import useUserStore from '@/stores/userStore';
+import useQuestionStore from '@/stores/question';
+
+const userStore = useUserStore();
+userStore.fetchUser('id1');
 
 const { selectedTopics } = storeToRefs(useQuestionStore());
-const topics = ref([]);
 
-const selectAll = () => {
-};
-const fetchUsers = async () => {
-  const userId = 'id1';
-  const res = await fetch(`http://192.168.0.192:3000/users/${userId}`);
-  const user = await res.json();
-  topics.value = user.topics || [];
-  console.log(topics.value);
-};
-fetchUsers();
+watchEffect(() => {
+  userStore.calculatePerformancePercentage();
+});
 </script>
 
 <template>
@@ -46,13 +40,19 @@ fetchUsers();
         <h2 class="text-lg italic text-center">
           Select the topics you want to practice
         </h2>
-        <div class="grid grid-cols-3 gap-6 mt-12">
+        <div class="grid grid-cols-3 gap-x-6 gap-y-10 mt-12">
           <TopicButton
-            v-for="topic in topics"
+            v-for="topic in userStore.topics"
             :key="topic.id"
             :title="topic.key"
             :progress="rand(1, 100)"
           />
+        </div>
+        <div>
+          <p class="text-center mt-8">
+            Your performance is at
+            <span class="text-2xl font-bold text-blue-700">{{ userStore.stats?.percentage }}%</span>
+          </p>
         </div>
       </section>
 
