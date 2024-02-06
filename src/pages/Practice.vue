@@ -65,7 +65,7 @@ const goBack = () => {
                 :style="{ width: `${Math.round(stats?.percentage)}%` }"
                 class="from-white to-secondary bg-gradient-to-r"
               >
-                {{ Math.round(stats?.percentage) }}% up-to-date
+                {{ Math.round(stats?.percentage) }}%
               </div>
             </div>
           </section>
