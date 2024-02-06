@@ -34,13 +34,10 @@ const props = defineProps({
 
 const store = useQuestionStore();
 const answerIsGiven = computed(() => store.answerIsGiven);
-
 const title = computed(() => (props?.questionData?.type === 'singleChoice' ? 'Choose one option.' : 'You may choose multiple options.'));
 
 async function saveAnswer() {
-  const isSuccess = await store.checkAnswer();
-  console.log(isSuccess);
-  store.saveAnswer(isSuccess);
+  store.saveAnswer();
 }
 </script>
 

@@ -85,8 +85,9 @@ export const useQuestionStore = defineStore('question', () => {
     }
   }
 
-  function saveAnswer(isSuccess) {
+  function saveAnswer() {
     showQuestionSlideIn.value = !showQuestionSlideIn.value;
+    const isSuccess = checkAnswer();
     console.log(`The answer was ${isSuccess ? 'correct' : 'incorrect'}`);
   }
 

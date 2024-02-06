@@ -97,12 +97,13 @@ const emitNextQuestion = () => {
 }
 
 .box {
-  min-width: 500px;
+  min-width: 570px;
 }
 
 .btn-container {
   margin-bottom: -24px;
-  z-index: 200;
+  z-index: 30;
+  position: relative;
 }
 
 .content,
