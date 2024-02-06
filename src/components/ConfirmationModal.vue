@@ -52,23 +52,25 @@ const close = () => {
 </template> -->
 
 <script setup>
-import { ref } from 'vue';
 import {
   Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot,
 } from '@headlessui/vue';
-// import { ExclamationTriangleIcon } from '@heroicons/vue/24/outline';
 
-const open = ref(true);
+defineProps({
+  isOpen: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
+});
 
-const openModal = () => {
-  open.value = true;
-};
+defineEmits(['closeModal']);
 
 </script>
 
 <template>
-  <TransitionRoot as="template" :show="open">
-    <Dialog as="div" class="relative z-10" @close="open = false">
+  <TransitionRoot as="template" :show="isOpen">
+    <Dialog as="div" class="relative z-10" @close="$emit('closeModal')">
       <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0" enter-to="opacity-100" leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
       </TransitionChild>
@@ -95,10 +97,10 @@ const openModal = () => {
                 </div>
               </div>
               <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                <button type="button" class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto" @click="open = false">
+                <button type="button" class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto" @click="$emit('closeModal')">
                   Deactivate
                 </button>
-                <button ref="cancelButtonRef" type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" @click="open = false">
+                <button ref="cancelButtonRef" type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" @click="$emit('closeModal')">
                   Cancel
                 </button>
               </div>
@@ -108,7 +110,4 @@ const openModal = () => {
       </div>
     </Dialog>
   </TransitionRoot>
-  <button id="open-dialog-btn" type="button" @click="openModal()">
-    Show the dialog
-  </button>
 </template>

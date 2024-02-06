@@ -3,11 +3,14 @@ import { watchEffect, ref } from 'vue';
 import { rand } from '@vueuse/core';
 import { storeToRefs } from 'pinia';
 import Button from '@/components/Button.vue';
-import GenericModal from '@/components/GenericModal.vue';
+import ConfirmationModal from '@/components/ConfirmationModal.vue';
 import TopicButton from '@/components/TopicButton.vue';
 import OverviewHeader from '@/components/overview/Header.vue';
 import useUserStore from '@/stores/userStore';
 import useQuestionStore from '@/stores/question';
+import useModalInteractions from '@/composable/useModalInteractions';
+
+const { isModalOpen, toggleModal } = useModalInteractions();
 
 const userStore = useUserStore();
 userStore.fetchUser('id1');
@@ -39,6 +42,7 @@ const clearSelection = () => {
 watchEffect(() => {
   userStore.calculatePerformancePercentage();
 });
+<<<<<<< Updated upstream
 
 const isModalOpen = ref(false);
 
@@ -46,6 +50,8 @@ const toggleModal = (isOpen) => {
   console.log('isOpen :>> ', isOpen);
   isModalOpen.value = isOpen;
 };
+=======
+>>>>>>> Stashed changes
 </script>
 
 <template>
@@ -98,8 +104,7 @@ const toggleModal = (isOpen) => {
       </div>
     </div>
 
-    <!-- <ConfirmationModal /> -->
-    <GenericModal :is-open="isModalOpen" @close-modal="toggleModal(false)" />
+    <ConfirmationModal :is-open="isModalOpen" @close-modal="toggleModal(false)" />
 
     <button id="open-dialog-btn" type="button" @click="toggleModal(true)">
       Show the dialog
