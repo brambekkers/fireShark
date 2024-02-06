@@ -2,6 +2,9 @@
 import { ref } from 'vue';
 import { rand } from '@vueuse/core';
 
+import ConfirmationModal from '@/components/ConfirmationModal.vue';
+import GenericModal from '@/components/GenericModal.vue';
+
 const topics = ref();
 const fetchUsers = async () => {
   const res = await fetch('http://192.168.0.172:3000/users');
@@ -9,6 +12,12 @@ const fetchUsers = async () => {
   topics.value = res.json.id1.topics;
 };
 fetchUsers();
+
+const isModalOpen = ref(false);
+
+const toggleModal = (isOpen) => {
+  isModalOpen.value = isOpen;
+};
 </script>
 
 <template>
@@ -43,7 +52,13 @@ fetchUsers();
             :progress="rand(1, 100)"
           />
         </div>
+        <!-- <ConfirmationModal /> -->
+        <GenericModal :is-open="isModalOpen" @close-modal="toggleModal(false)" />
       </section>
     </div>
+
+    <button id="open-dialog-btn" type="button" @click="toggleModal(true)">
+      Show the dialog
+    </button>
   </main>
 </template>

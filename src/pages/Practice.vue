@@ -6,8 +6,8 @@ const { selectedTopics } = storeToRefs(useQuestionStore());
 </script>
 
 <template>
-    <div>
-        <h1>I'm the practice page</h1>
-        <p>{{ selectedTopics }}</p>
-    </div>
+  <div>
+    <h1>I'm the practice page</h1>
+    <p>{{ selectedTopics }}</p>
+  </div>
 </template>
