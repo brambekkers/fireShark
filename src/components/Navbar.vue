@@ -7,7 +7,8 @@ import IconSettings from '~icons/tdesign/setting-1';
 <template>
   <nav class="bg-sharp-navbar-bg z-50">
     <section class="sharp">
-      <router-link to="/">
+      <router-link to="/" class="flex items-center">
+        <img src="../../public/vite.svg" alt="Shark icon" class="mr-2 h-8">
         {{ $t('general.appName').toUpperCase() }}
         <span class="mark">!</span>
       </router-link>

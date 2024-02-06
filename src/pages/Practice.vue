@@ -60,5 +60,8 @@ const toNextQuestion = () => {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: -48px;
+  z-index: 200;
+  position: relative;
 }
 </style>
