@@ -7,20 +7,21 @@ import IconSettings from '~icons/tdesign/setting-1';
 <template>
   <nav class="bg-sharp-navbar-bg z-50">
     <section class="sharp">
-      <router-link to="/">
-        SHARP
+      <router-link to="/" class="flex items-center">
+        <img src="../../public/vite.svg" alt="Shark icon" class="mr-2 h-8">
+        {{ $t('general.appName').toUpperCase() }}
         <span class="mark">!</span>
       </router-link>
     </section>
     <section class="links">
       <router-link to="/practice">
-        <span class="link"> <icon-brain /> Practice</span>
+        <span class="link"> <icon-brain /> {{ $t('general.practice') }}</span>
       </router-link>
       <router-link to="/duel">
-        <span class="link"><icon-trophy /> Duel</span>
+        <span class="link"><IconTrophy /> {{ $t('general.duel') }}</span>
       </router-link>
       <router-link to="/settings">
-        <span class="link"><icon-settings /> Settings</span>
+        <span class="link"><IconSettings /> {{ $t('general.settings') }}</span>
       </router-link>
     </section>
   </nav>

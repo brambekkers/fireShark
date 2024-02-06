@@ -4,6 +4,7 @@ import { useLayoutStore } from '@stores/layout';
 import Navbar from '@components/Navbar.vue';
 import ConfirmationModal from '@/components/ConfirmationModal.vue';
 import useModalInteractions from '@/composable/useModalInteractions';
+import OverviewHeader from '@/components/overview/Header.vue';
 
 const router = useRouter();
 
@@ -58,6 +59,8 @@ const text = computed(() => (layoutStore.isDarkMode ? '#f2f9f9' : '#242424'));
   <Navbar />
 
   <div id="main" class="mt-12">
+    <!-- Accent on top -->
+    <OverviewHeader />
     <slot></slot>
   </div>
 </template>
