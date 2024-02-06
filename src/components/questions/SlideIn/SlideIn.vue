@@ -6,8 +6,8 @@
     <div class="btn-container relative z-30 -mb-6">
       <div
         class="bg-[#F3C000] rounded-full p-2 w-14 h-14 cursor-pointer flex justify-center items-center"
-        @click="handleShow(!show)"
-        @keydown="handleShow(!show)"
+        @click="show = !show"
+        @keydown="show = !show"
       >
         <div
           class="border-2 border-black rounded-full w-8 h-8 flex justify-center items-center"
@@ -39,18 +39,6 @@ import ArrowUpward from '~icons/material-symbols/arrow-upward';
 import Button from '@/components/generic/Button.vue';
 const store = useQuestionStore();
 
-console.log('check', store.checkAnswer());
-
-const show = ref(false);
-
-const handleShow = (bool) => {
-  show.value = bool;
-};
-
-const valid = computed(() => store.checkAnswer());
-
-const title = computed(() => (valid.value ? 'Correct!' : 'Incorrect'));
-
 defineProps({
   content: {
     type: String,
@@ -61,6 +49,10 @@ defineProps({
     required: true,
   },
 });
+
+const show = ref(false);
+const valid = computed(() => store.checkAnswer());
+const title = computed(() => (valid.value ? 'Correct!' : 'Incorrect'));
 
 const emit = defineEmits(['emit-next-question']);
 
