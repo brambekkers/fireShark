@@ -16,32 +16,35 @@ const router = useRouter();
 const { stats } = storeToRefs(useUserStore());
 
 const store = useQuestionStore();
-const { selectedQuestion } = storeToRefs(store);
+const { selectedQuestion, showQuestionSlideIn, givenAnswer } = storeToRefs(store);
 const { getQuestions } = store;
 const content = ref(
-  'very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of textvery long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text',
+  'very long content with a lot of text',
 );
 const nextQuestion = ref('Continue practicing');
 const scoreMessage = ref(false);
 
-const title = computed(() => 'Title');
-
 getQuestions();
 
 const showMessage = () => {
-  if (Math.random() > 0.5) {
+  if (store.checkAnswer()) {
     scoreMessage.value = true;
     setTimeout(() => {
       scoreMessage.value = false;
       getQuestions();
     }, 3000);
   }
-
-  return false;
 };
 
 const toNextQuestion = () => {
+  getQuestions();
   showMessage();
+  showQuestionSlideIn.value = false;
+  givenAnswer.value = [];
+};
+
+const goBack = () => {
+  router.go(-1);
 };
 
 const goBack = () => {
@@ -76,8 +79,8 @@ const goBack = () => {
 
       <QuestionForm :question-data="selectedQuestion" />
       <QuestionSlideIn
+        v-if="showQuestionSlideIn"
         :next-question="nextQuestion"
-        :title="title"
         :content="content"
         @emit-next-question="toNextQuestion()"
       />

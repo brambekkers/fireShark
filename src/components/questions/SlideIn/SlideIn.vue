@@ -44,9 +44,14 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, computed } from 'vue';
+import { useQuestionStore } from '@stores/question';
 import ArrowUpward from '~icons/material-symbols/arrow-upward';
 import ArrowDownward from '~icons/material-symbols/arrow-downward';
+
+const store = useQuestionStore();
+
+console.log('check', store.checkAnswer());
 
 const show = ref(false);
 
@@ -54,11 +59,11 @@ const handleShow = (bool) => {
   show.value = bool;
 };
 
+const valid = computed(() => store.checkAnswer());
+
+const title = computed(() => (valid.value ? 'Correct!' : 'Incorrect'));
+
 defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
   content: {
     type: String,
     required: true,
@@ -75,6 +80,10 @@ const emitNextQuestion = () => {
   handleShow(false);
   emit('emit-next-question');
 };
+
+onMounted(() => {
+  store.checkAnswer();
+});
 </script>
 
 <style scoped lang="scss">
@@ -97,12 +106,13 @@ const emitNextQuestion = () => {
 }
 
 .box {
-  min-width: 500px;
+  min-width: 570px;
 }
 
 .btn-container {
   margin-bottom: -24px;
-  z-index: 200;
+  z-index: 30;
+  position: relative;
 }
 
 .content,
