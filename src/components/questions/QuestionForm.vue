@@ -12,7 +12,9 @@
           :type="questionData?.type"
         />
       </fieldset>
-      <Button title="Save my answer" :styleType="answerIsGiven ? 'primary' : 'disabled'" :disabled="!answerIsGiven" @on-clicked="saveAnswer" />
+      <div class="button-save-answer">
+        <Button title="Save my answer" :style-type="answerIsGiven ? 'primary' : 'disabled'" :disabled="!answerIsGiven" @on-clicked="saveAnswer" />
+      </div>
     </form>
   </section>
 </template>
@@ -32,9 +34,18 @@ const props = defineProps({
 
 const store = useQuestionStore();
 const answerIsGiven = computed(() => store.answerIsGiven);
-const title = computed(() => props?.questionData?.type === 'singleChoice' ? 'Choose one option.' : 'You may choose multiple options.');
+const title = computed(() => (props?.questionData?.type === 'singleChoice' ? 'Choose one option.' : 'You may choose multiple options.'));
 
 async function saveAnswer() {
   store.saveAnswer();
-};
+}
 </script>
+
+<style lang="scss" scoped>
+.button-save-answer {
+  display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+}
+</style>
