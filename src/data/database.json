@@ -107,7 +107,7 @@
             "id": "gen-q1",
             "type": "singleChoice",
             "subject": "Javascript",
-            "headerImg": "../images/background/javascript_code.png",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "In which year was Javascript developed?",
             "answers": [
               {
@@ -132,7 +132,7 @@
             "id": "gen-q2",
             "type": "multipleChoice",
             "subject": "Javascript",
-            "headerImg": "../images/background/primitive.png",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "What is NOT a Javascript primitive type?",
             "answers": [
               {
@@ -157,7 +157,7 @@
             "id": "gen-q3",
             "type": "multipleChoice",
             "subject": "Vuejs component architecture",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "In Vue.js, what is the key difference between mixins and scoped slots?",
             "answers": [
               {
@@ -187,7 +187,7 @@
             "id": "js-q1",
             "type": "singleChoice",
             "subject": "javascript",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "What symbol is used to end statements in JavaScript",
             "answers": [
               {
@@ -212,7 +212,7 @@
             "id": "js-q2",
             "type": "multipleChoice",
             "subject": "JavaScript",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which of the following are primitive data types in JavaScript",
             "answers": [
               {
@@ -237,7 +237,7 @@
             "id": "js-q3",
             "type": "singleChoice",
             "subject": "JavaScript",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which keyword is used to declare a function in JavaScript",
             "answers": [
               {
@@ -262,7 +262,7 @@
             "id": "js-q4",
             "type": "multipleChoice",
             "subject": "JavaScript",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which of the following scopes are available in JavaScript",
             "answers": [
               {
@@ -287,7 +287,7 @@
             "id": "js-q5",
             "type": "singleChoice",
             "subject": "JavaScript",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "How do you add an element to the end of an array in JavaScript",
             "answers": [
               {
@@ -312,7 +312,7 @@
             "id": "js-q6",
             "type": "singleChoice",
             "subject": "JavaScript",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which method can be used to convert a string to uppercase in JavaScript",
             "answers": [
               {
@@ -337,7 +337,7 @@
             "id": "js-q7",
             "type": "multipleChoice",
             "subject": "JavaScript",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which of the following are comparison operators in JavaScript",
             "answers": [
               {
@@ -362,7 +362,7 @@
             "id": "js-q8",
             "type": "singleChoice",
             "subject": "JavaScript",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "How do you access the value of the property `age` in the object `person`",
             "answers": [
               {
@@ -387,7 +387,7 @@
             "id": "js-q9",
             "type": "multipleChoice",
             "subject": "JavaScript",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which of the following are valid ways to attach an event handler to an element in JavaScript",
             "answers": [
               {
@@ -412,7 +412,7 @@
             "id": "js-q10",
             "type": "singleChoice",
             "subject": "JavaScript",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "What is used in JavaScript to handle asynchronous operations",
             "answers": [
               {
@@ -437,7 +437,7 @@
             "id": "js-q11",
             "type": "singleChoice",
             "subject": "JavaScript",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which method is used to round a number to the nearest integer in JavaScript",
             "answers": [
               {
@@ -462,7 +462,7 @@
             "id": "js-q12",
             "type": "multipleChoice",
             "subject": "JavaScript",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which of the following are correct ways to declare a variable in JavaScript",
             "answers": [
               {
@@ -487,7 +487,7 @@
             "id": "js-q13",
             "type": "singleChoice",
             "subject": "JavaScript",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "What is the output of '2' + 3 + 5 in JavaScript",
             "answers": [
               {
@@ -512,7 +512,7 @@
             "id": "js-q14",
             "type": "multipleChoice",
             "subject": "JavaScript",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which of the following keywords are used for error handling in JavaScript",
             "answers": [
               {
@@ -537,7 +537,7 @@
             "id": "js-q15",
             "type": "singleChoice",
             "subject": "JavaScript",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which object in JavaScript is used to work with dates",
             "answers": [
               {
@@ -562,7 +562,7 @@
             "id": "js-q16",
             "type": "singleChoice",
             "subject": "JavaScript",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which of the following is not a valid JavaScript event",
             "answers": [
               {
@@ -587,7 +587,7 @@
             "id": "js-q17",
             "type": "multipleChoice",
             "subject": "JavaScript",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "What are the purposes of the 'map' function in JavaScript",
             "answers": [
               {
@@ -612,7 +612,7 @@
             "id": "js-q18",
             "type": "singleChoice",
             "subject": "JavaScript",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "What does the 'this' keyword refer to in a JavaScript function",
             "answers": [
               {
@@ -637,7 +637,7 @@
             "id": "js-q19",
             "type": "multipleChoice",
             "subject": "JavaScript",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which ES6 features are widely used in modern JavaScript",
             "answers": [
               {
@@ -662,7 +662,7 @@
             "id": "js-q20",
             "type": "singleChoice",
             "subject": "JavaScript",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "How do you declare a class in JavaScript",
             "answers": [
               {
@@ -692,7 +692,7 @@
             "id": "vue-q1",
             "type": "singleChoice",
             "subject": "Vue.js",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "What is the Vue.js directive used to bind data to the text content of an HTML element",
             "answers": [
               {
@@ -717,7 +717,7 @@
             "id": "vue-q2",
             "type": "multipleChoice",
             "subject": "Vue.js",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which of the following are Vue.js lifecycle hooks",
             "answers": [
               {
@@ -742,7 +742,7 @@
             "id": "vue-q3",
             "type": "singleChoice",
             "subject": "Vue.js",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which Vue.js directive is used to display an element conditionally",
             "answers": [
               {
@@ -767,7 +767,7 @@
             "id": "vue-q4",
             "type": "multipleChoice",
             "subject": "Vue.js",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "What features does Vue.js provide for building web interfaces",
             "answers": [
               {
@@ -792,7 +792,7 @@
             "id": "vue-q5",
             "type": "singleChoice",
             "subject": "Vue.js",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "What is the purpose of the v-model directive in Vue.js",
             "answers": [
               {
@@ -817,7 +817,7 @@
             "id": "vue-q6",
             "type": "singleChoice",
             "subject": "Vue.js",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which method is used to programmatically navigate to a different route in a Vue.js SPA",
             "answers": [
               {
@@ -842,7 +842,7 @@
             "id": "vue-q7",
             "type": "multipleChoice",
             "subject": "Vue.js",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which of the following options are true regarding Vue.js components",
             "answers": [
               {
@@ -867,7 +867,7 @@
             "id": "vue-q8",
             "type": "singleChoice",
             "subject": "Vue.js",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "How do you declare a reactive property in a Vue component's data function",
             "answers": [
               {
@@ -892,7 +892,7 @@
             "id": "vue-q9",
             "type": "multipleChoice",
             "subject": "Vue.js",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "What are the advantages of using Vue.js for web development",
             "answers": [
               {
@@ -917,7 +917,7 @@
             "id": "vue-q10",
             "type": "singleChoice",
             "subject": "Vue.js",
-            "headerImg": "",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "In Vue.js, what is Vuex used for",
             "answers": [
               {
