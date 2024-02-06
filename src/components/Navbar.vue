@@ -14,8 +14,8 @@ import IconSettings from '~icons/tdesign/setting-1';
       </router-link>
     </section>
     <section class="links">
-      <router-link to="/">
-        <span class="link"> <IconBrain /> {{ $t('general.practice') }}</span>
+      <router-link to="/practice">
+        <span class="link"> <icon-brain /> {{ $t('general.practice') }}</span>
       </router-link>
       <router-link to="/duel">
         <span class="link"><IconTrophy /> {{ $t('general.duel') }}</span>
