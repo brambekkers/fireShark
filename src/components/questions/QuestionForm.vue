@@ -12,6 +12,7 @@
 
 <script setup>
 import {computed} from "vue";
+import { useQuestionStore } from '@stores/question';
 import Answer from "./Answer.vue";
 import Button from "../Button.vue";
 
@@ -19,9 +20,11 @@ const props = defineProps({
   questionData: Object,
 });
 
+const store = useQuestionStore();
 const title = computed(() => props?.questionData?.type === 'singleChoice' ? 'Choose one option.' : 'You may choose multiple options.');
 
-function saveAnswer(par) {
-  console.log('hi', par)
-}
+async function saveAnswer() {
+  const isSuccess = await store.checkAnswer();
+  store.saveAnswer(isSuccess);
+};
 </script>

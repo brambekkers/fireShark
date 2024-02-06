@@ -6,6 +6,8 @@ export const useQuestionStore = defineStore('question', () => {
   const selectedTopics = ref(['vue', 'javascript', 'general']);
   const selectedQuestions = ref([]);
   const selectedQuestion = ref({});
+  const givenAnswer = ref([]);
+  const showQuestionSlideIn = ref(false);
 
   async function getQuestions() {
     try {
@@ -13,10 +15,8 @@ export const useQuestionStore = defineStore('question', () => {
       const data = await res.json();
       const randomNr = rand(0, selectedTopics.value.length - 1);
       const topic = selectedTopics.value[randomNr];
-
-      console.log(selectedTopics.value, randomNr, topic)
       selectedQuestions.value = data?.subjects?.[topic];
-      console.log(data?.subjects)
+
       const randomNumber = rand(0, data?.subjects?.[topic]?.questions.length - 1);
       selectedQuestion.value = data?.subjects?.[topic].questions[randomNumber];
     } catch (error) {
@@ -24,8 +24,31 @@ export const useQuestionStore = defineStore('question', () => {
     }
   }
 
+  function setAnswer(isSelected, answer) {
+    const questionType = selectedQuestion.value.type
+    console.log(isSelected, questionType, answer)
+    if (questionType === 'singleChoice') {
+      givenAnswer.value = [answer];
+      return;
+    }
+
+    if (questionType === 'multipleChoice') {
+      givenAnswer.value.push(answer)
+      return;
+    }
+  }
+
+  function checkQuestion() {
+    return true;
+  }
+
+  function saveAnswer(isSuccess) {
+    showQuestionSlideIn.value = !showQuestionSlideIn.value;
+    console.log(`The answer was ${isSuccess}`);
+  }
+
   return {
-    selectedQuestion, selectedQuestions, selectedTopics, getQuestions,
+    selectedQuestion, selectedQuestions, selectedTopics, givenAnswer, showQuestionSlideIn, getQuestions, setAnswer, checkQuestion, saveAnswer,
   };
 });
 
