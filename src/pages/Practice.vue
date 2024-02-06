@@ -8,7 +8,7 @@ import QuestionForm from '../components/questions/QuestionForm.vue';
 import QuestionSlideIn from '../components/questions/SlideIn/SlideIn.vue';
 
 const store = useQuestionStore();
-const { selectedTopics, selectedQuestion } = storeToRefs(store);
+const { selectedQuestion } = storeToRefs(store);
 const { getQuestions } = store;
 const content = ref(
   'very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of textvery long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text',

@@ -18,7 +18,7 @@
         v-if="!show"
         class="bg-[#F3C000] rounded-full p-2 cursor-pointer"
         @click="handleShow(true)"
-        @keydown="handleShow(false)"
+        @keydown="handleShow(true)"
       >
         <div class="border-2 border-black rounded-full p-1">
           <ArrowUpward class="icon-size" />
