@@ -3,10 +3,10 @@ import { ref, computed } from 'vue';
 
 export const useUserStore = defineStore('user', () => {
   const user = ref({});
-  const stats = computed(() => user.stats || {});
+  const stats = computed(() => user.value.stats || {});
+  const topics = computed(() => user.value.topics || []);
   const isUserLoading = ref(false)
   const isUserError = ref(false)
-  const topics = ref([]);
 
   const fetchUser = async (userId) => {
     try {
