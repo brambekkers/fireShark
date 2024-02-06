@@ -1,9 +1,13 @@
 import { defineConfig } from 'vite';
 import { fileURLToPath, URL } from 'url';
+import AutoImport from 'unplugin-auto-import/vite'
 import path from 'path';
+import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import eslint from 'vite-plugin-eslint';
 import vue from '@vitejs/plugin-vue';
 import Icons from 'unplugin-icons/vite';
+
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue(), Icons({ autoInstall: true }), {
@@ -13,7 +17,22 @@ export default defineConfig({
     }),
     apply: 'serve',
     enforce: 'post',
-  }],
+  },
+  AutoImport({
+    // global imports to register
+    imports: [
+      // presets
+      'vue',
+      'vue-router',
+      'pinia',
+      'vue-i18n'
+    ]}),
+  VueI18nPlugin({
+    runtimeOnly: true,
+    compositionOnly: true,
+    include: path.resolve(__dirname, './src/locales/**'),
+  }),
+],
   resolve: {
     alias: [
       // { find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url)) },

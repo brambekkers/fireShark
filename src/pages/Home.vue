@@ -1,7 +1,5 @@
 <script setup>
-import { watchEffect, ref, computed } from 'vue';
 import { rand } from '@vueuse/core';
-import { storeToRefs } from 'pinia';
 import Button from '@/components/Button.vue';
 import GenericModal from '@/components/GenericModal.vue';
 import TopicButton from '@/components/overview/TopicButton.vue';
@@ -11,11 +9,10 @@ import useQuestionStore from '@/stores/question';
 import LevelUp from '@/components/LevelUp.vue';
 
 const userStore = useUserStore();
-
 const { selectedTopics } = storeToRefs(useQuestionStore());
 const selectAllButton = ref('Select all');
 const allSelected = ref(false);
-const isButtonDisabled = computed(() => (!selectedTopics.value.length));
+const isButtonDisabled = computed(() => !selectedTopics.value.length);
 
 const selectAll = () => {
   userStore.topics.forEach((topic) => {

@@ -31,6 +31,8 @@ module.exports = {
     'import/extensions': ['error', { js: 'always', vue: 'always', scss: 'always' }],
     // ESlint does not get the root folder set up by vite
     'import/no-unresolved': 'off',
+    'no-undef': 'off',
+    'vue/html-self-closing': 'off',
     'vue/multi-word-component-names': 'off',
     // a11y seems redundant
     'vuejs-accessibility/form-control-has-label': 'off',

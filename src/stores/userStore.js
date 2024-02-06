@@ -1,5 +1,3 @@
-import { defineStore } from 'pinia';
-import { ref, computed } from 'vue';
 import { rand } from '@vueuse/core';
 
 export const useUserStore = defineStore('user', () => {
