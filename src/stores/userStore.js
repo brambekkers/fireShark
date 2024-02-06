@@ -24,11 +24,15 @@ export const useUserStore = defineStore('user', () => {
     fetchUser(`user${rand(1, 10)}`);
   }
 
-  const updateUser = async (userObj) => {
+  const updateUser = async () => {
     try {
       await fetch(`http://192.168.0.192:3000/users/${user.value.id}`, {
         method: 'PATCH',
-        body: JSON.stringify(userObj),
+        body: JSON.stringify({
+          ...user.value,
+          stats: stats.value,
+          topics: topics.value,
+        }),
       });
     } catch (error) {
       console.log(error);
