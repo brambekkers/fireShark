@@ -64,6 +64,7 @@ watchEffect(() => {
           <p class="text-center mt-8">
             Your performance is at
             <span class="text-2xl font-bold text-blue-700">{{ userStore.stats?.percentage }}%</span>
+            <span class="text-2xl font-bold text-blue-700">{{ userStore.stats?.percentage }}%</span>
           </p>
         </div>
       </section>
