@@ -12,7 +12,6 @@ import useQuestionStore from '@/stores/question';
 const userStore = useUserStore();
 
 const { selectedTopics } = storeToRefs(useQuestionStore());
-
 const selectAllButton = ref('Select all');
 const allSelected = ref(false);
 const isButtonDisabled = ref(!selectedTopics.value.length);
