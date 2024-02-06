@@ -41,12 +41,10 @@ const showMessage = () => {
 const toNextQuestion = () => {
   showMessage();
 };
-
 </script>
 
 <template>
-  <div class="h-44 w-screen relative">
-    <HeaderLayout />
+  <div class="h-44 w-screen relative -mt-40">
     <div v-if="!scoreMessage" class="question relative">
       <div class="header">
         <div class="header-buttons">
@@ -92,12 +90,12 @@ const toNextQuestion = () => {
   justify-content: center;
 }
 
-.header{
+.header {
   display: flex;
   flex-direction: column;
 }
 
-.header-buttons{
+.header-buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -107,7 +105,7 @@ const toNextQuestion = () => {
 }
 
 .go-back-button {
-  background-color:  #f3c000;
+  background-color: #f3c000;
   color: white;
   border: none;
   padding: 5px;

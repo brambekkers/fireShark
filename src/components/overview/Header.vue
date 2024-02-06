@@ -44,7 +44,7 @@ const subtitle = computed(() => {
           {{ subtitle }}
         </p>
       </div>
-      <ImageProgress />
+      <ImageProgress v-if="route.name !== 'Practice'" />
     </section>
   </div>
 </template>
