@@ -12,7 +12,6 @@ const userStore = useUserStore();
 userStore.fetchUser('id1');
 
 const { selectedTopics } = storeToRefs(useQuestionStore());
-
 const selectAllButton = ref('Select all');
 const allSelected = ref(false);
 const isButtonDisabled = ref(!selectedTopics.value.length);
