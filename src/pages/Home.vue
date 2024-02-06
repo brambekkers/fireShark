@@ -1,7 +1,5 @@
 <script setup>
-import { watchEffect, ref } from 'vue';
 import { rand } from '@vueuse/core';
-import { storeToRefs } from 'pinia';
 import Button from '@/components/Button.vue';
 import GenericModal from '@/components/GenericModal.vue';
 import TopicButton from '@/components/overview/TopicButton.vue';
@@ -10,7 +8,6 @@ import useUserStore from '@/stores/userStore';
 import useQuestionStore from '@/stores/question';
 
 const userStore = useUserStore();
-
 const { selectedTopics } = storeToRefs(useQuestionStore());
 const selectAllButton = ref('Select all');
 const allSelected = ref(false);

@@ -1,5 +1,4 @@
 <script setup>
-import { storeToRefs } from 'pinia';
 import ImageProgress from '@/components/overview/ImageProgress.vue';
 import useUserStore from '@/stores/userStore';
 

@@ -1,6 +1,4 @@
 <script setup>
-import { computed, ref } from 'vue';
-import { storeToRefs } from 'pinia';
 import { useQuestionStore } from '@stores/question';
 
 import QuestionHeader from '../components/questions/QuestionHeader.vue';

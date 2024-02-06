@@ -1,7 +1,4 @@
 <script setup>
-import { computed } from 'vue';
-import { storeToRefs } from 'pinia';
-
 import useUserStore from '@/stores/userStore';
 
 const { settings, stats } = storeToRefs(useUserStore());
