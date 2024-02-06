@@ -34,7 +34,7 @@ const subtitle = computed(() => {
   <div class="h-44 w-screen relative">
     <HeaderLayout />
     <section
-      class="h-44 flex justify-between relative z-10 pt-8 max-w-screen-lg mx-auto"
+      class="h-44 flex justify-between relative pt-8 max-w-screen-lg mx-auto"
     >
       <div class="mt-4">
         <h1 class="font-extrabold text-3xl text-white">

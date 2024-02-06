@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import { useQuestionStore } from '@stores/question';
+import { useRouter } from 'vue-router';
 import { useUserStore } from '@/stores/userStore';
 
 import QuestionHeader from '../components/questions/QuestionHeader.vue';
@@ -9,6 +10,8 @@ import QuestionSlideIn from '../components/questions/SlideIn/SlideIn.vue';
 import GenericModal from '../components/GenericModal.vue';
 import LevelUp from '../components/LevelUp.vue';
 import IconLeft from '~icons/lucide/chevron-left';
+
+const router = useRouter();
 
 const { stats } = storeToRefs(useUserStore());
 
@@ -40,6 +43,10 @@ const showMessage = () => {
 const toNextQuestion = () => {
   showMessage();
 };
+
+const goBack = () => {
+  router.go(-1);
+};
 </script>
 
 <template>
@@ -47,12 +54,12 @@ const toNextQuestion = () => {
     <div v-if="!scoreMessage" class="question relative">
       <div class="header">
         <div class="header-buttons">
-          <button type="button" class="go-back-button">
+          <button type="button" class="go-back-button" @click="goBack">
             <IconLeft />
           </button>
           <section class="percentage">
             <div
-              class="text-center h-7 w-19 rounded bg-slate-200 relative overflow-hidden grow"
+              class="text-center text-green-900 text-xs font-light rounded bg-slate-200 relative overflow-hidden grow"
             >
               <div
                 :style="{ width: `${Math.round(stats?.percentage)}%` }"
@@ -113,5 +120,9 @@ const toNextQuestion = () => {
   border-radius: 100%;
   cursor: pointer;
   transition: all 0.2s ease;
+}
+
+.percentage {
+  width: 8rem;
 }
 </style>
