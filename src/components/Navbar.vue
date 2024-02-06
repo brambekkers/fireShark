@@ -8,13 +8,13 @@ import IconSettings from '~icons/tdesign/setting-1';
   <nav class="bg-sharp-navbar-bg z-50">
     <section class="sharp">
       <router-link to="/" class="flex items-center">
-        <img src="../../public/vite.svg" alt="Shark icon" class="mr-2 h-8">
+        <img src="../../public/vite.svg" alt="Shark icon" class="mr-2 h-8" />
         {{ $t('general.appName').toUpperCase() }}
         <span class="mark">!</span>
       </router-link>
     </section>
     <section class="links">
-      <router-link to="/practice">
+      <router-link to="/overview">
         <span class="link"> <icon-brain /> {{ $t('general.practice') }}</span>
       </router-link>
       <router-link to="/duel">

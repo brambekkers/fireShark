@@ -4,13 +4,20 @@ export const useUserStore = defineStore('user', () => {
   const user = ref({});
   const stats = computed(() => user.value.stats || {});
   const topics = computed(() => user.value.topics || []);
+  const topicsByKey = computed(() => {
+    const object = {}
+    topics.value.forEach((t) => {
+      object[t.key] = t
+    })
+    return object
+  })
   const settings = computed(() => user.value.settings || {});
   const isUserLoading = ref(false);
   const isUserError = ref(false);
 
   const fetchUser = async (userId) => {
     try {
-      const response = await fetch(`http://192.168.0.192:3000/users/${userId}`);
+      const response = await fetch(`http://localhost:3000/users/${userId}`);
       user.value = await response.json();
     } catch (error) {
       isUserError.value = true;
@@ -26,7 +33,7 @@ export const useUserStore = defineStore('user', () => {
 
   const updateUser = async () => {
     try {
-      await fetch(`http://192.168.0.192:3000/users/${user.value.id}`, {
+      await fetch(`http://localhost:3000/users/${user.value.id}`, {
         method: 'PATCH',
         body: JSON.stringify({
           ...user.value,
@@ -62,6 +69,7 @@ export const useUserStore = defineStore('user', () => {
     user,
     stats,
     topics,
+    topicsByKey,
     settings,
     fetchUser,
     getRandomUser,

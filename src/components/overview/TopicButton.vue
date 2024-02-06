@@ -1,6 +1,8 @@
 <script setup>
+import ProgressBar from '@/components/generic/ProgressBar.vue';
+import useUserStore from '@/stores/userStore';
+
 import { useQuestionStore } from '@stores/question';
-import { useTimeout } from '@vueuse/core';
 import IconCheck from '~icons/lucide/check';
 
 const props = defineProps({
@@ -9,6 +11,7 @@ const props = defineProps({
   allSelected: { type: Boolean, required: true },
 });
 
+const { topicsByKey } = storeToRefs(useUserStore());
 const { selectedTopics } = storeToRefs(useQuestionStore());
 const isChecked = ref(selectedTopics.value.includes(props.title));
 const questionStore = computed(() => useQuestionStore());
@@ -28,8 +31,6 @@ const toggleSelection = () => {
   isChecked.value = !isChecked.value;
   questionStore.value.updateSelectedTopics(isChecked.value, props.title);
 };
-
-const ready = useTimeout(10);
 </script>
 
 <template>
@@ -42,8 +43,8 @@ const ready = useTimeout(10);
     <div class="flex relative">
       <!-- check circle -->
       <div
-        class="bg-slate-300 absolute z-10 rounded-full p-4 max-h-1 max-w-1 flex justify-center transition-all duration-300"
-        :class="isChecked ? 'checked !bg-sharp-success' : 'circle'"
+        class="absolute z-10 rounded-full p-4 max-h-1 max-w-1 flex justify-center transition-all duration-300 left-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-sharp-body-bg"
+        :class="isChecked ? '!bg-sharp-success' : 'bg-slate-300'"
       >
         <Transition
           class="transition-all duration-300 transform"
@@ -53,7 +54,7 @@ const ready = useTimeout(10);
           leave-to-class="scale-0"
           appear
         >
-          <span v-if="isChecked" class="icon">
+          <span v-if="isChecked" class="text-white self-center">
             <IconCheck />
           </span>
         </Transition>
@@ -77,42 +78,7 @@ const ready = useTimeout(10);
       >
         {{ $t(`overview.topics.${title}`) }}
       </h3>
-      <section class="percentage-section flex mt-4 align-center">
-        <div class="h-2 mt-1 rounded bg-slate-300 relative grow">
-          <div
-            :style="{
-              width: ready ? `${progress}%` : '0px',
-              transitionDelay: `${(50 - progress / 2) * 8}ms`,
-            }"
-            class="from-primary to-secondary bg-gradient-to-r h-[10px] -mt-[1px] rounded-l-full rounded-r-full transition-all duration-500 ease-in-out"
-          ></div>
-        </div>
-        <p class="percentage ms-4">{{ progress }}%</p>
-      </section>
+      <ProgressBar :progress="topicsByKey?.[title]?.score || 0" />
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.circle {
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 0.4rem solid #f2f9f9;
-}
-
-.checked {
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 0.4rem solid #f2f9f9;
-}
-.icon {
-  color: #ffffff;
-  font-size: 1rem;
-  align-self: center;
-}
-.percentage {
-  color: #009286;
-  font-weight: 700;
-  line-height: 1.2;
-}
-</style>

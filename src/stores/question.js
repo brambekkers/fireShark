@@ -22,7 +22,7 @@ export const useQuestionStore = defineStore('question', () => {
 
   async function getQuestions() {
     try {
-      const res = await fetch('http://192.168.0.192:3000/questions');
+      const res = await fetch('http://localhost:3000/questions');
       const data = await res.json();
       const randomNr = rand(0, selectedTopics.value.length - 1);
       const topic = selectedTopics.value[randomNr];

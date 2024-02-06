@@ -16,11 +16,10 @@ const router = useRouter();
 const { stats } = storeToRefs(useUserStore());
 
 const store = useQuestionStore();
-const { selectedQuestion, showQuestionSlideIn, givenAnswer } = storeToRefs(store);
+const { selectedQuestion, showQuestionSlideIn, givenAnswer } =
+  storeToRefs(store);
 const { getQuestions } = store;
-const content = ref(
-  'very long content with a lot of text',
-);
+const content = ref('very long content with a lot of text');
 const nextQuestion = ref('Continue practicing');
 const scoreMessage = ref(false);
 
@@ -41,10 +40,6 @@ const toNextQuestion = () => {
   showMessage();
   showQuestionSlideIn.value = false;
   givenAnswer.value = [];
-};
-
-const goBack = () => {
-  router.go(-1);
 };
 
 const goBack = () => {
