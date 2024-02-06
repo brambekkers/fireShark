@@ -2,7 +2,9 @@
   <section>
     <form>
       <fieldset>
-        <legend>{{ title }}</legend>
+        <legend class="my-1 font-bold italic text-sm border-l-yellow-400 border-l-4 pl-2">
+          {{ title }}
+        </legend>
         <Answer
           v-for="answer in questionData?.answers || []"
           :key="answer"
