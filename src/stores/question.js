@@ -3,7 +3,7 @@ import { rand } from '@vueuse/core';
 import { ref } from 'vue';
 
 export const useQuestionStore = defineStore('question', () => {
-  const selectedTopics = ref(['general', 'javascript', 'debug', 'vue', 'emerald', 'devops']);
+  const selectedTopics = ref(['vue', 'javascript', 'general']);
   const selectedQuestions = ref([]);
   const selectedQuestion = ref({});
 

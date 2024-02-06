@@ -26,6 +26,11 @@ getQuestions();
 
 <template>
   <div class="question">
+<<<<<<< HEAD
+    <QuestionHeader :questionData="selectedQuestion" />
+    <QuestionForm :questionData="selectedQuestion" />
+    <QuestionSlideIn :title="title" :content="content" />
+=======
     <QuestionHeader :question-data="selectedQuestion" />
     <QuestionForm :question-data="selectedQuestion" />
     <QuestionSlideIn
@@ -34,6 +39,7 @@ getQuestions();
       :content="content"
       @emit-next-question="toNextQuestion"
     />
+>>>>>>> 3bdf8eb8091a03ce87859c955d3837f241b38de3
   </div>
 </template>
 
