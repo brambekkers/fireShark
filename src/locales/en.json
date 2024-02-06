@@ -3,7 +3,8 @@
     "appName": "Shark",
     "practice": "Practice",
     "duel": "Duel",
-    "settings": "Settings"
+    "settings": "Settings",
+    "notifications": "Notifications"
   },
   "overview": {
     "selectTopics": "Select the topics you want to practice",
@@ -17,6 +18,9 @@
     }
   },
   "settings": {
-    "notAllCanBeChanged": "You cannot change all personal information yourself."
+    "notAllCanBeChanged": "You cannot change all personal information yourself.",
+    "personalSettings": "Personal settings",
+    "language": "Language",
+    "faq": "Frequently asked questions"
   }
 }
