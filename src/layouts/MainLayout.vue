@@ -4,7 +4,9 @@ import { useLayoutStore } from '@stores/layout';
 import Navbar from '@components/Navbar.vue';
 
 const layoutStore = useLayoutStore();
-const background = computed(() => (layoutStore.isDarkMode ? '#242424' : '#f2f9f9'));
+const background = computed(() =>
+  layoutStore.isDarkMode ? '#242424' : '#f2f9f9',
+);
 const text = computed(() => (layoutStore.isDarkMode ? '#f2f9f9' : '#242424'));
 </script>
 
@@ -17,12 +19,9 @@ const text = computed(() => (layoutStore.isDarkMode ? '#f2f9f9' : '#242424'));
 
 <style lang="scss" scoped>
 #main {
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    min-height: 100vh;
+  min-height: 100vh;
 
-    background-color: v-bind(background);
-    color: v-bind(text);
+  background-color: v-bind(background);
+  color: v-bind(text);
 }
 </style>

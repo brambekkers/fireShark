@@ -1,17 +1,43 @@
 <script setup>
-import { ref } from 'vue';
+import { watchEffect, ref } from 'vue';
 import { rand } from '@vueuse/core';
+import { storeToRefs } from 'pinia';
+import Button from '@components/Button.vue';
+import TopicButton from '../components/TopicButton.vue';
+import OverviewHeader from '../components/overview/Header.vue';
+import useUserStore from '@/stores/userStore';
+import useQuestionStore from '@/stores/question';
 
-import ConfirmationModal from '@/components/ConfirmationModal.vue';
-import GenericModal from '@/components/GenericModal.vue';
+const userStore = useUserStore();
+userStore.fetchUser('id1');
 
-const topics = ref();
-const fetchUsers = async () => {
-  const res = await fetch('http://192.168.0.172:3000/users');
-  res.json();
-  topics.value = res.json.id1.topics;
+const { selectedTopics } = storeToRefs(useQuestionStore());
+
+const selectAllButton = ref('Select all');
+const allSelected = ref(false);
+const isButtonDisabled = ref(!selectedTopics.value.length);
+
+const selectAll = () => {
+  userStore.topics.forEach((topic) => {
+    if (!selectedTopics.value.includes(topic.key)) {
+      selectedTopics.value.push(topic.key);
+    }
+  });
+  selectAllButton.value = 'Clear selection';
+  allSelected.value = true;
+  isButtonDisabled.value = false;
 };
-fetchUsers();
+
+const clearSelection = () => {
+  selectedTopics.value = [];
+  selectAllButton.value = 'Select all';
+  allSelected.value = false;
+  isButtonDisabled.value = true;
+};
+
+watchEffect(() => {
+  userStore.calculatePerformancePercentage();
+});
 
 const isModalOpen = ref(false);
 
@@ -23,42 +49,62 @@ const toggleModal = (isOpen) => {
 <template>
   <main>
     <!-- Accent on top -->
-    <div
-      aria-hidden="true"
-      style="clip-path: ellipse(130% 248% at 50% -150%)"
-      class="bg-secondary h-44 absolute w-screen left-0"
-    ></div>
+    <OverviewHeader />
+
     <div class="max-w-screen-lg mx-auto">
-      <section class="h-44 flex justify-between relative z-10 pt-8">
-        <div class="mt-4">
-          <h1 class="font-extrabold text-2xl text-white">
-            Hi Ernie!
-          </h1>
-          <p class="text-xl font-bold text-white">
-            Welcome back.
-          </p>
-        </div>
-        <div class="rounded-full h-32 w-32 bg-accent shadow-2xl"></div>
-      </section>
       <section class="flex justify-center flex-col mt-8">
         <h2 class="text-lg italic text-center">
           Select the topics you want to practice
         </h2>
-        <div class="grid grid-cols-3 gap-6 mt-12">
+        <div class="grid grid-cols-3 gap-x-6 gap-y-10 mt-12">
           <TopicButton
-            v-for="topic in topics"
+            v-for="topic in userStore.topics"
             :key="topic.id"
             :title="topic.key"
             :progress="rand(1, 100)"
+            :all-selected="allSelected"
           />
         </div>
-        <!-- <ConfirmationModal /> -->
-        <GenericModal :is-open="isModalOpen" @close-modal="toggleModal(false)" />
+        <div>
+          <p class="text-center mt-8">
+            Your performance is at
+            <span class="text-2xl font-bold text-blue-700"
+              >{{ userStore.stats?.percentage }}%</span
+            >
+          </p>
+        </div>
       </section>
+
+      <div class="flex align-center justify-center mt-12">
+        <router-link to="/practice">
+          <Button
+            :class="{ 'disabled-button': disabled }"
+            :disable="isButtonDisabled"
+            title="Practice this selection"
+            class="practice-button text-black bg-yellow-400 hover:bg-yellow-500 rounded-full text-sm px-5 py-5 disabled:bg-slate-200 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
+          >
+          </Button>
+        </router-link>
+      </div>
+      <div class="flex align-center justify-center mt-12">
+        <Button
+          :title="selectAllButton"
+          class="text-green bg-transparent border-solid border-4 border-green hover:text-green rounded-full text-sm px-2 py-2 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
+          @click="
+            selectAllButton === 'Select all' ? selectAll() : clearSelection()
+          "
+        >
+        </Button>
+      </div>
     </div>
+
+    <!-- <ConfirmationModal /> -->
+    <GenericModal :is-open="isModalOpen" @close-modal="toggleModal(false)" />
 
     <button id="open-dialog-btn" type="button" @click="toggleModal(true)">
       Show the dialog
     </button>
   </main>
 </template>
+
+<style lang="scss" scoped></style>
