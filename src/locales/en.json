@@ -14,12 +14,12 @@
     "welcomeBack": "Welcome back",
     "selectTopics": "Select the topics you want to practice",
     "topics": {
-      "general": "General",
-      "javascript": "Javascript",
-      "emerald": "Emerald",
-      "vue": "Vue",
-      "devops": "DevOps",
-      "debug": "Debug"
+      "general": "General coding questions",
+      "javascript": "Javascript specific subjects",
+      "emerald": "Styling with Emerald",
+      "vue": "The Vue libary",
+      "devops": "Helping client via DevOps",
+      "debug": "Debug your problems"
     }
   },
   "duel": {

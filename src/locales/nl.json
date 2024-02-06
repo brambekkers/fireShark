@@ -13,12 +13,12 @@
     "welcomeBack": "Welkom terug",
     "selectTopics": "Selecteer de topics die je wilt oefenen.",
     "topics": {
-      "general": "General",
-      "javascript": "Javascript",
-      "emerald": "Emerald",
-      "vue": "Vue",
-      "devops": "DevOps",
-      "debug": "Debug"
+      "general": "Algemene code vragen",
+      "javascript": "Javascript-specifiek onderwerpen",
+      "emerald": "Styling met Emerald",
+      "vue": "De Vue libary",
+      "devops": "Klant helpen via DevOps",
+      "debug": "Debug jouw problemen"
     }
   },
   "duel": {

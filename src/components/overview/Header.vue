@@ -46,6 +46,7 @@ const subtitle = computed(() => {
           {{ subtitle }}
         </p>
       </div>
+      <ImageProgress />
     </section>
   </div>
 </template>

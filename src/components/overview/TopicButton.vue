@@ -69,21 +69,19 @@ const toggleSelection = () => {
         type="checkbox"
         aria-labelledby="selected"
       />
-      <h3 class="text-xl text-center font-bold text-primary">
+      <h3
+        class="text-xl text-center font-bold leading-tight flex items-center justify-center text-primary min-h-14"
+      >
         {{ $t(`overview.topics.${title}`) }}
       </h3>
-      <section class="percentage-section flex mt-6 align-center">
-        <div
-          class="h-2 mt-1 rounded bg-slate-300 relative grow"
-        >
+      <section class="percentage-section flex mt-4 align-center">
+        <div class="h-2 mt-1 rounded bg-slate-300 relative grow">
           <div
             :style="{ width: `${progress}%` }"
             class="from-primary to-secondary bg-gradient-to-r h-[10px] -mt-[1px] rounded-l-full rounded-r-full"
           ></div>
         </div>
-        <p class="percentage ms-4">
-          {{ progress }}%
-        </p>
+        <p class="percentage ms-4">{{ progress }}%</p>
       </section>
     </div>
   </div>
