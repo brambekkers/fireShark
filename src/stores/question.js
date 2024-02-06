@@ -67,7 +67,7 @@ export const useQuestionStore = defineStore('question', () => {
   }
 
   function checkAnswer() {
-    if (!answerIsGiven.value) {
+    if (givenAnswer.value.length <= 0) {
       return false;
     }
 
