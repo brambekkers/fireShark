@@ -12,13 +12,14 @@
           :type="questionData?.type"
         />
       </fieldset>
-      <Button title="Save my answer" style-type="disabled" @on-clicked="saveAnswer" />
+      <Button title="Save my answer" :styleType="answerIsGiven ? 'primary' : 'disabled'" :disabled="!answerIsGiven" @on-clicked="saveAnswer" />
     </form>
   </section>
 </template>
 
 <script setup>
 import { computed } from 'vue';
+import { useQuestionStore } from '@stores/question';
 import Answer from './Answer.vue';
 import Button from '../Button.vue';
 
@@ -29,9 +30,14 @@ const props = defineProps({
   },
 });
 
-const title = computed(() => (props?.questionData?.type === 'singleChoice' ? 'Choose one option.' : 'You may choose multiple options.'));
+const store = useQuestionStore();
+const answerIsGiven = computed(() => store.answerIsGiven);
 
-function saveAnswer(par) {
-  console.log('hi', par);
-}
+const title = computed(() => props?.questionData?.type === 'singleChoice' ? 'Choose one option.' : 'You may choose multiple options.');
+
+async function saveAnswer() {
+  const isSuccess = await store.checkAnswer();
+  console.log(isSuccess)
+  store.saveAnswer(isSuccess);
+};
 </script>
