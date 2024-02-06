@@ -6,6 +6,8 @@ import { useQuestionStore } from '@stores/question';
 import QuestionHeader from '../components/questions/QuestionHeader.vue';
 import QuestionForm from '../components/questions/QuestionForm.vue';
 import QuestionSlideIn from '../components/questions/SlideIn/SlideIn.vue';
+import GenericModal from '../components/GenericModal.vue';
+import LevelUp from '../components/LevelUp.vue';
 
 const store = useQuestionStore();
 const { selectedQuestion } = storeToRefs(store);
@@ -48,9 +50,9 @@ const toNextQuestion = () => {
       @emit-next-question="toNextQuestion()"
     />
   </div>
-  <div v-if="scoreMessage">
-    Mooie score joh!
-  </div>
+  <GenericModal :is-open="scoreMessage" :fireworks="true">
+    <LevelUp />
+  </GenericModal>
 </template>
 
 <style lang="scss" scoped>
