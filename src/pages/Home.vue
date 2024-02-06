@@ -1,7 +1,6 @@
 <script setup>
 import { rand } from '@vueuse/core';
 import Button from '@/components/Button.vue';
-import GenericModal from '@/components/GenericModal.vue';
 import TopicButton from '@/components/overview/TopicButton.vue';
 import OverviewHeader from '@/components/overview/Header.vue';
 import useUserStore from '@/stores/userStore';
@@ -35,8 +34,6 @@ const clearSelection = () => {
 watchEffect(() => {
   userStore.calculatePerformancePercentage();
 });
-
-const isModalOpen = ref(false);
 </script>
 
 <template>
@@ -82,15 +79,6 @@ const isModalOpen = ref(false);
         </Button>
       </div>
     </div>
-
-    <!-- <ConfirmationModal /> -->
-    <GenericModal :is-open="isModalOpen" fireworks @close-modal="isModalOpen = false">
-      <LevelUp @close-modal="isModalOpen = false" />
-    </GenericModal>
-
-    <button id="open-dialog-btn" type="button" @click="isModalOpen = true">
-      Show the dialog
-    </button>
   </main>
 </template>
 
