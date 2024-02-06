@@ -51,8 +51,7 @@ export const useUserStore = defineStore('user', () => {
     stats.value.percentage = Math.round(calculatedPercentage * 10) / 10;
   };
 
-  const fetchUsers = async (userId) =>
-    await fetch("http://192.168.0.192:3000/users").then((res) => user.value = res.json()[userId])
+  const fetchUsers = async (userId) => await fetch('http://192.168.0.192:3000/users').then((res) => user.value = res.json()[userId]);
 
   return {
     user,

@@ -1,19 +1,18 @@
 <script setup>
-
+defineEmits(['on-clicked']);
 const props = defineProps({
   title: { type: String, required: true },
-  disabled: { type: Boolean, required: false },
+  disable: { type: Boolean, required: false },
 });
 
 </script>
 
 <template>
-  <div>
-    <button
-      type="button"
-      :disable="props.disabled"
-    >
-      {{ title }}
-    </button>
-  </div>
+  <button
+    type="button"
+    :disabled="props.disable"
+    @click="$emit('on-clicked')"
+  >
+    {{ title }}
+  </button>
 </template>
