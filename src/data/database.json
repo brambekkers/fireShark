@@ -7,7 +7,7 @@
       "settings": {
         "language": "nl",
         "darkModeActive": false,
-        "imgUrl": "https://t4.ftcdn.net/jpg/02/87/35/99/360_F_287359914_HU3P7rhmyJMyyhBBcILcWd2S7DDwkJSs.jpg"
+        "profileImageUrl": "https://as2.ftcdn.net/v2/jpg/01/42/37/55/1000_F_142375554_TGrl3NtUULBo0CKtvWjI8nWBL8fjjCN3.jpg"
       },
       "stats": {
         "totalQuestions": 87,
@@ -61,7 +61,8 @@
       "email": "kenan.amatradjak@nl.abnamro.com",
       "settings": {
         "language": "en",
-        "darkModeActive": true
+        "darkModeActive": true,
+        "profileImageUrl": "https://t4.ftcdn.net/jpg/02/87/35/99/360_F_287359914_HU3P7rhmyJMyyhBBcILcWd2S7DDwkJSs.jpg"
       },
       "stats": {
         "totalQuestions": 87,
