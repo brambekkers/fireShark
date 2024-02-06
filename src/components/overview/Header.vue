@@ -1,5 +1,6 @@
 <script setup>
 import ImageProgress from '@/components/overview/ImageProgress.vue';
+import HeaderLayout from '@/layouts/HeaderLayout.vue';
 import useUserStore from '@/stores/userStore';
 
 const { user } = storeToRefs(useUserStore());
@@ -7,12 +8,7 @@ const { user } = storeToRefs(useUserStore());
 
 <template>
   <div class="h-44 w-screen relative">
-    <div
-      aria-hidden="true"
-      style="clip-path: ellipse(130% 248% at 50% -150%)"
-      class="bg-secondary absolute inset-0"
-    ></div>
-
+    <HeaderLayout />
     <section
       class="h-44 flex justify-between relative z-10 pt-8 max-w-screen-lg mx-auto"
     >

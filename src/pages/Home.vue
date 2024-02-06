@@ -62,7 +62,7 @@ watchEffect(() => {
             :class="{ 'disabled-button': disabled }"
             :disable="isButtonDisabled"
             title="Practice this selection"
-            class="practice-button text-black bg-yellow-400 hover:bg-yellow-500 rounded-full text-sm px-5 py-5 disabled:bg-slate-200 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
+            class="practice-button text-black bg-yellow-400 hover:bg-yellow-500 rounded-full text-m disabled:bg-slate-200 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
           >
           </Button>
         </router-link>
@@ -70,7 +70,7 @@ watchEffect(() => {
       <div class="flex align-center justify-center mt-12">
         <Button
           :title="selectAllButton"
-          class="text-green bg-transparent border-solid border-4 border-green hover:text-green rounded-full text-sm px-2 py-2 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
+          class="text-green bg-transparent border-solid border-4 border-green hover:text-green rounded-full text-m"
           @click="
             selectAllButton === 'Select all' ? selectAll() : clearSelection()
           "
