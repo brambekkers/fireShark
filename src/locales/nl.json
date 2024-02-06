@@ -1,14 +1,25 @@
 {
   "general": {
-    "appName": "Sharp",
+    "appName": "Shark",
     "practice": "Oefenen",
     "duel": "Duelleren",
     "settings": "Instellingen"
   },
   "overview": {
-    "selectTopics": "Selecteer de topics die je wilt oefenen."
+    "selectTopics": "Selecteer de topics die je wilt oefenen.",
+    "topics": {
+      "general": "General",
+      "javascript": "Javascript",
+      "emerald": "Emerald",
+      "vue": "Vue",
+      "devops": "DevOps",
+      "debug": "Debug"
+    }
   },
   "settings": {
-    "notAllCanBeChanged": "Niet alle persoonlijke gegevens kun je zelf wijzigen."
+    "notAllCanBeChanged": "Niet alle persoonlijke gegevens kun je zelf wijzigen",
+    "personalSettings": "Persoonlijke gegevens",
+    "language": "Taal",
+    "faq": "Veelgesteelde vragen"
   }
 }
