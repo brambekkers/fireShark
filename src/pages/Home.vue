@@ -2,9 +2,10 @@
 import { watchEffect, ref } from 'vue';
 import { rand } from '@vueuse/core';
 import { storeToRefs } from 'pinia';
-import Button from '@components/Button.vue';
-import TopicButton from '../components/TopicButton.vue';
-import OverviewHeader from '../components/overview/Header.vue';
+import Button from '@/components/Button.vue';
+import GenericModal from '@/components/GenericModal.vue';
+import TopicButton from '@/components/TopicButton.vue';
+import OverviewHeader from '@/components/overview/Header.vue';
 import useUserStore from '@/stores/userStore';
 import useQuestionStore from '@/stores/question';
 
@@ -42,6 +43,7 @@ watchEffect(() => {
 const isModalOpen = ref(false);
 
 const toggleModal = (isOpen) => {
+  console.log('isOpen :>> ', isOpen);
   isModalOpen.value = isOpen;
 };
 </script>
@@ -68,9 +70,7 @@ const toggleModal = (isOpen) => {
         <div>
           <p class="text-center mt-8">
             Your performance is at
-            <span class="text-2xl font-bold text-blue-700"
-              >{{ userStore.stats?.percentage }}%</span
-            >
+            <span class="text-2xl font-bold text-blue-700">{{ userStore.stats?.percentage }}%</span>
           </p>
         </div>
       </section>
