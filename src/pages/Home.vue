@@ -4,7 +4,7 @@ import { rand } from '@vueuse/core';
 import { storeToRefs } from 'pinia';
 import Button from '@/components/Button.vue';
 import GenericModal from '@/components/GenericModal.vue';
-import TopicButton from '@/components/TopicButton.vue';
+import TopicButton from '@/components/overview/TopicButton.vue';
 import OverviewHeader from '@/components/overview/Header.vue';
 import useUserStore from '@/stores/userStore';
 import useQuestionStore from '@/stores/question';
