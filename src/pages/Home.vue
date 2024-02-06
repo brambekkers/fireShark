@@ -88,7 +88,7 @@ const isModalOpen = ref(false);
 
     <!-- <ConfirmationModal /> -->
     <GenericModal :is-open="isModalOpen" fireworks @close-modal="isModalOpen = false">
-      <LevelUp />
+      <LevelUp @close-modal="isModalOpen = false" />
     </GenericModal>
 
     <button id="open-dialog-btn" type="button" @click="isModalOpen = true">
