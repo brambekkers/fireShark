@@ -42,7 +42,6 @@ watchEffect(() => {
 const isModalOpen = ref(false);
 
 const toggleModal = (isOpen) => {
-  console.log('isOpen :>> ', isOpen);
   isModalOpen.value = isOpen;
 };
 </script>
