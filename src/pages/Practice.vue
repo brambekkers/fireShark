@@ -14,26 +14,42 @@ const content = ref(
   'very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of textvery long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text',
 );
 const nextQuestion = ref('Continue practicing');
-
-const toNextQuestion = () => {
-  console.log('emitNextQuestion');
-};
+const scoreMessage = ref(false);
 
 const title = computed(() => 'Title');
 
 getQuestions();
+
+const showMessage = () => {
+  if (Math.random() > 0.5) {
+    scoreMessage.value = true;
+    setTimeout(() => {
+      scoreMessage.value = false;
+      getQuestions();
+    }, 3000);
+  }
+
+  return false;
+};
+
+const toNextQuestion = () => {
+  showMessage();
+};
 </script>
 
 <template>
-  <div class="question">
+  <div v-if="!scoreMessage" class="question">
     <QuestionHeader :question-data="selectedQuestion" />
     <QuestionForm :question-data="selectedQuestion" />
     <QuestionSlideIn
       :next-question="nextQuestion"
       :title="title"
       :content="content"
-      @emit-next-question="toNextQuestion"
+      @emit-next-question="toNextQuestion()"
     />
+  </div>
+  <div v-if="scoreMessage">
+    Mooie score joh!
   </div>
 </template>
 
