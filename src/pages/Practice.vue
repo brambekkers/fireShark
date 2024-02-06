@@ -1,11 +1,16 @@
 <script setup>
-import { computed, ref } from 'vue';
-import { storeToRefs } from 'pinia';
+import { computed } from 'vue';
 import { useQuestionStore } from '@stores/question';
+import { useUserStore } from '@/stores/userStore';
 
 import QuestionHeader from '../components/questions/QuestionHeader.vue';
 import QuestionForm from '../components/questions/QuestionForm.vue';
 import QuestionSlideIn from '../components/questions/SlideIn/SlideIn.vue';
+import GenericModal from '../components/GenericModal.vue';
+import LevelUp from '../components/LevelUp.vue';
+import IconLeft from '~icons/lucide/chevron-left';
+
+const { stats } = storeToRefs(useUserStore());
 
 const store = useQuestionStore();
 const { selectedQuestion } = storeToRefs(store);
@@ -14,26 +19,65 @@ const content = ref(
   'very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of textvery long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text',
 );
 const nextQuestion = ref('Continue practicing');
-
-const toNextQuestion = () => {
-  console.log('emitNextQuestion');
-};
+const scoreMessage = ref(false);
 
 const title = computed(() => 'Title');
 
 getQuestions();
+
+const showMessage = () => {
+  if (Math.random() > 0.5) {
+    scoreMessage.value = true;
+    setTimeout(() => {
+      scoreMessage.value = false;
+      getQuestions();
+    }, 3000);
+  }
+
+  return false;
+};
+
+const toNextQuestion = () => {
+  showMessage();
+};
 </script>
 
 <template>
-  <div class="question">
-    <QuestionHeader :question-data="selectedQuestion" />
-    <QuestionForm :question-data="selectedQuestion" />
-    <QuestionSlideIn
-      :next-question="nextQuestion"
-      :title="title"
-      :content="content"
-      @emit-next-question="toNextQuestion"
-    />
+  <div class="h-44 w-screen relative -mt-40">
+    <div v-if="!scoreMessage" class="question relative">
+      <div class="header">
+        <div class="header-buttons">
+          <button type="button" class="go-back-button">
+            <IconLeft />
+          </button>
+          <section class="percentage">
+            <div
+              class="text-center h-7 w-19 rounded bg-slate-200 relative overflow-hidden grow"
+            >
+              <div
+                :style="{ width: `${Math.round(stats?.percentage)}%` }"
+                class="from-white to-secondary bg-gradient-to-r"
+              >
+                {{ Math.round(stats?.percentage) }}% up-to-date
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <QuestionHeader :question-data="selectedQuestion" />
+      </div>
+
+      <QuestionForm :question-data="selectedQuestion" />
+      <QuestionSlideIn
+        :next-question="nextQuestion"
+        :title="title"
+        :content="content"
+        @emit-next-question="toNextQuestion()"
+      />
+    </div>
+    <GenericModal :is-open="scoreMessage" :fireworks="true">
+      <LevelUp />
+    </GenericModal>
   </div>
 </template>
 
@@ -43,5 +87,31 @@ getQuestions();
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 0rem 5rem;
+}
+
+.go-back-button {
+  background-color: #f3c000;
+  color: white;
+  border: none;
+  padding: 5px;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 </style>

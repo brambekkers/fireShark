@@ -8,6 +8,10 @@
     padding: 0;
 }
 
+html {
+    background: linear-gradient(to bottom, #00716b, #00716b)
+}
+
 :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
@@ -27,6 +31,7 @@
 body,
 #app {
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 a {
@@ -38,11 +43,6 @@ a {
     &:hover {
         color: #f3c000;
     }
-}
-
-h1 {
-    font-size: 3.2em;
-    line-height: 1.1;
 }
 
 .ms-auto {

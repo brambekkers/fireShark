@@ -1,0 +1,38 @@
+{
+  "general": {
+    "appName": "Shark",
+    "practice": "Oefenen",
+    "duel": "Duelleren",
+    "settings": "Instellingen",
+    "name": "Naam",
+    "id": "id",
+    "email": "E-mailadres",
+    "hi": "Hoi"
+  },
+  "overview": {
+    "welcomeBack": "Welkom terug",
+    "selectTopics": "Selecteer de topics die je wilt oefenen.",
+    "topics": {
+      "general": "Algemene code vragen",
+      "javascript": "Javascript-specifiek onderwerpen",
+      "emerald": "Styling met Emerald",
+      "vue": "De Vue libary",
+      "devops": "Klant helpen via DevOps",
+      "debug": "Debug jouw problemen"
+    }
+  },
+  "duel": {
+    "rdyToDuel": "Klaar om te duelleren?"
+  },
+  "settings": {
+    "changeYourProfileHere": "Change your profile here.",
+    "notAllCanBeChanged": "Niet alle persoonlijke gegevens kun je zelf wijzigen",
+    "personalSettings": "Persoonlijke gegevens",
+    "language": "Taal",
+    "faq": "Veelgesteelde vragen",
+    "pushNotifications": "Email notificaties",
+    "emailNotifications": "Email notificaties",
+    "joinDuels": "Meedoen aan duels",
+    "automaticDuel": "Automatisch duelleren"
+  }
+}

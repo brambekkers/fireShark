@@ -1,7 +1,5 @@
 <script setup>
-import { computed } from 'vue';
-import { storeToRefs } from 'pinia';
-
+import { useTimeout } from '@vueuse/core';
 import useUserStore from '@/stores/userStore';
 
 const { settings, stats } = storeToRefs(useUserStore());
@@ -10,6 +8,8 @@ const profileImageUrl = computed(() => settings?.value?.profileImageUrl || '');
 const profileStyle = computed(() => ({
   backgroundImage: `url('${profileImageUrl.value}')`,
 }));
+
+const ready = useTimeout(10);
 </script>
 
 <template>
@@ -39,7 +39,7 @@ const profileStyle = computed(() => ({
           cy="50"
           r="40"
           fill="transparent"
-          :stroke-dashoffset="`calc(400 - (200 * ${stats.percentage}) / 100)`"
+          :stroke-dashoffset="ready ? `calc(400 - (200 * ${stats.percentage}) / 100)` : '399'"
         />
       </svg>
     </div>
@@ -59,7 +59,7 @@ const profileStyle = computed(() => ({
 
   .progress-ring__circle {
     stroke-dasharray: 400, 400;
-    transition: stroke-dashoffset 0.35s;
+    transition: stroke-dashoffset 1.5s ease-in-out;
     transform: rotate(130deg);
     transform-origin: 50% 50%;
   }
