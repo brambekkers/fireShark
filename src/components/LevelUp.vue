@@ -1,6 +1,8 @@
 <script setup>
 import IconCross from '~icons/charm/cross';
 import ImageProgress from './overview/ImageProgress.vue';
+
+defineEmits(['closeModal']);
 </script>
 
 <template>
@@ -24,7 +26,7 @@ import ImageProgress from './overview/ImageProgress.vue';
     <div
       class="absolute flex items-center justify-center left-[calc(50%-24px)] -bottom-6 bg-sharp-primary h-12 aspect-square rounded-full cursor-pointer transition-all hover:bg-sharp-secondary hover:scale-105"
     >
-      <IconCross class="h-8 w-8 text-white" />
+      <IconCross class="h-8 w-8 text-white" @click="$emit('closeModal')" />
     </div>
   </div>
 </template>

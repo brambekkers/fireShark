@@ -1,6 +1,4 @@
-import { defineStore } from 'pinia';
 import { rand } from '@vueuse/core';
-import { ref } from 'vue';
 
 export const useQuestionStore = defineStore('question', () => {
   const selectedTopics = ref(['vue', 'javascript', 'general']);

@@ -1,21 +1,16 @@
 <script setup>
-import { watchEffect, ref, computed } from 'vue';
 import { rand } from '@vueuse/core';
-import { storeToRefs } from 'pinia';
 import Button from '@/components/Button.vue';
-import GenericModal from '@/components/GenericModal.vue';
 import TopicButton from '@/components/overview/TopicButton.vue';
 import OverviewHeader from '@/components/overview/Header.vue';
 import useUserStore from '@/stores/userStore';
 import useQuestionStore from '@/stores/question';
-import LevelUp from '@/components/LevelUp.vue';
 
 const userStore = useUserStore();
-
 const { selectedTopics } = storeToRefs(useQuestionStore());
 const selectAllButton = ref('Select all');
 const allSelected = ref(false);
-const isButtonDisabled = computed(() => (!selectedTopics.value.length));
+const isButtonDisabled = computed(() => !selectedTopics.value.length);
 
 const selectAll = () => {
   userStore.topics.forEach((topic) => {
@@ -38,8 +33,6 @@ const clearSelection = () => {
 watchEffect(() => {
   userStore.calculatePerformancePercentage();
 });
-
-const isModalOpen = ref(false);
 </script>
 
 <template>
@@ -85,15 +78,6 @@ const isModalOpen = ref(false);
         </Button>
       </div>
     </div>
-
-    <!-- <ConfirmationModal /> -->
-    <GenericModal :is-open="isModalOpen" fireworks @close-modal="isModalOpen = false">
-      <LevelUp />
-    </GenericModal>
-
-    <button id="open-dialog-btn" type="button" @click="isModalOpen = true">
-      Show the dialog
-    </button>
   </main>
 </template>
 
