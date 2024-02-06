@@ -41,5 +41,6 @@ defineProps({
   font-size: 1.5rem;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
+  max-width: 570px;
 }
 </style>
