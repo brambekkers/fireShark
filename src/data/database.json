@@ -10,10 +10,11 @@
         "profileImageUrl": "https://as2.ftcdn.net/v2/jpg/01/42/37/55/1000_F_142375554_TGrl3NtUULBo0CKtvWjI8nWBL8fjjCN3.jpg"
       },
       "stats": {
-        "totalQuestions": 87,
-        "correctAnswers": 32,
-        "wrongAnswers": 59,
-        "unansweredQuestions": 43
+        "totalQuestions": 30,
+        "correctAnswers": 24,
+        "wrongAnswers": 5,
+        "unansweredQuestions": 1,
+        "percentage": 0
       },
       "topics": [
         {
@@ -46,14 +47,7 @@
           "key": "debug",
           "score": 9
         }
-      ],
-      "stats": {
-        "totalQuestions": 30,
-        "correctAnswers": 24,
-        "wrongAnswers": 5,
-        "unansweredQuestions": 1,
-        "percentage": 0
-      }
+      ]
     },
     {
       "name": "John",
