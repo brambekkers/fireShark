@@ -1,12 +1,20 @@
 {
   "general": {
-    "appName": "Sharp",
+    "appName": "Shark",
     "practice": "Practice",
     "duel": "Duel",
     "settings": "Settings"
   },
   "overview": {
-    "selectTopics": "Select the topics you want to practice"
+    "selectTopics": "Select the topics you want to practice",
+    "topics": {
+      "general": "General",
+      "javascript": "Javascript",
+      "emerald": "Emerald",
+      "vue": "Vue",
+      "devops": "DevOps",
+      "debug": "Debug"
+    }
   },
   "settings": {
     "notAllCanBeChanged": "You cannot change all personal information yourself."
