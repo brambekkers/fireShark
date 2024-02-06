@@ -20,6 +20,9 @@
     "notAllCanBeChanged": "Niet alle persoonlijke gegevens kun je zelf wijzigen",
     "personalSettings": "Persoonlijke gegevens",
     "language": "Taal",
-    "faq": "Veelgesteelde vragen"
+    "faq": "Veelgesteelde vragen",
+    "emailNotifications": "Email notificaties",
+    "joinDuels": "Meedoen aan duels",
+    "automaticDuel": "Automatisch duelleren"
   }
 }
