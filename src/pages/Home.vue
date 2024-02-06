@@ -8,6 +8,7 @@ import TopicButton from '@/components/overview/TopicButton.vue';
 import OverviewHeader from '@/components/overview/Header.vue';
 import useUserStore from '@/stores/userStore';
 import useQuestionStore from '@/stores/question';
+import LevelUp from '@/components/LevelUp.vue';
 
 const userStore = useUserStore();
 
@@ -39,10 +40,6 @@ watchEffect(() => {
 });
 
 const isModalOpen = ref(false);
-
-const toggleModal = (isOpen) => {
-  isModalOpen.value = isOpen;
-};
 </script>
 
 <template>
@@ -90,9 +87,11 @@ const toggleModal = (isOpen) => {
     </div>
 
     <!-- <ConfirmationModal /> -->
-    <GenericModal :is-open="isModalOpen" @close-modal="toggleModal(false)" />
+    <GenericModal :is-open="isModalOpen" fireworks @close-modal="isModalOpen = false">
+      <LevelUp />
+    </GenericModal>
 
-    <button id="open-dialog-btn" type="button" @click="toggleModal(true)">
+    <button id="open-dialog-btn" type="button" @click="isModalOpen = true">
       Show the dialog
     </button>
   </main>
