@@ -30,6 +30,8 @@
   "devDependencies": {
     "@iconify-json/charm": "^1.1.12",
     "@iconify-json/material-symbols-light": "^1.1.12",
+    "@iconify-json/mdi": "^1.1.64",
+    "@iconify-json/ph": "^1.1.11",
     "@intlify/unplugin-vue-i18n": "^2.0.0",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vue/eslint-config-airbnb": "^8.0.0",

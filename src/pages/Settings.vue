@@ -9,17 +9,20 @@ import SettingsSection from '@/components/settings/Section.vue';
         {{ $t('settings.notAllCanBeChanged') }}
       </h2>
     </section>
-    <SettingsSection icon="test">
+    <SettingsSection icon="user">
       {{ $t('settings.personalSettings') }}
     </SettingsSection>
-    <SettingsSection icon="test">
+    <SettingsSection icon="globe">
       {{ $t('settings.language') }}
     </SettingsSection>
-    <SettingsSection icon="test">{{ $t('settings.faq') }} </SettingsSection>
+    <SettingsSection icon="question">{{ $t('settings.faq') }} </SettingsSection>
 
     <h4 class="font-bold mt-8 text-xl">{{ $t('general.notifications') }}</h4>
-    <SettingsSection icon="test"> Persoonlijke gegevens </SettingsSection>
-    <SettingsSection icon="test"> Persoonlijke gegevens </SettingsSection>
-    <SettingsSection icon="test"> Persoonlijke gegevens </SettingsSection>
+    <SettingsSection icon="bell"> Persoonlijke gegevens </SettingsSection>
+    <SettingsSection icon="letter"> Persoonlijke gegevens </SettingsSection>
+
+    <h4 class="font-bold mt-8 text-xl">{{ $t('general.notifications') }}</h4>
+    <SettingsSection icon="trophy"> Persoonlijke gegevens </SettingsSection>
+    <SettingsSection icon="sync"> Persoonlijke gegevens </SettingsSection>
   </div>
 </template>
