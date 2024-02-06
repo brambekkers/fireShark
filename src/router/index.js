@@ -11,7 +11,7 @@ import Practice from '@/pages/Practice.vue';
 const routes = [
   {
     path: '/overview',
-    name: 'Home',
+    name: 'Overview',
     component: Home,
   }, {
     path: '/practice',

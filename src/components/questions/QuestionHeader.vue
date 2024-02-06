@@ -39,13 +39,11 @@ defineProps({
 .questionText {
   margin-top: 0;
   margin-bottom: 1rem;
-  display: block;
   margin-block-start: 1em;
   margin-block-end: 1em;
   font-weight: 400;
-  font-size: 1.5rem;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
-  max-width: 570px;
+  line-height: 1.375rem;
 }
 </style>
