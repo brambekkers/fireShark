@@ -14,8 +14,6 @@ const { selectedTopics } = storeToRefs(useQuestionStore());
 const isChecked = ref(selectedTopics.value.includes(props.title));
 const questionStore = computed(() => useQuestionStore());
 
-console.log(questionStore);
-
 if (props.allSelected) {
   isChecked.value = true;
 }

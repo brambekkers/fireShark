@@ -1,5 +1,5 @@
 <script setup>
-import { watchEffect, ref } from 'vue';
+import { watchEffect, ref, computed } from 'vue';
 import { rand } from '@vueuse/core';
 import { storeToRefs } from 'pinia';
 import Button from '@/components/Button.vue';
@@ -14,7 +14,7 @@ const userStore = useUserStore();
 const { selectedTopics } = storeToRefs(useQuestionStore());
 const selectAllButton = ref('Select all');
 const allSelected = ref(false);
-const isButtonDisabled = ref(!selectedTopics.value.length);
+const isButtonDisabled = computed(() => (!selectedTopics.value.length));
 
 const selectAll = () => {
   userStore.topics.forEach((topic) => {
