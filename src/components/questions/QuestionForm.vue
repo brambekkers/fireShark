@@ -2,7 +2,7 @@
   <section>
     <form>
       <fieldset>
-        <legend class="my-1 font-bold italic text-sm border-l-yellow-400 border-l-4 pl-2">
+        <legend class="my-1 font-bold italic text-sm border-l-yellow-400 border-l-2 pl-2">
           {{ title }}
         </legend>
         <Answer
