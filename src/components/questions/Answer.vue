@@ -5,8 +5,8 @@
 
 <script setup>
 const props = defineProps({
-  answer: Object,
-  type: String,
+  answer: { type: Object, required: true },
+  type: { type: String, required: true },
 });
 
 const inputType = props?.type === 'singleChoice' ? 'radio' : 'checkbox';

@@ -26,7 +26,7 @@ const profileStyle = computed(() => ({
           cy="50"
           r="40"
           fill="transparent"
-        ></circle>
+        />
         <!-- Progress circle -->
         <circle
           class="text-sharp-warning progress-ring__circle stroke-current"
@@ -37,7 +37,7 @@ const profileStyle = computed(() => ({
           r="40"
           fill="transparent"
           stroke-dashoffset="calc(400 - (400 * 45) / 100)"
-        ></circle>
+        />
 
         <!-- Center text -->
         <text
