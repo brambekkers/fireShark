@@ -13,35 +13,43 @@ const routes = [
     path: '/overview',
     name: 'Overview',
     component: Home,
-  }, {
+  },
+  {
     path: '/practice',
     name: 'Practice',
     component: Practice,
-
-  }, {
+  },
+  {
     path: '/duel',
     name: 'Duel',
     component: Duel,
-
-  }, {
+  },
+  {
     path: '/admin',
     name: 'Admin',
     component: Admin,
-
-  }, {
+  },
+  {
     path: '/settings',
     name: 'Settings',
     component: Settings,
-  }, {
+  },
+  {
     path: '/login',
     name: 'Login',
     component: Login,
-  }, {
+  },
+  {
     path: '/:pathMatch(.*)*',
     redirect: '/overview',
-  }];
+  },
+];
 
 const router = createRouter({
+  scrollBehavior() {
+    return { top: 0 };
+  },
+
   history: createWebHistory(),
   routes,
 });
