@@ -30,6 +30,7 @@ defineEmits(['closeModal']);
             <div class="firework"></div>
             <div class="firework"></div>
             <div class="firework"></div>
+            <div class="firework"></div>
           </template>
         </div>
       </TransitionChild>
@@ -186,4 +187,34 @@ defineEmits(['closeModal']);
   top: 60%;
   animation-delay: -0.4s;
 }
+
+.firework:nth-child(4),
+.firework:nth-child(4)::before,
+.firework:nth-child(4)::after {
+  --color1: yellow;
+  --color2: khaki;
+  --color3: white;
+  --color4: lime;
+  --color5: gold;
+  --color6: mediumseagreen;
+  --finalSize: 35vmin;
+  left: 20%;
+  top: 40%;
+  animation-delay: -0.7s;
+}
+.firework:nth-child(5),
+.firework:nth-child(5)::before,
+.firework:nth-child(5)::after {
+  --color1: yellow;
+  --color2: khaki;
+  --color3: white;
+  --color4: lime;
+  --color5: gold;
+  --color6: mediumseagreen;
+  --finalSize: 35vmin;
+  left: 90%;
+  top: 80%;
+  animation-delay: 0.1s;
+}
+
 </style>
