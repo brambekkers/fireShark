@@ -2,12 +2,13 @@
   "users": [
     {
       "name": "Kenan",
-      "id": "id1",
+      "id": "user1",
       "email": "kenan.amatradjak@nl.abnamro.com",
+      "sex": "male",
       "settings": {
         "language": "nl",
         "darkModeActive": false,
-        "profileImageUrl": "https://as2.ftcdn.net/v2/jpg/01/42/37/55/1000_F_142375554_TGrl3NtUULBo0CKtvWjI8nWBL8fjjCN3.jpg"
+        "profileImageUrl": "https://randomuser.me/api/portraits/men/1.jpg"
       },
       "stats": {
         "totalQuestions": 30,
@@ -51,12 +52,13 @@
     },
     {
       "name": "John",
-      "id": "id2",
-      "email": "kenan.amatradjak@nl.abnamro.com",
+      "id": "user2",
+      "email": "john.smith@nl.abnamro.com",
+      "sex": "male",
       "settings": {
         "language": "en",
         "darkModeActive": true,
-        "profileImageUrl": "https://t4.ftcdn.net/jpg/02/87/35/99/360_F_287359914_HU3P7rhmyJMyyhBBcILcWd2S7DDwkJSs.jpg"
+        "profileImageUrl": "https://randomuser.me/api/portraits/men/2.jpg"
       },
       "stats": {
         "totalQuestions": 87,
@@ -94,6 +96,406 @@
           "id": "tid6",
           "key": "debug",
           "score": 0
+        }
+      ]
+    },
+    {
+      "name": "Emily",
+      "id": "user3",
+      "email": "emily.jones@example.com",
+      "sex": "female",
+      "settings": {
+        "language": "en",
+        "darkModeActive": true,
+        "profileImageUrl": "https://randomuser.me/api/portraits/women/1.jpg"
+      },
+      "stats": {
+        "totalQuestions": 50,
+        "correctAnswers": 40,
+        "wrongAnswers": 8,
+        "unansweredQuestions": 2,
+        "percentage": 0
+      },
+      "topics": [
+        {
+          "id": "tid1",
+          "key": "general",
+          "score": 30
+        },
+        {
+          "id": "tid2",
+          "key": "javascript",
+          "score": 70
+        },
+        {
+          "id": "tid3",
+          "key": "emerald",
+          "score": 45
+        },
+        {
+          "id": "tid4",
+          "key": "vue",
+          "score": 80
+        },
+        {
+          "id": "tid5",
+          "key": "devops",
+          "score": 15
+        },
+        {
+          "id": "tid6",
+          "key": "debug",
+          "score": 10
+        }
+      ]
+    },
+    {
+      "name": "Sophie",
+      "id": "user4",
+      "email": "sophie.miller@example.com",
+      "sex": "female",
+      "settings": {
+        "language": "en",
+        "darkModeActive": false,
+        "profileImageUrl": "https://randomuser.me/api/portraits/women/2.jpg"
+      },
+      "stats": {
+        "totalQuestions": 75,
+        "correctAnswers": 50,
+        "wrongAnswers": 20,
+        "unansweredQuestions": 5,
+        "percentage": 0
+      },
+      "topics": [
+        {
+          "id": "tid1",
+          "key": "general",
+          "score": 40
+        },
+        {
+          "id": "tid2",
+          "key": "javascript",
+          "score": 90
+        },
+        {
+          "id": "tid3",
+          "key": "emerald",
+          "score": 60
+        },
+        {
+          "id": "tid4",
+          "key": "vue",
+          "score": 70
+        },
+        {
+          "id": "tid5",
+          "key": "devops",
+          "score": 30
+        },
+        {
+          "id": "tid6",
+          "key": "debug",
+          "score": 25
+        }
+      ]
+    },
+    {
+      "name": "Mia",
+      "id": "user5",
+      "email": "mia.wilson@example.com",
+      "sex": "female",
+      "settings": {
+        "language": "en",
+        "darkModeActive": true,
+        "profileImageUrl": "https://randomuser.me/api/portraits/women/3.jpg"
+      },
+      "stats": {
+        "totalQuestions": 62,
+        "correctAnswers": 45,
+        "wrongAnswers": 15,
+        "unansweredQuestions": 2,
+        "percentage": 0
+      },
+      "topics": [
+        {
+          "id": "tid1",
+          "key": "general",
+          "score": 35
+        },
+        {
+          "id": "tid2",
+          "key": "javascript",
+          "score": 80
+        },
+        {
+          "id": "tid3",
+          "key": "emerald",
+          "score": 50
+        },
+        {
+          "id": "tid4",
+          "key": "vue",
+          "score": 75
+        },
+        {
+          "id": "tid5",
+          "key": "devops",
+          "score": 25
+        },
+        {
+          "id": "tid6",
+          "key": "debug",
+          "score": 20
+        }
+      ]
+    },
+    {
+      "name": "Oliver",
+      "id": "user6",
+      "email": "oliver.brown@example.com",
+      "sex": "male",
+      "settings": {
+        "language": "en",
+        "darkModeActive": false,
+        "profileImageUrl": "https://randomuser.me/api/portraits/men/3.jpg"
+      },
+      "stats": {
+        "totalQuestions": 45,
+        "correctAnswers": 38,
+        "wrongAnswers": 5,
+        "unansweredQuestions": 2,
+        "percentage": 0
+      },
+      "topics": [
+        {
+          "id": "tid1",
+          "key": "general",
+          "score": 25
+        },
+        {
+          "id": "tid2",
+          "key": "javascript",
+          "score": 85
+        },
+        {
+          "id": "tid3",
+          "key": "emerald",
+          "score": 40
+        },
+        {
+          "id": "tid4",
+          "key": "vue",
+          "score": 65
+        },
+        {
+          "id": "tid5",
+          "key": "devops",
+          "score": 20
+        },
+        {
+          "id": "tid6",
+          "key": "debug",
+          "score": 15
+        }
+      ]
+    },
+    {
+      "name": "Liam",
+      "id": "user7",
+      "email": "liam.davis@example.com",
+      "sex": "male",
+      "settings": {
+        "language": "en",
+        "darkModeActive": true,
+        "profileImageUrl": "https://randomuser.me/api/portraits/men/5.jpg"
+      },
+      "stats": {
+        "totalQuestions": 78,
+        "correctAnswers": 60,
+        "wrongAnswers": 15,
+        "unansweredQuestions": 3,
+        "percentage": 0
+      },
+      "topics": [
+        {
+          "id": "tid1",
+          "key": "general",
+          "score": 50
+        },
+        {
+          "id": "tid2",
+          "key": "javascript",
+          "score": 95
+        },
+        {
+          "id": "tid3",
+          "key": "emerald",
+          "score": 55
+        },
+        {
+          "id": "tid4",
+          "key": "vue",
+          "score": 80
+        },
+        {
+          "id": "tid5",
+          "key": "devops",
+          "score": 35
+        },
+        {
+          "id": "tid6",
+          "key": "debug",
+          "score": 30
+        }
+      ]
+    },
+    {
+      "name": "Ella",
+      "id": "user8",
+      "email": "ella.jones@example.com",
+      "sex": "female",
+      "settings": {
+        "language": "en",
+        "darkModeActive": false,
+        "profileImageUrl": "https://randomuser.me/api/portraits/women/4.jpg"
+      },
+      "stats": {
+        "totalQuestions": 55,
+        "correctAnswers": 48,
+        "wrongAnswers": 5,
+        "unansweredQuestions": 2,
+        "percentage": 0
+      },
+      "topics": [
+        {
+          "id": "tid1",
+          "key": "general",
+          "score": 45
+        },
+        {
+          "id": "tid2",
+          "key": "javascript",
+          "score": 88
+        },
+        {
+          "id": "tid3",
+          "key": "emerald",
+          "score": 35
+        },
+        {
+          "id": "tid4",
+          "key": "vue",
+          "score": 70
+        },
+        {
+          "id": "tid5",
+          "key": "devops",
+          "score": 15
+        },
+        {
+          "id": "tid6",
+          "key": "debug",
+          "score": 10
+        }
+      ]
+    },
+    {
+      "name": "Aiden",
+      "id": "user9",
+      "email": "aiden.white@example.com",
+      "sex": "male",
+      "settings": {
+        "language": "en",
+        "darkModeActive": true,
+        "profileImageUrl": "https://randomuser.me/api/portraits/men/3.jpg"
+      },
+      "stats": {
+        "totalQuestions": 40,
+        "correctAnswers": 32,
+        "wrongAnswers": 5,
+        "unansweredQuestions": 3,
+        "percentage": 0
+      },
+      "topics": [
+        {
+          "id": "tid1",
+          "key": "general",
+          "score": 20
+        },
+        {
+          "id": "tid2",
+          "key": "javascript",
+          "score": 80
+        },
+        {
+          "id": "tid3",
+          "key": "emerald",
+          "score": 30
+        },
+        {
+          "id": "tid4",
+          "key": "vue",
+          "score": 65
+        },
+        {
+          "id": "tid5",
+          "key": "devops",
+          "score": 25
+        },
+        {
+          "id": "tid6",
+          "key": "debug",
+          "score": 15
+        }
+      ]
+    },
+    {
+      "name": "Grace",
+      "id": "user10",
+      "email": "grace.anderson@example.com",
+      "sex": "female",
+      "settings": {
+        "language": "en",
+        "darkModeActive": false,
+        "profileImageUrl": "https://randomuser.me/api/portraits/women/5.jpg"
+      },
+      "stats": {
+        "totalQuestions": 60,
+        "correctAnswers": 50,
+        "wrongAnswers": 8,
+        "unansweredQuestions": 2,
+        "percentage": 0
+      },
+      "topics": [
+        {
+          "id": "tid1",
+          "key": "general",
+          "score": 40
+        },
+        {
+          "id": "tid2",
+          "key": "javascript",
+          "score": 90
+        },
+        {
+          "id": "tid3",
+          "key": "emerald",
+          "score": 45
+        },
+        {
+          "id": "tid4",
+          "key": "vue",
+          "score": 70
+        },
+        {
+          "id": "tid5",
+          "key": "devops",
+          "score": 30
+        },
+        {
+          "id": "tid6",
+          "key": "debug",
+          "score": 10
         }
       ]
     }

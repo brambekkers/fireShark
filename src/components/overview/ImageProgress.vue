@@ -17,17 +17,18 @@ const profileStyle = computed(() => ({
     class="profile-image relative rounded-full h-36 w-36 bg-accent shadow-2xl"
     :style="profileStyle"
   >
-    <div class="progress absolute w-48 h-48 -top-6 -left-6">
+    <div class="absolute w-48 h-48 -top-6 -left-6">
       <svg class="w-full h-full" viewBox="0 0 100 100">
         <!-- Background circle -->
         <circle
-          class="text-gray-200 rogress-ring__circle stroke-current"
+          class="text-gray-200 progress-ring__circle stroke-current"
           stroke-width="3"
+          stroke-linecap="round"
           cx="50"
           cy="50"
           r="40"
           fill="transparent"
-          :stroke-dashoffset="`calc(400 - (200 * ${stats.percentage}) / 100)`"
+          :stroke-dashoffset="`calc(400 - (200 * 100 / 100)`"
         />
         <!-- Progress circle -->
         <circle
@@ -40,36 +41,27 @@ const profileStyle = computed(() => ({
           fill="transparent"
           :stroke-dashoffset="`calc(400 - (200 * ${stats.percentage}) / 100)`"
         />
-
-        <!-- Center text -->
-        <text
-          x="50"
-          y="50"
-          font-family="Verdana"
-          font-size="12"
-          text-anchor="middle"
-          alignment-baseline="middle"
-        >
-          {{ stats?.percentage || 0 }}%
-        </text>
       </svg>
+    </div>
+
+    <div
+      class="absolute bg-sharp-warning w-14 h-14 -bottom-4 right-0 font-bold text-lg rounded-full flex items-center justify-center"
+    >
+      {{ stats?.percentage || 0 }}%
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .profile-image {
-  background-image: url('https://t4.ftcdn.net/jpg/02/87/35/99/360_F_287359914_HU3P7rhmyJMyyhBBcILcWd2S7DDwkJSs.jpg');
   background-size: cover;
   background-position: center;
 
-  .progress {
-    .progress-ring__circle {
-      stroke-dasharray: 400, 400;
-      transition: stroke-dashoffset 0.35s;
-      transform: rotate(130deg);
-      transform-origin: 50% 50%;
-    }
+  .progress-ring__circle {
+    stroke-dasharray: 400, 400;
+    transition: stroke-dashoffset 0.35s;
+    transform: rotate(130deg);
+    transform-origin: 50% 50%;
   }
 }
 </style>

@@ -10,7 +10,6 @@ import useUserStore from '@/stores/userStore';
 import useQuestionStore from '@/stores/question';
 
 const userStore = useUserStore();
-userStore.fetchUser('id1');
 
 const { selectedTopics } = storeToRefs(useQuestionStore());
 
@@ -43,7 +42,6 @@ watchEffect(() => {
 const isModalOpen = ref(false);
 
 const toggleModal = (isOpen) => {
-  console.log('isOpen :>> ', isOpen);
   isModalOpen.value = isOpen;
 };
 </script>
@@ -66,12 +64,6 @@ const toggleModal = (isOpen) => {
             :progress="rand(1, 100)"
             :all-selected="allSelected"
           />
-        </div>
-        <div>
-          <p class="text-center mt-8">
-            Your performance is at
-            <span class="text-2xl font-bold text-blue-700">{{ userStore.stats?.percentage }}%</span>
-          </p>
         </div>
       </section>
 

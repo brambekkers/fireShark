@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
+import { rand } from '@vueuse/core';
 
 export const useUserStore = defineStore('user', () => {
   const user = ref({});
@@ -20,6 +21,10 @@ export const useUserStore = defineStore('user', () => {
       isUserLoading.value = false
     }
   };
+
+  const getRandomUser = () => {
+    fetchUser(`user${rand(1, 10)}`);
+  }
 
   const updateUser = async (userObj) => {
     try {
@@ -57,6 +62,7 @@ export const useUserStore = defineStore('user', () => {
     topics,
     settings,
     fetchUser,
+    getRandomUser,
     updateUser,
     calculatePerformancePercentage,
   };
