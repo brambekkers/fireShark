@@ -3,7 +3,10 @@
     "appName": "Shark",
     "practice": "Oefenen",
     "duel": "Duelleren",
-    "settings": "Instellingen"
+    "settings": "Instellingen",
+    "name": "Naam",
+    "id": "id",
+    "email": "E-mailadres"
   },
   "overview": {
     "selectTopics": "Selecteer de topics die je wilt oefenen.",
@@ -21,6 +24,7 @@
     "personalSettings": "Persoonlijke gegevens",
     "language": "Taal",
     "faq": "Veelgesteelde vragen",
+    "pushNotifications": "Email notificaties",
     "emailNotifications": "Email notificaties",
     "joinDuels": "Meedoen aan duels",
     "automaticDuel": "Automatisch duelleren"
