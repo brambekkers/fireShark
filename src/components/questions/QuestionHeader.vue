@@ -24,7 +24,6 @@ defineProps({
 .questionHeader {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .image {
