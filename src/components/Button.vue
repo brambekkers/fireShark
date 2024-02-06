@@ -5,7 +5,7 @@ defineEmits(['on-clicked']);
 const props = defineProps({
   title: { type: String, required: true },
   disable: { type: Boolean, required: false },
-  styleType: {type: String, required: false, default: 'bg-sharp-button-primary-bg rounded-full h-10 px-2'},
+  styleType: {type: String, required: false, default: 'primary'},
 });
 
 
