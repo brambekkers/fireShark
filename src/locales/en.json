@@ -4,7 +4,10 @@
     "practice": "Practice",
     "duel": "Duel",
     "settings": "Settings",
-    "notifications": "Notifications"
+    "notifications": "Notifications",
+    "name": "Name",
+    "id": "id",
+    "email": "Email"
   },
   "overview": {
     "selectTopics": "Select the topics you want to practice",
@@ -21,6 +24,10 @@
     "notAllCanBeChanged": "You cannot change all personal information yourself.",
     "personalSettings": "Personal settings",
     "language": "Language",
-    "faq": "Frequently asked questions"
+    "faq": "Frequently asked questions",
+    "pushNotifications": "Email notifications",
+    "emailNotifications": "Email notifications",
+    "joinDuels": "Join Duels",
+    "automaticDuel": "Automatic dueling"
   }
 }
