@@ -12,7 +12,7 @@
           :type="questionData?.type"
         />
       </fieldset>
-      <Button title="Save my answer" :styleType="answerIsGiven ? 'primary' : 'disabled'" :disable="answerIsGiven" @on-clicked="saveAnswer" />
+      <Button title="Save my answer" :styleType="answerIsGiven ? 'primary' : 'disabled'" :disabled="!answerIsGiven" @on-clicked="saveAnswer" />
     </form>
   </section>
 </template>
