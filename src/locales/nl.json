@@ -1,3 +1,14 @@
 {
-  "test": "NL TEXT"
+  "general": {
+    "appName": "Sharp",
+    "practice": "Oefenen",
+    "duel": "Duelleren",
+    "settings": "Instellingen"
+  },
+  "overview": {
+    "selectTopics": "Selecteer de topics die je wilt oefenen."
+  },
+  "settings": {
+    "notAllCanBeChanged": "Niet alle persoonlijke gegevens kun je zelf wijzigen."
+  }
 }

@@ -1,3 +1,14 @@
 {
-  "test": "ENG TEXT"
+  "general": {
+    "appName": "Sharp",
+    "practice": "Practice",
+    "duel": "Duel",
+    "settings": "Settings"
+  },
+  "overview": {
+    "selectTopics": "Select the topics you want to practice"
+  },
+  "settings": {
+    "notAllCanBeChanged": "You cannot change all personal information yourself."
+  }
 }

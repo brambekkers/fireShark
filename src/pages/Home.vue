@@ -2,7 +2,6 @@
 import { rand } from '@vueuse/core';
 import Button from '@/components/Button.vue';
 import TopicButton from '@/components/overview/TopicButton.vue';
-import OverviewHeader from '@/components/overview/Header.vue';
 import useUserStore from '@/stores/userStore';
 import useQuestionStore from '@/stores/question';
 import LevelUp from '@/components/LevelUp.vue';
@@ -38,13 +37,10 @@ watchEffect(() => {
 
 <template>
   <main>
-    <!-- Accent on top -->
-    <OverviewHeader />
-
     <div class="max-w-screen-lg mx-auto">
       <section class="flex justify-center flex-col mt-8">
         <h2 class="text-lg italic text-center">
-          Select the topics you want to practice
+          {{ $t('overview.selectTopics') }}
         </h2>
         <div class="grid grid-cols-3 gap-x-6 gap-y-10 mt-12">
           <TopicButton

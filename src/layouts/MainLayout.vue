@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import { useLayoutStore } from '@stores/layout';
 import Navbar from '@components/Navbar.vue';
+import OverviewHeader from '@/components/overview/Header.vue';
 
 const layoutStore = useLayoutStore();
 const background = computed(() =>
@@ -13,6 +14,8 @@ const text = computed(() => (layoutStore.isDarkMode ? '#f2f9f9' : '#242424'));
 <template>
   <Navbar />
   <div id="main" class="mt-12">
+    <!-- Accent on top -->
+    <OverviewHeader />
     <slot></slot>
   </div>
 </template>
