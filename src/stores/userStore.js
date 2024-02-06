@@ -1,30 +1,38 @@
-import { defineStore } from 'pinia';
-import { ref, computed } from 'vue';
+import { rand } from '@vueuse/core';
 
 export const useUserStore = defineStore('user', () => {
   const user = ref({});
   const stats = computed(() => user.value.stats || {});
   const topics = computed(() => user.value.topics || []);
-  const isUserLoading = ref(false)
-  const isUserError = ref(false)
+  const settings = computed(() => user.value.settings || {});
+  const isUserLoading = ref(false);
+  const isUserError = ref(false);
 
   const fetchUser = async (userId) => {
     try {
       const response = await fetch(`http://192.168.0.192:3000/users/${userId}`);
       user.value = await response.json();
     } catch (error) {
-      isUserError.value = true,
+      isUserError.value = true;
       console.log(error);
     } finally {
-      isUserLoading.value = false
+      isUserLoading.value = false;
     }
   };
 
-  const updateUser = async (userObj) => {
+  const getRandomUser = () => {
+    fetchUser(`user${rand(1, 10)}`);
+  };
+
+  const updateUser = async () => {
     try {
       await fetch(`http://192.168.0.192:3000/users/${user.value.id}`, {
         method: 'PATCH',
-        body: JSON.stringify(userObj),
+        body: JSON.stringify({
+          ...user.value,
+          stats: stats.value,
+          topics: topics.value,
+        }),
       });
     } catch (error) {
       console.log(error);
@@ -32,10 +40,6 @@ export const useUserStore = defineStore('user', () => {
   };
 
   const calculatePerformancePercentage = () => {
-    console.log('totalQuestions', stats.value?.totalQuestions);
-    console.log('correctAnswers', stats.value?.correctAnswers);
-    console.log('wrongAnswers', stats.value?.wrongAnswers);
-    console.log('unansweredQuestions', stats.value?.unansweredQuestions);
     // Type checking to ensure all inputs are numbers
     if (
       typeof stats.value?.totalQuestions !== 'number'
@@ -58,7 +62,9 @@ export const useUserStore = defineStore('user', () => {
     user,
     stats,
     topics,
+    settings,
     fetchUser,
+    getRandomUser,
     updateUser,
     calculatePerformancePercentage,
   };

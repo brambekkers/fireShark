@@ -13,7 +13,7 @@ import IconSettings from '~icons/tdesign/setting-1';
       </router-link>
     </section>
     <section class="links">
-      <router-link to="/">
+      <router-link to="/practice">
         <span class="link"> <icon-brain /> Practice</span>
       </router-link>
       <router-link to="/duel">

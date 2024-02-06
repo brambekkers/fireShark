@@ -1,6 +1,4 @@
 <script setup>
-import { storeToRefs } from 'pinia';
-import { ref, watch } from 'vue';
 import { useQuestionStore } from '@stores/question';
 import IconCheck from '~icons/lucide/check';
 
@@ -12,25 +10,22 @@ const props = defineProps({
 
 const { selectedTopics } = storeToRefs(useQuestionStore());
 const isChecked = ref(selectedTopics.value.includes(props.title));
+const questionStore = computed(() => useQuestionStore());
 
 if (props.allSelected) {
   isChecked.value = true;
 }
 
-watch(() => props.allSelected, (newVal) => {
-  isChecked.value = newVal;
-});
+watch(
+  () => props.allSelected,
+  (newVal) => {
+    isChecked.value = newVal;
+  },
+);
 
 const toggleSelection = () => {
   isChecked.value = !isChecked.value;
-  if (isChecked.value) selectedTopics.value.push(props.title);
-  else {
-    const index = selectedTopics.value.indexOf(props.title);
-    if (index !== -1) {
-      selectedTopics.value.splice(index, 1);
-    }
-  }
-  console.log(selectedTopics.value);
+  questionStore.value.updateSelectedTopics(isChecked.value, props.title);
 };
 </script>
 
@@ -64,7 +59,7 @@ const toggleSelection = () => {
         class="hidden"
         type="checkbox"
         aria-labelledby="selected"
-      >
+      />
       <h3 class="text-xl text-center font-bold text-primary">
         {{ title }}
       </h3>

@@ -2,12 +2,13 @@
   "users": [
     {
       "name": "Kenan",
-      "id": "id1",
+      "id": "user1",
       "email": "kenan.amatradjak@nl.abnamro.com",
+      "sex": "male",
       "settings": {
         "language": "nl",
         "darkModeActive": false,
-        "profileImageUrl": "https://as2.ftcdn.net/v2/jpg/01/42/37/55/1000_F_142375554_TGrl3NtUULBo0CKtvWjI8nWBL8fjjCN3.jpg"
+        "profileImageUrl": "https://randomuser.me/api/portraits/men/1.jpg"
       },
       "stats": {
         "totalQuestions": 30,
@@ -51,12 +52,13 @@
     },
     {
       "name": "John",
-      "id": "id2",
-      "email": "kenan.amatradjak@nl.abnamro.com",
+      "id": "user2",
+      "email": "john.smith@nl.abnamro.com",
+      "sex": "male",
       "settings": {
         "language": "en",
         "darkModeActive": true,
-        "profileImageUrl": "https://t4.ftcdn.net/jpg/02/87/35/99/360_F_287359914_HU3P7rhmyJMyyhBBcILcWd2S7DDwkJSs.jpg"
+        "profileImageUrl": "https://randomuser.me/api/portraits/men/2.jpg"
       },
       "stats": {
         "totalQuestions": 87,
@@ -96,6 +98,406 @@
           "score": 0
         }
       ]
+    },
+    {
+      "name": "Emily",
+      "id": "user3",
+      "email": "emily.jones@example.com",
+      "sex": "female",
+      "settings": {
+        "language": "en",
+        "darkModeActive": true,
+        "profileImageUrl": "https://randomuser.me/api/portraits/women/1.jpg"
+      },
+      "stats": {
+        "totalQuestions": 50,
+        "correctAnswers": 40,
+        "wrongAnswers": 8,
+        "unansweredQuestions": 2,
+        "percentage": 0
+      },
+      "topics": [
+        {
+          "id": "tid1",
+          "key": "general",
+          "score": 30
+        },
+        {
+          "id": "tid2",
+          "key": "javascript",
+          "score": 70
+        },
+        {
+          "id": "tid3",
+          "key": "emerald",
+          "score": 45
+        },
+        {
+          "id": "tid4",
+          "key": "vue",
+          "score": 80
+        },
+        {
+          "id": "tid5",
+          "key": "devops",
+          "score": 15
+        },
+        {
+          "id": "tid6",
+          "key": "debug",
+          "score": 10
+        }
+      ]
+    },
+    {
+      "name": "Sophie",
+      "id": "user4",
+      "email": "sophie.miller@example.com",
+      "sex": "female",
+      "settings": {
+        "language": "en",
+        "darkModeActive": false,
+        "profileImageUrl": "https://randomuser.me/api/portraits/women/2.jpg"
+      },
+      "stats": {
+        "totalQuestions": 75,
+        "correctAnswers": 50,
+        "wrongAnswers": 20,
+        "unansweredQuestions": 5,
+        "percentage": 0
+      },
+      "topics": [
+        {
+          "id": "tid1",
+          "key": "general",
+          "score": 40
+        },
+        {
+          "id": "tid2",
+          "key": "javascript",
+          "score": 90
+        },
+        {
+          "id": "tid3",
+          "key": "emerald",
+          "score": 60
+        },
+        {
+          "id": "tid4",
+          "key": "vue",
+          "score": 70
+        },
+        {
+          "id": "tid5",
+          "key": "devops",
+          "score": 30
+        },
+        {
+          "id": "tid6",
+          "key": "debug",
+          "score": 25
+        }
+      ]
+    },
+    {
+      "name": "Mia",
+      "id": "user5",
+      "email": "mia.wilson@example.com",
+      "sex": "female",
+      "settings": {
+        "language": "en",
+        "darkModeActive": true,
+        "profileImageUrl": "https://randomuser.me/api/portraits/women/3.jpg"
+      },
+      "stats": {
+        "totalQuestions": 62,
+        "correctAnswers": 45,
+        "wrongAnswers": 15,
+        "unansweredQuestions": 2,
+        "percentage": 0
+      },
+      "topics": [
+        {
+          "id": "tid1",
+          "key": "general",
+          "score": 35
+        },
+        {
+          "id": "tid2",
+          "key": "javascript",
+          "score": 80
+        },
+        {
+          "id": "tid3",
+          "key": "emerald",
+          "score": 50
+        },
+        {
+          "id": "tid4",
+          "key": "vue",
+          "score": 75
+        },
+        {
+          "id": "tid5",
+          "key": "devops",
+          "score": 25
+        },
+        {
+          "id": "tid6",
+          "key": "debug",
+          "score": 20
+        }
+      ]
+    },
+    {
+      "name": "Oliver",
+      "id": "user6",
+      "email": "oliver.brown@example.com",
+      "sex": "male",
+      "settings": {
+        "language": "en",
+        "darkModeActive": false,
+        "profileImageUrl": "https://randomuser.me/api/portraits/men/3.jpg"
+      },
+      "stats": {
+        "totalQuestions": 45,
+        "correctAnswers": 38,
+        "wrongAnswers": 5,
+        "unansweredQuestions": 2,
+        "percentage": 0
+      },
+      "topics": [
+        {
+          "id": "tid1",
+          "key": "general",
+          "score": 25
+        },
+        {
+          "id": "tid2",
+          "key": "javascript",
+          "score": 85
+        },
+        {
+          "id": "tid3",
+          "key": "emerald",
+          "score": 40
+        },
+        {
+          "id": "tid4",
+          "key": "vue",
+          "score": 65
+        },
+        {
+          "id": "tid5",
+          "key": "devops",
+          "score": 20
+        },
+        {
+          "id": "tid6",
+          "key": "debug",
+          "score": 15
+        }
+      ]
+    },
+    {
+      "name": "Liam",
+      "id": "user7",
+      "email": "liam.davis@example.com",
+      "sex": "male",
+      "settings": {
+        "language": "en",
+        "darkModeActive": true,
+        "profileImageUrl": "https://randomuser.me/api/portraits/men/5.jpg"
+      },
+      "stats": {
+        "totalQuestions": 78,
+        "correctAnswers": 60,
+        "wrongAnswers": 15,
+        "unansweredQuestions": 3,
+        "percentage": 0
+      },
+      "topics": [
+        {
+          "id": "tid1",
+          "key": "general",
+          "score": 50
+        },
+        {
+          "id": "tid2",
+          "key": "javascript",
+          "score": 95
+        },
+        {
+          "id": "tid3",
+          "key": "emerald",
+          "score": 55
+        },
+        {
+          "id": "tid4",
+          "key": "vue",
+          "score": 80
+        },
+        {
+          "id": "tid5",
+          "key": "devops",
+          "score": 35
+        },
+        {
+          "id": "tid6",
+          "key": "debug",
+          "score": 30
+        }
+      ]
+    },
+    {
+      "name": "Ella",
+      "id": "user8",
+      "email": "ella.jones@example.com",
+      "sex": "female",
+      "settings": {
+        "language": "en",
+        "darkModeActive": false,
+        "profileImageUrl": "https://randomuser.me/api/portraits/women/4.jpg"
+      },
+      "stats": {
+        "totalQuestions": 55,
+        "correctAnswers": 48,
+        "wrongAnswers": 5,
+        "unansweredQuestions": 2,
+        "percentage": 0
+      },
+      "topics": [
+        {
+          "id": "tid1",
+          "key": "general",
+          "score": 45
+        },
+        {
+          "id": "tid2",
+          "key": "javascript",
+          "score": 88
+        },
+        {
+          "id": "tid3",
+          "key": "emerald",
+          "score": 35
+        },
+        {
+          "id": "tid4",
+          "key": "vue",
+          "score": 70
+        },
+        {
+          "id": "tid5",
+          "key": "devops",
+          "score": 15
+        },
+        {
+          "id": "tid6",
+          "key": "debug",
+          "score": 10
+        }
+      ]
+    },
+    {
+      "name": "Aiden",
+      "id": "user9",
+      "email": "aiden.white@example.com",
+      "sex": "male",
+      "settings": {
+        "language": "en",
+        "darkModeActive": true,
+        "profileImageUrl": "https://randomuser.me/api/portraits/men/3.jpg"
+      },
+      "stats": {
+        "totalQuestions": 40,
+        "correctAnswers": 32,
+        "wrongAnswers": 5,
+        "unansweredQuestions": 3,
+        "percentage": 0
+      },
+      "topics": [
+        {
+          "id": "tid1",
+          "key": "general",
+          "score": 20
+        },
+        {
+          "id": "tid2",
+          "key": "javascript",
+          "score": 80
+        },
+        {
+          "id": "tid3",
+          "key": "emerald",
+          "score": 30
+        },
+        {
+          "id": "tid4",
+          "key": "vue",
+          "score": 65
+        },
+        {
+          "id": "tid5",
+          "key": "devops",
+          "score": 25
+        },
+        {
+          "id": "tid6",
+          "key": "debug",
+          "score": 15
+        }
+      ]
+    },
+    {
+      "name": "Grace",
+      "id": "user10",
+      "email": "grace.anderson@example.com",
+      "sex": "female",
+      "settings": {
+        "language": "en",
+        "darkModeActive": false,
+        "profileImageUrl": "https://randomuser.me/api/portraits/women/5.jpg"
+      },
+      "stats": {
+        "totalQuestions": 60,
+        "correctAnswers": 50,
+        "wrongAnswers": 8,
+        "unansweredQuestions": 2,
+        "percentage": 0
+      },
+      "topics": [
+        {
+          "id": "tid1",
+          "key": "general",
+          "score": 40
+        },
+        {
+          "id": "tid2",
+          "key": "javascript",
+          "score": 90
+        },
+        {
+          "id": "tid3",
+          "key": "emerald",
+          "score": 45
+        },
+        {
+          "id": "tid4",
+          "key": "vue",
+          "score": 70
+        },
+        {
+          "id": "tid5",
+          "key": "devops",
+          "score": 30
+        },
+        {
+          "id": "tid6",
+          "key": "debug",
+          "score": 10
+        }
+      ]
     }
   ],
   "questions": {
@@ -107,7 +509,7 @@
             "id": "gen-q1",
             "type": "singleChoice",
             "subject": "Javascript",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "In which year was Javascript developed?",
             "answers": [
               {
@@ -132,7 +534,7 @@
             "id": "gen-q2",
             "type": "multipleChoice",
             "subject": "Javascript",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "What is NOT a Javascript primitive type?",
             "answers": [
               {
@@ -157,7 +559,7 @@
             "id": "gen-q3",
             "type": "multipleChoice",
             "subject": "Vuejs component architecture",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "In Vue.js, what is the key difference between mixins and scoped slots?",
             "answers": [
               {
@@ -187,7 +589,7 @@
             "id": "js-q1",
             "type": "singleChoice",
             "subject": "javascript",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "What symbol is used to end statements in JavaScript",
             "answers": [
               {
@@ -212,7 +614,7 @@
             "id": "js-q2",
             "type": "multipleChoice",
             "subject": "JavaScript",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which of the following are primitive data types in JavaScript",
             "answers": [
               {
@@ -237,7 +639,7 @@
             "id": "js-q3",
             "type": "singleChoice",
             "subject": "JavaScript",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which keyword is used to declare a function in JavaScript",
             "answers": [
               {
@@ -262,7 +664,7 @@
             "id": "js-q4",
             "type": "multipleChoice",
             "subject": "JavaScript",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which of the following scopes are available in JavaScript",
             "answers": [
               {
@@ -287,7 +689,7 @@
             "id": "js-q5",
             "type": "singleChoice",
             "subject": "JavaScript",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "How do you add an element to the end of an array in JavaScript",
             "answers": [
               {
@@ -312,7 +714,7 @@
             "id": "js-q6",
             "type": "singleChoice",
             "subject": "JavaScript",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which method can be used to convert a string to uppercase in JavaScript",
             "answers": [
               {
@@ -337,7 +739,7 @@
             "id": "js-q7",
             "type": "multipleChoice",
             "subject": "JavaScript",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which of the following are comparison operators in JavaScript",
             "answers": [
               {
@@ -362,7 +764,7 @@
             "id": "js-q8",
             "type": "singleChoice",
             "subject": "JavaScript",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "How do you access the value of the property `age` in the object `person`",
             "answers": [
               {
@@ -387,7 +789,7 @@
             "id": "js-q9",
             "type": "multipleChoice",
             "subject": "JavaScript",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which of the following are valid ways to attach an event handler to an element in JavaScript",
             "answers": [
               {
@@ -412,7 +814,7 @@
             "id": "js-q10",
             "type": "singleChoice",
             "subject": "JavaScript",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "What is used in JavaScript to handle asynchronous operations",
             "answers": [
               {
@@ -437,7 +839,7 @@
             "id": "js-q11",
             "type": "singleChoice",
             "subject": "JavaScript",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which method is used to round a number to the nearest integer in JavaScript",
             "answers": [
               {
@@ -462,7 +864,7 @@
             "id": "js-q12",
             "type": "multipleChoice",
             "subject": "JavaScript",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which of the following are correct ways to declare a variable in JavaScript",
             "answers": [
               {
@@ -487,7 +889,7 @@
             "id": "js-q13",
             "type": "singleChoice",
             "subject": "JavaScript",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "What is the output of '2' + 3 + 5 in JavaScript",
             "answers": [
               {
@@ -512,7 +914,7 @@
             "id": "js-q14",
             "type": "multipleChoice",
             "subject": "JavaScript",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which of the following keywords are used for error handling in JavaScript",
             "answers": [
               {
@@ -537,7 +939,7 @@
             "id": "js-q15",
             "type": "singleChoice",
             "subject": "JavaScript",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which object in JavaScript is used to work with dates",
             "answers": [
               {
@@ -562,7 +964,7 @@
             "id": "js-q16",
             "type": "singleChoice",
             "subject": "JavaScript",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which of the following is not a valid JavaScript event",
             "answers": [
               {
@@ -587,7 +989,7 @@
             "id": "js-q17",
             "type": "multipleChoice",
             "subject": "JavaScript",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "What are the purposes of the 'map' function in JavaScript",
             "answers": [
               {
@@ -612,7 +1014,7 @@
             "id": "js-q18",
             "type": "singleChoice",
             "subject": "JavaScript",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "What does the 'this' keyword refer to in a JavaScript function",
             "answers": [
               {
@@ -637,7 +1039,7 @@
             "id": "js-q19",
             "type": "multipleChoice",
             "subject": "JavaScript",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which ES6 features are widely used in modern JavaScript",
             "answers": [
               {
@@ -662,7 +1064,7 @@
             "id": "js-q20",
             "type": "singleChoice",
             "subject": "JavaScript",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "How do you declare a class in JavaScript",
             "answers": [
               {
@@ -692,7 +1094,7 @@
             "id": "vue-q1",
             "type": "singleChoice",
             "subject": "Vue.js",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "What is the Vue.js directive used to bind data to the text content of an HTML element",
             "answers": [
               {
@@ -717,7 +1119,7 @@
             "id": "vue-q2",
             "type": "multipleChoice",
             "subject": "Vue.js",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which of the following are Vue.js lifecycle hooks",
             "answers": [
               {
@@ -742,7 +1144,7 @@
             "id": "vue-q3",
             "type": "singleChoice",
             "subject": "Vue.js",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which Vue.js directive is used to display an element conditionally",
             "answers": [
               {
@@ -767,7 +1169,7 @@
             "id": "vue-q4",
             "type": "multipleChoice",
             "subject": "Vue.js",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "What features does Vue.js provide for building web interfaces",
             "answers": [
               {
@@ -792,7 +1194,7 @@
             "id": "vue-q5",
             "type": "singleChoice",
             "subject": "Vue.js",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "What is the purpose of the v-model directive in Vue.js",
             "answers": [
               {
@@ -817,7 +1219,7 @@
             "id": "vue-q6",
             "type": "singleChoice",
             "subject": "Vue.js",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which method is used to programmatically navigate to a different route in a Vue.js SPA",
             "answers": [
               {
@@ -842,7 +1244,7 @@
             "id": "vue-q7",
             "type": "multipleChoice",
             "subject": "Vue.js",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "Which of the following options are true regarding Vue.js components",
             "answers": [
               {
@@ -867,7 +1269,7 @@
             "id": "vue-q8",
             "type": "singleChoice",
             "subject": "Vue.js",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "How do you declare a reactive property in a Vue component's data function",
             "answers": [
               {
@@ -892,7 +1294,7 @@
             "id": "vue-q9",
             "type": "multipleChoice",
             "subject": "Vue.js",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "What are the advantages of using Vue.js for web development",
             "answers": [
               {
@@ -917,7 +1319,7 @@
             "id": "vue-q10",
             "type": "singleChoice",
             "subject": "Vue.js",
-            "headerImg": "../images/background/javascript_code.jpg",
+            "headerImg": "src/images/background/javascript_code.jpg",
             "question": "In Vue.js, what is Vuex used for",
             "answers": [
               {

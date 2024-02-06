@@ -1,25 +1,16 @@
 <script setup>
-import { watchEffect, ref } from 'vue';
 import { rand } from '@vueuse/core';
-import { storeToRefs } from 'pinia';
 import Button from '@/components/Button.vue';
-import ConfirmationModal from '@/components/ConfirmationModal.vue';
-import TopicButton from '@/components/TopicButton.vue';
+import TopicButton from '@/components/overview/TopicButton.vue';
 import OverviewHeader from '@/components/overview/Header.vue';
 import useUserStore from '@/stores/userStore';
 import useQuestionStore from '@/stores/question';
-import useModalInteractions from '@/composable/useModalInteractions';
-
-const { isModalOpen, toggleModal } = useModalInteractions();
 
 const userStore = useUserStore();
-userStore.fetchUser('id1');
-
 const { selectedTopics } = storeToRefs(useQuestionStore());
-
 const selectAllButton = ref('Select all');
 const allSelected = ref(false);
-const isButtonDisabled = ref(!selectedTopics.value.length);
+const isButtonDisabled = computed(() => !selectedTopics.value.length);
 
 const selectAll = () => {
   userStore.topics.forEach((topic) => {
@@ -42,16 +33,6 @@ const clearSelection = () => {
 watchEffect(() => {
   userStore.calculatePerformancePercentage();
 });
-<<<<<<< Updated upstream
-
-const isModalOpen = ref(false);
-
-const toggleModal = (isOpen) => {
-  console.log('isOpen :>> ', isOpen);
-  isModalOpen.value = isOpen;
-};
-=======
->>>>>>> Stashed changes
 </script>
 
 <template>
@@ -72,12 +53,6 @@ const toggleModal = (isOpen) => {
             :progress="rand(1, 100)"
             :all-selected="allSelected"
           />
-        </div>
-        <div>
-          <p class="text-center mt-8">
-            Your performance is at
-            <span class="text-2xl font-bold text-blue-700">{{ userStore.stats?.percentage }}%</span>
-          </p>
         </div>
       </section>
 
@@ -103,12 +78,6 @@ const toggleModal = (isOpen) => {
         </Button>
       </div>
     </div>
-
-    <ConfirmationModal :is-open="isModalOpen" @close-modal="toggleModal(false)" />
-
-    <button id="open-dialog-btn" type="button" @click="toggleModal(true)">
-      Show the dialog
-    </button>
   </main>
 </template>
 

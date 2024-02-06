@@ -1,28 +1,56 @@
 <script setup>
-import { ref } from "vue"
-import { storeToRefs } from 'pinia';
-import {useQuestionStore} from '@stores/question';
+import { useQuestionStore } from '@stores/question';
 
-import QuestionHeader from "../components/questions/QuestionHeader.vue"
-import QuestionForm from "../components/questions/QuestionForm.vue"
-import QuestionSlideIn from "../components/questions/SlideIn/SlideIn.vue"
+import QuestionHeader from '../components/questions/QuestionHeader.vue';
+import QuestionForm from '../components/questions/QuestionForm.vue';
+import QuestionSlideIn from '../components/questions/SlideIn/SlideIn.vue';
+import GenericModal from '../components/GenericModal.vue';
+import LevelUp from '../components/LevelUp.vue';
 
 const store = useQuestionStore();
-const { selectedTopics, selectedQuestion } = storeToRefs(store);
-const {getQuestions} = store;
-const title = ref("very long title with a lot of text");
-const content = ref("very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of textvery long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text");
+const { selectedQuestion } = storeToRefs(store);
+const { getQuestions } = store;
+const content = ref(
+  'very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of textvery long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text',
+);
+const nextQuestion = ref('Continue practicing');
+const scoreMessage = ref(false);
+
+const title = computed(() => 'Title');
 
 getQuestions();
+
+const showMessage = () => {
+  if (Math.random() > 0.5) {
+    scoreMessage.value = true;
+    setTimeout(() => {
+      scoreMessage.value = false;
+      getQuestions();
+    }, 3000);
+  }
+
+  return false;
+};
+
+const toNextQuestion = () => {
+  showMessage();
+};
 </script>
+
 <template>
-  <div class="question">
-    <h1>I'm the practice page</h1>
-    <p>{{ selectedTopics }}</p>
-    <QuestionHeader :questionData="selectedQuestion" />
-    <QuestionForm :questionData="selectedQuestion" />
-    <QuestionSlideIn :title="title" :content="content" />
+  <div v-if="!scoreMessage" class="question">
+    <QuestionHeader :question-data="selectedQuestion" />
+    <QuestionForm :question-data="selectedQuestion" />
+    <QuestionSlideIn
+      :next-question="nextQuestion"
+      :title="title"
+      :content="content"
+      @emit-next-question="toNextQuestion()"
+    />
   </div>
+  <GenericModal :is-open="scoreMessage" :fireworks="true">
+    <LevelUp />
+  </GenericModal>
 </template>
 
 <style lang="scss" scoped>

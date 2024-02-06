@@ -1,12 +1,25 @@
 <template>
-  <div class="fixed inset-x-0 flex flex-col items-center bottom-0 slide-in-container" :class="show ? 'show' : ''">
+  <div
+    class="fixed inset-x-0 flex flex-col items-center bottom-0 slide-in-container"
+    :class="show ? 'show' : ''"
+  >
     <div class="btn-container">
-      <div v-if="show" class="bg-[#F3C000] rounded-full p-2 cursor-pointer" @click="handleShow(false)">
+      <div
+        v-if="show"
+        class="bg-[#F3C000] rounded-full p-2 cursor-pointer"
+        @click="handleShow(false)"
+        @keydown="handleShow(false)"
+      >
         <div class="border-2 border-black rounded-full p-1">
           <ArrowDownward class="icon-size" />
         </div>
       </div>
-      <div v-if="!show" class="bg-[#F3C000] rounded-full p-2 cursor-pointer" @click="handleShow(true)">
+      <div
+        v-if="!show"
+        class="bg-[#F3C000] rounded-full p-2 cursor-pointer"
+        @click="handleShow(true)"
+        @keydown="handleShow(true)"
+      >
         <div class="border-2 border-black rounded-full p-1">
           <ArrowUpward class="icon-size" />
         </div>
@@ -19,6 +32,13 @@
       <p class="text-sm mt-2 content">
         {{ content }}
       </p>
+      <button
+        type="button"
+        class="font-medium text-black rounded-[2rem] bg-[#F3C000] hover:bg-[#F3C000] mt-8 text-sm px-4 py-2 mx-auto block"
+        @click="emitNextQuestion"
+      >
+        {{ nextQuestion }}
+      </button>
     </div>
   </div>
 </template>
@@ -35,16 +55,35 @@ const handleShow = (bool) => {
 };
 
 defineProps({
-  title: { type: String, required: true },
-  content: { type: String, required: true },
+  title: {
+    type: String,
+    required: true,
+  },
+  content: {
+    type: String,
+    required: true,
+  },
+  nextQuestion: {
+    type: String,
+    required: true,
+  },
 });
 
+const emit = defineEmits(['emit-next-question']);
+
+const emitNextQuestion = () => {
+  handleShow(false);
+  emit('emit-next-question');
+};
 </script>
 
 <style scoped lang="scss">
 .slide-in-container {
   transform: translateY(calc(calc(100% - 64px)));
-  transition: bottom 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
+  transition:
+    bottom 0.35s ease,
+    opacity 0.35s ease,
+    transform 0.35s ease;
   will-change: opacity, transform;
 }
 
