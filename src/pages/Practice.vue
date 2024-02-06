@@ -8,7 +8,7 @@ import GenericModal from '../components/GenericModal.vue';
 import LevelUp from '../components/LevelUp.vue';
 
 const store = useQuestionStore();
-const { selectedQuestion, showQuestionSlideIn } = storeToRefs(store);
+const { selectedQuestion, showQuestionSlideIn, givenAnswer } = storeToRefs(store);
 const { getQuestions } = store;
 const content = ref(
   'very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of textvery long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text',
@@ -28,12 +28,13 @@ const showMessage = () => {
       getQuestions();
     }, 3000);
   }
-
-  return false;
 };
 
 const toNextQuestion = () => {
+  getQuestions();
   showMessage();
+  showQuestionSlideIn.value = false;
+  givenAnswer.value = [];
 };
 </script>
 
@@ -44,7 +45,7 @@ const toNextQuestion = () => {
       <QuestionForm :question-data="selectedQuestion" />
     </div>
     <QuestionSlideIn
-    v-if="showQuestionSlideIn"
+      v-if="showQuestionSlideIn"
       :next-question="nextQuestion"
       :title="title"
       :content="content"
