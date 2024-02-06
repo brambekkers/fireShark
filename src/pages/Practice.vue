@@ -1,25 +1,41 @@
 <script setup>
-import { ref } from "vue"
+import { computed, ref } from 'vue';
 import { storeToRefs } from 'pinia';
-import {useQuestionStore} from '@stores/question';
+import { useQuestionStore } from '@stores/question';
 
-import QuestionHeader from "../components/questions/QuestionHeader.vue"
-import QuestionForm from "../components/questions/QuestionForm.vue"
-import QuestionSlideIn from "../components/questions/SlideIn/SlideIn.vue"
+import QuestionHeader from '../components/questions/QuestionHeader.vue';
+import QuestionForm from '../components/questions/QuestionForm.vue';
+import QuestionSlideIn from '../components/questions/SlideIn/SlideIn.vue';
 
 const store = useQuestionStore();
 const { selectedTopics, selectedQuestion } = storeToRefs(store);
-const {getQuestions} = store;
-const title = ref("very long title with a lot of text");
-const content = ref("very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of textvery long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text");
+const { getQuestions } = store;
+const content = ref(
+  'very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of textvery long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text',
+);
+const nextQuestion = ref('Continue practicing');
+
+const toNextQuestion = () => {
+  console.log('emitNextQuestion');
+};
+
+const title = computed(() => 'Title');
 
 getQuestions();
 </script>
+
 <template>
   <div class="question">
-    <QuestionHeader :questionData="selectedQuestion" />
-    <QuestionForm :questionData="selectedQuestion" />
-    <QuestionSlideIn :title="title" :content="content" />
+    <h1>I'm the practice page</h1>
+    <p>{{ selectedTopics }}</p>
+    <QuestionHeader :question-data="selectedQuestion" />
+    <QuestionForm :question-data="selectedQuestion" />
+    <QuestionSlideIn
+      :next-question="nextQuestion"
+      :title="title"
+      :content="content"
+      @emit-next-question="toNextQuestion"
+    />
   </div>
 </template>
 
