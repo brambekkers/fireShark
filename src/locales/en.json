@@ -1,3 +1,26 @@
 {
-  "test": "ENG TEXT"
+  "general": {
+    "appName": "Shark",
+    "practice": "Practice",
+    "duel": "Duel",
+    "settings": "Settings",
+    "notifications": "Notifications"
+  },
+  "overview": {
+    "selectTopics": "Select the topics you want to practice",
+    "topics": {
+      "general": "General",
+      "javascript": "Javascript",
+      "emerald": "Emerald",
+      "vue": "Vue",
+      "devops": "DevOps",
+      "debug": "Debug"
+    }
+  },
+  "settings": {
+    "notAllCanBeChanged": "You cannot change all personal information yourself.",
+    "personalSettings": "Personal settings",
+    "language": "Language",
+    "faq": "Frequently asked questions"
+  }
 }

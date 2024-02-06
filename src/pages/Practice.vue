@@ -39,8 +39,10 @@ const toNextQuestion = () => {
 
 <template>
   <div v-if="!scoreMessage" class="question">
-    <QuestionHeader :question-data="selectedQuestion" />
-    <QuestionForm :question-data="selectedQuestion" />
+    <div class="max-w-[500px]">
+      <QuestionHeader :question-data="selectedQuestion" />
+      <QuestionForm :question-data="selectedQuestion" />
+    </div>
     <QuestionSlideIn
     v-if="showQuestionSlideIn"
       :next-question="nextQuestion"
@@ -59,6 +61,8 @@ const toNextQuestion = () => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  margin-top: -48px;
+  z-index: 200;
+  position: relative;
 }
 </style>
