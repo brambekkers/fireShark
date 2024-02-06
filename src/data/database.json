@@ -180,13 +180,13 @@
           }
         ]
       },
-      "javaScript": {
-        "topicId": "javaScript",
+      "javascript": {
+        "topicId": "javascript",
         "questions": [
           {
             "id": "js-q1",
             "type": "singleChoice",
-            "subject": "JavaScript",
+            "subject": "javascript",
             "headerImg": "",
             "question": "What symbol is used to end statements in JavaScript",
             "answers": [
