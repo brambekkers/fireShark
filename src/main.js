@@ -1,6 +1,5 @@
 import { createApp } from 'vue';
 import '@/styles/main.scss';
-import * as monaco from 'monaco-editor';
 
 self.MonacoEnvironment = {
   getWorker: function (workerId, label) {

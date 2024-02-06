@@ -1,6 +1,6 @@
 <script setup>
 import { rand } from '@vueuse/core';
-import Button from '@/components/Button.vue';
+import Button from '@/components/generic/Button.vue';
 import TopicButton from '@/components/overview/TopicButton.vue';
 import useUserStore from '@/stores/userStore';
 import useQuestionStore from '@/stores/question';

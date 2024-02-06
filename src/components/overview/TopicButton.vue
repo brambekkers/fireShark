@@ -1,8 +1,7 @@
 <script setup>
-import ProgressBar from '@/components/generic/ProgressBar.vue';
 import useUserStore from '@/stores/userStore';
-
 import { useQuestionStore } from '@stores/question';
+import ProgressBar from '@/components/generic/ProgressBar.vue';
 import IconCheck from '~icons/lucide/check';
 
 const props = defineProps({

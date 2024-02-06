@@ -10,7 +10,7 @@ defineProps({
 </script>
 
 <template>
-  <div v-if="questionData" class="questionHeader">
+  <div v-if="questionData" class="questionHeader mt-2">
     <img
       :src="questionData.headerImg"
       alt="question-picture"
@@ -29,11 +29,9 @@ defineProps({
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2rem;
 }
 
 .image {
-  max-width: 80%;
   max-height: 70%;
   height: 15rem;
   width: 50rem;

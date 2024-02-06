@@ -9,9 +9,8 @@ export const useQuestionStore = defineStore('question', () => {
   const showQuestionSlideIn = ref(false);
   const answerIsGiven = computed(() => givenAnswer.value.length > 0)
 
-  function updateSelectedTopics(isSelected, title) {
+  const updateSelectedTopics = (isSelected, title) => {
     if (isSelected) selectedTopics.value.push(title);
-
     else {
       const index = selectedTopics.value.indexOf(title);
       if (index !== -1) {
@@ -20,7 +19,7 @@ export const useQuestionStore = defineStore('question', () => {
     }
   }
 
-  async function getQuestions() {
+  const getQuestions = async () => {
     try {
       const res = await fetch('http://localhost:3000/questions');
       const data = await res.json();
@@ -35,7 +34,7 @@ export const useQuestionStore = defineStore('question', () => {
     }
   }
 
-  function setAnswer(wasSelected, answer) {
+  const setAnswer = (wasSelected, answer) => {
     const questionType = selectedQuestion.value.type
 
     if (questionType === 'singleChoice') {
@@ -66,7 +65,7 @@ export const useQuestionStore = defineStore('question', () => {
     }
   }
 
-  function checkAnswer() {
+  const checkAnswer = () => {
     if (givenAnswer.value.length <= 0) {
       return false;
     }
@@ -85,7 +84,7 @@ export const useQuestionStore = defineStore('question', () => {
     }
   }
 
-  function saveAnswer() {
+  const saveAnswer = () => {
     showQuestionSlideIn.value = !showQuestionSlideIn.value;
     const isSuccess = checkAnswer();
     console.log(`The answer was ${isSuccess ? 'correct' : 'incorrect'}`);
