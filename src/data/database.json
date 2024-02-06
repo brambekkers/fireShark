@@ -95,14 +95,7 @@
           "key": "debug",
           "score": 0
         }
-      ],
-      "stats": {
-        "totalQuestions": 30,
-        "correctAnswers": 0,
-        "wrongAnswers": 0,
-        "unansweredQuestions": 30,
-        "percentage": 0
-      }
+      ]
     }
   ],
   "questions": {
