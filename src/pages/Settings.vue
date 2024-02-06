@@ -1,5 +1,7 @@
 <script setup>
-import SettingsSection from '@/components/settings/Section.vue';
+import SettingsSection from '@/components/settings/sections/Section.vue';
+import PersonalSection from '@/components/settings/sections/Personal.vue';
+import LanguageSection from '@/components/settings/sections/Language.vue';
 </script>
 
 <template>
@@ -9,20 +11,27 @@ import SettingsSection from '@/components/settings/Section.vue';
         {{ $t('settings.notAllCanBeChanged') }}
       </h2>
     </section>
-    <SettingsSection icon="user">
-      {{ $t('settings.personalSettings') }}
+    <PersonalSection />
+    <LanguageSection />
+
+    <SettingsSection icon="question" hasDropdown>
+      {{ $t('settings.faq') }}
     </SettingsSection>
-    <SettingsSection icon="globe">
-      {{ $t('settings.language') }}
-    </SettingsSection>
-    <SettingsSection icon="question">{{ $t('settings.faq') }} </SettingsSection>
 
     <h4 class="font-bold mt-8 text-xl">{{ $t('general.notifications') }}</h4>
-    <SettingsSection icon="bell"> Persoonlijke gegevens </SettingsSection>
-    <SettingsSection icon="letter"> Persoonlijke gegevens </SettingsSection>
+    <SettingsSection icon="bell">
+      {{ $t('settings.pushNotifications') }}
+    </SettingsSection>
+    <SettingsSection icon="letter">
+      {{ $t('settings.emailNotifications') }}
+    </SettingsSection>
 
     <h4 class="font-bold mt-8 text-xl">{{ $t('general.notifications') }}</h4>
-    <SettingsSection icon="trophy"> Persoonlijke gegevens </SettingsSection>
-    <SettingsSection icon="sync"> Persoonlijke gegevens </SettingsSection>
+    <SettingsSection icon="trophy">
+      {{ $t('settings.joinDuels') }}
+    </SettingsSection>
+    <SettingsSection icon="sync">
+      {{ $t('settings.automaticDuel') }}
+    </SettingsSection>
   </div>
 </template>
