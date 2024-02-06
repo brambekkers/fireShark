@@ -1,11 +1,12 @@
 <script setup>
 import { computed } from 'vue';
+import { storeToRefs } from 'pinia';
+
 import useUserStore from '@/stores/userStore';
 
-const profileImageUrl = computed(
-  () => useUserStore().user?.settings?.profileImageUrl || '',
-);
+const { settings, stats } = storeToRefs(useUserStore());
 
+const profileImageUrl = computed(() => settings?.value?.profileImageUrl || '');
 const profileStyle = computed(() => ({
   backgroundImage: `url('${profileImageUrl.value}')`,
 }));
@@ -16,27 +17,28 @@ const profileStyle = computed(() => ({
     class="profile-image relative rounded-full h-36 w-36 bg-accent shadow-2xl"
     :style="profileStyle"
   >
-    <div class="progress absolute w-44 h-44 -top-4 -left-4">
+    <div class="progress absolute w-48 h-48 -top-6 -left-6">
       <svg class="w-full h-full" viewBox="0 0 100 100">
         <!-- Background circle -->
         <circle
-          class="text-gray-200 stroke-current"
-          stroke-width="4"
+          class="text-gray-200 rogress-ring__circle stroke-current"
+          stroke-width="3"
           cx="50"
           cy="50"
           r="40"
           fill="transparent"
+          :stroke-dashoffset="`calc(400 - (200 * ${stats.percentage}) / 100)`"
         />
         <!-- Progress circle -->
         <circle
           class="text-sharp-warning progress-ring__circle stroke-current"
-          stroke-width="8"
+          stroke-width="7"
           stroke-linecap="round"
           cx="50"
           cy="50"
           r="40"
           fill="transparent"
-          stroke-dashoffset="calc(400 - (400 * 45) / 100)"
+          :stroke-dashoffset="`calc(400 - (200 * ${stats.percentage}) / 100)`"
         />
 
         <!-- Center text -->
@@ -48,7 +50,7 @@ const profileStyle = computed(() => ({
           text-anchor="middle"
           alignment-baseline="middle"
         >
-          70%
+          {{ stats?.percentage || 0 }}%
         </text>
       </svg>
     </div>
@@ -62,13 +64,10 @@ const profileStyle = computed(() => ({
   background-position: center;
 
   .progress {
-    // top: -24px;
-    // left: -24px;
-
     .progress-ring__circle {
       stroke-dasharray: 400, 400;
       transition: stroke-dashoffset 0.35s;
-      transform: rotate(-90deg);
+      transform: rotate(130deg);
       transform-origin: 50% 50%;
     }
   }
