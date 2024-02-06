@@ -1,7 +1,8 @@
 <script setup>
-import ImageProgress from '@/components/overview/ImageProgress.vue';
-import useUserStore from '@/stores/userStore';
 import { useRoute } from 'vue-router';
+import ImageProgress from '@/components/overview/ImageProgress.vue';
+import HeaderLayout from '@/layouts/HeaderLayout.vue';
+import useUserStore from '@/stores/userStore';
 
 const { user } = storeToRefs(useUserStore());
 const route = useRoute();
@@ -12,7 +13,7 @@ const title = computed(() => {
     return `${t('general.hi')} ${user.value.name}!`;
   }
   if (route.name === 'Duel') {
-    return `Duelscore: 1.202`;
+    return 'Duelscore: 1.202';
   }
 });
 
@@ -31,17 +32,14 @@ const subtitle = computed(() => {
 
 <template>
   <div class="h-44 w-screen relative">
-    <div
-      aria-hidden="true"
-      style="clip-path: ellipse(130% 248% at 50% -150%)"
-      class="bg-secondary background absolute inset-0"
-    ></div>
-
+    <HeaderLayout />
     <section
       class="h-44 flex justify-between relative z-10 pt-8 max-w-screen-lg mx-auto"
     >
       <div class="mt-4">
-        <h1 class="font-extrabold text-3xl text-white">{{ title }}</h1>
+        <h1 class="font-extrabold text-3xl text-white">
+          {{ title }}
+        </h1>
         <p class="text-2xl text-white">
           {{ subtitle }}
         </p>

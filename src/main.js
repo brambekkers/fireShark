@@ -6,8 +6,8 @@ import { createI18n } from 'vue-i18n';
 import App from '@/App.vue';
 import router from '@/router';
 
-import nl from './locales/nl';
-import en from './locales/en';
+import nl from './locales/nl.json';
+import en from './locales/en.json';
 
 const i18n = createI18n({
   legacy: false,

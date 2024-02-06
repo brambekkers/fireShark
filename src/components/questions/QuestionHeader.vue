@@ -24,11 +24,16 @@ defineProps({
 .questionHeader {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin-top: 2rem
 }
 
 .image {
-  width: 570px;
-  height: 291px;
+  max-width: 80%;
+  max-height: 70%;
+  height: 15rem;
+  width: 50rem;
+  border-radius: 2rem;
 }
 
 .questionText {

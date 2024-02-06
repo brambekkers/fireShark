@@ -1,5 +1,6 @@
 <script setup>
 import { useQuestionStore } from '@stores/question';
+import { useTimeout } from '@vueuse/core';
 import IconCheck from '~icons/lucide/check';
 
 const props = defineProps({
@@ -27,6 +28,8 @@ const toggleSelection = () => {
   isChecked.value = !isChecked.value;
   questionStore.value.updateSelectedTopics(isChecked.value, props.title);
 };
+
+const ready = useTimeout(10);
 </script>
 
 <template>
@@ -77,8 +80,11 @@ const toggleSelection = () => {
       <section class="percentage-section flex mt-4 align-center">
         <div class="h-2 mt-1 rounded bg-slate-300 relative grow">
           <div
-            :style="{ width: `${progress}%` }"
-            class="from-primary to-secondary bg-gradient-to-r h-[10px] -mt-[1px] rounded-l-full rounded-r-full"
+            :style="{
+              width: ready ? `${progress}%` : '0px',
+              transitionDelay: `${(50 - progress / 2) * 8}ms`,
+            }"
+            class="from-primary to-secondary bg-gradient-to-r h-[10px] -mt-[1px] rounded-l-full rounded-r-full transition-all duration-500 ease-in-out"
           ></div>
         </div>
         <p class="percentage ms-4">{{ progress }}%</p>
