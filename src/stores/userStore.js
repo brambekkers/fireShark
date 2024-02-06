@@ -5,24 +5,24 @@ export const useUserStore = defineStore('user', () => {
   const stats = computed(() => user.value.stats || {});
   const topics = computed(() => user.value.topics || []);
   const settings = computed(() => user.value.settings || {});
-  const isUserLoading = ref(false)
-  const isUserError = ref(false)
+  const isUserLoading = ref(false);
+  const isUserError = ref(false);
 
   const fetchUser = async (userId) => {
     try {
       const response = await fetch(`http://192.168.0.192:3000/users/${userId}`);
       user.value = await response.json();
     } catch (error) {
-      isUserError.value = true,
+      isUserError.value = true;
       console.log(error);
     } finally {
-      isUserLoading.value = false
+      isUserLoading.value = false;
     }
   };
 
   const getRandomUser = () => {
     fetchUser(`user${rand(1, 10)}`);
-  }
+  };
 
   const updateUser = async () => {
     try {

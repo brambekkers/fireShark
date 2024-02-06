@@ -4,7 +4,6 @@ import Button from '@/components/Button.vue';
 import TopicButton from '@/components/overview/TopicButton.vue';
 import useUserStore from '@/stores/userStore';
 import useQuestionStore from '@/stores/question';
-import LevelUp from '@/components/LevelUp.vue';
 
 const userStore = useUserStore();
 const { selectedTopics } = storeToRefs(useQuestionStore());

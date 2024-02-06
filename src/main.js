@@ -2,12 +2,12 @@ import { createApp } from 'vue';
 import '@/styles/main.scss';
 
 import { createPinia } from 'pinia';
+import { createI18n } from 'vue-i18n';
 import App from '@/App.vue';
 import router from '@/router';
 
-import { createI18n } from 'vue-i18n'
-import nl from './locales/nl.json'
-import en from './locales/en.json'
+import nl from './locales/nl.json';
+import en from './locales/en.json';
 
 const i18n = createI18n({
   legacy: false,
@@ -15,13 +15,13 @@ const i18n = createI18n({
   fallbackLocale: 'en',
   messages: {
     en,
-    nl
-  }
-})
+    nl,
+  },
+});
 
-const app = createApp(App)
-app.use(i18n)
-app.use(router)
-app.use(createPinia())
+const app = createApp(App);
+app.use(i18n);
+app.use(router);
+app.use(createPinia());
 
-app.mount('#app')
+app.mount('#app');
