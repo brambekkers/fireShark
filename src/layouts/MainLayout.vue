@@ -21,26 +21,37 @@ const clearRouteDestination = () => {
   selectedRoute.value = '';
 };
 
-const setModalAndSelectedRoute = (to) => {
-  if (selectedRoute.value !== '') {
-    selectedRoute.value = '';
-    toggleModal(false);
-    return true;
-  }
-  selectedRoute.value = to.path;
-  toggleModal(true);
-  return false;
-};
+// TODO: below method split up does not wait with routing, try async?
+// const setModalAndSelectedRoute = (to) => {
+//   if (selectedRoute.value !== '') {
+//     selectedRoute.value = '';
+//     toggleModal(false);
+//     return true;
+//   }
+//   selectedRoute.value = to.path;
+//   toggleModal(true);
+//   return false;
+// };
 
-const shouldUserBeRouted = (to, from) => {
-  if (from.name === 'Practice') {
-    return setModalAndSelectedRoute(to);
-  }
-  return true;
-};
+// const shouldUserBeRouted = (to, from) => {
+//   if (from.name === 'Practice') {
+//     return setModalAndSelectedRoute(to);
+//   }
+//   return true;
+// };
 
 router.beforeEach((to, from) => {
-  shouldUserBeRouted(to, from);
+  if (from.name === 'Practice') {
+    if (selectedRoute.value !== '') {
+      selectedRoute.value = '';
+      toggleModal(false);
+      return true;
+    }
+    selectedRoute.value = to.path;
+    toggleModal(true);
+    return false;
+  }
+  return true;
 });
 
 const layoutStore = useLayoutStore();

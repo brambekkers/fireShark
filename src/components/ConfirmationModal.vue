@@ -1,56 +1,3 @@
-<!-- <script setup>
-import { ref } from 'vue';
-
-const dialog = ref(null);
-
-const open = () => {
-  dialog.value.showModal();
-};
-
-const close = () => {
-  dialog.value.close();
-};
-</script>
-
-<template>
-  <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-      <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-        <dialog ref="dialog" class="relative transform overflow-hidden rounded-lg bg-white shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-          <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-            <div class="sm:flex sm:items-start">
-              <div class="mt-3 text-center sm:ml-4 sm:mt-0">
-                <h3 id="modal-title" class="text-base font-semibold leading-6 text-gray-900">
-                  Deactivate account
-                </h3>
-                <div class="mt-2">
-                  <p class="mb-4 text-sm text-gray-500">
-                    Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="flex">
-              <button
-                id="close-dialog-btn"
-                class="mx-auto w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:w-auto"
-                type="button"
-                @click="close()"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </dialog>
-        <button id="open-dialog-btn" type="button" @click="open()">
-          Show the dialog
-        </button>
-      </div>
-    </div>
-  </div>
-</template> -->
-
 <script setup>
 import {
   Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot,
@@ -70,39 +17,35 @@ defineEmits(['closeModal', 'confirmRouting', 'cancelRouting']);
 
 <template>
   <TransitionRoot as="template" :show="isOpen">
-    <Dialog as="div" class="relative z-10" @close="$emit('closeModal')">
+    <Dialog as="div" class="relative z-50" @close="$emit('closeModal')">
       <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0" enter-to="opacity-100" leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
-        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+        <div class="fixed inset-0 bg-primary bg-opacity-75 transition-opacity"></div>
       </TransitionChild>
 
-      <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+      <div class="fixed inset-0 z-55 w-screen overflow-y-auto">
+        <div class="flex min-h-full justify-center p-4 text-center items-center">
           <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" enter-to="opacity-100 translate-y-0 sm:scale-100" leave="ease-in duration-200" leave-from="opacity-100 translate-y-0 sm:scale-100" leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
             <DialogPanel class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-              <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                <div class="sm:flex sm:items-start">
-                  <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                    <ExclamationTriangleIcon class="h-6 w-6 text-red-600" aria-hidden="true" />
-                  </div>
-                  <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-                    <DialogTitle as="h3" class="text-base font-semibold leading-6 text-gray-900">
-                      Deactivate account
-                    </DialogTitle>
-                    <div class="mt-2">
-                      <p class="text-sm text-gray-500">
-                        Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.
-                      </p>
-                    </div>
-                  </div>
+              <div class="bg-white px-4 py-8 flex justify-center items-center flex-col">
+                <h1 class="text-primary text-3xl mb-3">
+                  Are you sure?
+                </h1>
+
+                <p class="text-center text-sharp-text-color whitespace-pre-line mb-8">
+                  Are you sure you want to stop practicing?<br>
+                  Your progress has been saved.
+                </p>
+
+                <div class="mb-6">
+                  <button type="button" class="w-full rounded-3xl bg-sharp-navbar-front px-8 py-3 text-base font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-sharp-button-primary-bg-focus" @click="$emit('cancelRouting')">
+                    Continue practicing
+                  </button>
                 </div>
-              </div>
-              <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                <button type="button" class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto" @click="$emit('confirmRouting')">
-                  Deactivate
-                </button>
-                <button ref="cancelButtonRef" type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" @click="$emit('cancelRouting')">
-                  Cancel
-                </button>
+                <div>
+                  <button type="button" class="w-full rounded-3xl px-8 py-3 bg-transparent text-base font-semibold text-sharp-button-secondary-text border-2 border-sharp-button-secondary-border-color shadow-sm hover:text-sharp-button-secondary-text-focus hover:border-sharp-button-secondary-border-color-focus" @click="$emit('confirmRouting')">
+                    Stop
+                  </button>
+                </div>
               </div>
             </DialogPanel>
           </TransitionChild>
