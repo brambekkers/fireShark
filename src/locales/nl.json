@@ -21,7 +21,11 @@
       "debug": "Debug"
     }
   },
+  "duel": {
+    "rdyToDuel": "Klaar om te duelleren?"
+  },
   "settings": {
+    "changeYourProfileHere": "Change your profile here.",
     "notAllCanBeChanged": "Niet alle persoonlijke gegevens kun je zelf wijzigen",
     "personalSettings": "Persoonlijke gegevens",
     "language": "Taal",

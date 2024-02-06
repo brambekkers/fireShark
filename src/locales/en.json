@@ -22,7 +22,11 @@
       "debug": "Debug"
     }
   },
+  "duel": {
+    "rdyToDuel": "Ready to duel?"
+  },
   "settings": {
+    "changeYourProfileHere": "Pas hier je profiel aan.",
     "notAllCanBeChanged": "You cannot change all personal information yourself.",
     "personalSettings": "Personal settings",
     "language": "Language",
