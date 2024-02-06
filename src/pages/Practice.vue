@@ -39,7 +39,7 @@ const toNextQuestion = () => {
 
 <template>
   <div v-if="!scoreMessage" class="question">
-    <div class="max-w-[500px]">
+    <div class="max-w-[610px]">
       <QuestionHeader :question-data="selectedQuestion" />
       <QuestionForm :question-data="selectedQuestion" />
     </div>
@@ -61,7 +61,7 @@ const toNextQuestion = () => {
   flex-direction: column;
   align-items: center;
   margin-top: -48px;
-  z-index: 200;
+  z-index: 20;
   position: relative;
 }
 </style>

@@ -29,6 +29,7 @@ defineProps({
 .image {
   width: 570px;
   height: 291px;
+  border-radius: 1rem;
 }
 
 .questionText {
