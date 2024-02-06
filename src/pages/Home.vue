@@ -2,9 +2,10 @@
 import { watchEffect, ref } from 'vue';
 import { rand } from '@vueuse/core';
 import { storeToRefs } from 'pinia';
-import Button from '@components/Button.vue';
-import TopicButton from '../components/TopicButton.vue';
-import OverviewHeader from '../components/overview/Header.vue';
+import Button from '@/components/Button.vue';
+import GenericModal from '@/components/GenericModal.vue';
+import TopicButton from '@/components/TopicButton.vue';
+import OverviewHeader from '@/components/overview/Header.vue';
 import useUserStore from '@/stores/userStore';
 import useQuestionStore from '@/stores/question';
 
@@ -37,6 +38,13 @@ const clearSelection = () => {
 watchEffect(() => {
   userStore.calculatePerformancePercentage();
 });
+
+const isModalOpen = ref(false);
+
+const toggleModal = (isOpen) => {
+  console.log('isOpen :>> ', isOpen);
+  isModalOpen.value = isOpen;
+};
 </script>
 
 <template>
@@ -82,6 +90,13 @@ watchEffect(() => {
         </Button>
       </div>
     </div>
+
+    <!-- <ConfirmationModal /> -->
+    <GenericModal :is-open="isModalOpen" @close-modal="toggleModal(false)" />
+
+    <button id="open-dialog-btn" type="button" @click="toggleModal(true)">
+      Show the dialog
+    </button>
   </main>
 </template>
 
