@@ -3,7 +3,7 @@ import { rand } from '@vueuse/core';
 import { ref } from 'vue';
 
 export const useQuestionStore = defineStore('question', () => {
-  const selectedTopics = ref(['general', 'javascript', 'debug', 'vue', 'emerald', 'devops']);
+  const selectedTopics = ref(['vue', 'javascript', 'general']);
   const selectedQuestions = ref([]);
   const selectedQuestion = ref({});
 
@@ -24,8 +24,19 @@ export const useQuestionStore = defineStore('question', () => {
     }
   }
 
+  function updateSelectedTopics(isSelected, title) {
+    if (isSelected) selectedTopics.value.push(title);
+
+    else {
+      const index = selectedTopics.value.indexOf(title);
+      if (index !== -1) {
+        selectedTopics.value.splice(index, 1);
+      }
+    }
+  }
+
   return {
-    selectedQuestion, selectedQuestions, selectedTopics, getQuestions,
+    selectedQuestion, selectedQuestions, selectedTopics, getQuestions, updateSelectedTopics,
   };
 });
 
