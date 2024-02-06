@@ -14,13 +14,13 @@ import IconSettings from '~icons/tdesign/setting-1';
     </section>
     <section class="links">
       <router-link to="/">
-        <span class="link"> <icon-brain /> {{ $t('general.practice') }}</span>
+        <span class="link"> <IconBrain /> {{ $t('general.practice') }}</span>
       </router-link>
       <router-link to="/duel">
-        <span class="link"><icon-trophy /> {{ $t('general.duel') }}</span>
+        <span class="link"><IconTrophy /> {{ $t('general.duel') }}</span>
       </router-link>
       <router-link to="/settings">
-        <span class="link"><icon-settings /> {{ $t('general.settings') }}</span>
+        <span class="link"><IconSettings /> {{ $t('general.settings') }}</span>
       </router-link>
     </section>
   </nav>

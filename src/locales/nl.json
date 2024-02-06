@@ -9,6 +9,9 @@
     "selectTopics": "Selecteer de topics die je wilt oefenen."
   },
   "settings": {
-    "notAllCanBeChanged": "Niet alle persoonlijke gegevens kun je zelf wijzigen."
+    "notAllCanBeChanged": "Niet alle persoonlijke gegevens kun je zelf wijzigen",
+    "personalSettings": "Persoonlijke gegevens",
+    "language": "Taal",
+    "faq": "Veelgesteelde vragen"
   }
 }
