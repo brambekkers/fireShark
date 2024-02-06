@@ -24,8 +24,19 @@ export const useQuestionStore = defineStore('question', () => {
     }
   }
 
+  function updateSelectedTopics(isSelected, title) {
+    if (isSelected) selectedTopics.value.push(title);
+
+    else {
+      const index = selectedTopics.value.indexOf(title);
+      if (index !== -1) {
+        selectedTopics.value.splice(index, 1);
+      }
+    }
+  }
+
   return {
-    selectedQuestion, selectedQuestions, selectedTopics, getQuestions,
+    selectedQuestion, selectedQuestions, selectedTopics, getQuestions, updateSelectedTopics,
   };
 });
 
