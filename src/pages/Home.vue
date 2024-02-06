@@ -39,7 +39,9 @@ watchEffect(() => {
         <div>
           <p class="text-center mt-8">
             Your performance is at
-            <span class="text-2xl font-bold text-blue-700">{{ userStore.stats?.percentage }}%</span>
+            <span class="text-2xl font-bold text-blue-700"
+              >{{ userStore.stats?.percentage }}%</span
+            >
           </p>
         </div>
       </section>
@@ -58,9 +60,7 @@ watchEffect(() => {
         <Button
           title="Select all"
           class="text-green bg-transparent border-solid border-4 border-green hover:text-green rounded-full text-sm px-2 py-2 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
-          @click="selectAll"
-        >
-        </Button>
+        />
       </div>
     </div>
   </main>

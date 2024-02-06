@@ -1,19 +1,22 @@
 import { defineStore } from 'pinia';
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 
 export const useUserStore = defineStore('user', () => {
   const user = ref({});
-  const stats = ref({});
+  const stats = computed(() => user.stats || {});
+  const isUserLoading = ref(false)
+  const isUserError = ref(false)
   const topics = ref([]);
 
   const fetchUser = async (userId) => {
     try {
       const response = await fetch(`http://192.168.0.192:3000/users/${userId}`);
       user.value = await response.json();
-      stats.value = user.value?.stats;
-      topics.value = user.value?.topics;
     } catch (error) {
+      isUserError.value = true,
       console.log(error);
+    } finally {
+      isUserLoading.value = false
     }
   };
 
