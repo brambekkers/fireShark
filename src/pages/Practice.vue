@@ -11,17 +11,15 @@ const store = useQuestionStore();
 const { selectedQuestion, showQuestionSlideIn, givenAnswer } = storeToRefs(store);
 const { getQuestions } = store;
 const content = ref(
-  'very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of textvery long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text',
+  'very long content with a lot of text',
 );
 const nextQuestion = ref('Continue practicing');
 const scoreMessage = ref(false);
 
-const title = computed(() => 'Title');
-
 getQuestions();
 
 const showMessage = () => {
-  if (Math.random() > 0.5) {
+  if (store.checkAnswer()) {
     scoreMessage.value = true;
     setTimeout(() => {
       scoreMessage.value = false;
@@ -47,7 +45,6 @@ const toNextQuestion = () => {
     <QuestionSlideIn
       v-if="showQuestionSlideIn"
       :next-question="nextQuestion"
-      :title="title"
       :content="content"
       @emit-next-question="toNextQuestion()"
     />
