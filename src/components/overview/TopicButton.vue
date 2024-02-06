@@ -72,7 +72,9 @@ const toggleSelection = () => {
             class="from-primary to-secondary bg-gradient-to-r h-full"
           ></div>
         </div>
-        <p class="percentage ms-4">{{ progress }}%</p>
+        <p class="percentage ms-4">
+          {{ progress }}%
+        </p>
       </section>
     </div>
   </div>

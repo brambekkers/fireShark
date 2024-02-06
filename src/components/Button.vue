@@ -24,8 +24,8 @@ const styleClasses = computed(() => {
   <button
     type="button"
     :disabled="props.disable"
-    @click="$emit('on-clicked')"
     :class="styleClasses"
+    @click="$emit('on-clicked')"
   >
     {{ title }}
   </button>
