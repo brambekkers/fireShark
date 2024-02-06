@@ -16,15 +16,6 @@ const { selectedTopics } = storeToRefs(useQuestionStore());
 watchEffect(() => {
   userStore.calculatePerformancePercentage();
 });
-
-const fetchUsers = async () => {
-  const userId = 'id1';
-  const res = await fetch(`http://192.168.0.192:3000/users/${userId}`);
-  const user = await res.json();
-  topics.value = user.topics || [];
-  console.log(topics.value);
-};
-fetchUsers();
 </script>
 
 <template>
@@ -48,9 +39,7 @@ fetchUsers();
         <div>
           <p class="text-center mt-8">
             Your performance is at
-            <span class="text-2xl font-bold text-blue-700"
-              >{{ userStore.stats?.percentage }}%</span
-            >
+            <span class="text-2xl font-bold text-blue-700">{{ userStore.stats?.percentage }}%</span>
           </p>
         </div>
       </section>
