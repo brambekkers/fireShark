@@ -17,8 +17,6 @@ getQuestions();
 </script>
 <template>
   <div class="question">
-    <h1>I'm the practice page</h1>
-    <p>{{ selectedTopics }}</p>
     <QuestionHeader :questionData="selectedQuestion" />
     <QuestionForm :questionData="selectedQuestion" />
     <QuestionSlideIn :title="title" :content="content" />

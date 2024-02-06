@@ -36,6 +36,8 @@ export default {
         'sharp-button-secondary-text-focus': '#009286',
         'sharp-button-tertiary-bg': '#009286',
         'sharp-button-tertiary-bg-focus': '#005e5d',
+        'sharp-button-disabled-bg': '#d0d0d0',
+        'sharp-button-disabled-text': '#ffffff',
       },
     },
   },
