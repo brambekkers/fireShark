@@ -1,21 +1,16 @@
 <script setup>
-import { watchEffect, ref } from 'vue';
 import { rand } from '@vueuse/core';
-import { storeToRefs } from 'pinia';
 import Button from '@/components/Button.vue';
-import GenericModal from '@/components/GenericModal.vue';
-import TopicButton from '@/components/TopicButton.vue';
+import TopicButton from '@/components/overview/TopicButton.vue';
 import OverviewHeader from '@/components/overview/Header.vue';
 import useUserStore from '@/stores/userStore';
 import useQuestionStore from '@/stores/question';
 
 const userStore = useUserStore();
-
 const { selectedTopics } = storeToRefs(useQuestionStore());
-
 const selectAllButton = ref('Select all');
 const allSelected = ref(false);
-const isButtonDisabled = ref(!selectedTopics.value.length);
+const isButtonDisabled = computed(() => !selectedTopics.value.length);
 
 const selectAll = () => {
   userStore.topics.forEach((topic) => {
@@ -38,12 +33,6 @@ const clearSelection = () => {
 watchEffect(() => {
   userStore.calculatePerformancePercentage();
 });
-
-const isModalOpen = ref(false);
-
-const toggleModal = (isOpen) => {
-  isModalOpen.value = isOpen;
-};
 </script>
 
 <template>
@@ -89,13 +78,6 @@ const toggleModal = (isOpen) => {
         </Button>
       </div>
     </div>
-
-    <!-- <ConfirmationModal /> -->
-    <GenericModal :is-open="isModalOpen" @close-modal="toggleModal(false)" />
-
-    <button id="open-dialog-btn" type="button" @click="toggleModal(true)">
-      Show the dialog
-    </button>
   </main>
 </template>
 

@@ -2,19 +2,19 @@
   <section>
     <form>
       <fieldset>
-        <legend>{{title}}</legend>
+        <legend>{{ title }}</legend>
         <Answer v-for="answer in questionData?.answers || []" :answer="answer" :type="questionData?.type" />
       </fieldset>
-      <Button @on-clicked="saveAnswer" title="Save my answer" styleType="disabled"/>
+      <Button title="Save my answer" style-type="disabled" @on-clicked="saveAnswer" />
     </form>
   </section>
 </template>
 
 <script setup>
-import {computed} from "vue";
+import { computed } from 'vue';
 import { useQuestionStore } from '@stores/question';
-import Answer from "./Answer.vue";
-import Button from "../Button.vue";
+import Answer from './Answer.vue';
+import Button from '../Button.vue';
 
 const props = defineProps({
   questionData: Object,

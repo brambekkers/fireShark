@@ -14,23 +14,16 @@ module.exports = {
       'off',
     ],
     'linebreak-style': 'off',
-    /*
-      The default setting clashes with the HTML and Web Component spec regarding
-      self-closing-tags and void elements which might cause problems for the Emerald Web Components.
-      More info: https://developer.mozilla.org/en-US/docs/Glossary/Void_element
-    */
-    'vue/html-self-closing': ['error', {
-      html: {
-        normal: 'never',
-        component: 'any',
-      },
-    }],
     'vue/attribute-hyphenation': ['warn', 'always', {
       ignore: ['isOpen'],
     }],
-    'import/extensions': ['error', { js: 'always', vue: 'always', scss: 'always' }],
+    'import/extensions': ['error', {
+      js: 'always', vue: 'always', scss: 'always', json: 'always',
+    }],
     // ESlint does not get the root folder set up by vite
     'import/no-unresolved': 'off',
+    'no-undef': 'off',
+    'vue/html-self-closing': 'off',
     'vue/multi-word-component-names': 'off',
     // a11y seems redundant
     'vuejs-accessibility/form-control-has-label': 'off',

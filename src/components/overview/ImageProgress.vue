@@ -1,7 +1,4 @@
 <script setup>
-import { computed } from 'vue';
-import { storeToRefs } from 'pinia';
-
 import useUserStore from '@/stores/userStore';
 
 const { settings, stats } = storeToRefs(useUserStore());
@@ -47,7 +44,7 @@ const profileStyle = computed(() => ({
     <div
       class="absolute bg-sharp-warning w-14 h-14 -bottom-4 right-0 font-bold text-lg rounded-full flex items-center justify-center"
     >
-      {{ stats?.percentage || 0 }}%
+      {{ Math.round(stats?.percentage) || 0 }}%
     </div>
   </div>
 </template>

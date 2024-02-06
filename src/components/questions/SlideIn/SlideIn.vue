@@ -69,7 +69,12 @@ defineProps({
   },
 });
 
-defineEmits(['nextQuestion']);
+const emit = defineEmits(['emit-next-question']);
+
+const emitNextQuestion = () => {
+  handleShow(false);
+  emit('emit-next-question');
+};
 </script>
 
 <style scoped lang="scss">
