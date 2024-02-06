@@ -8,7 +8,7 @@ import GenericModal from '../components/GenericModal.vue';
 import LevelUp from '../components/LevelUp.vue';
 
 const store = useQuestionStore();
-const { selectedQuestion } = storeToRefs(store);
+const { selectedQuestion, showQuestionSlideIn } = storeToRefs(store);
 const { getQuestions } = store;
 const content = ref(
   'very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of textvery long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text very long content with a lot of text',
@@ -42,6 +42,7 @@ const toNextQuestion = () => {
     <QuestionHeader :question-data="selectedQuestion" />
     <QuestionForm :question-data="selectedQuestion" />
     <QuestionSlideIn
+    v-if="showQuestionSlideIn"
       :next-question="nextQuestion"
       :title="title"
       :content="content"

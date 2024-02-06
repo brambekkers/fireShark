@@ -5,7 +5,7 @@
         <legend>{{ title }}</legend>
         <Answer v-for="answer in questionData?.answers || []" :answer="answer" :type="questionData?.type" />
       </fieldset>
-      <Button title="Save my answer" style-type="disabled" @on-clicked="saveAnswer" />
+      <Button title="Save my answer" :styleType="answerIsGiven ? 'primary' : 'disabled'" :disable="answerIsGiven" @on-clicked="saveAnswer" />
     </form>
   </section>
 </template>
@@ -21,10 +21,13 @@ const props = defineProps({
 });
 
 const store = useQuestionStore();
+const answerIsGiven = computed(() => store.answerIsGiven);
+
 const title = computed(() => props?.questionData?.type === 'singleChoice' ? 'Choose one option.' : 'You may choose multiple options.');
 
 async function saveAnswer() {
   const isSuccess = await store.checkAnswer();
+  console.log(isSuccess)
   store.saveAnswer(isSuccess);
 };
 </script>

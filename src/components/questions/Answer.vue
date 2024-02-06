@@ -39,8 +39,12 @@ const value = computed(() => props?.answer.value);
 const questionId = `q-${text.value}`;
 const isSelected = ref(false);
 
-function giveAnswer() {
-  store.setAnswer(isSelected, props?.answer)
+function setSelected() {
   isSelected.value = !isSelected.value;
+}
+
+function giveAnswer() {
+  store.setAnswer(isSelected.value, props?.answer);
+  setSelected();
 }
 </script>
