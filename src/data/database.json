@@ -1084,6 +1084,22 @@
                 "value": false
               }
             ]
+          },
+          {
+            "id": "js-code-q1",
+            "type": "codingProblem",
+            "subject": "JavaScript",
+            "headerImg": "src/images/background/code_problem.jpg",
+            "functionName": "isPrime",
+            "question": "Correct the function to correctly identify if a given number is prime. A prime number is only divisible by 1 and itself.",
+            "starterCode": "function isPrime(number) {\n / Your code here to determine if 'number' is a prime number \n // Remember to return true if the number is prime, false otherwise \n}\nmodule.exports = isPrime;",
+            "testCases": [
+              { "input": 2, "expected": true },
+              { "input": 3, "expected": true },
+              { "input": 4, "expected": false },
+              { "input": 5, "expected": true },
+              { "input": 8, "expected": false }
+            ]
           }
         ]
       },
