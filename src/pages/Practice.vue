@@ -2,7 +2,7 @@
 import { useQuestionStore } from '@stores/question';
 
 import HeaderButtons from '@/components/questions/HeaderButtons.vue';
-import QuestionHeader from '@/components/questions/QuestionHeader.vue';
+import QuestionHeader from '@/components/questions/Header.vue';
 import QuestionForm from '@/components/questions/QuestionForm.vue';
 import QuestionSlideIn from '@/components/questions/SlideIn/SlideIn.vue';
 import GenericModal from '@/components/GenericModal.vue';
@@ -41,7 +41,6 @@ const toNextQuestion = () => {
     <div v-if="!scoreMessage" class="question relative flex flex-col">
       <HeaderButtons />
       <QuestionHeader :question-data="selectedQuestion" />
-
       <QuestionForm :question-data="selectedQuestion" />
       <QuestionSlideIn
         v-if="showQuestionSlideIn"

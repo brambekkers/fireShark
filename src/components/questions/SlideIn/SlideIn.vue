@@ -3,52 +3,40 @@
     class="fixed inset-x-0 flex flex-col items-center bottom-0 slide-in-container"
     :class="show ? 'show' : ''"
   >
-    <div class="btn-container">
+    <div class="btn-container relative z-30 -mb-6">
       <div
-        v-if="show"
-        class="bg-[#F3C000] rounded-full p-2 cursor-pointer"
-        @click="handleShow(false)"
-        @keydown="handleShow(false)"
+        class="bg-[#F3C000] rounded-full p-2 w-14 h-14 cursor-pointer flex justify-center items-center"
+        @click="handleShow(!show)"
+        @keydown="handleShow(!show)"
       >
-        <div class="border-2 border-black rounded-full p-1">
-          <ArrowDownward class="icon-size" />
-        </div>
-      </div>
-      <div
-        v-if="!show"
-        class="bg-[#F3C000] rounded-full p-2 cursor-pointer"
-        @click="handleShow(true)"
-        @keydown="handleShow(true)"
-      >
-        <div class="border-2 border-black rounded-full p-1">
-          <ArrowUpward class="icon-size" />
+        <div
+          class="border-2 border-black rounded-full w-8 h-8 flex justify-center items-center"
+        >
+          <ArrowUpward class="icon-size" :class="{ 'rotate-180': show }" />
         </div>
       </div>
     </div>
-    <div class="box p-10 bg-[#005e5d] text-white rounded-md">
+    <div class="max-w-2xl w-full p-10 bg-[#005e5d] text-white rounded-t-md">
       <h3 class="text-xl font-bold title">
         {{ title }}
       </h3>
       <p class="text-sm mt-2 content">
         {{ content }}
       </p>
-      <button
-        type="button"
-        class="font-medium text-black rounded-[2rem] bg-[#F3C000] hover:bg-[#F3C000] mt-8 text-sm px-4 py-2 mx-auto block"
-        @click="emitNextQuestion"
-      >
-        {{ nextQuestion }}
-      </button>
+
+      <Button
+        :title="nextQuestion"
+        class="mx-auto mt-8"
+        @on-clicked="emitNextQuestion"
+      />
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue';
 import { useQuestionStore } from '@stores/question';
 import ArrowUpward from '~icons/material-symbols/arrow-upward';
-import ArrowDownward from '~icons/material-symbols/arrow-downward';
-
+import Button from '@/components/generic/Button.vue';
 const store = useQuestionStore();
 
 console.log('check', store.checkAnswer());
@@ -98,26 +86,5 @@ onMounted(() => {
 
 .slide-in-container.show {
   transform: none;
-}
-
-.icon-size {
-  font-size: 0.75rem;
-  font-weight: bold;
-}
-
-.box {
-  min-width: 570px;
-}
-
-.btn-container {
-  margin-bottom: -24px;
-  z-index: 30;
-  position: relative;
-}
-
-.content,
-.title {
-  max-width: 400px;
-  margin: 0 auto;
 }
 </style>

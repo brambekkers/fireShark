@@ -25,6 +25,7 @@ const styleClasses = computed(() => {
     type="button"
     :disabled="props.disable"
     :class="styleClasses"
+    class="px-10 py-7 flex items-center justify-center font-medium text-lg"
     @click="$emit('on-clicked')"
   >
     {{ title }}

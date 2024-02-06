@@ -1,29 +1,25 @@
 <template>
-  <section>
-    <form>
-      <fieldset>
-        <legend
-          class="my-1 font-bold italic text-sm border-l-yellow-400 border-l-2 pl-2"
-        >
-          {{ title }}
-        </legend>
-        <Answer
-          v-for="answer in questionData?.answers || []"
-          :key="answer"
-          :answer="answer"
-          :type="questionData?.type"
-        />
-      </fieldset>
-      <div class="button-save-answer">
-        <Button
-          title="Save my answer"
-          :style-type="answerIsGiven ? 'primary' : 'disabled'"
-          :disabled="!answerIsGiven"
-          @on-clicked="saveAnswer"
-        />
-      </div>
-    </form>
-  </section>
+  <form class="w-full">
+    <fieldset>
+      <legend class="my-1 font-bold italic border-l-yellow-400 border-l-2 pl-2">
+        {{ title }}
+      </legend>
+      <Answer
+        v-for="answer in questionData?.answers || []"
+        :key="answer"
+        :answer="answer"
+        :type="questionData?.type"
+      />
+    </fieldset>
+    <div class="button-save-answer">
+      <Button
+        title="Save my answer"
+        :style-type="answerIsGiven ? 'primary' : 'disabled'"
+        :disabled="!answerIsGiven"
+        @on-clicked="saveAnswer"
+      />
+    </div>
+  </form>
 </template>
 
 <script setup>

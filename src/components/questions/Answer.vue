@@ -1,29 +1,4 @@
-<template>
-  <fieldset class="space-y-4">
-    <legend class="sr-only">
-      Answer
-    </legend>
-    <div>
-      <label
-        :for="questionId"
-        class="flex cursor-pointer items-center justify-between gap-4 rounded-xl border border-gray-100 bg-white p-4 text-sm font-medium shadow-2xl hover:border-gray-200 has-[:checked]:border-blue-500 has-[:checked]:ring-1 has-[:checked]:ring-blue-500"
-      >
-        <p class="text-gray-700">{{ text }}</p>
-        <input   
-          :id="questionId" 
-          :type="inputType" 
-          :name="inputType" 
-          :value="value"
-          @input="giveAnswer($event)" 
-          :selected="isSelected" class="sr-only"
-        >
-      </label>
-    </div>
-  </fieldset>
-</template>
-
 <script setup>
-import {ref, computed} from 'vue';
 import { useQuestionStore } from '@stores/question';
 
 const props = defineProps({
@@ -39,12 +14,35 @@ const value = computed(() => props?.answer.value);
 const questionId = `q-${text.value}`;
 const isSelected = ref(false);
 
-function setSelected() {
+const setSelected = () => {
   isSelected.value = !isSelected.value;
-}
+};
 
-function giveAnswer() {
+const giveAnswer = () => {
   store.setAnswer(isSelected.value, props?.answer);
   setSelected();
-}
+};
 </script>
+
+<template>
+  <fieldset class="space-y-5">
+    <legend class="sr-only">Answer</legend>
+    <div>
+      <label
+        :for="questionId"
+        class="flex cursor-pointer items-center justify-between gap-6 rounded-2xl border border-gray-100 bg-white py-8 px-6 font-medium shadow-md hover:border-gray-200 has-[:checked]:border-sharp-primary has-[:checked]:border-2 has-[:checked]:shadow-xl has-[:checked]:ring-1 has-[:checked]:ring-sharp-primary"
+      >
+        <p class="text-gray-700">{{ text }}</p>
+        <input
+          :id="questionId"
+          :type="inputType"
+          :name="inputType"
+          :value="value"
+          @input="giveAnswer($event)"
+          :selected="isSelected"
+          class="sr-only"
+        />
+      </label>
+    </div>
+  </fieldset>
+</template>
