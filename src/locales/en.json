@@ -7,9 +7,11 @@
     "notifications": "Notifications",
     "name": "Name",
     "id": "id",
-    "email": "Email"
+    "email": "Email",
+    "hi": "Hi"
   },
   "overview": {
+    "welcomeBack": "Welcome back",
     "selectTopics": "Select the topics you want to practice",
     "topics": {
       "general": "General",

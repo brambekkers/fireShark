@@ -6,9 +6,11 @@
     "settings": "Instellingen",
     "name": "Naam",
     "id": "id",
-    "email": "E-mailadres"
+    "email": "E-mailadres",
+    "hi": "Hoi"
   },
   "overview": {
+    "welcomeBack": "Welkom terug",
     "selectTopics": "Selecteer de topics die je wilt oefenen.",
     "topics": {
       "general": "General",
