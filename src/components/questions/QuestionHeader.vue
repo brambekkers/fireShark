@@ -11,7 +11,11 @@ defineProps({
 
 <template>
   <div v-if="questionData" class="questionHeader">
-    <img :src="questionData.headerImg" alt="question-picture" class="image">
+    <img
+      :src="questionData.headerImg"
+      alt="question-picture"
+      class="image shadow-lg"
+    />
     <div>
       <p class="questionText">
         {{ questionData.question }}
@@ -24,11 +28,16 @@ defineProps({
 .questionHeader {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
 }
 
 .image {
-  width: 570px;
-  height: 291px;
+  max-width: 80%;
+  max-height: 70%;
+  height: 15rem;
+  width: 50rem;
+  border-radius: 2rem;
 }
 
 .questionText {

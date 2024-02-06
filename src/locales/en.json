@@ -4,23 +4,36 @@
     "practice": "Practice",
     "duel": "Duel",
     "settings": "Settings",
-    "notifications": "Notifications"
+    "notifications": "Notifications",
+    "name": "Name",
+    "id": "id",
+    "email": "Email",
+    "hi": "Hi"
   },
   "overview": {
+    "welcomeBack": "Welcome back",
     "selectTopics": "Select the topics you want to practice",
     "topics": {
-      "general": "General",
-      "javascript": "Javascript",
-      "emerald": "Emerald",
-      "vue": "Vue",
-      "devops": "DevOps",
-      "debug": "Debug"
+      "general": "General coding questions",
+      "javascript": "Javascript specific subjects",
+      "emerald": "Styling with Emerald",
+      "vue": "The Vue libary",
+      "devops": "Helping client via DevOps",
+      "debug": "Debug your problems"
     }
   },
+  "duel": {
+    "rdyToDuel": "Ready to duel?"
+  },
   "settings": {
+    "changeYourProfileHere": "Pas hier je profiel aan.",
     "notAllCanBeChanged": "You cannot change all personal information yourself.",
     "personalSettings": "Personal settings",
     "language": "Language",
-    "faq": "Frequently asked questions"
+    "faq": "Frequently asked questions",
+    "pushNotifications": "Email notifications",
+    "emailNotifications": "Email notifications",
+    "joinDuels": "Join Duels",
+    "automaticDuel": "Automatic dueling"
   }
 }

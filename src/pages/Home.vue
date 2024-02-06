@@ -59,7 +59,8 @@ watchEffect(() => {
             :disable="isButtonDisabled"
             title="Practice this selection"
             class="text-black bg-yellow-400 shadow-lg hover:bg-yellow-500 rounded-full px-5 py-4 h-14 disabled:bg-slate-200 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
-          />
+          >
+          </Button>
         </router-link>
       </div>
       <div class="flex align-center justify-center mt-6">
