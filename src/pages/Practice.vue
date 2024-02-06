@@ -8,7 +8,6 @@ import QuestionForm from '../components/questions/QuestionForm.vue';
 import QuestionSlideIn from '../components/questions/SlideIn/SlideIn.vue';
 import GenericModal from '../components/GenericModal.vue';
 import LevelUp from '../components/LevelUp.vue';
-import HeaderLayout from '@/layouts/HeaderLayout.vue';
 import IconLeft from '~icons/lucide/chevron-left';
 
 const { stats } = storeToRefs(useUserStore());
