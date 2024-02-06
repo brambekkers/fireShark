@@ -7,26 +7,38 @@ import IconCheck from '~icons/lucide/check';
 const props = defineProps({
   title: { type: String, required: true },
   progress: { type: Number, required: true },
+  allSelected: { type: Boolean, required: true },
 });
 
 const { selectedTopics } = storeToRefs(useQuestionStore());
-const checkbox = ref(null);
 const isChecked = ref(selectedTopics.value.includes(props.title));
 
-watch(isChecked, (check) => {
-  if (check) selectedTopics.value.push(props.title);
+if (props.allSelected) {
+  isChecked.value = true;
+}
+
+watch(() => props.allSelected, (newVal) => {
+  isChecked.value = newVal;
+});
+
+const toggleSelection = () => {
+  isChecked.value = !isChecked.value;
+  if (isChecked.value) selectedTopics.value.push(props.title);
   else {
     const index = selectedTopics.value.indexOf(props.title);
-    selectedTopics.value.splice(index, 1);
+    if (index !== -1) {
+      selectedTopics.value.splice(index, 1);
+    }
   }
-});
+  console.log(selectedTopics.value);
+};
 </script>
 
 <template>
   <div
     class="cursor-pointer"
-    @click="checkbox.click()"
-    @keyup.enter="checkbox.click()"
+    @click="toggleSelection"
+    @keyup.enter="toggleSelection"
   >
     <!-- header -->
     <div class="flex relative">
@@ -48,12 +60,11 @@ watch(isChecked, (check) => {
       <label for="selected"></label>
       <input
         id="selected"
-        ref="checkbox"
         v-model="isChecked"
         class="hidden"
         type="checkbox"
         aria-labelledby="selected"
-      />
+      >
       <h3 class="text-xl text-center font-bold text-primary">
         {{ title }}
       </h3>
@@ -66,7 +77,9 @@ watch(isChecked, (check) => {
             class="from-primary to-secondary bg-gradient-to-r h-full"
           ></div>
         </div>
-        <p class="percentage ms-4">{{ progress }}%</p>
+        <p class="percentage ms-4">
+          {{ progress }}%
+        </p>
       </section>
     </div>
   </div>
