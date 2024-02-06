@@ -129,6 +129,7 @@ const runCode = async () => {
         ref="monacoEditor"
         :initialCode="testCodeEditorQuizExample.starterCode"
         language="javascript"
+        class="mt-96"
         theme="vs-dark"
       />
       <button @click="runCode">Test Code</button>
