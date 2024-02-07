@@ -1,11 +1,11 @@
 <script setup>
 import { rand } from '@vueuse/core';
+import axios from 'axios';
 import Button from '@/components/generic/Button.vue';
 import TopicButton from '@/components/overview/TopicButton.vue';
 import useUserStore from '@/stores/userStore';
 import useQuestionStore from '@/stores/question';
 import CodeEditor from '@/components/CodeEditor.vue';
-import axios from 'axios';
 
 const userStore = useUserStore();
 const { selectedTopics } = storeToRefs(useQuestionStore());
@@ -64,8 +64,8 @@ const testCodeEditorQuizExample = {
 
 const runCode = async () => {
   const code = monacoEditor.value.getEditorContent();
-  const testCases = testCodeEditorQuizExample.testCases;
-  const functionName = testCodeEditorQuizExample.functionName;
+  const { testCases } = testCodeEditorQuizExample;
+  const { functionName } = testCodeEditorQuizExample;
   try {
     const response = await axios.post(
       'http://localhost:3001/execute-code',
@@ -125,14 +125,6 @@ const runCode = async () => {
           </Button>
         </router-link>
       </div>
-      <CodeEditor
-        ref="monacoEditor"
-        :initialCode="testCodeEditorQuizExample.starterCode"
-        language="javascript"
-        class="mt-96"
-        theme="vs-dark"
-      />
-      <button @click="runCode">Test Code</button>
       <div class="flex align-center justify-center mt-12">
         <Button
           :title="selectAllButton"
@@ -142,6 +134,16 @@ const runCode = async () => {
           "
         />
       </div>
+      <CodeEditor
+        ref="monacoEditor"
+        :initial-code="testCodeEditorQuizExample.starterCode"
+        language="javascript"
+        class="mt-96"
+        theme="vs-dark"
+      />
+      <button @click="runCode">
+        Test Code
+      </button>
     </div>
   </main>
 </template>
