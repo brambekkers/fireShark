@@ -1,7 +1,19 @@
 <script setup>
+import { getAuth, signOut } from 'firebase/auth';
+import { useRouter } from 'vue-router';
+
 import SettingsSection from '@/components/settings/sections/Section.vue';
 import PersonalSection from '@/components/settings/sections/Personal.vue';
 import LanguageSection from '@/components/settings/sections/Language.vue';
+import Button from '@/components/generic/Button.vue';
+
+const router = useRouter();
+const auth = getAuth();
+
+const logout = async () => {
+  await signOut(auth);
+  router.push('/login');
+};
 </script>
 
 <template>
@@ -33,5 +45,12 @@ import LanguageSection from '@/components/settings/sections/Language.vue';
     <SettingsSection icon="sync">
       {{ $t('settings.automaticDuel') }}
     </SettingsSection>
+
+    <Button
+      title="Logout"
+      styleType="secondary"
+      class="mt-8 w-52 mx-auto"
+      @on-clicked="logout"
+    />
   </div>
 </template>

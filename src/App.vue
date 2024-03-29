@@ -1,13 +1,11 @@
 <script setup>
-import useUserStore from '@/stores/userStore';
-import MainLayout from '@/layouts/MainLayout.vue';
+import { useRoute } from 'vue-router';
 
-const userStore = useUserStore();
-userStore.getRandomUser();
+const route = useRoute();
 </script>
 
 <template>
-  <MainLayout class="bg-sharp-body-bg">
+  <component class="bg-sharp-body-bg" :is="route.meta.layout || div">
     <router-view />
-  </MainLayout>
+  </component>
 </template>

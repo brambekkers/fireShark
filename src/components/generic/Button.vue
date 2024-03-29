@@ -7,13 +7,14 @@ const props = defineProps({
 });
 
 const styleClasses = computed(() => {
+  if (props.disable)
+    return 'border-0 bg-sharp-button-disabled-bg text-sharp-button-disabled-text rounded-full h-10 px-2';
+
   switch (props.styleType) {
     case 'primary':
       return 'bg-sharp-button-primary-bg text-sharp-button-primary-front rounded-full h-10 px-2';
     case 'secondary':
       return 'border-sharp-button-secondary-border-color text-sharp-button-secondary-text rounded-full h-10 px-2 border-2';
-    case 'disabled':
-      return 'border-0 bg-sharp-button-disabled-bg text-sharp-button-disabled-text rounded-full h-10 px-2';
     default:
       return 'bg-sharp-button-primary-bg text-sharp-button-primary-front rounded-full h-10 px-2';
   }

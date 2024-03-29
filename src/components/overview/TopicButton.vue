@@ -10,7 +10,7 @@ const props = defineProps({
   allSelected: { type: Boolean, required: true },
 });
 
-const { topicsByKey } = storeToRefs(useUserStore());
+const { topics } = storeToRefs(useUserStore());
 const { selectedTopics } = storeToRefs(useQuestionStore());
 const isChecked = ref(selectedTopics.value.includes(props.title));
 const questionStore = computed(() => useQuestionStore());
@@ -77,7 +77,7 @@ const toggleSelection = () => {
       >
         {{ $t(`overview.topics.${title}`) }}
       </h3>
-      <ProgressBar :progress="topicsByKey?.[title]?.score || 0" />
+      <ProgressBar :progress="topics?.[title]?.score || 0" />
     </div>
   </div>
 </template>

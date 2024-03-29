@@ -4,7 +4,7 @@ import { useLayoutStore } from '@stores/layout';
 import Navbar from '@components/Navbar.vue';
 import ConfirmationModal from '@/components/ConfirmationModal.vue';
 import useModalInteractions from '@/composable/useModalInteractions';
-import OverviewHeader from '@/components/overview/Header.vue';
+import HeaderMain from '@/components/layout/header/HeaderMain.vue';
 
 const router = useRouter();
 
@@ -55,9 +55,10 @@ router.beforeEach((to, from) => {
 });
 
 const layoutStore = useLayoutStore();
-const background = computed(() => (layoutStore.isDarkMode ? '#242424' : '#f2f9f9'));
+const background = computed(() =>
+  layoutStore.isDarkMode ? '#242424' : '#f2f9f9',
+);
 const text = computed(() => (layoutStore.isDarkMode ? '#f2f9f9' : '#242424'));
-
 </script>
 
 <template>
@@ -71,7 +72,7 @@ const text = computed(() => (layoutStore.isDarkMode ? '#f2f9f9' : '#242424'));
 
   <div id="main" class="mt-12">
     <!-- Accent on top -->
-    <OverviewHeader />
+    <HeaderMain />
     <slot></slot>
   </div>
 </template>

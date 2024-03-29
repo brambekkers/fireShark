@@ -1,35 +1,19 @@
-import { rand } from '@vueuse/core';
+import { useCurrentUser, useDocument } from 'vuefire';
+import { doc, getFirestore } from 'firebase/firestore';
 
 export const useUserStore = defineStore('user', () => {
-  const user = ref({});
-  const stats = computed(() => user.value.stats || {});
-  const topics = computed(() => user.value.topics || []);
-  const topicsByKey = computed(() => {
-    const object = {}
-    topics.value.forEach((t) => {
-      object[t.key] = t
-    })
-    return object
-  })
-  const settings = computed(() => user.value.settings || {});
-  const isUserLoading = ref(false);
-  const isUserError = ref(false);
+  const db = getFirestore();
+  const fbUser = useCurrentUser();
 
-  const fetchUser = async (userId) => {
-    try {
-      const response = await fetch(`http://localhost:3000/users/${userId}`);
-      user.value = await response.json();
-    } catch (error) {
-      isUserError.value = true;
-      console.log(error);
-    } finally {
-      isUserLoading.value = false;
-    }
-  };
+  const userRef = computed(() => {
+    if (!fbUser.value) return null;
+    return doc(db, `users/${fbUser.value.uid}`);
+  });
 
-  const getRandomUser = () => {
-    fetchUser(`user${rand(1, 10)}`);
-  };
+  const user = useDocument(userRef);
+  const stats = computed(() => user.value?.stats || {});
+  const topics = computed(() => user.value?.topics || {});
+  const settings = computed(() => user.value?.settings || {});
 
   const updateUser = async () => {
     try {
@@ -49,17 +33,18 @@ export const useUserStore = defineStore('user', () => {
   const calculatePerformancePercentage = () => {
     // Type checking to ensure all inputs are numbers
     if (
-      typeof stats.value?.totalQuestions !== 'number'
-      || typeof stats.value?.correctAnswers !== 'number'
-      || typeof stats.value?.wrongAnswers !== 'number'
-      || typeof stats.value?.unansweredQuestions !== 'number'
+      typeof stats.value?.totalQuestions !== 'number' ||
+      typeof stats.value?.correctAnswers !== 'number' ||
+      typeof stats.value?.wrongAnswers !== 'number' ||
+      typeof stats.value?.unansweredQuestions !== 'number'
     ) {
       console.error('All inputs must be numbers');
       return;
     }
 
     // Calculate the percentage of correct answers
-    const calculatedPercentage = (stats.value.correctAnswers / stats.value.totalQuestions) * 100;
+    const calculatedPercentage =
+      (stats.value.correctAnswers / stats.value.totalQuestions) * 100;
 
     // Update the reactive percentage ref, rounded to one decimal place
     stats.value.percentage = Math.round(calculatedPercentage * 10) / 10;
@@ -69,10 +54,7 @@ export const useUserStore = defineStore('user', () => {
     user,
     stats,
     topics,
-    topicsByKey,
     settings,
-    fetchUser,
-    getRandomUser,
     updateUser,
     calculatePerformancePercentage,
   };
