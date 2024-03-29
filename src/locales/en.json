@@ -8,6 +8,7 @@
     "name": "Name",
     "id": "id",
     "email": "Email",
+    "admin": "Admin",
     "hi": "Hi"
   },
   "overview": {

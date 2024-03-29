@@ -10,7 +10,7 @@ const { user } = storeToRefs(useUserStore());
     {{ $t('settings.personalSettings') }}
     <template #dropdown>
       <h4 class="font-bold text-xl">{{ $t('general.name') }}</h4>
-      <p class="mb-4">{{ user.name }}</p>
+      <p class="mb-4">{{ user.firstName }} {{ user.lastName }}</p>
       <h4 class="font-bold text-xl">{{ $t('general.id') }}</h4>
       <p class="mb-4">{{ user.id }}</p>
       <h4 class="font-bold text-xl">{{ $t('general.email') }}</h4>

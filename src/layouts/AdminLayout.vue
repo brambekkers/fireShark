@@ -1,7 +1,10 @@
 <script setup>
 import { computed } from 'vue';
 import { useLayoutStore } from '@stores/layout';
-import HeaderAuth from '@/components/layout/header/HeaderAuth.vue';
+import Navbar from '@components/layout/Navbar.vue';
+
+import HeaderAdmin from '@/components/layout/header/HeaderAdmin.vue';
+import AdminSidebar from '@/components/layout/sidebar/AdminSidebar.vue';
 
 const router = useRouter();
 
@@ -29,16 +32,27 @@ const text = computed(() => (layoutStore.isDarkMode ? '#f2f9f9' : '#242424'));
 </script>
 
 <template>
-  <div id="main">
+  <Navbar />
+
+  <div id="main" class="mt-12">
     <!-- Accent on top -->
-    <HeaderAuth />
-    <slot></slot>
+    <HeaderAdmin />
+    <div class="flex absolute inset-0 pt-12 z-0">
+      <aside class="w-96 bg-sharp-secondary pt-36">
+        <AdminSidebar />
+      </aside>
+
+      <main class="pt-36 flex-grow px-6">
+        test
+        <slot></slot>
+      </main>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 #main {
-  min-height: calc(100dvh);
+  min-height: calc(100dvh - 48px);
 
   background-color: v-bind(background);
   color: v-bind(text);

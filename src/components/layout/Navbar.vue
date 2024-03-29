@@ -1,5 +1,6 @@
 <script setup>
 import IconBrain from '~icons/lucide/brain';
+import IconWrench from '~icons/lucide/wrench';
 import IconTrophy from '~icons/material-symbols/trophy-outline';
 import IconSettings from '~icons/tdesign/setting-1';
 </script>
@@ -8,7 +9,11 @@ import IconSettings from '~icons/tdesign/setting-1';
   <nav class="bg-sharp-navbar-bg z-50">
     <section class="sharp">
       <router-link to="/" class="flex items-center">
-        <img src="../../public/vite.svg" alt="Shark icon" class="mr-2 h-8" />
+        <img
+          src="../../../public/shark.svg"
+          alt="Shark icon"
+          class="mr-2 h-8"
+        />
         {{ $t('general.appName').toUpperCase() }}
         <span class="mark">!</span>
       </router-link>
@@ -22,6 +27,9 @@ import IconSettings from '~icons/tdesign/setting-1';
       </router-link>
       <router-link to="/settings">
         <span class="link"><IconSettings /> {{ $t('general.settings') }}</span>
+      </router-link>
+      <router-link to="/admin">
+        <span class="link"><IconWrench /> {{ $t('general.admin') }}</span>
       </router-link>
     </section>
   </nav>
@@ -44,12 +52,12 @@ nav {
 }
 .links {
   display: flex;
-  gap: 1rem;
+  gap: 1.4rem;
 }
 .link {
   display: flex;
-  gap: 0.2rem;
-  font-weight: 300;
+  gap: 0.4rem;
+  font-weight: 200;
   justify-content: center;
   align-items: center;
 }

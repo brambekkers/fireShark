@@ -9,6 +9,7 @@ import Practice from '@/pages/Practice.vue';
 // layouts
 import MainLayout from '@/layouts/MainLayout.vue';
 import AuthLayout from '@/layouts/AuthLayout.vue';
+import AdminLayout from '@/layouts/AdminLayout.vue';
 
 export const routes = [
   {
@@ -44,7 +45,7 @@ export const routes = [
     name: 'Admin',
     component: Admin,
     meta: {
-      layout: MainLayout,
+      layout: AdminLayout,
       requiresAuth: true
     }
   },

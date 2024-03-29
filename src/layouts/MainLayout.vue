@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import { useLayoutStore } from '@stores/layout';
-import Navbar from '@components/Navbar.vue';
+import Navbar from '@components/layout/Navbar.vue';
 import ConfirmationModal from '@/components/ConfirmationModal.vue';
 import useModalInteractions from '@/composable/useModalInteractions';
 import HeaderMain from '@/components/layout/header/HeaderMain.vue';
@@ -79,7 +79,7 @@ const text = computed(() => (layoutStore.isDarkMode ? '#f2f9f9' : '#242424'));
 
 <style lang="scss" scoped>
 #main {
-  min-height: 100vh;
+  min-height: calc(100dvh - 48px);
 
   background-color: v-bind(background);
   color: v-bind(text);
