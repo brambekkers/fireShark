@@ -54,7 +54,6 @@ const clearSelection = () => {
             :class="{ 'disabled-button': disabled }"
             :disable="isButtonDisabled"
             title="Practice this selection"
-            class="text-black bg-yellow-400 shadow-lg hover:bg-yellow-500 rounded-full px-5 py-4 h-14 disabled:bg-slate-200 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
           >
           </Button>
         </router-link>
@@ -62,7 +61,7 @@ const clearSelection = () => {
       <div class="flex align-center justify-center mt-4">
         <Button
           :title="selectAllButton"
-          class="text-sharp-button-secondary-text bg-transparent border-solid border-2 border-sharp-button-secondary-border-color hover:text-sharp-button-secondary-text-focus hover:border-sharp-button-secondary-border-color-focus rounded-full px-5 py-2 transition-all h-12"
+          type="secondary"
           @click="
             selectAllButton === 'Select all' ? selectAll() : clearSelection()
           "

@@ -3,20 +3,34 @@ defineEmits(['on-clicked']);
 const props = defineProps({
   title: { type: String, required: true },
   disable: { type: Boolean, required: false },
-  styleType: { type: String, required: false, default: 'primary' },
+  type: { type: String, required: false, default: 'primary' },
+  size: { type: String, required: false, default: 'lg' },
 });
 
-const styleClasses = computed(() => {
-  if (props.disable)
-    return 'border-0 bg-sharp-button-disabled-bg text-sharp-button-disabled-text rounded-full h-10 px-2';
-
-  switch (props.styleType) {
-    case 'primary':
-      return 'bg-sharp-button-primary-bg text-sharp-button-primary-front rounded-full h-10 px-2';
-    case 'secondary':
-      return 'border-sharp-button-secondary-border-color text-sharp-button-secondary-text rounded-full h-10 px-2 border-2';
+const sizeClasses = computed(() => {
+  switch (props.size) {
+    case 'sm':
+      return 'h-6 px-5 py-3 text-sm';
+    case 'md':
+      return 'h-8 px-7 py-5 text-md';
+    case 'lg':
+      return 'h-10 px-10 py-7 text-lg';
     default:
-      return 'bg-sharp-button-primary-bg text-sharp-button-primary-front rounded-full h-10 px-2';
+      return 'h-8 px-7 py-5';
+  }
+});
+
+const typeClasses = computed(() => {
+  if (props.disable)
+    return 'bg-app-button-disabled-bg border-app-button-disabled-bg text-app-button-disabled-text';
+
+  switch (props.type) {
+    case 'primary':
+      return 'bg-app-button-primary-bg border-app-button-primary-bg text-app-button-primary-front border-2 hover:bg-app-button-primary-focus';
+    case 'secondary':
+      return 'border-app-button-secondary-border-color text-app-button-secondary-text border-2 hover:bg-app-button-secondary-border-color/10';
+    default:
+      return 'bg-app-button-primary-bg text-app-button-primary-front';
   }
 });
 </script>
@@ -25,8 +39,8 @@ const styleClasses = computed(() => {
   <button
     type="button"
     :disabled="props.disable"
-    :class="styleClasses"
-    class="px-10 py-7 flex items-center justify-center font-medium text-lg"
+    :class="`${sizeClasses} ${typeClasses}`"
+    class="flex items-center justify-center font-medium rounded-full"
     @click="$emit('on-clicked')"
   >
     {{ title }}

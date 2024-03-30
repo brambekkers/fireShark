@@ -14,7 +14,7 @@
     <div class="button-save-answer">
       <Button
         title="Save my answer"
-        :style-type="answerIsGiven ? 'primary' : 'disabled'"
+        :type="answerIsGiven ? 'primary' : 'disabled'"
         :disabled="!answerIsGiven"
         @on-clicked="saveAnswer"
       />

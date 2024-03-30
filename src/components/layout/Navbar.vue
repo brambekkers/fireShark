@@ -6,7 +6,7 @@ import IconSettings from '~icons/tdesign/setting-1';
 </script>
 
 <template>
-  <nav class="bg-sharp-navbar-bg z-50">
+  <nav class="bg-app-navbar-bg z-50">
     <section class="sharp">
       <router-link to="/" class="flex items-center">
         <img

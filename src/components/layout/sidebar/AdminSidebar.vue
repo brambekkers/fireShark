@@ -5,16 +5,16 @@ import IconRoute from '~icons/lucide/route';
 import IconSettings from '~icons/lucide/settings';
 import IconFiles from '~icons/lucide/files';
 
-const menuItems = ref([
+const menuItems = shallowRef([
   {
     title: 'Dashboard',
     icon: IconPieChart,
     link: '/admin/dashboard',
   },
   {
-    title: 'Organization',
+    title: 'Groups',
     icon: IconRoute,
-    link: '/admin/organization',
+    link: '/admin/groups',
   },
   {
     title: 'Questions',
@@ -38,10 +38,10 @@ const menuItems = ref([
   <ul class="space-y-2 font-medium px-4">
     <li v-for="item of menuItems" :key="item.title">
       <router-link
-        to="item.link"
-        class="transition-all flex items-center px-3 py-4 border-sharp-primary text-white rounded-lg hover:bg-sharp-primary group hover:scale-105"
+        :to="item.link"
+        class="transition-all flex items-center px-3 py-4 border-app-primary text-white rounded-lg hover:bg-app-primary group hover:scale-105"
       >
-        <component :is="item.icon" class="w-5 text-sharp-warning" />
+        <component :is="item.icon" class="w-5 text-app-warning" />
         <span
           class="ms-3 font-light group-hover:font-semibold group-hover:text-white"
         >

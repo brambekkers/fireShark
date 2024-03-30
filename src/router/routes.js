@@ -2,6 +2,7 @@
 import Home from '@/pages/Home.vue';
 import Duel from '@/pages/Duel.vue';
 import Admin from '@/pages/Admin.vue';
+import AdminUsers from '@/pages/admin/Users.vue';
 import Login from '@/pages/Login.vue';
 import Settings from '@/pages/Settings.vue';
 import Practice from '@/pages/Practice.vue';
@@ -18,9 +19,8 @@ export const routes = [
     component: Home,
     meta: {
       layout: MainLayout,
-      requiresAuth: true
-
-    }
+      requiresAuth: true,
+    },
   },
   {
     path: '/practice',
@@ -28,8 +28,8 @@ export const routes = [
     component: Practice,
     meta: {
       layout: MainLayout,
-      requiresAuth: true
-    }
+      requiresAuth: true,
+    },
   },
   {
     path: '/duel',
@@ -37,17 +37,26 @@ export const routes = [
     component: Duel,
     meta: {
       layout: MainLayout,
-      requiresAuth: true
-    }
+      requiresAuth: true,
+    },
   },
   {
     path: '/admin',
     name: 'Admin',
-    component: Admin,
+    children: [
+      {
+        path: '',
+        component: Admin,
+      },
+      {
+        path: 'users',
+        component: AdminUsers,
+      },
+    ],
     meta: {
       layout: AdminLayout,
-      requiresAuth: true
-    }
+      requiresAuth: true,
+    },
   },
   {
     path: '/settings',
@@ -55,8 +64,8 @@ export const routes = [
     component: Settings,
     meta: {
       layout: MainLayout,
-      requiresAuth: true
-    }
+      requiresAuth: true,
+    },
   },
   {
     path: '/login',
@@ -64,8 +73,9 @@ export const routes = [
     component: Login,
     meta: {
       layout: AuthLayout,
-      requiresAuth: false
-    }
+      requiresAuth: false,
+    },
+
   },
   {
     path: '/:pathMatch(.*)*',

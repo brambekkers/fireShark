@@ -10,7 +10,7 @@ const router = useRouter();
     <!-- Go back -->
     <button
       type="button"
-      class="go-back-button bg-sharp-warning text-white border-0 h-10 w-10 rounded-full flex items-center justify-center text-lg transition hover:scale-110"
+      class="go-back-button bg-app-warning text-white border-0 h-10 w-10 rounded-full flex items-center justify-center text-lg transition hover:scale-110"
       @click="router.go(-1)"
     >
       <IconLeft class="mr-0.5" />
@@ -18,7 +18,7 @@ const router = useRouter();
 
     <!-- Percentage -->
     <section
-      class="relative text-center text-green-900 text-sm rounded-lg bg-sharp-body-bg overflow-hidden w-32 h-7 flex items-center px-2"
+      class="relative text-center text-green-900 text-sm rounded-lg bg-app-body-bg overflow-hidden w-32 h-7 flex items-center px-2"
     >
       <div
         :style="{ width: `${Math.round(stats?.percentage)}%` }"

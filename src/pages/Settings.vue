@@ -48,7 +48,7 @@ const logout = async () => {
 
     <Button
       title="Logout"
-      styleType="secondary"
+      type="secondary"
       class="mt-8 w-52 mx-auto"
       @on-clicked="logout"
     />

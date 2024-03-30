@@ -42,8 +42,8 @@ const toggleSelection = () => {
     <div class="flex relative">
       <!-- check circle -->
       <div
-        class="absolute z-10 rounded-full p-4 max-h-1 max-w-1 flex justify-center transition-all duration-300 left-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-sharp-body-bg"
-        :class="isChecked ? '!bg-sharp-success' : 'bg-slate-300'"
+        class="absolute z-10 rounded-full p-4 max-h-1 max-w-1 flex justify-center transition-all duration-300 left-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-app-body-bg"
+        :class="isChecked ? '!bg-app-success' : 'bg-slate-300'"
       >
         <Transition
           class="transition-all duration-300 transform"

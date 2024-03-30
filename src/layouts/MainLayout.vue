@@ -3,12 +3,12 @@ import { computed } from 'vue';
 import { useLayoutStore } from '@stores/layout';
 import Navbar from '@components/layout/Navbar.vue';
 import ConfirmationModal from '@/components/ConfirmationModal.vue';
-import useModalInteractions from '@/composable/useModalInteractions';
+import useModal from '@/composable/modal';
 import HeaderMain from '@/components/layout/header/HeaderMain.vue';
 
 const router = useRouter();
 
-const { isModalOpen, toggleModal } = useModalInteractions();
+const { isModalOpen, toggleModal } = useModal();
 
 const selectedRoute = ref('');
 

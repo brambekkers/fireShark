@@ -21,6 +21,6 @@ defineProps({
         class="from-primary to-secondary bg-gradient-to-r h-[10px] -mt-[1px] rounded-l-full rounded-r-full transition-all duration-500 ease-in-out"
       ></div>
     </div>
-    <p class="text-sharp-primary font-bold ms-4">{{ progress }}%</p>
+    <p class="text-app-primary font-bold ms-4">{{ progress }}%</p>
   </section>
 </template>

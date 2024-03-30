@@ -30,7 +30,7 @@ const giveAnswer = () => {
     <div>
       <label
         :for="questionId"
-        class="flex cursor-pointer items-center justify-between gap-6 rounded-2xl border border-gray-100 bg-white py-8 px-6 font-medium shadow-md hover:border-gray-200 has-[:checked]:border-sharp-primary has-[:checked]:border-2 has-[:checked]:shadow-xl has-[:checked]:ring-1 has-[:checked]:ring-sharp-primary"
+        class="flex cursor-pointer items-center justify-between gap-6 rounded-2xl border border-gray-100 bg-white py-8 px-6 font-medium shadow-md hover:border-gray-200 has-[:checked]:border-app-primary has-[:checked]:border-2 has-[:checked]:shadow-xl has-[:checked]:ring-1 has-[:checked]:ring-app-primary"
       >
         <p class="text-gray-700">{{ text }}</p>
         <input

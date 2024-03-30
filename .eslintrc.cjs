@@ -1,15 +1,12 @@
 module.exports = {
   rules: {
-
     'vue/no-deprecated-slot-attribute': ['off'],
     'linebreak-style': 'off',
     'import/extensions': [
       'error',
+      'ignorePackages',
       {
-        js: 'always',
-        vue: 'always',
-        scss: 'always',
-        json: 'always',
+        '': 'never',
       },
     ],
     'import/no-unresolved': 'off',
@@ -23,5 +20,5 @@ module.exports = {
   env: {
     node: true,
   },
-  extends: ['plugin:vue/vue3-recommended',  '@vue/airbnb',],
+  extends: ['plugin:vue/vue3-recommended', '@vue/airbnb'],
 };

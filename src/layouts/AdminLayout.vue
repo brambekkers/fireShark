@@ -38,12 +38,11 @@ const text = computed(() => (layoutStore.isDarkMode ? '#f2f9f9' : '#242424'));
     <!-- Accent on top -->
     <HeaderAdmin />
     <div class="flex absolute inset-0 pt-12 z-0">
-      <aside class="w-96 bg-sharp-secondary pt-36">
+      <aside class="w-96 bg-app-secondary pt-36">
         <AdminSidebar />
       </aside>
 
       <main class="pt-36 flex-grow px-6">
-        test
         <slot></slot>
       </main>
     </div>

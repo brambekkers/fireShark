@@ -32,20 +32,22 @@ const ready = useTimeout(10);
         />
         <!-- Progress circle -->
         <circle
-          class="text-sharp-warning progress-ring__circle stroke-current"
+          class="text-app-warning progress-ring__circle stroke-current"
           stroke-width="7"
           stroke-linecap="round"
           cx="50"
           cy="50"
           r="40"
           fill="transparent"
-          :stroke-dashoffset="ready ? `calc(400 - (200 * ${stats.percentage}) / 100)` : '399'"
+          :stroke-dashoffset="
+            ready ? `calc(400 - (200 * ${stats.percentage}) / 100)` : '399'
+          "
         />
       </svg>
     </div>
 
     <div
-      class="absolute bg-sharp-warning w-14 h-14 -bottom-4 right-0 font-bold text-lg rounded-full flex items-center justify-center"
+      class="absolute bg-app-warning w-14 h-14 -bottom-4 right-0 font-bold text-lg rounded-full flex items-center justify-center"
     >
       {{ Math.round(stats?.percentage) || 0 }}%
     </div>

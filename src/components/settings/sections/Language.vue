@@ -9,14 +9,14 @@ const { locale } = useI18n();
     <template #dropdown>
       <p
         class="cursor-pointer mb-4"
-        :class="{ 'text-sharp-primary font-semibold': locale === 'en' }"
+        :class="{ 'text-app-primary font-semibold': locale === 'en' }"
         @click="locale = 'en'"
       >
         English
       </p>
       <p
         class="cursor-pointer"
-        :class="{ 'text-sharp-primary  font-semibold': locale === 'nl' }"
+        :class="{ 'text-app-primary  font-semibold': locale === 'nl' }"
         @click="locale = 'nl'"
       >
         Nederlands
