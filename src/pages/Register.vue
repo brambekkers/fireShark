@@ -6,25 +6,29 @@ import Step3 from '@/components/register/Step3.vue';
 import Button from '@/components/generic/Button.vue';
 
 // Step 1
-const currentStep = ref(2);
-const firstName = ref('Bram');
-const lastName = ref('Bekkers');
-const email = ref('bram.bekkers@outlook.com');
+const currentStep = ref(0);
+const firstName = ref('');
+const lastName = ref('');
+const email = ref('');
 const password = ref('');
 const controlPassword = ref('');
+const passwordMatchCriteria = ref(false);
 
 // Step 2
 const position = ref('Frontend Developer');
 
 const step1Completed = computed(() => {
   const allFields =
-    firstName.value &&
-    lastName.value &&
-    email.value &&
-    password.value &&
-    controlPassword.value;
+    !!firstName.value &&
+    !!lastName.value &&
+    !!email.value &&
+    !!password.value &&
+    !!controlPassword.value;
   const passwordsMatch = password.value === controlPassword.value;
-  return allFields && passwordsMatch;
+  console.log(allFields);
+  console.log(passwordsMatch);
+  console.log(passwordMatchCriteria.value);
+  return allFields && passwordsMatch && passwordMatchCriteria.value;
 });
 
 const step2Completed = computed(() => position.value);
@@ -77,6 +81,7 @@ const nextStep = () => {
       v-model:email="email"
       v-model:password="password"
       v-model:controlPassword="controlPassword"
+      v-model:passwordMatchCriteria="passwordMatchCriteria"
     />
     <Step2 v-if="currentStep === 1" v-model:position="position" />
     <Step3
