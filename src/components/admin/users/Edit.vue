@@ -1,4 +1,6 @@
 <script setup>
+import { getFunctions, httpsCallable } from 'firebase/functions';
+
 import Modal from '@/components/generic/Modal.vue';
 import { useModal } from '@/composable/modal';
 import ActionButton from '@/components/generic/ActionButton.vue';
@@ -9,24 +11,33 @@ import IconClose from '~icons/uil/times';
 import IconRoute from '~icons/lucide/route';
 import IconRuler from '~icons/lucide/pencil-ruler';
 
+const cloudFunctions = getFunctions();
+const changeUserRole = httpsCallable(cloudFunctions, 'changeUserRole');
+
 const { isModalOpen, toggleModal } = useModal();
 const role = ref('user');
+const groups = ref([]);
 
-const props = defineProps({
-  currentUser: {
-    type: Object,
-    required: true,
-  },
+const currentUser = defineModel('currentUser', {
+  type: [Object, null],
+  required: true,
 });
 
-watch(
-  () => props.currentUser,
-  (newVal) => {
-    if (newVal) {
-      toggleModal();
-    }
-  },
-);
+const updateUser = async () => {
+  if (!currentUser.value) return;
+  await changeUserRole({ role: role.value, uid: currentUser.value.id });
+  toggleModal();
+};
+
+watch(isModalOpen, (newVal) => {
+  if (!newVal) currentUser.value = null;
+});
+
+watch(currentUser, (newVal) => {
+  if (newVal) {
+    toggleModal();
+  }
+});
 </script>
 
 <template>
@@ -84,7 +95,7 @@ watch(
         </div>
         <select
           v-model="role"
-          class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:border-app-primary w-52 p-4"
+          class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:border-app-primary active:border-app-primary w-52 p-4"
         >
           <option value="user">User</option>
           <option value="editor">Editor</option>
@@ -95,7 +106,7 @@ watch(
     </div>
     <!-- Modal footer -->
     <div class="flex items-center justify-end p-5">
-      <Button title="Change" size="md" />
+      <Button title="Change" size="md" @click="updateUser" />
     </div>
   </Modal>
 </template>

@@ -4,6 +4,7 @@ import Duel from '@/pages/Duel.vue';
 import Admin from '@/pages/Admin.vue';
 import AdminUsers from '@/pages/admin/Users.vue';
 import Login from '@/pages/Login.vue';
+import Register from '@/pages/Register.vue';
 import Settings from '@/pages/Settings.vue';
 import Practice from '@/pages/Practice.vue';
 
@@ -51,6 +52,10 @@ export const routes = [
       {
         path: 'users',
         component: AdminUsers,
+        meta: {
+          requiresAuth: true,
+          requiresModerator: true,
+        },
       },
     ],
     meta: {
@@ -75,7 +80,15 @@ export const routes = [
       layout: AuthLayout,
       requiresAuth: false,
     },
-
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register,
+    meta: {
+      layout: AuthLayout,
+      requiresAuth: false,
+    },
   },
   {
     path: '/:pathMatch(.*)*',

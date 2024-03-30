@@ -7,25 +7,30 @@ initializeApp();
 const authentication = getAuth();
 const db = getFirestore();
 
-const checkIfAdmin = (auth) => auth?.token?.accountType === 'admin';
+const isAdmin = (auth) => auth?.token?.role === 'admin';
+const isModerator = (auth) => auth?.token?.role === 'moderator';
 
-exports.changeAdminRole = onCall(async ({ data }) => {
-  const { uid, isAdmin } = data;
+exports.changeUserRole = onCall(async ({ data, auth }) => {
+  const { uid, role } = data;
   try {
-    // Check if your an administrator
-    // if (!checkIfAdmin(auth)) {
-    //   return new HttpsError('unauthenticated', 'Request not authorized. User must be a admin to fulfull request.')
-    // }
+    // Check if your an administrator or moderator
+    if (!isAdmin(auth) && !isModerator(auth)) {
+      return new HttpsError(
+        'unauthenticated',
+        'Request not authorized. User must be a admin or Moderator to fulfill request.',
+      );
+    }
 
-    // Your an admin, make the user an admin
+    // Update the user role in the authentication system
     const { customClaims } = await authentication.getUser(uid);
     await authentication.setCustomUserClaims(uid, {
       ...customClaims,
-      accountType: isAdmin ? 'admin' : 'user',
+      role,
     });
-    await db
-      .doc(`users/${uid}`)
-      .set({ role: isAdmin ? 'admin' : 'user' }, { merge: true });
+
+    // Update the user role in the database as well
+    const userRef = db.doc(`users/${uid}`);
+    await userRef.set({ role }, { merge: true });
     return 'Request fulfilled';
   } catch (error) {
     throw new HttpsError('unknown', `${error}`);
@@ -36,11 +41,12 @@ exports.deleteUser = onCall(async ({ data, auth }) => {
   const { uid } = data;
   try {
     // Check if your an administrator
-    if (!checkIfAdmin(auth))
+    if (!isAdmin(auth) && !isModerator(auth)) {
       return new HttpsError(
         'unauthenticated',
         'Request not authorized. User must be a admin to fulfull request.',
       );
+    }
 
     await authentication.deleteUser(uid);
     return `User ${uid} has been deleted`;

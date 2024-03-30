@@ -2,7 +2,11 @@
 import { useFirebaseAuth } from 'vuefire';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
+// Components
+import TextField from '@/components/generic/TextField.vue';
 import Button from '@/components/generic/Button.vue';
+
+// Icons
 import IconMail from '~icons/lucide/mail';
 import IconLock from '~icons/lucide/lock-keyhole';
 
@@ -39,32 +43,19 @@ const login = async () => {
     </div>
     <hr class="my-6" />
     <div class="flex flex-col">
-      <div class="relative mb-5">
-        <div
-          class="absolute inset-y-0 left-0 pl-4 pointer-events-none flex items-center text-app-primary"
-        >
-          <IconMail />
-        </div>
-        <input
-          v-model="email"
-          class="pl-12 pr-4 shadow-xl border rounded-2xl border-gray-300 w-full py-5 text-gray-700 leading-tight bg-white focus:border-app-primary focus:outline-none"
-          type="text"
-          placeholder="Email address"
-        />
-      </div>
-      <div class="relative mb-4">
-        <div
-          class="absolute inset-y-0 left-0 pl-4 pointer-events-none flex items-center text-app-primary"
-        >
-          <IconLock />
-        </div>
-        <input
-          v-model="password"
-          class="pl-12 pr-4 shadow-xl border rounded-2xl border-gray-300 w-full py-5 text-gray-700 leading-tight bg-white focus:border-app-primary focus:outline-none"
-          type="password"
-          placeholder="Password"
-        />
-      </div>
+      <TextField
+        v-model="email"
+        :icon="IconMail"
+        type="email"
+        placeholder="Email address"
+        class="mb-4"
+      />
+      <TextField
+        v-model="password"
+        :icon="IconLock"
+        placeholder="Password"
+        class="mb-4"
+      />
 
       <Button
         class="mt-10"
@@ -72,6 +63,12 @@ const login = async () => {
         :disable="email === '' || password === ''"
         @on-clicked="login"
       />
+      <div class="text-center mt-4 text-sm">
+        Don't have an account?
+        <router-link to="/register" class="text-primary font-semibold"
+          >Register</router-link
+        >
+      </div>
     </div>
   </div>
 </template>

@@ -41,7 +41,7 @@ const clearSelection = () => {
           <TopicButton
             v-for="topic in userStore.topics"
             :key="topic.id"
-            :title="topic.id"
+            :title="topic.id || ''"
             :progress="rand(1, 100)"
             :all-selected="allSelected"
           />
@@ -51,7 +51,7 @@ const clearSelection = () => {
       <div class="flex align-center justify-center mt-12">
         <router-link to="/practice">
           <Button
-            :class="{ 'disabled-button': disabled }"
+            :class="{ 'disabled-button': isButtonDisabled }"
             :disable="isButtonDisabled"
             title="Practice this selection"
           >

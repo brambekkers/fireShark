@@ -15,6 +15,10 @@ export const useUserStore = defineStore('user', () => {
   const topics = computed(() => user.value?.topics || {});
   const settings = computed(() => user.value?.settings || {});
 
+  watch(user, () => {
+    console.log('User updated:', user.value);
+  }, { immidiate: true });
+
   const updateUser = async () => {
     try {
       await fetch(`http://localhost:3000/users/${user.value.id}`, {

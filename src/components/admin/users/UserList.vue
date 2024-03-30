@@ -4,6 +4,12 @@ import IconSettings from '~icons/lucide/settings';
 import ActionButton from '@/components/generic/ActionButton.vue';
 import Edit from '@/components/admin/users/Edit.vue';
 
+// Role icons
+import IconAdmin from '~icons/mdi/shield-crown-outline';
+import IconModerator from '~icons/mdi/shield-key-outline';
+import IconEditor from '~icons/mdi/shield-edit-outline';
+import IconUser from '~icons/lucide/user';
+
 defineProps({
   users: {
     type: Array,
@@ -48,7 +54,25 @@ const editUser = (user) => {
           <p class="text-sm">{{ user.email }}</p>
         </td>
         <td class="p-3">{{ user.role || 'user' }}</td>
-        <td class="p-3">{{ user.role || 'user' }}</td>
+        <td class="p-3">
+          <span class="flex flex-col items-center w-fit text-sm">
+            <IconAdmin
+              v-if="user.role === 'admin'"
+              class="h-6 w-6 text-app-danger"
+            />
+            <IconModerator
+              v-if="user.role === 'moderator'"
+              class="h-6 w-6 text-app-warning"
+            />
+            <IconEditor
+              v-if="user.role === 'editor'"
+              class="h-6 w-6 text-app-primary"
+            />
+            <IconUser v-if="user.role === 'user'" class="h-6 w-6" />
+
+            {{ user.role || 'user' }}
+          </span>
+        </td>
         <td class="p-3 w-9">
           <div class="flex gap-1 justify-end pe-3">
             <ActionButton @click="editUser(user)">
@@ -62,7 +86,7 @@ const editUser = (user) => {
       </tr>
     </tbody>
   </table>
-  <Edit :current-user="currentUser" />
+  <Edit v-model:current-user="currentUser" />
 </template>
 
 <style lang="scss" scoped></style>

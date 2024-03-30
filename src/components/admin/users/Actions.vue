@@ -7,6 +7,8 @@ import IconEllipsis from '~icons/lucide/ellipsis-vertical';
 
 import Button from '@/components/generic/Button.vue';
 import ActionButton from '@/components/generic/ActionButton.vue';
+
+const searchText = ref('');
 </script>
 
 <template>
@@ -20,7 +22,7 @@ import ActionButton from '@/components/generic/ActionButton.vue';
           <IconSearch />
         </div>
         <input
-          v-model="email"
+          v-model="searchText"
           class="pl-12 pr-4 border rounded-xl border-gray-300 w-full py-3 text-gray-700 leading-tight bg-white focus:border-app-primary focus:outline-none"
           type="text"
           placeholder="Search for users"
