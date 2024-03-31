@@ -22,6 +22,10 @@ const passwordMatchCriteria = ref(false);
 // Step 2
 const position = ref([]);
 
+const isLoading = ref(false);
+const hasError = ref(false);
+const errorMessage = ref('');
+
 const step1Completed = computed(() => {
   const allFields =
     !!firstName.value &&
@@ -52,19 +56,29 @@ const nextStep = async () => {
 
   if (currentStep.value === 1 && !step2Completed.value) return;
 
-  if (currentStep.value < 2) {
-    currentStep.value += 1;
+  if (currentStep.value === 2) {
+    try {
+      isLoading.value = true;
+      await useUserStore().createUser({
+        firstName: firstName.value,
+        lastName: lastName.value,
+        password: password.value,
+        email: email.value,
+        position: position.value,
+      });
+      console.log('User created!');
+      // router.push('/login');
+    } catch (error) {
+      hasError.value = true;
+      errorMessage.value = error.message;
+    } finally {
+      isLoading.value = false;
+    }
   }
 
-  if (currentStep.value === 2) {
-    await useUserStore().createUser({
-      firstName: firstName.value,
-      lastName: lastName.value,
-      password: password.value,
-      email: email.value,
-      position: position.value,
-    });
-    router.push('/login');
+  // Update the current step
+  if (currentStep.value < 2) {
+    currentStep.value += 1;
   }
 };
 </script>

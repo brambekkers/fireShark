@@ -3,6 +3,7 @@ import { useFirebaseAuth } from 'vuefire';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
 // Components
+import FullPageLoader from '@/components/generic/FullPageLoader.vue';
 import TextField from '@/components/generic/TextField.vue';
 import Button from '@/components/generic/Button.vue';
 
@@ -15,16 +16,21 @@ const password = ref('');
 const auth = useFirebaseAuth();
 const router = useRouter();
 
+const isLoading = ref(false);
 const hasError = ref(false);
 const errorMessage = ref('');
 
 const login = async () => {
   try {
+    isLoading.value = true;
+    if (email.value === '' || password.value === '') return;
     await signInWithEmailAndPassword(auth, email.value, password.value);
     router.push('/overview');
   } catch (error) {
     hasError.value = true;
     errorMessage.value = error.message;
+  } finally {
+    isLoading.value = false;
   }
 };
 </script>
@@ -54,7 +60,9 @@ const login = async () => {
         v-model="password"
         :icon="IconLock"
         placeholder="Password"
+        type="password"
         class="mb-4"
+        @keydown.enter="login"
       />
 
       <Button
@@ -70,5 +78,6 @@ const login = async () => {
         >
       </div>
     </div>
+    <FullPageLoader :isLoading="isLoading" />
   </div>
 </template>

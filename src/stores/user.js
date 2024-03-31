@@ -36,9 +36,16 @@ export const useUserStore = defineStore('user', () => {
   };
 
   const createUser = async (data) => {
-    const cloudFunctions = getFunctions();
-    const createUserFunction = httpsCallable(cloudFunctions, 'createUser');
-    return await createUserFunction(data)
+    try {
+      const cloudFunctions = getFunctions();
+      const createUserFunction = httpsCallable(cloudFunctions, 'createUser');
+      const result = await createUserFunction(data)
+      console.log('result', result)
+      return result
+    } catch (error) {
+      return error
+    }
+
   }
 
   const calculatePerformancePercentage = () => {

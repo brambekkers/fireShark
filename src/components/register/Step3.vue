@@ -18,7 +18,7 @@ defineProps({
     required: true,
   },
   position: {
-    type: String,
+    type: Array,
     required: true,
   },
 });

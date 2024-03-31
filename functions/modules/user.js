@@ -12,7 +12,7 @@ const checkIfUserIsComplete = async (data) => {
 };
 
 const setUserProfile = async (uid, data) => {
-  const { firstName, lastName, email, password, position } = data;
+  const { firstName, lastName, email } = data;
 
   // Update the user role in the database as well
   const userRef = db.doc(`users/${uid}`);
@@ -57,7 +57,7 @@ const setUserTopics = async (uid) => {
   await userRef.set({});
 };
 
-exports.createUser = onCall(async ({ data, auth }) => {
+exports.createUser = onCall(async ({ data }) => {
   try {
     if (!checkIfUserIsComplete(data)) {
       return new HttpsError(
@@ -65,14 +65,7 @@ exports.createUser = onCall(async ({ data, auth }) => {
         'Request not valid. Please fill out all fields.',
       );
     }
-
-    // Check if your an administrator or moderator
-    if (!isAdmin(auth) && !isModerator(auth)) {
-      return new HttpsError(
-        'unauthenticated',
-        'Request not authorized. User must be a admin or Moderator to fulfill request.',
-      );
-    }
+    
     const { firstName, lastName, email, password } = data;
 
     const userRecord = await authentication.createUser({
