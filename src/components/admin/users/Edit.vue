@@ -5,6 +5,7 @@ import Modal from '@/components/generic/Modal.vue';
 import { useModal } from '@/composable/modal';
 import ActionButton from '@/components/generic/ActionButton.vue';
 import Button from '@/components/generic/Button.vue';
+import Select from '@/components/generic/Select.vue';
 
 // Icons
 import IconClose from '~icons/uil/times';
@@ -41,12 +42,7 @@ watch(currentUser, (newVal) => {
 </script>
 
 <template>
-  <Modal
-    v-if="currentUser"
-    :is-open="isModalOpen"
-    :toggle-modal="toggleModal"
-    :current-user="currentUser"
-  >
+  <Modal v-if="currentUser" :is-open="isModalOpen" :toggle-modal="toggleModal">
     <!-- Modal header -->
     <div class="flex items-center justify-between p-5">
       <h3 class="text-xl font-semibold">
@@ -74,16 +70,13 @@ watch(currentUser, (newVal) => {
           <IconRoute class="w-5 text-app-primary" />
           <h4>Groups</h4>
         </div>
-        <select
-          id="countries"
-          class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:border-app-primary w-52 p-4"
-        >
+        <Select v-model="groups" size="md" elevation="none" class="w-1/2">
           <option selected>Choose a country</option>
           <option value="US">United States</option>
           <option value="CA">Canada</option>
           <option value="FR">France</option>
           <option value="DE">Germany</option>
-        </select>
+        </Select>
       </div>
 
       <!-- Roles -->
@@ -93,15 +86,12 @@ watch(currentUser, (newVal) => {
           <IconRuler class="w-5 text-app-primary" />
           <h4>Role</h4>
         </div>
-        <select
-          v-model="role"
-          class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:border-app-primary active:border-app-primary w-52 p-4"
-        >
+        <Select v-model="role" size="md" elevation="none" class="w-1/2">
           <option value="user">User</option>
           <option value="editor">Editor</option>
           <option value="moderator">Moderator</option>
           <option value="admin">Admin</option>
-        </select>
+        </Select>
       </div>
     </div>
     <!-- Modal footer -->

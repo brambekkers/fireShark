@@ -41,7 +41,7 @@ defineProps({
         <td class="w-fit p-4">Position:</td>
         <td class="p-4 text-end font-bold">
           <span v-for="(id, i) in position" :key="id">
-            {{ groupsObject[id].name }}
+            {{ groupsObject[id]?.name }}
             <span v-if="i !== position.length - 1" class="-ms-1 me-2">,</span>
           </span>
         </td>

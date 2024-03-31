@@ -34,6 +34,8 @@ export default {
         'app-button-secondary-border-color-focus': '#009286',
         'app-button-secondary-text': '#005e5d',
         'app-button-secondary-text-focus': '#009286',
+        'app-button-danger-bg': '#fc6142',
+        'app-button-danger-bg-focus': '#c24229',
         'app-button-tertiary-bg': '#009286',
         'app-button-tertiary-bg-focus': '#005e5d',
         'app-button-disabled-bg': '#d0d0d0',

@@ -66,8 +66,7 @@ const nextStep = async () => {
         email: email.value,
         position: position.value,
       });
-      console.log('User created!');
-      // router.push('/login');
+      router.push('/login');
     } catch (error) {
       hasError.value = true;
       errorMessage.value = error.message;

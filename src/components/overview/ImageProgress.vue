@@ -1,12 +1,17 @@
 <script setup>
 import { useTimeout } from '@vueuse/core';
 import useUserStore from '@/stores/user';
+import Person from '@/assets/person.svg';
 
 const { settings, stats } = storeToRefs(useUserStore());
 
-const profileImageUrl = computed(() => settings?.value?.profileImageUrl || '');
+const profileImageUrl = computed(() => settings?.value?.profileImageUrl);
 const profileStyle = computed(() => ({
-  backgroundImage: `url('${profileImageUrl.value}')`,
+  background: '#f2f9f9',
+  backgroundImage: `url('${profileImageUrl.value || Person}') `,
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
 }));
 
 const ready = useTimeout(10);
@@ -56,9 +61,6 @@ const ready = useTimeout(10);
 
 <style scoped lang="scss">
 .profile-image {
-  background-size: cover;
-  background-position: center;
-
   .progress-ring__circle {
     stroke-dasharray: 400, 400;
     transition: stroke-dashoffset 1.5s ease-in-out;

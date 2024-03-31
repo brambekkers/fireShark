@@ -7,6 +7,21 @@ const props = defineProps({
     required: false,
     default: () => null,
   },
+  placeholder: {
+    type: String,
+    required: false,
+    default: '',
+  },
+  type: {
+    type: String,
+    required: false,
+    default: 'text',
+  },
+  maxlength: {
+    type: Number,
+    required: false,
+    default: 120,
+  },
   elevation: { type: String, required: false, default: 'lg' },
   size: { type: String, required: false, default: 'lg' },
 });
@@ -48,13 +63,15 @@ const elevationClass = computed(() => {
     >
       <component :is="icon" />
     </div>
-    <select
+    <textarea
       v-model="model"
+      rows="3"
+      :maxlength="maxlength"
       class="pr-4 border border-gray-300 w-full text-gray-700 leading-tight bg-white focus:border-app-primary focus:outline-none"
       :class="[{ 'pl-12': icon, 'pl-4': !icon }, sizeClass, elevationClass]"
-    >
-      <slot />
-    </select>
+      :type="type"
+      :placeholder="placeholder"
+    />
   </div>
 </template>
 

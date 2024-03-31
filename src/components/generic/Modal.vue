@@ -2,7 +2,6 @@
 defineProps({
   isOpen: { type: Boolean, required: true },
   toggleModal: { type: Function, required: true },
-  user: { type: Object, required: false, default: null },
 });
 </script>
 

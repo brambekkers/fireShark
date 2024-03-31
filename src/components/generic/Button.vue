@@ -29,6 +29,8 @@ const typeClasses = computed(() => {
       return 'bg-app-button-primary-bg border-app-button-primary-bg text-app-button-primary-front border-2 hover:bg-app-button-primary-focus';
     case 'secondary':
       return 'border-app-button-secondary-border-color text-app-button-secondary-text border-2 hover:bg-app-button-secondary-border-color/10';
+    case 'danger':
+      return 'bg-app-button-danger-bg border-app-button-danger-bg text-white border-2 hover:bg-app-button-danger-bg-focus hover:border-app-button-danger-bg-focus';
     default:
       return 'bg-app-button-primary-bg text-app-button-primary-front';
   }
@@ -40,7 +42,7 @@ const typeClasses = computed(() => {
     type="button"
     :disabled="props.disable"
     :class="`${sizeClasses} ${typeClasses}`"
-    class="flex items-center justify-center font-medium rounded-full"
+    class="flex items-center justify-center font-medium rounded-full transition-all duration-200 ease-in-out"
     @click="$emit('on-clicked')"
   >
     {{ title }}

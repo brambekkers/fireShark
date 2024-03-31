@@ -54,7 +54,7 @@ const newPosition = ref('');
           <div
             class="bg-primary text-white font-medium me-2 px-6 py-2 rounded-full"
           >
-            {{ groupsObject[id].name }}
+            {{ groupsObject[id]?.name }}
 
             <button @click="removePosition(id)">
               <IconTimes

@@ -25,6 +25,7 @@
     "firebase": "^10.10.0",
     "json-server": "^1.0.0-alpha.21",
     "monaco-editor": "^0.45.0",
+    "nanoid": "^5.0.6",
     "pinia": "^2.1.6",
     "vite-plugin-eslint": "^1.8.1",
     "vm2": "^3.9.19",

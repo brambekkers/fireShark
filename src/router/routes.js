@@ -1,12 +1,18 @@
 // routes
 import Home from '@/pages/Home.vue';
 import Duel from '@/pages/Duel.vue';
-import Admin from '@/pages/Admin.vue';
-import AdminUsers from '@/pages/admin/Users.vue';
-import Login from '@/pages/Login.vue';
-import Register from '@/pages/Register.vue';
 import Settings from '@/pages/Settings.vue';
 import Practice from '@/pages/Practice.vue';
+
+// Admin
+import Admin from '@/pages/Admin.vue';
+import AdminUsers from '@/pages/admin/Users.vue';
+import AdminGroups from '@/pages/admin/Groups.vue';
+
+// Auth
+import Login from '@/pages/Login.vue';
+import Register from '@/pages/Register.vue';
+
 
 // layouts
 import MainLayout from '@/layouts/MainLayout.vue';
@@ -52,6 +58,14 @@ export const routes = [
       {
         path: 'users',
         component: AdminUsers,
+        meta: {
+          requiresAuth: true,
+          requiresModerator: true,
+        },
+      },
+      {
+        path: 'groups',
+        component: AdminGroups,
         meta: {
           requiresAuth: true,
           requiresModerator: true,

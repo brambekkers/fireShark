@@ -1,12 +1,7 @@
 <script setup>
-const model = defineModel({ type: String, required: true });
+import IconUpload from '~icons/lucide/cloud-upload';
 
 const props = defineProps({
-  icon: {
-    type: Object,
-    required: false,
-    default: () => null,
-  },
   placeholder: {
     type: String,
     required: false,
@@ -28,7 +23,7 @@ const sizeClass = computed(() => {
     case 'md':
       return 'py-3 rounded-lg';
     case 'lg':
-      return 'py-5 rounded-2xl';
+      return ' rounded-2xl';
     default:
       return 'py-3 rounded-lg';
   }
@@ -51,20 +46,23 @@ const elevationClass = computed(() => {
 </script>
 
 <template>
-  <div class="relative">
-    <div
-      v-if="icon"
-      class="absolute inset-y-0 left-0 pl-4 pointer-events-none flex items-center text-app-primary"
+  <div class="flex items-center justify-center w-full">
+    <label
+      for="dropzone-file"
+      class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 hover:border-gray-500 transition-colors duration-300 ease-in-out"
     >
-      <component :is="icon" />
-    </div>
-    <input
-      v-model="model"
-      class="pr-4 border border-gray-300 w-full text-gray-700 leading-tight bg-white focus:border-app-primary focus:outline-none"
-      :class="[{ 'pl-12': icon, 'pl-4': !icon }, sizeClass, elevationClass]"
-      :type="type"
-      :placeholder="placeholder"
-    />
+      <div class="flex flex-col items-center justify-center pt-5 pb-6">
+        <IconUpload class="w-8 h-8 mb-4 text-gray-500" />
+
+        <p class="mb-2 text-sm text-gray-500">
+          <span class="font-semibold">Click to upload</span> or drag and drop
+        </p>
+        <p class="text-xs text-gray-500">
+          SVG, PNG, JPG or GIF (MAX. 800x400px)
+        </p>
+      </div>
+      <input id="dropzone-file" type="file" class="hidden" />
+    </label>
   </div>
 </template>
 
