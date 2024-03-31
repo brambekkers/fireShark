@@ -3,6 +3,10 @@ import IconBrain from '~icons/lucide/brain';
 import IconWrench from '~icons/lucide/wrench';
 import IconTrophy from '~icons/material-symbols/trophy-outline';
 import IconSettings from '~icons/tdesign/setting-1';
+
+import { useUserStore } from '@/stores/user';
+
+const { user } = storeToRefs(useUserStore());
 </script>
 
 <template>
@@ -28,7 +32,7 @@ import IconSettings from '~icons/tdesign/setting-1';
       <router-link to="/settings">
         <span class="link"><IconSettings /> {{ $t('general.settings') }}</span>
       </router-link>
-      <router-link to="/admin">
+      <router-link v-if="user?.role === 'admin'" to="/admin">
         <span class="link"><IconWrench /> {{ $t('general.admin') }}</span>
       </router-link>
     </section>

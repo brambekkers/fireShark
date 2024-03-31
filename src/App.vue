@@ -5,7 +5,7 @@ const route = useRoute();
 </script>
 
 <template>
-  <component class="bg-app-body-bg" :is="route.meta.layout || div">
+  <component class="bg-app-body-bg" :is="route?.meta?.layout || 'div'">
     <router-view />
   </component>
 </template>

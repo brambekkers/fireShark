@@ -1,4 +1,9 @@
 <script setup>
+// Store
+import { useGroupStore } from '@/stores/groups';
+
+const { groupsObject } = storeToRefs(useGroupStore());
+
 defineProps({
   firstName: {
     type: String,
@@ -34,7 +39,12 @@ defineProps({
       </tr>
       <tr>
         <td class="w-fit p-4">Position:</td>
-        <td class="p-4 text-end font-bold">{{ position }}</td>
+        <td class="p-4 text-end font-bold">
+          <span v-for="(id, i) in position" :key="id">
+            {{ groupsObject[id].name }}
+            <span v-if="i !== position.length - 1" class="-ms-1 me-2">,</span>
+          </span>
+        </td>
       </tr>
     </tbody>
   </table>

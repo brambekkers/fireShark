@@ -1,6 +1,6 @@
 <script setup>
 import IconLeft from '~icons/lucide/chevron-left';
-import { useUserStore } from '@/stores/userStore';
+import { useUserStore } from '@/stores/user';
 const { stats } = storeToRefs(useUserStore());
 const router = useRouter();
 </script>

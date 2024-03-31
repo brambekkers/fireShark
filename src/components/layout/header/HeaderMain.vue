@@ -1,7 +1,7 @@
 <script setup>
 import { useRoute } from 'vue-router';
 import ImageProgress from '@/components/overview/ImageProgress.vue';
-import useUserStore from '@/stores/userStore';
+import useUserStore from '@/stores/user';
 import RoundedBackground from './RoundedBackground.vue';
 
 const { user } = storeToRefs(useUserStore());

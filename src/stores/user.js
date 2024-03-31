@@ -1,5 +1,6 @@
 import { useCurrentUser, useDocument } from 'vuefire';
 import { doc, getFirestore } from 'firebase/firestore';
+import { getFunctions, httpsCallable } from 'firebase/functions';
 
 export const useUserStore = defineStore('user', () => {
   const db = getFirestore();
@@ -34,6 +35,12 @@ export const useUserStore = defineStore('user', () => {
     }
   };
 
+  const createUser = async (data) => {
+    const cloudFunctions = getFunctions();
+    const createUserFunction = httpsCallable(cloudFunctions, 'createUser');
+    return await createUserFunction(data)
+  }
+
   const calculatePerformancePercentage = () => {
     // Type checking to ensure all inputs are numbers
     if (
@@ -59,6 +66,7 @@ export const useUserStore = defineStore('user', () => {
     stats,
     topics,
     settings,
+    createUser,
     updateUser,
     calculatePerformancePercentage,
   };

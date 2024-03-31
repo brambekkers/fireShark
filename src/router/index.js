@@ -27,13 +27,13 @@ router.beforeEach(async (to, from, next) => {
     const role = token?.claims.role || 'user';
 
     if (requiresAdmin && role !== 'admin') {
-      next('/overview');
+      // next('/overview');
     }
     if (requiresModerator && (role !== 'moderator' && role !== 'admin')) {
-      next('/overview');
+      // next('/overview');
     }
     if (requiresEditor && (role !== 'editor' && role !== 'moderator' && role !== 'admin')) {
-      next('/overview');
+      // next('/overview');
     }
   }
 

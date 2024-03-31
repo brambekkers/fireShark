@@ -1,5 +1,5 @@
 <script setup>
-import useUserStore from '@/stores/userStore';
+import useUserStore from '@/stores/user';
 import { useQuestionStore } from '@stores/question';
 import ProgressBar from '@/components/generic/ProgressBar.vue';
 import IconCheck from '~icons/lucide/check';

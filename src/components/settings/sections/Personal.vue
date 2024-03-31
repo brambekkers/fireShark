@@ -1,6 +1,6 @@
 <script setup>
 import SettingsSection from '@/components/settings/sections/Section.vue';
-import useUserStore from '@/stores/userStore';
+import useUserStore from '@/stores/user';
 
 const { user } = storeToRefs(useUserStore());
 </script>

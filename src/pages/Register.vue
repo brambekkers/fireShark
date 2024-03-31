@@ -1,9 +1,14 @@
 <script setup>
+import { useUserStore } from '@/stores/user';
+
 import Stepper from '@/components/register/Stepper.vue';
 import Step1 from '@/components/register/Step1.vue';
 import Step2 from '@/components/register/Step2.vue';
 import Step3 from '@/components/register/Step3.vue';
 import Button from '@/components/generic/Button.vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 // Step 1
 const currentStep = ref(0);
@@ -15,7 +20,7 @@ const controlPassword = ref('');
 const passwordMatchCriteria = ref(false);
 
 // Step 2
-const position = ref('Frontend Developer');
+const position = ref([]);
 
 const step1Completed = computed(() => {
   const allFields =
@@ -25,13 +30,10 @@ const step1Completed = computed(() => {
     !!password.value &&
     !!controlPassword.value;
   const passwordsMatch = password.value === controlPassword.value;
-  console.log(allFields);
-  console.log(passwordsMatch);
-  console.log(passwordMatchCriteria.value);
   return allFields && passwordsMatch && passwordMatchCriteria.value;
 });
 
-const step2Completed = computed(() => position.value);
+const step2Completed = computed(() => position.value.length > 0);
 
 const buttonDisabled = computed(() => {
   if (currentStep.value === 0) {
@@ -43,17 +45,26 @@ const buttonDisabled = computed(() => {
   return false;
 });
 
-const nextStep = () => {
+const nextStep = async () => {
   if (currentStep.value === 0 && !step1Completed.value) {
     return;
   }
 
-  if (currentStep.value === 1 && !step2Completed.value) {
-    return;
-  }
+  if (currentStep.value === 1 && !step2Completed.value) return;
 
   if (currentStep.value < 2) {
     currentStep.value += 1;
+  }
+
+  if (currentStep.value === 2) {
+    await useUserStore().createUser({
+      firstName: firstName.value,
+      lastName: lastName.value,
+      password: password.value,
+      email: email.value,
+      position: position.value,
+    });
+    router.push('/login');
   }
 };
 </script>

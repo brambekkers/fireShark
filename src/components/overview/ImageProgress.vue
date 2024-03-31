@@ -1,6 +1,6 @@
 <script setup>
 import { useTimeout } from '@vueuse/core';
-import useUserStore from '@/stores/userStore';
+import useUserStore from '@/stores/user';
 
 const { settings, stats } = storeToRefs(useUserStore());
 

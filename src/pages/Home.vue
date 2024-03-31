@@ -2,7 +2,7 @@
 import { rand } from '@vueuse/core';
 import Button from '@/components/generic/Button.vue';
 import TopicButton from '@/components/overview/TopicButton.vue';
-import useUserStore from '@/stores/userStore';
+import useUserStore from '@/stores/user';
 import useQuestionStore from '@/stores/question';
 
 const userStore = useUserStore();
