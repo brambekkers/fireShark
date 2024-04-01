@@ -6,17 +6,13 @@ import Modal from '@/components/generic/Modal.vue';
 import { useModal } from '@/composable/modal';
 import ActionButton from '@/components/generic/ActionButton.vue';
 import Button from '@/components/generic/Button.vue';
-import TextField from '@/components/generic/TextField.vue';
-import TextArea from '@/components/generic/TextArea.vue';
+import Name from '@/components/admin/groups/edit/Name.vue';
+import Description from '@/components/admin/groups/edit/Description.vue';
 import Image from '@/components/admin/groups/edit/Image.vue';
+import Topics from '@/components/admin/groups/edit/Topics.vue';
+
 // Icons
 import IconClose from '~icons/uil/times';
-import IconPencil from '~icons/lucide/pencil-line';
-import IconMessage from '~icons/lucide/message-square-text';
-import IconPlus from '~icons/lucide/plus';
-import IconList from '~icons/lucide/clipboard-list';
-import IconDrag from '~icons/mdi/drag-vertical';
-import IconTrash from '~icons/lucide/trash';
 
 const { isModalOpen, toggleModal } = useModal();
 const db = getFirestore();
@@ -28,14 +24,6 @@ const props = defineProps({
   },
 });
 const editGroup = ref(null);
-
-const addTopic = () => {
-  editGroup.value.topics.push({
-    name: '',
-    parentId: editGroup.value.id,
-    id: `topic_${nanoid(15)}`,
-  });
-};
 
 const updateGroup = async () => {
   if (!editGroup.value) return;
@@ -108,12 +96,13 @@ watch(
         role="alert"
       >
         <p>
+          <strong class="font-bold">Explanation: </strong><br />
           Questions can belong to one or more topics, where each topic is part
           of a group. Groups can in theire place consist of multiple topics.
         </p>
 
         <p class="mt-1">
-          <strong class="font-bold">For example. </strong>
+          <strong class="font-medium">For example: </strong>
           A group may be centered around a specific profession (Development).
           Within a profession-based group, topics represent different skills
           relevant to that profession. The group contains multiple topics such
@@ -121,68 +110,15 @@ watch(
           questions relevant to that specific skill set.
         </p>
       </div>
-      <div class="flex items-center justify-between gap-10">
-        <div class="flex gap-2 items-center">
-          <IconPencil class="w-5 text-app-primary" />
-          <h4>Group name</h4>
-        </div>
-        <TextField
-          v-model="editGroup.name"
-          placeholder="Group name"
-          size="md"
-          elevation="none"
-          class="w-1/2"
-        />
-      </div>
-      <div class="flex flex-col justify-between gap-2">
-        <div class="flex gap-2 items-center">
-          <IconMessage class="w-5 text-app-primary" />
-          <h4>Description</h4>
-        </div>
-        <TextArea
-          v-model="editGroup.description"
-          placeholder="Description of the group..."
-          size="md"
-          elevation="none"
-        />
-      </div>
+      <Name v-model:name="editGroup.name" />
+      <Description v-model:description="editGroup.description" />
       <Image
         v-model:imageUrl="editGroup.imageUrl"
         :image-location="`questions/topics/${editGroup.id}`"
       />
       <hr />
       <!-- Topics -->
-      <div class="bg-app-body-bg rounded-lg border p-2 flex flex-col gap-2">
-        <div class="flex items-center justify-between gap-10 px-2">
-          <div class="flex gap-2 items-center">
-            <IconList class="w-5 text-app-primary" />
-            <h4>Topics</h4>
-          </div>
-          <button class="flex items-center" @click="addTopic">
-            Add topic
-            <IconPlus class="ms-2 w-6 h-6 text-app-primary" />
-          </button>
-        </div>
-        <div
-          v-for="topic in editGroup.topics"
-          :key="topic.id"
-          class="bg-white rounded-lg border py-2 pe-3 flex items-center"
-        >
-          <IconDrag class="w-8 h-8 text-app-primary" />
-          <TextField
-            v-model="topic.name"
-            placeholder="Group name"
-            elevation="none"
-            size="md"
-            class="flex-grow"
-          />
-          <button
-            class="text-app-button-danger-bg ms-2 hover:text-app-button-danger-bg-focus"
-          >
-            <IconTrash class="h-5 w-5" />
-          </button>
-        </div>
-      </div>
+      <Topics v-model:topics="editGroup.topics" :parent-id="editGroup.id" />
     </div>
 
     <!-- Modal footer -->
