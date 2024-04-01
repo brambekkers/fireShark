@@ -12,7 +12,7 @@
       rgba(0, 146, 134, 0.95),
       rgba(0, 94, 93, 0.95)
     ),
-    url('@/assets/backgroundHeader.jpg');
+    url('@/assets/img/layout/backgroundHeader.jpg');
   background-size: cover;
   background-position: 50%;
 }

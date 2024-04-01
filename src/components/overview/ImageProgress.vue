@@ -1,7 +1,7 @@
 <script setup>
 import { useTimeout } from '@vueuse/core';
 import useUserStore from '@/stores/user';
-import Person from '@/assets/person.svg';
+import Person from '@/assets/img/default/person.svg';
 
 const { settings, stats } = storeToRefs(useUserStore());
 

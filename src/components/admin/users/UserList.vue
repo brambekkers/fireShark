@@ -9,7 +9,7 @@ import IconAdmin from '~icons/mdi/shield-crown-outline';
 import IconModerator from '~icons/mdi/shield-key-outline';
 import IconEditor from '~icons/mdi/shield-edit-outline';
 import IconUser from '~icons/lucide/user';
-import Person from '@/assets/person.svg';
+import Person from '@/assets/img/default/person.svg';
 
 import { useGroupStore } from '@/stores/groups';
 const { groupsObject } = storeToRefs(useGroupStore());

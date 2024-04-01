@@ -8,13 +8,11 @@ import ActionButton from '@/components/generic/ActionButton.vue';
 import Button from '@/components/generic/Button.vue';
 import TextField from '@/components/generic/TextField.vue';
 import TextArea from '@/components/generic/TextArea.vue';
-import FileInput from '@/components/generic/FileInput.vue';
-
+import Image from '@/components/admin/groups/edit/Image.vue';
 // Icons
 import IconClose from '~icons/uil/times';
 import IconPencil from '~icons/lucide/pencil-line';
 import IconMessage from '~icons/lucide/message-square-text';
-import IconImage from '~icons/lucide/image';
 import IconPlus from '~icons/lucide/plus';
 import IconList from '~icons/lucide/clipboard-list';
 import IconDrag from '~icons/mdi/drag-vertical';
@@ -148,13 +146,10 @@ watch(
           elevation="none"
         />
       </div>
-      <div class="flex flex-col justify-between gap-2">
-        <div class="flex gap-2 items-center">
-          <IconImage class="w-5 text-app-primary" />
-          <h4>Image</h4>
-        </div>
-        <FileInput />
-      </div>
+      <Image
+        v-model:imageUrl="editGroup.imageUrl"
+        :image-location="`questions/topics/${editGroup.id}`"
+      />
       <hr />
       <!-- Topics -->
       <div class="bg-app-body-bg rounded-lg border p-2 flex flex-col gap-2">
