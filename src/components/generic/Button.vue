@@ -1,5 +1,4 @@
 <script setup>
-defineEmits(['on-clicked']);
 const props = defineProps({
   title: { type: String, required: true },
   disable: { type: Boolean, required: false },
@@ -43,7 +42,6 @@ const typeClasses = computed(() => {
     :disabled="props.disable"
     :class="`${sizeClasses} ${typeClasses}`"
     class="flex items-center justify-center font-medium rounded-full transition-all duration-200 ease-in-out"
-    @click="$emit('on-clicked')"
   >
     {{ title }}
   </button>

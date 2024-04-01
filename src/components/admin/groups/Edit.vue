@@ -1,6 +1,9 @@
 <script setup>
-import { doc, setDoc, getFirestore } from 'firebase/firestore';
+import { doc, setDoc, getFirestore, deleteDoc } from 'firebase/firestore';
 import { nanoid } from 'nanoid';
+
+// Composables
+import { useImage } from '@/composable/image';
 
 import Modal from '@/components/generic/Modal.vue';
 import { useModal } from '@/composable/modal';
@@ -35,6 +38,7 @@ const updateGroup = async () => {
       name: editGroup.value.name,
       description: editGroup.value.description,
       imageUrl: editGroup.value.imageUrl,
+      imageRef: editGroup.value.imageRef,
       questionAmount: editGroup.value.questionAmount,
       userAmount: editGroup.value.userAmount,
       topics: editGroup.value.topics.map((topic) =>
@@ -53,6 +57,29 @@ const updateGroup = async () => {
       setDoc(topicRef, topic);
     });
   }
+
+  toggleModal();
+};
+
+const deleteGroup = async () => {
+  const parentId = editGroup.value.id;
+  // Delete sub topics
+  props.group.topics.forEach((topic) => {
+    const topicRef = doc(db, `questions/${parentId}/topics/${topic.id}`);
+    deleteDoc(topicRef);
+  });
+
+  // Delete image
+  if (editGroup.value.imageRef) {
+    const { deletePicture } = useImage(editGroup.value.imageRef);
+    deletePicture();
+    editGroup.value.imageUrl = null;
+    editGroup.value.imageRef = null;
+  }
+
+  // Delete the group
+  const groupRef = doc(db, `questions/${parentId}`);
+  deleteDoc(groupRef);
 
   toggleModal();
 };
@@ -78,7 +105,12 @@ watch(
 </script>
 
 <template>
-  <Modal v-if="editGroup" :is-open="isModalOpen" :toggle-modal="toggleModal">
+  <Modal
+    v-if="editGroup"
+    :is-open="isModalOpen"
+    :toggle-modal="toggleModal"
+    max-width="5xl"
+  >
     <!-- Modal header -->
     <div class="flex items-center justify-between p-5">
       <h3 class="text-xl font-semibold">
@@ -114,6 +146,7 @@ watch(
       <Description v-model:description="editGroup.description" />
       <Image
         v-model:imageUrl="editGroup.imageUrl"
+        v-model:imageRef="editGroup.imageRef"
         :image-location="`questions/topics/${editGroup.id}`"
       />
       <hr />
@@ -123,7 +156,12 @@ watch(
 
     <!-- Modal footer -->
     <div class="flex items-center justify-between px-5 pb-5 pt-2">
-      <Button title="Delete group" size="md" type="danger" />
+      <Button
+        title="Delete group"
+        size="md"
+        type="danger"
+        @click="deleteGroup"
+      />
       <Button
         :title="group.id ? 'Change' : 'Create'"
         size="md"

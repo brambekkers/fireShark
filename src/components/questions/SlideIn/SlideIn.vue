@@ -1,8 +1,17 @@
 <template>
-  <div class="fixed inset-x-0 flex flex-col items-center bottom-0 slide-in-container" :class="show ? 'show' : ''">
+  <div
+    class="fixed inset-x-0 flex flex-col items-center bottom-0 slide-in-container"
+    :class="show ? 'show' : ''"
+  >
     <div class="btn-container relative z-30 -mb-6">
-      <div class="bg-[#F3C000] rounded-full p-2 w-14 h-14 cursor-pointer flex justify-center items-center" @click="show = !show" @keydown="show = !show">
-        <div class="border-2 border-black rounded-full w-8 h-8 flex justify-center items-center">
+      <div
+        class="bg-[#F3C000] rounded-full p-2 w-14 h-14 cursor-pointer flex justify-center items-center"
+        @click="show = !show"
+        @keydown="show = !show"
+      >
+        <div
+          class="border-2 border-black rounded-full w-8 h-8 flex justify-center items-center"
+        >
           <ArrowUpward class="icon-size" :class="{ 'rotate-180': show }" />
         </div>
       </div>
@@ -15,7 +24,11 @@
         {{ content }}
       </p>
 
-      <Button :title="nextQuestion" class="mx-auto mt-8" @on-clicked="emitNextQuestion" />
+      <Button
+        :title="nextQuestion"
+        class="mx-auto mt-8"
+        @click="emitNextQuestion"
+      />
     </div>
   </div>
 </template>
@@ -57,7 +70,10 @@ onMounted(() => {
 <style scoped lang="scss">
 .slide-in-container {
   transform: translateY(calc(calc(100% - 64px)));
-  transition: bottom 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
+  transition:
+    bottom 0.35s ease,
+    opacity 0.35s ease,
+    transform 0.35s ease;
   will-change: opacity, transform;
 }
 

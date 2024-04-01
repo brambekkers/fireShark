@@ -9,6 +9,10 @@ const imageUrl = defineModel('imageUrl', {
   required: true,
 });
 
+const imageRef = defineModel('imageRef', {
+  type: [String || null],
+  required: true,
+});
 const props = defineProps({
   imageLocation: {
     type: String,
@@ -21,6 +25,7 @@ const { uploadPicture, url, uploadTask, deletePicture } = useImage(
 
 watch(url, (newUrl) => {
   imageUrl.value = newUrl;
+  imageRef.value = newUrl ? props.imageLocation : null;
 });
 </script>
 

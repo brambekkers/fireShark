@@ -50,7 +50,7 @@ const logout = async () => {
       title="Logout"
       type="secondary"
       class="mt-8 w-52 mx-auto"
-      @on-clicked="logout"
+      @click="logout"
     />
   </div>
 </template>

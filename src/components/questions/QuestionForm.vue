@@ -16,7 +16,7 @@
         title="Save my answer"
         :type="answerIsGiven ? 'primary' : 'disabled'"
         :disabled="!answerIsGiven"
-        @on-clicked="saveAnswer"
+        @click="saveAnswer"
       />
     </div>
   </form>

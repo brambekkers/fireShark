@@ -46,24 +46,25 @@ const addTopic = () => {
         <IconPlus class="ms-2 w-6 h-6 text-app-primary" />
       </button>
     </div>
-    <div
-      v-for="topic in topics"
-      :key="topic.id"
-      class="bg-white rounded-lg border py-2 pe-3 flex items-center"
-    >
-      <IconDrag class="w-8 h-8 text-app-primary" />
-      <TextField
-        v-model="topic.name"
-        placeholder="Group name"
-        elevation="none"
-        size="md"
-        class="flex-grow"
-      />
-      <button
-        class="text-app-button-danger-bg ms-2 hover:text-app-button-danger-bg-focus"
+    <template v-for="topic in topics" :key="topic?.id">
+      <div
+        v-if="topic.id"
+        class="bg-white rounded-lg border py-2 pe-3 flex items-center"
       >
-        <IconTrash class="h-5 w-5" />
-      </button>
-    </div>
+        <IconDrag class="w-8 h-8 text-app-primary" />
+        <TextField
+          v-model="topic.name"
+          placeholder="Group name"
+          elevation="none"
+          size="md"
+          class="flex-grow"
+        />
+        <button
+          class="text-app-button-danger-bg ms-2 hover:text-app-button-danger-bg-focus"
+        >
+          <IconTrash class="h-5 w-5" />
+        </button>
+      </div>
+    </template>
   </div>
 </template>

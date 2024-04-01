@@ -69,7 +69,7 @@ const login = async () => {
         class="mt-10"
         title="Log in"
         :disable="email === '' || password === ''"
-        @on-clicked="login"
+        @click="login"
       />
       <div class="text-center mt-4 text-sm">
         Don't have an account?

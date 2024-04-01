@@ -1,4 +1,3 @@
-import { useFileDialog } from '@vueuse/core'
 import { ref as storageRef, deleteObject  } from 'firebase/storage'
 import { useFirebaseStorage, useStorageFile } from 'vuefire'
 
