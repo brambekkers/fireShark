@@ -1,8 +1,11 @@
 <script setup>
 import { getFunctions, httpsCallable } from 'firebase/functions';
 
-import Modal from '@/components/generic/Modal.vue';
+// Composable
 import { useModal } from '@/composable/modal';
+
+// components
+import Modal from '@/components/generic/Modal.vue';
 import ActionButton from '@/components/generic/ActionButton.vue';
 import Button from '@/components/generic/Button.vue';
 import Select from '@/components/generic/Select.vue';

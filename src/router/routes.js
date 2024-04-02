@@ -8,6 +8,7 @@ import Practice from '@/pages/Practice.vue';
 import Admin from '@/pages/Admin.vue';
 import AdminUsers from '@/pages/admin/Users.vue';
 import AdminGroups from '@/pages/admin/Groups.vue';
+import AdminQuestions from '@/pages/admin/Questions.vue';
 
 // Auth
 import Login from '@/pages/Login.vue';
@@ -66,6 +67,14 @@ export const routes = [
       {
         path: 'groups',
         component: AdminGroups,
+        meta: {
+          requiresAuth: true,
+          requiresModerator: true,
+        },
+      },
+      {
+        path: 'questions',
+        component: AdminQuestions,
         meta: {
           requiresAuth: true,
           requiresModerator: true,

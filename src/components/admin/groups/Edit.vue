@@ -4,9 +4,10 @@ import { nanoid } from 'nanoid';
 
 // Composables
 import { useImage } from '@/composable/image';
-
-import Modal from '@/components/generic/Modal.vue';
 import { useModal } from '@/composable/modal';
+
+// Components
+import Modal from '@/components/generic/Modal.vue';
 import ActionButton from '@/components/generic/ActionButton.vue';
 import Button from '@/components/generic/Button.vue';
 import Name from '@/components/admin/groups/edit/Name.vue';

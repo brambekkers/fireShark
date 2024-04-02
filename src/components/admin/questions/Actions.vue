@@ -5,14 +5,21 @@ import IconTrash from '~icons/lucide/trash';
 import IconInfo from '~icons/lucide/info';
 import IconEllipsis from '~icons/lucide/ellipsis-vertical';
 
+// Composable
+import { useModal } from '@/composable/modal';
+
+// Components
+import BulkImport from '@/components/admin/questions/BulkImport.vue';
 import Button from '@/components/generic/Button.vue';
 import ActionButton from '@/components/generic/ActionButton.vue';
+
+const { isModalOpen, toggleModal } = useModal();
 
 const searchText = ref('');
 </script>
 
 <template>
-  <div class="flex justify-between mb-4">
+  <div class="flex justify-between mb-2">
     <!-- Left side -->
     <div class="flex items-center">
       <div class="relative">
@@ -25,7 +32,7 @@ const searchText = ref('');
           v-model="searchText"
           class="pl-12 pr-4 border rounded-xl border-gray-300 w-full py-3 text-gray-700 leading-tight bg-white focus:border-app-primary focus:outline-none"
           type="text"
-          placeholder="Search for users..."
+          placeholder="Search..."
         />
       </div>
       <!-- Vertical HR -->
@@ -47,8 +54,14 @@ const searchText = ref('');
     </div>
     <!-- right side -->
     <div class="flex gap-2">
-      <Button title="Add user" type="primary" size="md" />
-      <Button title="Export" type="secondary" size="md" />
+      <Button title="Add question" type="primary" size="md" />
+      <Button
+        title="Import"
+        type="secondary"
+        size="md"
+        @click="toggleModal()"
+      />
     </div>
   </div>
+  <BulkImport :isModalOpen="isModalOpen" :toggle-modal="toggleModal" />
 </template>

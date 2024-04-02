@@ -1,7 +1,6 @@
 <script setup>
 const props = defineProps({
   isOpen: { type: Boolean, required: true },
-  toggleModal: { type: Function, required: true },
   maxWidth: { type: String, required: false, default: '2xl' },
 });
 

@@ -13,11 +13,6 @@ export const useGroupStore = defineStore('groups', () => {
     return result;
   });
 
-  watch(groups, () => {
-    console.log('groups updated:', groups.value);
-  }, { immidiate: true });
-
-
   return {
     groups,
     groupsObject

@@ -40,6 +40,7 @@ const profileStyle = (url) => ({
     <thead class="bg-slate-200">
       <tr>
         <th class="p-2 font-medium text-sm"></th>
+        <th class="p-2 font-medium text-sm"></th>
         <th class="p-2 font-medium text-sm">Name</th>
         <th class="p-2 font-medium text-sm">Groups</th>
         <th class="p-2 font-medium text-sm">Role</th>
@@ -52,6 +53,14 @@ const profileStyle = (url) => ({
         :key="user.id"
         class="border-b border-slate-100"
       >
+        <td>
+          <div class="flex items-center justify-center ms-2">
+            <input
+              type="checkbox"
+              class="w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary"
+            />
+          </div>
+        </td>
         <td class="p-3 w-16">
           <div
             class="w-10 h-10 rounded-full bg-app-body-bg border overflow-hidden flex items-end justify-center bg-cover bg-center"

@@ -26,7 +26,7 @@ const addGroup = () => {
     <h1 class="text-3xl font-semibold mb-4">Groups</h1>
     <Actions @add-group="addGroup" />
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 lg:grid-cols-2 3xl:grid-cols-3 gap-4">
       <GroupCard
         v-for="group of groups"
         :key="group.id"
