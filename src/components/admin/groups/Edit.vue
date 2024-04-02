@@ -110,7 +110,7 @@ watch(
     v-if="editGroup"
     :is-open="isModalOpen"
     :toggle-modal="toggleModal"
-    max-width="5xl"
+    width="5xl"
   >
     <!-- Modal header -->
     <div class="flex items-center justify-between p-5">

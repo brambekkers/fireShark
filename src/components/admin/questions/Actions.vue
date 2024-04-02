@@ -1,4 +1,8 @@
 <script setup>
+// Stores
+import { useQuestionsStore } from '@/stores/questions';
+
+// Icons
 import IconSearch from '~icons/lucide/search';
 import IconSettings from '~icons/lucide/settings';
 import IconTrash from '~icons/lucide/trash';
@@ -9,12 +13,18 @@ import IconEllipsis from '~icons/lucide/ellipsis-vertical';
 import { useModal } from '@/composable/modal';
 
 // Components
+import NewQuestion from '@/components/admin/questions/NewQuestion.vue';
 import BulkImport from '@/components/admin/questions/BulkImport.vue';
 import Button from '@/components/generic/Button.vue';
 import ActionButton from '@/components/generic/ActionButton.vue';
 
-const { isModalOpen, toggleModal } = useModal();
-
+const { isModalOpen: isImportModalOpen, toggleModal: toggleImportModal } =
+  useModal();
+const {
+  isModalOpen: isNewQuestionModalOpen,
+  toggleModal: toggleNewQuestionModal,
+} = useModal();
+const { selectedGroup, selectedTopic } = storeToRefs(useQuestionsStore());
 const searchText = ref('');
 </script>
 
@@ -39,6 +49,7 @@ const searchText = ref('');
       <div
         class="border-t sm:border-t-0 sm:border-s border-gray-200 ms-3 me-1 h-8"
       ></div>
+      {{ isNewQuestionModalOpen ? 'ja' : 'nee' }}
       <ActionButton>
         <IconSettings class="h-6 w-6" />
       </ActionButton>
@@ -54,14 +65,26 @@ const searchText = ref('');
     </div>
     <!-- right side -->
     <div class="flex gap-2">
-      <Button title="Add question" type="primary" size="md" />
+      <Button
+        title="Add question"
+        type="primary"
+        size="md"
+        :disable="!selectedGroup || !selectedTopic"
+        @click="toggleNewQuestionModal()"
+      />
       <Button
         title="Import"
         type="secondary"
         size="md"
-        @click="toggleModal()"
+        :disable="!selectedGroup || !selectedTopic"
+        @click="toggleImportModal()"
       />
     </div>
   </div>
-  <BulkImport :isModalOpen="isModalOpen" :toggle-modal="toggleModal" />
+
+  <NewQuestion
+    :is-open="isNewQuestionModalOpen"
+    :toggle-modal="toggleNewQuestionModal"
+  />
+  <BulkImport :is-open="isImportModalOpen" :toggle-modal="toggleImportModal" />
 </template>

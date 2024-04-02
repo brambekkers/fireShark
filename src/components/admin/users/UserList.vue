@@ -43,7 +43,7 @@ const profileStyle = (url) => ({
         <th class="p-2 font-medium text-sm"></th>
         <th class="p-2 font-medium text-sm">Name</th>
         <th class="p-2 font-medium text-sm">Groups</th>
-        <th class="p-2 font-medium text-sm">Role</th>
+        <th class="p-2 font-medium text-sm text-center">Role</th>
         <th class="p-2 font-medium text-sm"></th>
       </tr>
     </thead>
@@ -57,7 +57,7 @@ const profileStyle = (url) => ({
           <div class="flex items-center justify-center ms-2">
             <input
               type="checkbox"
-              class="w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary"
+              class="appearance-none checked:appearance-auto w-4 h-4 bg-gray-100 border-gray-300 rounded accent-app-primary"
             />
           </div>
         </td>
@@ -88,7 +88,7 @@ const profileStyle = (url) => ({
           </p>
         </td>
         <td class="p-3">
-          <span class="flex flex-col items-center w-fit text-sm">
+          <div class="flex flex-col items-center justify-center text-sm">
             <IconAdmin
               v-if="user.role === 'admin'"
               class="h-6 w-6 text-app-danger"
@@ -102,8 +102,8 @@ const profileStyle = (url) => ({
               class="h-6 w-6 text-app-primary"
             />
             <IconUser v-if="user.role === 'user'" class="h-6 w-6" />
-            {{ user.role || 'user' }}
-          </span>
+            <span class="w-fit">{{ user.role || 'user' }}</span>
+          </div>
         </td>
         <td class="p-3 w-9">
           <div class="flex gap-1 justify-end pe-3">

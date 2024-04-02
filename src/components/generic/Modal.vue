@@ -1,23 +1,23 @@
 <script setup>
 const props = defineProps({
   isOpen: { type: Boolean, required: true },
-  maxWidth: { type: String, required: false, default: '2xl' },
+  width: { type: String, required: false, default: '2xl' },
 });
 
-const maxWidthClass = computed(() => {
-  if (props.maxWidth === 'xl') {
+const widthClass = computed(() => {
+  if (props.width === 'xl') {
     return 'max-w-xl';
   }
-  if (props.maxWidth === '2xl') {
+  if (props.width === '2xl') {
     return 'max-w-2xl';
   }
-  if (props.maxWidth === '3xl') {
+  if (props.width === '3xl') {
     return 'max-w-3xl';
   }
-  if (props.maxWidth === '4xl') {
+  if (props.width === '4xl') {
     return 'max-w-4xl';
   }
-  if (props.maxWidth === '5xl') {
+  if (props.width === '5xl') {
     return 'max-w-5xl';
   }
 });
@@ -31,7 +31,7 @@ const maxWidthClass = computed(() => {
       class="overflow-y-auto overflow-x-hidden fixed flex inset-0 z-50 justify-center items-center w-full max-h-full backdrop-blur-sm bg-black/30"
       :class="{ hidden: !isOpen }"
     >
-      <div class="relative p-4 max-h-full mx-auto" :class="maxWidthClass">
+      <div class="relative p-4 max-h-full mx-auto w-full" :class="widthClass">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow">
           <slot />

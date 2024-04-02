@@ -1,11 +1,14 @@
 <script setup>
 // components
 import Modal from '@/components/generic/Modal.vue';
+import Button from '@/components/generic/Button.vue';
+import ActionButton from '@/components/generic/ActionButton.vue';
+
 // Icons
 import IconClose from '~icons/uil/times';
 
 defineProps({
-  isModalOpen: {
+  isOpen: {
     type: Boolean,
     required: true,
   },
@@ -17,7 +20,7 @@ defineProps({
 </script>
 
 <template>
-  <Modal :is-open="isModalOpen">
+  <Modal :is-open="isOpen">
     <!-- Modal header -->
     <div class="flex items-center justify-between p-5">
       <h3 class="text-xl font-semibold">Import questions</h3>

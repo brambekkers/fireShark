@@ -50,10 +50,10 @@ export const routes = [
   },
   {
     path: '/admin',
-    name: 'Admin',
     children: [
       {
         path: '',
+        name: 'Admin',
         component: Admin,
       },
       {
