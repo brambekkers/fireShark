@@ -57,5 +57,3 @@ const elevationClass = computed(() => {
     </select>
   </div>
 </template>
-
-<style lang="scss" scoped></style>

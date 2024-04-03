@@ -23,13 +23,14 @@ const db = getFirestore();
 
 const props = defineProps({
   group: {
-    type: [Object, null],
-    required: true,
+    type: Object,
+    required: false,
+    default: () => null,
   },
 });
 const editGroup = ref(null);
 
-const updateGroup = async () => {
+const updateGroup = async (skipClose = false) => {
   if (!editGroup.value) return;
   const groupRef = doc(db, `questions/${editGroup.value.id}`);
   await setDoc(
@@ -59,6 +60,7 @@ const updateGroup = async () => {
     });
   }
 
+  if (skipClose) return;
   toggleModal();
 };
 
@@ -148,7 +150,8 @@ watch(
       <Image
         v-model:imageUrl="editGroup.imageUrl"
         v-model:imageRef="editGroup.imageRef"
-        :image-location="`questions/topics/${editGroup.id}`"
+        :image-location="`groups/topics/${editGroup.id}`"
+        @update="updateGroup(true)"
       />
       <hr />
       <!-- Topics -->

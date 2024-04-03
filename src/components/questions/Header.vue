@@ -20,5 +20,3 @@ const imageStyle = computed(() => ({
     </p>
   </div>
 </template>
-
-<style lang="scss" scoped></style>

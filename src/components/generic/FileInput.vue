@@ -80,5 +80,3 @@ const handleFileChange = (event) => {
     </label>
   </div>
 </template>
-
-<style lang="scss" scoped></style>

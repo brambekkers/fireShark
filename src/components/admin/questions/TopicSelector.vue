@@ -34,5 +34,3 @@ const { selectedGroup, selectedTopic } = storeToRefs(useQuestionsStore());
     </Select>
   </div>
 </template>
-
-<style lang="scss" scoped></style>

@@ -5,14 +5,17 @@ import { useImage } from '@/composable/image';
 import { watch } from 'vue';
 
 const emit = defineEmits(['update']);
+
 const imageUrl = defineModel('imageUrl', {
-  type: [String || null],
-  required: true,
+  type: String,
+  required: false,
+  default: () => null,
 });
 
 const imageRef = defineModel('imageRef', {
-  type: [String || null],
-  required: true,
+  type: String,
+  required: false,
+  default: () => null,
 });
 const props = defineProps({
   imageLocation: {

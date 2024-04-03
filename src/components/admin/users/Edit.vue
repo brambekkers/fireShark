@@ -103,5 +103,3 @@ watch(currentUser, (newVal) => {
     </div>
   </Modal>
 </template>
-
-<style lang="scss" scoped></style>

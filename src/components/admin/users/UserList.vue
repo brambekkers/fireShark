@@ -120,5 +120,3 @@ const profileStyle = (url) => ({
   </table>
   <Edit v-model:current-user="currentUser" />
 </template>
-
-<style lang="scss" scoped></style>

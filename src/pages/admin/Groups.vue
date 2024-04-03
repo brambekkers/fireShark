@@ -9,14 +9,12 @@ const { groups } = storeToRefs(useGroupStore());
 const selectedGroup = ref(null);
 const addGroup = () => {
   selectedGroup.value = {
+    parentId: selectedTopic,
+    headerImage: '',
     id: null,
-    name: '',
-    description: '',
-    imageUrl: null,
-    imageRef: null,
-    topics: [],
-    questionAmount: 0,
-    userAmount: 0,
+    type: 'singleAnswer',
+    question: '',
+    answers: [],
   };
 };
 </script>

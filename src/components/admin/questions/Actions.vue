@@ -13,19 +13,16 @@ import IconEllipsis from '~icons/lucide/ellipsis-vertical';
 import { useModal } from '@/composable/modal';
 
 // Components
-import NewQuestion from '@/components/admin/questions/NewQuestion.vue';
 import BulkImport from '@/components/admin/questions/BulkImport.vue';
 import Button from '@/components/generic/Button.vue';
 import ActionButton from '@/components/generic/ActionButton.vue';
 
-const { isModalOpen: isImportModalOpen, toggleModal: toggleImportModal } =
-  useModal();
-const {
-  isModalOpen: isNewQuestionModalOpen,
-  toggleModal: toggleNewQuestionModal,
-} = useModal();
+const { isModalOpen, toggleModal } = useModal();
+
 const { selectedGroup, selectedTopic } = storeToRefs(useQuestionsStore());
 const searchText = ref('');
+
+defineEmits(['addQuestion']);
 </script>
 
 <template>
@@ -49,7 +46,6 @@ const searchText = ref('');
       <div
         class="border-t sm:border-t-0 sm:border-s border-gray-200 ms-3 me-1 h-8"
       ></div>
-      {{ isNewQuestionModalOpen ? 'ja' : 'nee' }}
       <ActionButton>
         <IconSettings class="h-6 w-6" />
       </ActionButton>
@@ -70,7 +66,7 @@ const searchText = ref('');
         type="primary"
         size="md"
         :disable="!selectedGroup || !selectedTopic"
-        @click="toggleNewQuestionModal()"
+        @click="$emit('addQuestion')"
       />
       <Button
         title="Import"
@@ -82,9 +78,5 @@ const searchText = ref('');
     </div>
   </div>
 
-  <NewQuestion
-    :is-open="isNewQuestionModalOpen"
-    :toggle-modal="toggleNewQuestionModal"
-  />
-  <BulkImport :is-open="isImportModalOpen" :toggle-modal="toggleImportModal" />
+  <BulkImport :is-open="isModalOpen" :toggle-modal="toggleModal" />
 </template>

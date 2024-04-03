@@ -17,5 +17,3 @@ const users = useCollection(collection(db, 'users'));
     <UserList :users="users" />
   </div>
 </template>
-
-<style lang="scss" scoped></style>

@@ -67,5 +67,3 @@ const elevationClass = computed(() => {
     />
   </div>
 </template>
-
-<style lang="scss" scoped></style>
