@@ -36,13 +36,13 @@ const addTopic = () => {
     <div class="flex items-center justify-between gap-10 px-2">
       <div class="flex gap-2 items-center">
         <IconList class="w-5 text-app-primary" />
-        <h4>Topics</h4>
+        <h4>{{ $t('general.topics') }}</h4>
       </div>
       <button
         class="flex items-center py-1 ps-3 pe-2 rounded-md hover:bg-black/5 transition-all duration-200 ease-in-out"
         @click="addTopic"
       >
-        Add topic
+        {{ $t('general.add') }}
         <IconPlus class="ms-2 w-6 h-6 text-app-primary" />
       </button>
     </div>
@@ -54,7 +54,7 @@ const addTopic = () => {
         <IconDrag class="w-8 h-8 text-app-primary" />
         <TextField
           v-model="topic.name"
-          placeholder="Group name"
+          :placeholder="$t('admin.groups.topicName')"
           elevation="none"
           size="md"
           class="flex-grow"

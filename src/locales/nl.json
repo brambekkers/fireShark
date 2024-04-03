@@ -15,7 +15,13 @@
     "question": "Vraag",
     "questions": "Vragen",
     "user": "Gebruiker",
-    "users": "Gebruikers"
+    "users": "Gebruikers",
+    "description": "Beschrijving",
+    "image": "Afbeelding",
+    "deleteImage": "Afbeelding verwijderen",
+    "add": "Toevoegen",
+    "create": "Aanmaken",
+    "change": "Aanpassen"
   },
   "overview": {
     "welcomeBack": "Welkom terug",
@@ -47,7 +53,16 @@
     "groups": {
       "title": "Groepen en onderwerpen",
       "search": "Zoek in groepen...",
-      "addGroup": "Voeg groep toe"
+      "addGroup": "Voeg groep toe",
+      "createGroup": "Groep aanmaken",
+      "editGroup": "Groep wijzigen",
+      "deleteGroup": "Groep verwijderen",
+      "groupName": "Groepsnaam",
+      "addGroupName": "Voeg groepsnaam toe",
+      "addDescriptionForGroup": "Voeg een beschrijving toe over deze groep...",
+      "groupImage": "Groepsafbeelding",
+      "addTopic": "Onderwerp toevoegen",
+      "topicName": "Naam onderwerp "
     },
     "questions": {},
     "users": {}

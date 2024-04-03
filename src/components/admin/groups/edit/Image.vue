@@ -38,14 +38,14 @@ watch(url, (newUrl) => {
     <div class="flex gap-2 items-end justify-between">
       <div class="flex gap-2 items-center">
         <IconImage class="w-5 text-app-primary" />
-        <h4 class="font-medium">Image</h4>
+        <h4 class="font-medium">{{ $t('general.image') }}</h4>
       </div>
       <button
         v-if="imageUrl"
         class="text-sm text-app-button-danger-bg-focus -mb-1 mr-2"
         @click="deletePicture"
       >
-        Delete image
+        {{ $t('general.deleteImage') }}
       </button>
     </div>
     <FileInput
@@ -61,7 +61,7 @@ watch(url, (newUrl) => {
     >
       <img
         :src="imageUrl"
-        alt="Group image"
+        :alt="$t('admin.groups.groupImage')"
         class="w-full h-48 object-cover rounded-lg"
       />
     </div>

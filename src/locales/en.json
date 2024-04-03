@@ -16,7 +16,13 @@
     "question": "Question",
     "questions": "Questions",
     "user": "User",
-    "users": "Users"
+    "users": "Users",
+    "description": "Description",
+    "image": "Image",
+    "deleteImage": "Delete image",
+    "add": "Add",
+    "create": "Create",
+    "change": "Change"
   },
   "overview": {
     "welcomeBack": "Welcome back",
@@ -48,7 +54,16 @@
     "groups": {
       "title": "Groups and topics",
       "search": "Search in groups...",
-      "addGroup": "Add group"
+      "addGroup": "Add group",
+      "createGroup": "Create group",
+      "editGroup": "Edit group",
+      "deleteGroup": "Delete group",
+      "groupName": "Group name",
+      "addGroupName": "Add group name",
+      "addDescriptionForGroup": "Add description for this group...",
+      "groupImage": "Group image",
+      "addTopic": "Add topic",
+      "topicName": "Topic name"
     },
     "questions": {},
     "users": {}

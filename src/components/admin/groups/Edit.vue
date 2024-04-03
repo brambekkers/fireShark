@@ -112,7 +112,11 @@ watch(
     <!-- Modal header -->
     <div class="flex items-center justify-between p-5">
       <h3 class="text-xl font-semibold">
-        {{ group.id ? 'Edit' : 'Create' }} group
+        {{
+          group.id
+            ? $t('admin.groups.editGroup')
+            : $t('admin.groups.createGroup')
+        }}
       </h3>
       <ActionButton @click="toggleModal()">
         <IconClose class="h-6 w-6" />
@@ -156,13 +160,13 @@ watch(
     <!-- Modal footer -->
     <div class="flex items-center justify-between px-5 pb-5 pt-2">
       <Button
-        title="Delete group"
+        :title="$t('admin.groups.deleteGroup')"
         size="md"
         type="danger"
         @click="deleteGroup"
       />
       <Button
-        :title="group.id ? 'Change' : 'Create'"
+        :title="group.id ? $t('general.change') : $t('general.create')"
         size="md"
         @click="updateGroup"
       />
