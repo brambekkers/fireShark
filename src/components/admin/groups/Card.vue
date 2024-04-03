@@ -6,6 +6,7 @@ const props = defineProps({
     required: true,
   },
 });
+const { t } = useI18n();
 
 const formatNumber = (number) => {
   const usformatter = Intl.NumberFormat('en-US', { notation: 'compact' });
@@ -18,15 +19,15 @@ const imageStyle = computed(() => ({
 
 const stats = computed(() => [
   {
-    name: 'topics',
+    name: t('general.topics'),
     amount: props.group.topics.length,
   },
   {
-    name: 'questions',
+    name: t('general.questions'),
     amount: props.group.questionAmount,
   },
   {
-    name: 'users',
+    name: t('general.users'),
     amount: 1234,
   },
 ]);

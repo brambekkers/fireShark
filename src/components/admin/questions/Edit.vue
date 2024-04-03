@@ -63,18 +63,23 @@ watch(
     width="4xl"
   >
     <!-- Modal header -->
-    <div class="flex items-center justify-between p-5">
-      <h3 class="text-xl font-semibold">Add question</h3>
-      <ActionButton @click="toggleModal()">
-        <IconClose class="h-6 w-6" />
-      </ActionButton>
-    </div>
-    <!-- Modal body -->
-    <div class="px-5 py-2 space-y-4 w-full -mt-8">
-      <div class="flex items-center font-bold">
-        <span>{{ groupsObject[selectedGroup]?.name }}</span>
+    <div class="px-5 pt-5">
+      <div class="flex items-center justify-between">
+        <h3 class="text-xl font-semibold">Add question</h3>
+        <ActionButton @click="toggleModal()">
+          <IconClose class="h-6 w-6" />
+        </ActionButton>
+      </div>
+      <div class="flex items-center font-bold text-xs">
+        <span
+          class="text-primary border-2 px-2.5 py-0.5 rounded border-app-primary bg-app-primary/15"
+        >
+          {{ groupsObject[selectedGroup]?.name }}
+        </span>
         <IconArrowRight class="w-6 h-6 text-app-primary mx-2" />
-        <span>
+        <span
+          class="text-app-warning border-2 px-2.5 py-0.5 rounded border-app-warning bg-app-warning/15"
+        >
           {{
             groupsObject[selectedGroup]?.topics.find(
               ({ id }) => id === selectedTopic,
@@ -82,7 +87,9 @@ watch(
           }}
         </span>
       </div>
-
+    </div>
+    <!-- Modal body -->
+    <div class="px-5 py-2 space-y-4 w-full">
       <Type v-model:type="editQuestion.type" />
       <hr class="mb-2" />
       <template v-if="supportedTypes.includes(editQuestion.type)">

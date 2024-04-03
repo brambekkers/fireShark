@@ -9,7 +9,14 @@
     "id": "id",
     "email": "Email",
     "admin": "Admin",
-    "hi": "Hi"
+    "hi": "Hi",
+    "export": "Export",
+    "topic": "Topic",
+    "topics": "Topics",
+    "question": "Question",
+    "questions": "Questions",
+    "user": "User",
+    "users": "Users"
   },
   "overview": {
     "welcomeBack": "Welcome back",
@@ -36,5 +43,14 @@
     "emailNotifications": "Email notifications",
     "joinDuels": "Join Duels",
     "automaticDuel": "Automatic dueling"
+  },
+  "admin": {
+    "groups": {
+      "title": "Groups and topics",
+      "search": "Search in groups...",
+      "addGroup": "Add group"
+    },
+    "questions": {},
+    "users": {}
   }
 }

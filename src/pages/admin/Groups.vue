@@ -9,19 +9,21 @@ const { groups } = storeToRefs(useGroupStore());
 const selectedGroup = ref(null);
 const addGroup = () => {
   selectedGroup.value = {
-    parentId: selectedTopic,
-    headerImage: '',
     id: null,
-    type: 'singleAnswer',
-    question: '',
-    answers: [],
+    name: '',
+    description: '',
+    imageUrl: null,
+    imageRef: null,
+    topics: [],
+    questionAmount: 0,
+    userAmount: 0,
   };
 };
 </script>
 
 <template>
   <div>
-    <h1 class="text-3xl font-semibold mb-4">Groups</h1>
+    <h1 class="text-3xl font-semibold mb-4">{{ $t('admin.groups.title') }}</h1>
     <Actions @add-group="addGroup" />
 
     <div class="grid grid-cols-1 lg:grid-cols-2 3xl:grid-cols-3 gap-4">

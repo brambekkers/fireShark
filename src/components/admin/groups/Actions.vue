@@ -21,19 +21,19 @@ defineEmits(['addGroup']);
           v-model="searchText"
           class="pl-12 pr-4 border rounded-xl border-gray-300 w-full py-3 text-gray-700 leading-tight bg-white focus:border-app-primary focus:outline-none"
           type="text"
-          placeholder="Search groups..."
+          :placeholder="$t('admin.groups.search')"
         />
       </div>
     </div>
     <!-- right side -->
     <div class="flex gap-2">
       <Button
-        title="Add group"
+        :title="$t('admin.groups.addGroup')"
         type="primary"
         size="md"
         @click="$emit('addGroup')"
       />
-      <Button title="Export" type="secondary" size="md" />
+      <Button :title="$t('general.export')" type="secondary" size="md" />
     </div>
   </div>
 </template>

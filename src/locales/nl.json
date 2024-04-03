@@ -8,7 +8,14 @@
     "id": "id",
     "email": "E-mailadres",
     "admin": "Admin",
-    "hi": "Hoi"
+    "hi": "Hoi",
+    "export": "Exporteren",
+    "topic": "Onderwerp",
+    "topics": "Onderwerpen",
+    "question": "Vraag",
+    "questions": "Vragen",
+    "user": "Gebruiker",
+    "users": "Gebruikers"
   },
   "overview": {
     "welcomeBack": "Welkom terug",
@@ -35,5 +42,14 @@
     "emailNotifications": "Email notificaties",
     "joinDuels": "Meedoen aan duels",
     "automaticDuel": "Automatisch duelleren"
+  },
+  "admin": {
+    "groups": {
+      "title": "Groepen en onderwerpen",
+      "search": "Zoek in groepen...",
+      "addGroup": "Voeg groep toe"
+    },
+    "questions": {},
+    "users": {}
   }
 }

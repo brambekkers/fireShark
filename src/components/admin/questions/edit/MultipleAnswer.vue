@@ -1,4 +1,6 @@
 <script setup>
+import { useDragAndDrop } from '@formkit/drag-and-drop/vue';
+import { animations } from '@formkit/drag-and-drop';
 import { nanoid } from 'nanoid';
 
 // Icons
@@ -10,7 +12,7 @@ import IconTrash from '~icons/lucide/trash';
 // Components
 import TextField from '@/components/generic/TextField.vue';
 
-const answers = defineModel('answers', {
+const answersRaw = defineModel('answers', {
   type: Array,
   required: true,
 });
@@ -22,6 +24,13 @@ const props = defineProps({
     default: Infinity,
   },
 });
+
+const [parent, answers] = useDragAndDrop(answersRaw.value, {
+  dragHandle: '.drag-handle',
+  plugins: [animations()],
+});
+
+watch(answers, () => (answersRaw.value = answers.value));
 
 const addAnswer = () => {
   if (answers.value.length === 4) return;
@@ -49,9 +58,13 @@ const addAnswer = () => {
         <IconPlus class="ms-2 w-6 h-6 text-app-primary" />
       </button>
     </div>
-    <template v-for="(answer, i) in answers" :key="answer.id">
-      <div class="bg-white rounded-lg border py-2 pe-3 flex items-center">
-        <IconDrag class="w-8 h-8 text-app-primary" />
+    <ul v-show="answers.length" ref="parent">
+      <li
+        v-for="(answer, i) in answers"
+        :key="answer.id"
+        class="bg-white rounded-lg border py-2 pe-3 flex items-center"
+      >
+        <IconDrag class="w-8 h-8 text-app-primary drag-handle cursor-grab" />
         <TextField
           v-model="answer.text"
           :placeholder="`Answer ${i + 1}`"
@@ -64,7 +77,7 @@ const addAnswer = () => {
         >
           <IconTrash class="h-5 w-5" />
         </button>
-      </div>
-    </template>
+      </li>
+    </ul>
   </div>
 </template>

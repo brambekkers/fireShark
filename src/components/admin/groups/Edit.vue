@@ -108,12 +108,7 @@ watch(
 </script>
 
 <template>
-  <Modal
-    v-if="editGroup"
-    :is-open="isModalOpen"
-    :toggle-modal="toggleModal"
-    width="5xl"
-  >
+  <Modal v-if="editGroup" :is-open="isModalOpen" width="5xl">
     <!-- Modal header -->
     <div class="flex items-center justify-between p-5">
       <h3 class="text-xl font-semibold">

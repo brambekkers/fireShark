@@ -12,6 +12,7 @@
     "tsc": "tsc"
   },
   "dependencies": {
+    "@formkit/drag-and-drop": "^0.0.38",
     "@headlessui/vue": "^1.7.18",
     "@iconify-json/carbon": "^1.1.28",
     "@iconify-json/lucide": "^1.1.162",
