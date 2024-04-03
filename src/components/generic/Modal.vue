@@ -28,7 +28,7 @@ const widthClass = computed(() => {
     <div
       id="modal-container"
       :tabindex="isOpen ? 'auto' : -1"
-      class="overflow-y-auto overflow-x-hidden fixed flex inset-0 z-50 justify-center items-center w-full max-h-full backdrop-blur-sm bg-black/30"
+      class="overflow-y-auto overflow-x-hidden fixed flex inset-0 z-50 justify-center items-center w-full max-h-screen backdrop-blur-sm bg-black/30"
       :class="{ hidden: !isOpen }"
     >
       <div class="relative p-4 max-h-full mx-auto w-full" :class="widthClass">

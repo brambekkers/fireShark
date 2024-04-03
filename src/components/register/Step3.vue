@@ -30,15 +30,15 @@ defineProps({
   >
     <tbody>
       <tr>
-        <td class="w-fit p-4">Name:</td>
+        <td class="w-fit p-4">{{ $t('general.name') }}:</td>
         <td class="p-4 text-end font-bold">{{ firstName }} {{ lastName }}</td>
       </tr>
       <tr>
-        <td class="w-fit p-4">Email:</td>
+        <td class="w-fit p-4">{{ $t('general.email') }}:</td>
         <td class="p-4 text-end font-bold">{{ email }}</td>
       </tr>
       <tr>
-        <td class="w-fit p-4">Position:</td>
+        <td class="w-fit p-4">{{ $t('general.position') }}:</td>
         <td class="p-4 text-end font-bold">
           <span v-for="(id, i) in position" :key="id">
             {{ groupsObject[id]?.name }}

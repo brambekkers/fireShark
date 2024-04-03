@@ -1,11 +1,15 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import { VueFire, VueFireAuth } from 'vuefire';
+import { MotionPlugin } from '@vueuse/motion'
+
 import { firebaseApp } from './firebase/index.js';
 import '@/styles/main.scss';
 import { i18n } from '@/i18n';
 import App from '@/App.vue';
 import router from '@/router';
+
+
 
 const app = createApp(App);
 app.use(i18n);
@@ -18,5 +22,6 @@ app.use(VueFire, {
     VueFireAuth(),
   ],
 });
+app.use(MotionPlugin)
 
 app.mount('#app');

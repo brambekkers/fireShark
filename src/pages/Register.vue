@@ -1,6 +1,7 @@
 <script setup>
 import { useUserStore } from '@/stores/user';
 
+import Alert from '@/components/generic/Alert.vue';
 import Stepper from '@/components/register/Stepper.vue';
 import Step1 from '@/components/register/Step1.vue';
 import Step2 from '@/components/register/Step2.vue';
@@ -24,7 +25,7 @@ const position = ref([]);
 
 const isLoading = ref(false);
 const hasError = ref(false);
-const errorMessage = ref('');
+const errorCode = ref('');
 
 const step1Completed = computed(() => {
   const allFields =
@@ -69,7 +70,7 @@ const nextStep = async () => {
       router.push('/login');
     } catch (error) {
       hasError.value = true;
-      errorMessage.value = error.message;
+      errorCode.value = error.errorCode;
     } finally {
       isLoading.value = false;
     }
@@ -83,20 +84,29 @@ const nextStep = async () => {
 </script>
 
 <template>
-  <div class="flex flex-col max-w-xl mx-auto mt-10">
+  <div class="flex flex-col max-w-xl mx-auto">
     <div>
-      <h2 class="text-primary text-3xl font-bold text-center">Welcome!</h2>
+      <h2 class="text-primary text-3xl font-bold text-center">
+        {{ $t('general.welcome') }}!
+      </h2>
       <h3 class="text-app-subheading-color mb-5 text-2xl font-bold text-center">
-        Register
+        {{ $t('general.register') }}
       </h3>
       <p class="text-sm">
-        Welcome to this app! How wonderful that you want to register. Together
-        with this we will improve your coding skills.
+        {{ $t('auth.register.message') }}
       </p>
 
-      <p class="text-sm mt-2">Enter your details below to continue.</p>
+      <p class="text-sm font-semibold mt-2">
+        {{ $t('auth.register.enterDetails') }}
+      </p>
     </div>
     <hr class="my-6" />
+    <Alert
+      v-if="hasError"
+      class="-mt-3 mb-4"
+      title="Error"
+      :message="$t(`firebase.error.${errorCode}`)"
+    />
     <Stepper v-model:current-step="currentStep" />
     <Step1
       v-if="currentStep === 0"
@@ -118,7 +128,7 @@ const nextStep = async () => {
     <Button
       class="mt-10"
       :disable="buttonDisabled"
-      :title="currentStep < 2 ? 'Next' : 'Submit'"
+      :title="currentStep < 2 ? $t('general.next') : $t('general.submit')"
       @click="nextStep"
     />
   </div>

@@ -43,12 +43,18 @@ const newPosition = ref('');
           {{ position.name }}
         </option>
       </Select>
-      <Button title="Add position" type="secondary" @click="addPosition" />
+      <Button
+        :title="$t('auth.register.addPosition')"
+        type="secondary"
+        @click="addPosition"
+      />
     </div>
 
     <!-- List of positions -->
     <div v-if="position.length">
-      <h2 class="mt-5 text-lg font-semibold">Your positions:</h2>
+      <h2 class="mt-5 text-lg font-semibold">
+        {{ $t('auth.register.yourPositions') }}:
+      </h2>
       <div class="flex">
         <div v-for="id in position" :key="id" class="mt-2 relative">
           <div
@@ -67,7 +73,7 @@ const newPosition = ref('');
     </div>
 
     <p v-else class="mt-2 ms-5 text-sm text-red">
-      Please select the positions you are involved in.
+      {{ $t('auth.register.selectPositions') }}
     </p>
   </div>
 </template>

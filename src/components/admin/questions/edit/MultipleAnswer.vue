@@ -30,7 +30,7 @@ const [parent, answers] = useDragAndDrop(answersRaw.value, {
   plugins: [animations()],
 });
 
-watch(answers, () => (answersRaw.value = answers.value));
+watch(answers, (arr) => (answersRaw.value = arr));
 
 const addAnswer = () => {
   if (answers.value.length === 4) return;

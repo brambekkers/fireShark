@@ -60,20 +60,24 @@ const checkIfPasswordsMatch = useDebounceFn(() => {
 
 <template>
   <div class="flex flex-col">
-    <div class="flex gap-4 mb-4">
+    <div class="flex flex-col sm:flex-row gap-4 mb-4">
       <!-- FirstName -->
       <TextField
         v-model="firstName"
         :icon="IconUser"
-        placeholder="First name"
+        :placeholder="$t('general.firstName')"
       />
-      <TextField v-model="lastName" :icon="IconUser" placeholder="Last name" />
+      <TextField
+        v-model="lastName"
+        :icon="IconUser"
+        :placeholder="$t('general.lastName')"
+      />
     </div>
     <TextField
       v-model="email"
       :icon="IconMail"
       type="email"
-      placeholder="Email address"
+      :placeholder="$t('general.email')"
     />
 
     <hr class="my-5" />
@@ -81,7 +85,7 @@ const checkIfPasswordsMatch = useDebounceFn(() => {
       v-model="password"
       type="password"
       :icon="IconLock"
-      placeholder="Password"
+      :placeholder="$t('general.password')"
       class="mb-4"
       @input="checkIfPasswordsMatch"
     />
@@ -93,7 +97,7 @@ const checkIfPasswordsMatch = useDebounceFn(() => {
           'text-app-success': hasMinLength,
         }"
       >
-        Minimal 8 characters
+        {{ $t('auth.register.minCharacter') }}
       </li>
       <li
         class="transition-all duration-300 ease-in-out"
@@ -102,7 +106,7 @@ const checkIfPasswordsMatch = useDebounceFn(() => {
           'text-app-success': hasCapitalLetter,
         }"
       >
-        At least one special character using
+        {{ $t('auth.register.specialCharacter') }}
       </li>
       <li
         class="transition-all duration-300 ease-in-out"
@@ -111,14 +115,14 @@ const checkIfPasswordsMatch = useDebounceFn(() => {
           'text-app-success': hasSpecialCharacter,
         }"
       >
-        At least one capital letter using
+        {{ $t('auth.register.capitalCharacter') }}
       </li>
     </ul>
     <TextField
       v-model="controlPassword"
       type="password"
       :icon="IconLockOpen"
-      placeholder="Control password"
+      :placeholder="$t('general.controlPassword')"
       class="mb-1"
       @input="checkIfPasswordsMatch"
     />

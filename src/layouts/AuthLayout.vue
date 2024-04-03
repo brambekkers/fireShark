@@ -32,7 +32,9 @@ const text = computed(() => (layoutStore.isDarkMode ? '#f2f9f9' : '#242424'));
   <div id="main">
     <!-- Accent on top -->
     <HeaderAuth />
-    <slot></slot>
+    <main class="px-4 lg:px-10 py-10">
+      <slot></slot>
+    </main>
   </div>
 </template>
 

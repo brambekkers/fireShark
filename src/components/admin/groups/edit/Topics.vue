@@ -1,4 +1,6 @@
 <script setup>
+import { useDragAndDrop } from '@formkit/drag-and-drop/vue';
+import { animations } from '@formkit/drag-and-drop';
 import { nanoid } from 'nanoid';
 
 // Icons
@@ -10,10 +12,17 @@ import IconTrash from '~icons/lucide/trash';
 // Components
 import TextField from '@/components/generic/TextField.vue';
 
-const topics = defineModel('topics', {
+const topicsRaw = defineModel('topics', {
   type: Array,
   required: true,
 });
+
+const [parent, topics] = useDragAndDrop(topicsRaw.value, {
+  dragHandle: '.drag-handle',
+  plugins: [animations()],
+});
+
+watch(topics, (arr) => (topicsRaw.value = arr));
 
 const props = defineProps({
   parentId: {
@@ -46,12 +55,13 @@ const addTopic = () => {
         <IconPlus class="ms-2 w-6 h-6 text-app-primary" />
       </button>
     </div>
-    <template v-for="topic in topics" :key="topic?.id">
-      <div
-        v-if="topic.id"
+    <ul v-show="topics.length" ref="parent">
+      <li
+        v-for="topic in topics"
+        :key="topic?.id"
         class="bg-white rounded-lg border py-2 pe-3 flex items-center"
       >
-        <IconDrag class="w-8 h-8 text-app-primary" />
+        <IconDrag class="w-8 h-8 text-app-primary drag-handle cursor-grab" />
         <TextField
           v-model="topic.name"
           :placeholder="$t('admin.groups.topicName')"
@@ -64,7 +74,7 @@ const addTopic = () => {
         >
           <IconTrash class="h-5 w-5" />
         </button>
-      </div>
-    </template>
+      </li>
+    </ul>
   </div>
 </template>
