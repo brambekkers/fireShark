@@ -13,11 +13,7 @@ const { user } = storeToRefs(useUserStore());
   <nav class="bg-app-navbar-bg z-50">
     <section class="sharp">
       <router-link to="/" class="flex items-center">
-        <img
-          src="../../../public/shark.svg"
-          alt="Shark icon"
-          class="mr-2 h-8"
-        />
+        <img src="/shark.svg" alt="Shark icon" class="mr-2 h-8" />
         {{ $t('general.appName').toUpperCase() }}
         <span class="mark">!</span>
       </router-link>
