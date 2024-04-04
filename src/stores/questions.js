@@ -10,7 +10,7 @@ export const useQuestionsStore = defineStore('questions', () => {
  
   const questionsRef = computed(() => {
     if(!selectedGroup.value || !selectedTopic.value) return null
-    return collection(db, `questions/${selectedGroup.value}/topics/${selectedTopic.value}/questions`)
+    return collection(db, `groups/${selectedGroup.value}/topics/${selectedTopic.value}/questions`)
   })
 
   watch(selectedGroup, () => {

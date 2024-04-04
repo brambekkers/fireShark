@@ -32,19 +32,19 @@ const editGroup = ref(null);
 
 const updateGroup = async (skipClose = false) => {
   if (!editGroup.value) return;
-  const groupRef = doc(db, `questions/${editGroup.value.id}`);
+  const groupRef = doc(db, `groups/${editGroup.value.id}`);
   await setDoc(
     groupRef,
     {
       id: editGroup.value.id,
       name: editGroup.value.name,
-      description: editGroup.value.description,
-      imageUrl: editGroup.value.imageUrl,
-      imageRef: editGroup.value.imageRef,
+      description: editGroup.value.description || '',
+      imageUrl: editGroup.value.imageUrl || '',
+      imageRef: editGroup.value.imageRef || '',
       questionAmount: editGroup.value.questionAmount,
       userAmount: editGroup.value.userAmount,
       topics: editGroup.value.topics.map((topic) =>
-        doc(db, `questions/${editGroup.value.id}/topics/${topic.id}`),
+        doc(db, `groups/${editGroup.value.id}/topics/${topic.id}`),
       ),
     },
     { merge: true },
@@ -54,13 +54,14 @@ const updateGroup = async (skipClose = false) => {
     editGroup.value.topics.forEach((topic) => {
       const topicRef = doc(
         db,
-        `questions/${editGroup.value.id}/topics/${topic.id}`,
+        `groups/${editGroup.value.id}/topics/${topic.id}`,
       );
       setDoc(topicRef, topic);
     });
   }
 
   if (skipClose) return;
+
   toggleModal();
 };
 
@@ -68,7 +69,7 @@ const deleteGroup = async () => {
   const parentId = editGroup.value.id;
   // Delete sub topics
   props.group.topics.forEach((topic) => {
-    const topicRef = doc(db, `questions/${parentId}/topics/${topic.id}`);
+    const topicRef = doc(db, `groups/${parentId}/topics/${topic.id}`);
     deleteDoc(topicRef);
   });
 
@@ -81,7 +82,7 @@ const deleteGroup = async () => {
   }
 
   // Delete the group
-  const groupRef = doc(db, `questions/${parentId}`);
+  const groupRef = doc(db, `groups/${parentId}`);
   deleteDoc(groupRef);
 
   toggleModal();
@@ -168,7 +169,7 @@ watch(
       <Button
         :title="group.id ? $t('general.change') : $t('general.create')"
         size="md"
-        @click="updateGroup"
+        @click="updateGroup(false)"
       />
     </div>
   </Modal>

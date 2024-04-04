@@ -4,7 +4,7 @@ import { getFirestore, collection } from 'firebase/firestore';
 export const useGroupStore = defineStore('groups', () => {
   const db = getFirestore();
 
-  const groups = useCollection(collection(db, 'questions'))
+  const groups = useCollection(collection(db, 'groups'))
   const groupsObject = computed(() => {
     const result = {};
     groups.value.forEach((group) => {

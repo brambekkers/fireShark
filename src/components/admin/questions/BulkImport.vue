@@ -47,9 +47,10 @@ const importDisabled = computed(
 const checkJson = (items) => {
   errorArray.value = items.map((item) => {
     // check type
-    if (!item.type) return 'missingType';
-    if (!item.question) return 'missingQuestion';
-    if (!item.answers) return 'missingAnswers';
+    if (!item.type || typeof item.type !== 'string') return 'missingType';
+    if (!item.question || typeof item.type !== 'string')
+      return 'missingQuestion';
+    if (!item.answers || typeof item.type !== 'object') return 'missingAnswers';
     if (!supportedTypes.includes(item.type)) return 'typeNotSupported';
     return null;
   });
