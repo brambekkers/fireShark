@@ -1,5 +1,8 @@
 <script setup>
+import { nanoid } from 'nanoid';
 import { supportedTypes } from '@/constants/questions';
+
+import { useQuestionsStore } from '@/stores/questions';
 
 // components
 import Modal from '@/components/generic/Modal.vue';
@@ -12,6 +15,9 @@ import Alert from '@/components/generic/Alert.vue';
 import IconClose from '~icons/uil/times';
 import IconWarning from '~icons/lucide/file-warning';
 import IconCheck from '~icons/lucide/square-check';
+import { storeToRefs } from 'pinia';
+
+const { selectedTopic } = storeToRefs(useQuestionsStore());
 
 const props = defineProps({
   isOpen: {
@@ -50,13 +56,14 @@ const checkJson = (items) => {
     if (!item.type || typeof item.type !== 'string') return 'missingType';
     if (!item.question || typeof item.type !== 'string')
       return 'missingQuestion';
-    if (!item.answers || typeof item.type !== 'object') return 'missingAnswers';
+    if (!item.answers || typeof item.answers !== 'object')
+      return 'missingAnswers';
     if (!supportedTypes.includes(item.type)) return 'typeNotSupported';
     return null;
   });
 };
 
-const handleImport = (file) => {
+const handleJson = (file) => {
   errorArray.value = [];
   errorCode.value = '';
   const reader = new FileReader();
@@ -69,6 +76,21 @@ const handleImport = (file) => {
     }
   };
   reader.readAsText(file);
+};
+
+const importQuestions = () => {
+  if (importDisabled.value) return;
+  importArray.value.forEach((item) => {
+    useQuestionsStore().addQuestion({
+      parentId: selectedTopic.value,
+      headerImage: '',
+      imageRef: null,
+      id: `question_${nanoid(15)}`,
+      type: item.type,
+      question: item.question,
+      answers: item.answers || [],
+    });
+  });
 };
 
 const closeImport = () => {
@@ -96,7 +118,7 @@ const closeImport = () => {
         elevation="none"
         size="xl"
         :accept="['.json']"
-        @update="handleImport"
+        @update="handleJson"
       />
 
       <div
@@ -111,11 +133,13 @@ const closeImport = () => {
               class="border-slate-200"
               :class="{ 'border-b ': i !== importArray.length - 1 }"
             >
-              <td class="p-2 w-6">
-                <button v-if="errorArray[i]" type="button">
-                  <IconWarning class="text-app-danger h-6" />
-                </button>
-                <IconCheck v-else class="text-app-success" />
+              <td class="p-3 w-8">
+                <div class="h-full flex items-center">
+                  <button v-if="errorArray[i]" type="button">
+                    <IconWarning class="text-app-danger h-6" />
+                  </button>
+                  <IconCheck v-else class="text-app-success" />
+                </div>
               </td>
               <td class="font-semibold truncate">
                 {{ item.question || '...' }}
@@ -128,7 +152,12 @@ const closeImport = () => {
 
     <!-- Modal footer -->
     <div class="flex items-center justify-end px-5 pb-5 pt-2">
-      <Button title="Import" size="md" :disable="importDisabled" />
+      <Button
+        title="Import"
+        size="md"
+        :disable="importDisabled"
+        @click="importQuestions()"
+      />
     </div>
   </Modal>
 </template>

@@ -1,5 +1,5 @@
 import { useCollection } from 'vuefire';
-import { getFirestore, collection, doc } from 'firebase/firestore';
+import { getFirestore, collection, doc, setDoc } from 'firebase/firestore';
 import { watch } from 'vue';
 
 export const useQuestionsStore = defineStore('questions', () => {
@@ -17,9 +17,16 @@ export const useQuestionsStore = defineStore('questions', () => {
     selectedTopic.value = ""
   })
 
+  const addQuestion = (question) => {
+    const path = `groups/${selectedGroup.value}/topics/${selectedTopic.value}/questions/${question.id}`
+    const questionRef = doc(db, path);
+    setDoc(questionRef, question);
+  }
+
   const questions = useCollection(questionsRef)
 
   return {
+    addQuestion,
     selectedGroup,
     selectedTopic,
     questions
