@@ -25,6 +25,7 @@
     "eslint-plugin-vue": "^9.21.1",
     "express": "^4.18.2",
     "firebase": "^10.10.0",
+    "flowbite": "^2.3.0",
     "json-server": "^1.0.0-alpha.21",
     "monaco-editor": "^0.45.0",
     "nanoid": "^5.0.6",

@@ -1,13 +1,12 @@
 /** @type {import('tailwindcss').Config} */
+
 export default {
   content: [
     './index.html',
     './src/**/*.{vue,js,ts,jsx,tsx}',
   ],
   theme: {
-    
     extend: {
-     
       colors: {
         // ABN AMRO colors
         primary: '#004c4c',
@@ -45,5 +44,6 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+  ]
 };

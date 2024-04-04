@@ -73,7 +73,7 @@ defineEmits(['addQuestion']);
         type="secondary"
         size="md"
         :disable="!selectedGroup || !selectedTopic"
-        @click="toggleImportModal()"
+        @click="toggleModal()"
       />
     </div>
   </div>

@@ -32,7 +32,16 @@
     "lastName": "Last name",
     "next": "Next",
     "submit": "Submit",
-    "position": "Position"
+    "position": "Position",
+    "or": "or"
+  },
+  "components": {
+    "fileUpload": {
+      "ClickToUpload": "Click to upload",
+      "dragDrop": "or drag and drop",
+      "fileTypeError": "The file type does not meet the specified requirements",
+      "fileSizeError": "The file size does not meet the specified requirements"
+    }
   },
   "overview": {
     "welcomeBack": "Welcome back",

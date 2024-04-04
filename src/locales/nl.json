@@ -31,7 +31,16 @@
     "lastName": "Achternaam",
     "next": "Volgende",
     "submit": "Indienen",
-    "position": "Functie"
+    "position": "Functie",
+    "or": "of"
+  },
+  "components": {
+    "fileUpload": {
+      "ClickToUpload": "Klik om te uploaden",
+      "dragDrop": "of slepen en neerzetten",
+      "fileTypeError": "Het bestandstype voldoet niet aan de opgegeven vereisten",
+      "fileSizeError": "De bestandsgrootte voldoet niet aan de opgegeven vereisten"
+    }
   },
   "overview": {
     "welcomeBack": "Welkom terug",
