@@ -13,7 +13,7 @@ import IconClose from '~icons/uil/times';
 import IconWarning from '~icons/lucide/file-warning';
 import IconCheck from '~icons/lucide/square-check';
 
-defineProps({
+const props = defineProps({
   isOpen: {
     type: Boolean,
     required: true,
@@ -69,6 +69,13 @@ const handleImport = (file) => {
   };
   reader.readAsText(file);
 };
+
+const closeImport = () => {
+  importArray.value = [];
+  errorArray.value = [];
+  errorCode.value = '';
+  props.toggleModal();
+};
 </script>
 
 <template>
@@ -76,7 +83,7 @@ const handleImport = (file) => {
     <!-- Modal header -->
     <div class="flex items-center justify-between p-5">
       <h3 class="text-xl font-semibold">Import questions</h3>
-      <ActionButton @click="toggleModal()">
+      <ActionButton @click="closeImport()">
         <IconClose class="h-6 w-6" />
       </ActionButton>
     </div>
@@ -95,22 +102,26 @@ const handleImport = (file) => {
         v-if="importArray.length"
         class="border-2 border-gray-300 border-dashed bg-gray-50 rounded-lg overflow-hidden"
       >
-        <table class="w-full">
-          <tr
-            v-for="(item, i) of importArray"
-            :key="i"
-            class="border-slate-200"
-            :class="{ 'border-b ': i !== importArray.length - 1 }"
-          >
-            <td class="p-2 w-6">
-              <button v-if="errorArray[i]" type="button">
-                <IconWarning class="text-app-danger h-6" />
-              </button>
-              <IconCheck v-else class="text-app-success" />
-            </td>
-            <td class="font-semibold truncate">{{ item.question || '...' }}</td>
-          </tr>
-        </table>
+        <div class="max-h-96 h-fit overflow-y-auto scrollbar-thin">
+          <table class="w-full h-full overflow-y-auto">
+            <tr
+              v-for="(item, i) of importArray"
+              :key="i"
+              class="border-slate-200"
+              :class="{ 'border-b ': i !== importArray.length - 1 }"
+            >
+              <td class="p-2 w-6">
+                <button v-if="errorArray[i]" type="button">
+                  <IconWarning class="text-app-danger h-6" />
+                </button>
+                <IconCheck v-else class="text-app-success" />
+              </td>
+              <td class="font-semibold truncate">
+                {{ item.question || '...' }}
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
 
