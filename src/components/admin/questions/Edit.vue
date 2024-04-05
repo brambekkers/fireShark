@@ -1,11 +1,10 @@
 <script setup>
-import { doc, setDoc, getFirestore } from 'firebase/firestore';
+import { setDoc } from 'firebase/firestore';
 import { nanoid } from 'nanoid';
 import { supportedTypes } from '@/constants/questions';
 
 // Composable
 import { useModal } from '@/composable/modal';
-const db = getFirestore();
 
 // Stores
 import { useQuestionsStore } from '@/stores/questions';
@@ -75,7 +74,13 @@ watch(
     <!-- Modal header -->
     <div class="px-5 pt-5">
       <div class="flex items-center justify-between">
-        <h3 class="text-xl font-semibold">Add question</h3>
+        <h3 class="text-xl font-semibold">
+          {{
+            question.id
+              ? $t('admin.groups.editGroup')
+              : $t('admin.groups.createGroup')
+          }}
+        </h3>
         <ActionButton @click="toggleModal()">
           <IconClose class="h-6 w-6" />
         </ActionButton>

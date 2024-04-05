@@ -86,6 +86,8 @@
       "topicName": "Naam onderwerp "
     },
     "questions": {
+      "addQuestion": "Voeg vraag toe",
+      "createQuestion": "Vraag aanmaken",
       "deleteQuestion": "Vraag verwijderen?",
       "deleteQuestions": "Vragen verwijderen?",
       "deleteQuestionText": "Weet je zeker dat je de vraag wilt verwijderen?",

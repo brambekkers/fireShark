@@ -15,7 +15,6 @@ const addGroup = () => {
     imageUrl: null,
     imageRef: null,
     topics: [],
-    questionAmount: 0,
     userAmount: 0,
   };
 };

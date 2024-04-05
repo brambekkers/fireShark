@@ -7,7 +7,8 @@ import {
   deleteDoc,
 } from 'firebase/firestore';
 
-import { watch } from 'vue';
+// Composables
+import { useImage } from '@/composable/image';
 
 export const useQuestionsStore = defineStore('questions', () => {
   const db = getFirestore();
@@ -52,7 +53,7 @@ export const useQuestionsStore = defineStore('questions', () => {
     
     // Delete image
     if (question.imageRef) {
-      const { deletePicture } = useImage(question.imageRef);
+      const { deletePicture } = useImage(question?.imageRef || '');
       deletePicture();
     }
 

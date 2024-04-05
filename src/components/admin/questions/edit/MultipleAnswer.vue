@@ -11,6 +11,8 @@ import IconTrash from '~icons/lucide/trash';
 
 // Components
 import TextField from '@/components/generic/inputs/TextField.vue';
+import CheckCircle from '@/components/generic/ui/CheckCircle.vue';
+import ActionButton from '@/components/generic/base/ActionButton.vue';
 
 const answersRaw = defineModel('answers', {
   type: Array,
@@ -72,11 +74,19 @@ const addAnswer = () => {
           size="md"
           class="flex-grow"
         />
-        <button
-          class="text-app-button-danger-bg ms-2 hover:text-app-button-danger-bg-focus"
+        <CheckCircle
+          class="ms-3"
+          :is-checked="answer.value"
+          @click="answer.value = !answer.value"
+        />
+        <div
+          class="border-t sm:border-t-0 sm:border-s border-gray-200 ms-3 me-1 h-8"
+        />
+        <ActionButton
+          class="text-app-button-danger-bg hover:text-app-button-danger-bg-focus"
         >
           <IconTrash class="h-5 w-5" />
-        </button>
+        </ActionButton>
       </li>
     </ul>
   </div>

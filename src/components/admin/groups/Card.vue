@@ -17,6 +17,13 @@ const imageStyle = computed(() => ({
   backgroundImage: `url('${props.group.imageUrl || banner}')`,
 }));
 
+const questionAmount = computed(() =>
+  props.group.topics.reduce((num, t) => {
+    num += t.questionAmount || 0;
+    return num;
+  }, 0),
+);
+
 const stats = computed(() => [
   {
     name: t('general.topics'),
@@ -24,7 +31,7 @@ const stats = computed(() => [
   },
   {
     name: t('general.questions'),
-    amount: props.group.questionAmount,
+    amount: questionAmount.value,
   },
   {
     name: t('general.users'),

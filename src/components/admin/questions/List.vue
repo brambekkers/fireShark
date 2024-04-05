@@ -20,6 +20,12 @@ const { isModalOpen: isConfirmOpen, toggleModal: toggleConfirm } = useModal();
 const { questions, selectedGroup, selectedTopic, selectedQuestions } =
   storeToRefs(useQuestionsStore());
 
+const deleteId = ref('');
+const triggerConfirm = (id) => {
+  deleteId.value = id;
+  toggleConfirm();
+};
+
 const toggleSelect = (id) => {
   const index = selectedQuestions.value.indexOf(id);
   if (index === -1) selectedQuestions.value.push(id);
@@ -111,20 +117,20 @@ const toggleAllSelect = () => {
             <ActionButton @click="$emit('editQuestion', question)">
               <IconSettings class="h-5 w-5" />
             </ActionButton>
-            <ActionButton @click="toggleConfirm()">
+            <ActionButton @click="triggerConfirm(question.id)">
               <IconTrash class="h-5 w-5" />
-              <Confirm
-                :title="$t('admin.questions.deleteQuestion')"
-                :text="$t('admin.questions.deleteQuestionText')"
-                :is-open="isConfirmOpen"
-                :close-confirm="toggleConfirm"
-                @confirm="$emit('deleteQuestion', question.id)"
-              />
             </ActionButton>
           </div>
         </td>
       </tr>
     </tbody>
+    <Confirm
+      :title="$t('admin.questions.deleteQuestion')"
+      :text="$t('admin.questions.deleteQuestionText')"
+      :is-open="isConfirmOpen"
+      :close-confirm="toggleConfirm"
+      @confirm="$emit('deleteQuestion', deleteId)"
+    />
   </table>
   <div
     class="border-4 border-app-navbar-inactive border-dashed h-96 rounded-xl flex flex-col items-center justify-center space-y-2"

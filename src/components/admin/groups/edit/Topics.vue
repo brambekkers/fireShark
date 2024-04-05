@@ -36,6 +36,7 @@ const addTopic = () => {
     name: '',
     parentId: props.parentId,
     id: `topic_${nanoid(15)}`,
+    questionAmount: 0,
   });
 };
 </script>
