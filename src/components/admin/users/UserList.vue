@@ -74,18 +74,16 @@ const profileStyle = (url) => ({
           <p class="text-sm">{{ user.email }}</p>
         </td>
         <td class="p-3 align-middle">
-          <p
-            v-for="(id, i) in user.settings?.position"
-            :key="id"
-            class="text-sm"
-          >
-            {{ groupsObject[id]?.name }}
-            <span
-              v-if="i !== user.settings?.position.length - 1"
-              class="-ms-1 me-2"
-              >,</span
-            >
-          </p>
+          <template v-for="(id, i) in user.settings?.position" :key="id">
+            <p v-if="groupsObject[id]?.name" class="text-sm">
+              {{ groupsObject[id]?.name }}
+              <span
+                v-if="i !== user.settings?.position.length - 1"
+                class="-ms-1 me-2"
+                >,</span
+              >
+            </p>
+          </template>
         </td>
         <td class="p-3">
           <div class="flex flex-col items-center justify-center text-sm">
@@ -118,5 +116,5 @@ const profileStyle = (url) => ({
       </tr>
     </tbody>
   </table>
-  <Edit v-model:current-user="currentUser" />
+  <Edit v-model:user="currentUser" />
 </template>

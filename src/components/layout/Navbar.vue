@@ -7,6 +7,11 @@ import IconSettings from '~icons/tdesign/setting-1';
 import { useUserStore } from '@/stores/user';
 
 const { user } = storeToRefs(useUserStore());
+
+const canVisitAdmin = computed(() => {
+  const role = user.value?.role;
+  return role === 'admin' || role === 'moderator' || role === 'editor';
+});
 </script>
 
 <template>
@@ -28,7 +33,7 @@ const { user } = storeToRefs(useUserStore());
       <router-link to="/settings">
         <span class="link"><IconSettings /> {{ $t('general.settings') }}</span>
       </router-link>
-      <router-link v-if="user?.role === 'admin'" to="/admin">
+      <router-link v-if="canVisitAdmin" to="/admin">
         <span class="link"><IconWrench /> {{ $t('general.admin') }}</span>
       </router-link>
     </section>

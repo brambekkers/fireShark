@@ -1,6 +1,8 @@
 <script setup>
 import { getFunctions, httpsCallable } from 'firebase/functions';
+import { doc, setDoc, getFirestore } from 'firebase/firestore';
 
+import { useGroupStore } from '@/stores/groups';
 // Composable
 import { useModal } from '@/composable/modal';
 
@@ -15,41 +17,53 @@ import IconClose from '~icons/uil/times';
 import IconRoute from '~icons/lucide/route';
 import IconRuler from '~icons/lucide/pencil-ruler';
 
-const cloudFunctions = getFunctions();
-const changeUserRole = httpsCallable(cloudFunctions, 'changeUserRole');
-
-const { isModalOpen, toggleModal } = useModal();
-const role = ref('user');
-const groups = ref([]);
-
-const currentUser = defineModel('currentUser', {
+const user = defineModel('user', {
   type: [Object, null],
   required: true,
 });
 
+const db = getFirestore();
+const cloudFunctions = getFunctions();
+const changeUserRole = httpsCallable(cloudFunctions, 'changeUserRole');
+
+const { isModalOpen, toggleModal } = useModal();
+const { groups, groupsObject } = storeToRefs(useGroupStore());
+const selectedGroup = ref('');
+const role = ref('user');
+
 const updateUser = async () => {
-  if (!currentUser.value) return;
-  await changeUserRole({ role: role.value, uid: currentUser.value.id });
+  if (!user.value) return;
+  await changeUserRole({ role: role.value, uid: user.value.id });
+
+  const settingsRef = doc(db, `users/${user.value.uid}/data/settings`);
+  await setDoc(settingsRef, user.value.settings, { merge: true });
   toggleModal();
 };
 
-watch(isModalOpen, (newVal) => {
-  if (!newVal) currentUser.value = null;
+watch(selectedGroup, (newGroup) => {
+  if (!newGroup) return;
+  user.value.settings.position.push(newGroup);
+  selectedGroup.value = '';
 });
 
-watch(currentUser, (newVal) => {
+watch(isModalOpen, (newVal) => {
+  if (!newVal) user.value = null;
+});
+
+watch(user, (newVal) => {
   if (newVal) {
+    role.value = newVal.role || 'user';
     toggleModal();
   }
 });
 </script>
 
 <template>
-  <Modal v-if="currentUser" :is-open="isModalOpen" :toggle-modal="toggleModal">
+  <Modal v-if="user" :is-open="isModalOpen" :toggle-modal="toggleModal">
     <!-- Modal header -->
     <div class="flex items-center justify-between p-5">
       <h3 class="text-xl font-semibold">
-        Edit: {{ currentUser.firstName }} {{ currentUser.lastName }}
+        Edit: {{ user.firstName }} {{ user.lastName }}
       </h3>
       <ActionButton @click="toggleModal()">
         <IconClose class="h-6 w-6" />
@@ -73,13 +87,27 @@ watch(currentUser, (newVal) => {
           <IconRoute class="w-5 text-app-primary" />
           <h4>Groups</h4>
         </div>
-        <Select v-model="groups" size="md" elevation="none" class="w-1/2">
-          <option selected>Choose a country</option>
-          <option value="US">United States</option>
-          <option value="CA">Canada</option>
-          <option value="FR">France</option>
-          <option value="DE">Germany</option>
+        <Select
+          v-model="selectedGroup"
+          size="md"
+          elevation="none"
+          class="w-1/2"
+        >
+          <option value="" hidden>Click to add extra group</option>
+          <option v-for="group of groups" :key="group.id" :value="group.id">
+            {{ group.name }}
+          </option>
         </Select>
+      </div>
+      <div class="flex gap-1 justify-end -mt-8">
+        <template v-for="id in user.settings?.position" :key="id">
+          <p
+            v-if="groupsObject[id]?.name"
+            class="bg-primary/10 text-primary text-xs font-medium me-2 px-2.5 py-0.5 rounded"
+          >
+            {{ groupsObject[id]?.name }}
+          </p>
+        </template>
       </div>
 
       <!-- Roles -->

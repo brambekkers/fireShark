@@ -9,6 +9,7 @@ const props = defineProps({
   },
   elevation: { type: String, required: false, default: 'lg' },
   size: { type: String, required: false, default: 'lg' },
+  multiple: { type: Boolean, required: false, default: false },
 });
 
 const sizeClass = computed(() => {
@@ -50,6 +51,7 @@ const elevationClass = computed(() => {
     </div>
     <select
       v-model="model"
+      :multiple="multiple"
       class="pr-4 border border-gray-300 w-full text-gray-700 leading-tight bg-white focus:border-app-primary focus:outline-none"
       :class="[{ 'pl-12': icon, 'pl-4': !icon }, sizeClass, elevationClass]"
     >
