@@ -1,10 +1,10 @@
 <script setup>
-import IconTrash from '~icons/lucide/trash';
-import IconSettings from '~icons/lucide/settings';
-import ActionButton from '@/components/generic/ActionButton.vue';
+import ActionButton from '@/components/generic/base/ActionButton.vue';
 import Edit from '@/components/admin/users/Edit.vue';
 
 // Role icons
+import IconTrash from '~icons/lucide/trash';
+import IconSettings from '~icons/lucide/settings';
 import IconAdmin from '~icons/mdi/shield-crown-outline';
 import IconModerator from '~icons/mdi/shield-key-outline';
 import IconEditor from '~icons/mdi/shield-edit-outline';

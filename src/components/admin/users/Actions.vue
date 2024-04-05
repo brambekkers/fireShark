@@ -5,8 +5,8 @@ import IconTrash from '~icons/lucide/trash';
 import IconInfo from '~icons/lucide/info';
 import IconEllipsis from '~icons/lucide/ellipsis-vertical';
 
-import Button from '@/components/generic/Button.vue';
-import ActionButton from '@/components/generic/ActionButton.vue';
+import Button from '@/components/generic/base/Button.vue';
+import ActionButton from '@/components/generic/base/ActionButton.vue';
 
 const searchText = ref('');
 </script>

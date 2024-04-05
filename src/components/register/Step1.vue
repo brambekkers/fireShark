@@ -1,6 +1,6 @@
 <script setup>
 import { useDebounceFn } from '@vueuse/core';
-import TextField from '@/components/generic/TextField.vue';
+import TextField from '@/components/generic/inputs/TextField.vue';
 // Icons
 import IconUser from '~icons/lucide/user-round';
 import IconMail from '~icons/lucide/mail';

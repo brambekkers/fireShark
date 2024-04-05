@@ -1,6 +1,6 @@
 <script setup>
-import Select from '@/components/generic/Select.vue';
-import Button from '@/components/generic/Button.vue';
+import Select from '@/components/generic/inputs/Select.vue';
+import Button from '@/components/generic/base/Button.vue';
 
 // Icons
 import IconBriefcase from '~icons/lucide/briefcase-business';

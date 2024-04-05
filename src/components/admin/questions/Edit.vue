@@ -1,18 +1,20 @@
 <script setup>
+import { doc, setDoc, getFirestore } from 'firebase/firestore';
 import { nanoid } from 'nanoid';
 import { supportedTypes } from '@/constants/questions';
 
 // Composable
 import { useModal } from '@/composable/modal';
+const db = getFirestore();
 
 // Stores
 import { useQuestionsStore } from '@/stores/questions';
 import { useGroupStore } from '@/stores/groups';
 
 // components
-import Modal from '@/components/generic/Modal.vue';
-import Button from '@/components/generic/Button.vue';
-import ActionButton from '@/components/generic/ActionButton.vue';
+import Modal from '@/components/generic/base/Modal.vue';
+import Button from '@/components/generic/base/Button.vue';
+import ActionButton from '@/components/generic/base/ActionButton.vue';
 import Type from '@/components/admin/questions/edit/Type.vue';
 import Question from '@/components/admin/questions/edit/Question.vue';
 import Image from '@/components/admin/questions/edit/Image.vue';
@@ -34,6 +36,14 @@ const { selectedGroup, selectedTopic } = storeToRefs(useQuestionsStore());
 const { groupsObject } = storeToRefs(useGroupStore());
 
 const editQuestion = ref(null);
+
+const updateQuestion = async (skipClose = false) => {
+  if (!editQuestion.value) return;
+  const questionRef = useQuestionsStore().getQuestionRef(editQuestion.value.id);
+  await setDoc(questionRef, editQuestion.value);
+  if (skipClose) return;
+  toggleModal();
+};
 
 watch(isModalOpen, (open) => {
   if (!open) {
@@ -97,6 +107,7 @@ watch(
           v-model:imageUrl="editQuestion.headerImage"
           v-model:imageRef="editQuestion.imageRef"
           :image-location="`groups/topics/${editQuestion.id}/questions/${editQuestion.id}`"
+          @update="updateQuestion(true)"
         />
         <Question v-model:question="editQuestion.question" />
         <MultipleAnswer
@@ -109,7 +120,7 @@ watch(
 
     <!-- Modal footer -->
     <div class="flex items-center justify-end px-5 pb-5 pt-2">
-      <Button title="Import" size="md" />
+      <Button title="Import" size="md" @click="updateQuestion(false)" />
     </div>
   </Modal>
 </template>

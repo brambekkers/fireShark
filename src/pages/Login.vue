@@ -4,9 +4,9 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 
 // Components
 import FullPageLoader from '@/components/generic/FullPageLoader.vue';
-import TextField from '@/components/generic/TextField.vue';
-import Button from '@/components/generic/Button.vue';
-import Alert from '@/components/generic/Alert.vue';
+import TextField from '@/components/generic/inputs/TextField.vue';
+import Button from '@/components/generic/base/Button.vue';
+import Alert from '@/components/generic/base/Alert.vue';
 
 // Icons
 import IconMail from '~icons/lucide/mail';

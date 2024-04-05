@@ -25,7 +25,7 @@
 <script setup>
 import { useQuestionStore } from '@stores/question';
 import Answer from './Answer.vue';
-import Button from '@/components/generic/Button.vue';
+import Button from '@/components/generic/base/Button.vue';
 
 const props = defineProps({
   questionData: {

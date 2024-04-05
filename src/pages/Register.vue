@@ -1,12 +1,12 @@
 <script setup>
 import { useUserStore } from '@/stores/user';
 
-import Alert from '@/components/generic/Alert.vue';
+import Alert from '@/components/generic/base/Alert.vue';
 import Stepper from '@/components/register/Stepper.vue';
 import Step1 from '@/components/register/Step1.vue';
 import Step2 from '@/components/register/Step2.vue';
 import Step3 from '@/components/register/Step3.vue';
-import Button from '@/components/generic/Button.vue';
+import Button from '@/components/generic/base/Button.vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();

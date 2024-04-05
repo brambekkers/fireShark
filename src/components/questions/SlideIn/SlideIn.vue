@@ -36,7 +36,7 @@
 <script setup>
 import { useQuestionStore } from '@stores/question';
 import ArrowUpward from '~icons/material-symbols/arrow-upward';
-import Button from '@/components/generic/Button.vue';
+import Button from '@/components/generic/base/Button.vue';
 
 const store = useQuestionStore();
 

@@ -1,8 +1,8 @@
 export const useModal = () => {
   const isModalOpen = ref(false);
 
-  const toggleModal = (forceToggle) => {
-    isModalOpen.value = forceToggle ?? !isModalOpen.value;
+  const toggleModal = () => {
+    isModalOpen.value = !isModalOpen.value;
   };
 
   return {

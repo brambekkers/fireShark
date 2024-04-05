@@ -1,6 +1,6 @@
 <script setup>
 import IconSearch from '~icons/lucide/search';
-import Button from '@/components/generic/Button.vue';
+import Button from '@/components/generic/base/Button.vue';
 
 const searchText = ref('');
 

@@ -10,7 +10,7 @@ import IconDrag from '~icons/mdi/drag-vertical';
 import IconTrash from '~icons/lucide/trash';
 
 // Components
-import TextField from '@/components/generic/TextField.vue';
+import TextField from '@/components/generic/inputs/TextField.vue';
 
 const topicsRaw = defineModel('topics', {
   type: Array,

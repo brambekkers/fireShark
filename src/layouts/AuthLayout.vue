@@ -9,13 +9,13 @@ const selectedRoute = ref('');
 
 router.beforeEach((to, from) => {
   if (from.name === 'Practice') {
+    toggleModal();
+
     if (selectedRoute.value !== '') {
       selectedRoute.value = '';
-      toggleModal(false);
       return true;
     }
     selectedRoute.value = to.path;
-    toggleModal(true);
     return false;
   }
   return true;

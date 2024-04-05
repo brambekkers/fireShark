@@ -1,6 +1,6 @@
 <script setup>
 import IconMessage from '~icons/lucide/message-square-text';
-import TextArea from '@/components/generic/TextArea.vue';
+import TextArea from '@/components/generic/inputs/TextArea.vue';
 
 const description = defineModel('description', {
   type: String,

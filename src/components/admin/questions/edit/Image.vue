@@ -1,5 +1,5 @@
 <script setup>
-import FileInput from '@/components/generic/FileInput.vue';
+import FileInput from '@/components/generic/inputs/FileInput.vue';
 import IconImage from '~icons/lucide/image';
 import { useImage } from '@/composable/image';
 import { watch } from 'vue';

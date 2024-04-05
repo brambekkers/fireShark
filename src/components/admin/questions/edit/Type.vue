@@ -1,5 +1,5 @@
 <script setup>
-import Select from '@/components/generic/Select.vue';
+import Select from '@/components/generic/inputs/Select.vue';
 import IconTarget from '~icons/lucide/target';
 
 import { questionTypes } from '@/constants/questions';

@@ -5,10 +5,10 @@ import { getFunctions, httpsCallable } from 'firebase/functions';
 import { useModal } from '@/composable/modal';
 
 // components
-import Modal from '@/components/generic/Modal.vue';
-import ActionButton from '@/components/generic/ActionButton.vue';
-import Button from '@/components/generic/Button.vue';
-import Select from '@/components/generic/Select.vue';
+import Modal from '@/components/generic/base/Modal.vue';
+import ActionButton from '@/components/generic/base/ActionButton.vue';
+import Button from '@/components/generic/base/Button.vue';
+import Select from '@/components/generic/inputs/Select.vue';
 
 // Icons
 import IconClose from '~icons/uil/times';

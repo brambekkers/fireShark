@@ -7,9 +7,9 @@ import { useImage } from '@/composable/image';
 import { useModal } from '@/composable/modal';
 
 // Components
-import Modal from '@/components/generic/Modal.vue';
-import ActionButton from '@/components/generic/ActionButton.vue';
-import Button from '@/components/generic/Button.vue';
+import Modal from '@/components/generic/base/Modal.vue';
+import ActionButton from '@/components/generic/base/ActionButton.vue';
+import Button from '@/components/generic/base/Button.vue';
 import Name from '@/components/admin/groups/edit/Name.vue';
 import Description from '@/components/admin/groups/edit/Description.vue';
 import Image from '@/components/admin/groups/edit/Image.vue';
@@ -36,13 +36,7 @@ const updateGroup = async (skipClose = false) => {
   await setDoc(
     groupRef,
     {
-      id: editGroup.value.id,
-      name: editGroup.value.name,
-      description: editGroup.value.description || '',
-      imageUrl: editGroup.value.imageUrl || '',
-      imageRef: editGroup.value.imageRef || '',
-      questionAmount: editGroup.value.questionAmount,
-      userAmount: editGroup.value.userAmount,
+      ...editGroup.value,
       topics: editGroup.value.topics.map((topic) =>
         doc(db, `groups/${editGroup.value.id}/topics/${topic.id}`),
       ),
@@ -77,8 +71,6 @@ const deleteGroup = async () => {
   if (editGroup.value.imageRef) {
     const { deletePicture } = useImage(editGroup.value.imageRef);
     deletePicture();
-    editGroup.value.imageUrl = null;
-    editGroup.value.imageRef = null;
   }
 
   // Delete the group

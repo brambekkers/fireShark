@@ -33,7 +33,9 @@
     "next": "Next",
     "submit": "Submit",
     "position": "Position",
-    "or": "or"
+    "or": "or",
+    "confirm": "Confirm",
+    "cancel": "Cancel"
   },
   "components": {
     "fileUpload": {
@@ -84,7 +86,12 @@
       "addTopic": "Add topic",
       "topicName": "Topic name"
     },
-    "questions": {},
+    "questions": {
+      "deleteQuestion": "Delete question?",
+      "deleteQuestions": "Delete questions?",
+      "deleteQuestionText": "Are you sure you want to delete this question?",
+      "deleteQuestionsText": "Are you sure you want to delete {amount} questions?"
+    },
     "users": {}
   },
   "auth": {

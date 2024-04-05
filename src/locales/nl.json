@@ -32,7 +32,9 @@
     "next": "Volgende",
     "submit": "Indienen",
     "position": "Functie",
-    "or": "of"
+    "or": "of",
+    "confirm": "Bevestigen",
+    "cancel": "Annuleren"
   },
   "components": {
     "fileUpload": {
@@ -83,7 +85,12 @@
       "addTopic": "Onderwerp toevoegen",
       "topicName": "Naam onderwerp "
     },
-    "questions": {},
+    "questions": {
+      "deleteQuestion": "Vraag verwijderen?",
+      "deleteQuestions": "Vragen verwijderen?",
+      "deleteQuestionText": "Weet je zeker dat je de vraag wilt verwijderen?",
+      "deleteQuestionsText": "Weet je zeker dat je {amount} vragen wilt verwijderen?"
+    },
     "users": {}
   },
   "auth": {

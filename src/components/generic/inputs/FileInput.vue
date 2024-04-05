@@ -2,7 +2,7 @@
 import { useDropZone } from '@vueuse/core';
 
 import IconUpload from '~icons/lucide/cloud-upload';
-import Alert from './Alert.vue';
+import Alert from '@/components/generic/base/Alert.vue';
 
 const { t } = useI18n();
 

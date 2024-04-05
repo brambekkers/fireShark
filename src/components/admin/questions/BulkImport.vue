@@ -5,11 +5,11 @@ import { supportedTypes } from '@/constants/questions';
 import { useQuestionsStore } from '@/stores/questions';
 
 // components
-import Modal from '@/components/generic/Modal.vue';
-import Button from '@/components/generic/Button.vue';
-import ActionButton from '@/components/generic/ActionButton.vue';
-import FileInput from '@/components/generic/FileInput.vue';
-import Alert from '@/components/generic/Alert.vue';
+import Modal from '@/components/generic/base/Modal.vue';
+import Button from '@/components/generic/base/Button.vue';
+import ActionButton from '@/components/generic/base/ActionButton.vue';
+import FileInput from '@/components/generic/inputs/FileInput.vue';
+import Alert from '@/components/generic/base/Alert.vue';
 
 // Icons
 import IconClose from '~icons/uil/times';
@@ -91,6 +91,7 @@ const importQuestions = () => {
       answers: item.answers || [],
     });
   });
+  closeImport();
 };
 
 const closeImport = () => {

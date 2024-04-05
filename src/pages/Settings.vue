@@ -5,7 +5,7 @@ import { useRouter } from 'vue-router';
 import SettingsSection from '@/components/settings/sections/Section.vue';
 import PersonalSection from '@/components/settings/sections/Personal.vue';
 import LanguageSection from '@/components/settings/sections/Language.vue';
-import Button from '@/components/generic/Button.vue';
+import Button from '@/components/generic/base/Button.vue';
 
 const router = useRouter();
 const auth = getAuth();

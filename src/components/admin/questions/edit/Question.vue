@@ -1,6 +1,6 @@
 <script setup>
 import IconQuestion from '~icons/material-symbols/live-help-outline-rounded';
-import TextArea from '@/components/generic/TextArea.vue';
+import TextArea from '@/components/generic/inputs/TextArea.vue';
 
 const question = defineModel('question', {
   type: String,

@@ -1,6 +1,6 @@
 <script setup>
 import IconPencil from '~icons/lucide/pencil-line';
-import TextField from '@/components/generic/TextField.vue';
+import TextField from '@/components/generic/inputs/TextField.vue';
 
 const name = defineModel('name', {
   type: String,

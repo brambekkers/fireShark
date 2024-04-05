@@ -1,4 +1,5 @@
 <script setup>
+import { useQuestionsStore } from '@/stores/questions';
 import Actions from '@/components/admin/questions/Actions.vue';
 import List from '@/components/admin/questions/List.vue';
 import TopicSelector from '@/components/admin/questions/TopicSelector.vue';
@@ -17,14 +18,22 @@ const addQuestion = () => {
     answers: [],
   };
 };
+
+const editQuestion = (question) => (selectedQuestion.value = question);
 </script>
 
 <template>
   <div>
-    <h1 class="text-3xl font-semibold mb-4">Questions</h1>
-    <Actions @add-question="addQuestion" />
+    <h1 class="text-3xl font-semibold mb-4">{{ $t('general.questions') }}</h1>
+    <Actions
+      @add-question="addQuestion"
+      @delete-question="useQuestionsStore().deleteQuestion"
+    />
     <TopicSelector />
-    <List />
+    <List
+      @edit-question="editQuestion"
+      @delete-question="useQuestionsStore().deleteQuestion"
+    />
     <Edit :question="selectedQuestion" />
   </div>
 </template>

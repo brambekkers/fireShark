@@ -14,15 +14,26 @@ import { useModal } from '@/composable/modal';
 
 // Components
 import BulkImport from '@/components/admin/questions/BulkImport.vue';
-import Button from '@/components/generic/Button.vue';
-import ActionButton from '@/components/generic/ActionButton.vue';
+import Confirm from '@/components/generic/modals/Confirm.vue';
+import Button from '@/components/generic/base/Button.vue';
+import ActionButton from '@/components/generic/base/ActionButton.vue';
 
 const { isModalOpen, toggleModal } = useModal();
+const { isModalOpen: isConfirmOpen, toggleModal: toggleConfirm } = useModal();
 
-const { selectedGroup, selectedTopic } = storeToRefs(useQuestionsStore());
+const { selectedGroup, selectedTopic, selectedQuestions } =
+  storeToRefs(useQuestionsStore());
 const searchText = ref('');
 
-defineEmits(['addQuestion']);
+const emit = defineEmits(['addQuestion', 'deleteQuestion']);
+
+const deleteQuestions = () => {
+  if (!selectedQuestions.value.length) return;
+  selectedQuestions.value.forEach((id) => {
+    emit('deleteQuestion', id);
+  });
+  selectedQuestions.value = [];
+};
 </script>
 
 <template>
@@ -49,8 +60,22 @@ defineEmits(['addQuestion']);
       <ActionButton>
         <IconSettings class="h-6 w-6" />
       </ActionButton>
-      <ActionButton>
+      <ActionButton
+        @click="toggleConfirm()"
+        :disabled="!selectedQuestions.length"
+      >
         <IconTrash class="h-6 w-6" />
+        <Confirm
+          :title="$t('admin.questions.deleteQuestions')"
+          :text="
+            $t('admin.questions.deleteQuestionsText', {
+              amount: selectedQuestions.length,
+            })
+          "
+          :is-open="isConfirmOpen"
+          :close-confirm="toggleConfirm"
+          @confirm="deleteQuestions()"
+        />
       </ActionButton>
       <ActionButton>
         <IconInfo class="h-6 w-6" />

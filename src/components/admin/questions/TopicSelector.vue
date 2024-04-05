@@ -1,5 +1,5 @@
 <script setup>
-import Select from '@/components/generic/Select.vue';
+import Select from '@/components/generic/inputs/Select.vue';
 import IconArrowRight from '~icons/lucide/arrow-big-right';
 import { useGroupStore } from '@/stores/groups';
 import { useQuestionsStore } from '@/stores/questions';

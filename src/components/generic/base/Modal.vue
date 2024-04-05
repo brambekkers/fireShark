@@ -5,6 +5,12 @@ const props = defineProps({
 });
 
 const widthClass = computed(() => {
+  if (props.width === 'md') {
+    return 'max-w-md';
+  }
+  if (props.width === 'lg') {
+    return 'max-w-lg';
+  }
   if (props.width === 'xl') {
     return 'max-w-xl';
   }
