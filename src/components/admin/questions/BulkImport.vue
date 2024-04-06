@@ -159,10 +159,10 @@ const closeImport = () => {
       <Button
         title="Import"
         size="md"
-        :disable="importDisabled"
+        :type="importDisabled"
+        :disabled="importDisabled"
         @click="importQuestions()"
       />
     </div>
   </Modal>
 </template>
-@/stores/curriculum

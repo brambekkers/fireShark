@@ -5,22 +5,15 @@ const props = defineProps({
   answer: { type: Object, required: true },
   type: { type: String, required: true },
 });
+const { givenAnswer, hasAnswered } = storeToRefs(useQuestionStore());
 
-const store = useQuestionStore();
-
-const inputType = props?.type === 'singleChoice' ? 'radio' : 'checkbox';
-const text = computed(() => props?.answer.text);
-const value = computed(() => props?.answer.value);
-const questionId = `q-${text.value}`;
-const isSelected = ref(false);
-
-const setSelected = () => {
-  isSelected.value = !isSelected.value;
-};
+const answerId = `q-${props.answer?.text}`;
+const isSelected = computed(() =>
+  givenAnswer.value.some((a) => a.text === props.answer.text),
+);
 
 const giveAnswer = () => {
-  store.setAnswer(isSelected.value, props?.answer);
-  setSelected();
+  useQuestionStore().setAnswer(props?.answer);
 };
 </script>
 
@@ -29,17 +22,23 @@ const giveAnswer = () => {
     <legend class="sr-only">Answer</legend>
     <div>
       <label
-        :for="questionId"
-        class="flex cursor-pointer items-center justify-between gap-6 rounded-2xl border border-gray-100 bg-white py-8 px-6 font-medium shadow-md hover:border-gray-200 has-[:checked]:border-app-primary has-[:checked]:border-2 has-[:checked]:shadow-xl has-[:checked]:ring-1 has-[:checked]:ring-app-primary"
+        :for="answerId"
+        class="flex cursor-pointer items-center justify-between gap-6 rounded-2xl border-gray-100 bg-white py-8 px-6 font-medium shadow-md hover:border-gray-200 has-[:checked]:shadow-xl has-[:checked]:ring-1 has-[:checked]:border-2"
+        :class="{
+          ' has-[:checked]:border-app-primary has-[:checked]:ring-app-primary':
+            !hasAnswered || (hasAnswered && isSelected === answer.value),
+          'has-[:checked]:border-app-danger has-[:checked]:ring-app-danger':
+            hasAnswered && isSelected !== answer.value,
+        }"
       >
-        <p class="text-gray-700">{{ text }}</p>
+        <p class="text-gray-700">{{ answer.text }}</p>
         <input
-          :id="questionId"
-          :type="inputType"
-          :name="inputType"
-          :value="value"
-          @input="giveAnswer($event)"
-          :selected="isSelected"
+          :id="answerId"
+          type="checkbox"
+          :value="answer.value"
+          @input="giveAnswer()"
+          :checked="isSelected"
+          :disabled="hasAnswered"
           class="sr-only"
         />
       </label>

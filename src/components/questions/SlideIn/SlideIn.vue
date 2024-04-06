@@ -51,9 +51,11 @@ defineProps({
   },
 });
 
+const { isAnswerCorrect } = storeToRefs(useQuestionStore());
 const show = ref(false);
-const valid = computed(() => store.checkAnswer());
-const title = computed(() => (valid.value ? 'Correct!' : 'Incorrect'));
+const title = computed(() =>
+  isAnswerCorrect.value ? 'Correct!' : 'Incorrect',
+);
 
 const emit = defineEmits(['emit-next-question']);
 

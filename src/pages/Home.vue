@@ -39,7 +39,7 @@ const clearSelection = () => {
       <div class="flex align-center justify-center mt-12">
         <router-link to="/practice">
           <Button
-            :disable="selectedTopics.length === 0"
+            :disabled="selectedTopics.length === 0"
             title="Practice this selection"
           >
           </Button>

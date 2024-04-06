@@ -1,4 +1,6 @@
 <script setup>
+import FullPageLoader from '@/components/generic/FullPageLoader.vue';
+
 import { useQuestionStore } from '@stores/question';
 
 import HeaderButtons from '@/components/questions/HeaderButtons.vue';
@@ -10,52 +12,59 @@ import LevelUp from '@/components/LevelUp.vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
-const { selectedTopics, selectedQuestion, showQuestionSlideIn, givenAnswer } =
-  storeToRefs(useQuestionStore());
+const {
+  selectedTopics,
+  isLoading,
+  selectedQuestion,
+  hasAnswered,
+  isAnswerCorrect,
+} = storeToRefs(useQuestionStore());
 const content = ref('very long content with a lot of text');
 const nextQuestion = ref('Continue practicing');
-const scoreMessage = ref(false);
+const showScoreMessage = ref(false);
 
-const showMessage = () => {
-  if (store.checkAnswer()) {
-    scoreMessage.value = true;
+watch(hasAnswered, () => {
+  const random = Math.random();
+  if (hasAnswered.value && isAnswerCorrect.value && random > 0.5) {
+    showScoreMessage.value = true;
+    // random number 0-1
+
     setTimeout(() => {
-      scoreMessage.value = false;
-      getQuestions();
+      showScoreMessage.value = false;
+      useQuestionStore().toNextQuestion();
     }, 3000);
   }
-};
+});
 
-const toNextQuestion = () => {
-  getQuestions();
-  showMessage();
-  showQuestionSlideIn.value = false;
-  givenAnswer.value = [];
-};
-
-onMounted(() => {
+onMounted(async () => {
   // To do: Force navigation and skip the modal
-  if (!selectedTopics.value.length) router.push('/overview');
-  else useQuestionStore().getQuestions();
+  if (!selectedTopics.value.length) {
+    router.push('/overview');
+    return;
+  }
+  await useQuestionStore().toNextQuestion();
+  isLoading.value = false;
+  return;
 });
 </script>
 
 <template>
   <div class="h-44 max-w-2xl mx-auto relative -mt-40">
-    <div v-if="!scoreMessage" class="question relative flex flex-col">
+    <div v-if="!showScoreMessage" class="question relative flex flex-col">
       <HeaderButtons />
       <QuestionHeader :question="selectedQuestion" />
-      <QuestionForm :question-data="selectedQuestion" />
+      <QuestionForm :question="selectedQuestion" />
       <QuestionSlideIn
-        v-if="showQuestionSlideIn"
+        v-if="hasAnswered"
         :next-question="nextQuestion"
         :content="content"
-        @emit-next-question="toNextQuestion()"
+        @emit-next-question="useQuestionStore().toNextQuestion()"
       />
     </div>
-    <GenericModal :is-open="scoreMessage" :fireworks="true">
+    <GenericModal :is-open="showScoreMessage" :fireworks="true">
       <LevelUp />
     </GenericModal>
+    <FullPageLoader :is-loading="isLoading" />
   </div>
 </template>
 

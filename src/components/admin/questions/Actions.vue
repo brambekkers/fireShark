@@ -90,14 +90,14 @@ const deleteQuestions = () => {
         title="Add question"
         type="primary"
         size="md"
-        :disable="!selectedGroup || !selectedTopic"
+        :disabled="!selectedGroup || !selectedTopic"
         @click="$emit('addQuestion')"
       />
       <Button
         title="Import"
         type="secondary"
         size="md"
-        :disable="!selectedGroup || !selectedTopic"
+        :disabled="!selectedGroup || !selectedTopic"
         @click="toggleModal()"
       />
     </div>

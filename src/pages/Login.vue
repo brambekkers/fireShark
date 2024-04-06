@@ -75,7 +75,7 @@ const login = async () => {
       <Button
         class="mt-10"
         :title="$t('auth.login.login')"
-        :disable="email === '' || password === ''"
+        :disabled="email === '' || password === ''"
         @click="login"
       />
       <div class="text-center mt-4 text-sm">

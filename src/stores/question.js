@@ -3,10 +3,12 @@ import { rand } from '@vueuse/core';
 import { useUserStore } from '@/stores/user'
 
 export const useQuestionStore = defineStore('question', () => {
+  const isLoading = ref(true);
   const selectedTopics = ref([]);
   const selectedQuestion = ref({});
   const givenAnswer = ref([]);
-  const showQuestionSlideIn = ref(false);
+  const hasAnswered = ref(false);
+  const isAnswerCorrect = ref(true)
   const answerIsGiven = computed(() => givenAnswer.value.length > 0);
 
   const cloudFunctions = getFunctions();
@@ -20,8 +22,7 @@ export const useQuestionStore = defineStore('question', () => {
     }
     selectedTopics.value.push(id);
   };
-
-  const getQuestions = async () => {
+  const getQuestion = async () => {
     try {
       const randomNr = rand(0, selectedTopics.value.length - 1);
       const topicId = selectedTopics.value[randomNr];
@@ -34,33 +35,37 @@ export const useQuestionStore = defineStore('question', () => {
     }
   };
 
-  const setAnswer = (wasSelected, answer) => {
+  const toNextQuestion = async () => {
+    // reset state
+    hasAnswered.value = false;
+    isAnswerCorrect.value = true
+    givenAnswer.value = [];
+    isLoading.value = true;
+
+    // Load next question
+    await getQuestion();
+    isLoading.value = false;
+  };
+
+  
+
+  const setAnswer = (answer) => {
     const questionType = selectedQuestion.value.type;
 
-    if (questionType === 'singleChoice') {
-      givenAnswer.value = [answer];
+    if (questionType === 'singleAnswer') {
+      const index = givenAnswer.value.findIndex((item) => item.text === answer.text);
+      if (index === -1) {
+        givenAnswer.value = [answer];
+        return 
+      }
+      givenAnswer.value.splice(index, 1);
       return;
     }
-
-    if (questionType === 'multipleChoice') {
-      if (!wasSelected) {
-        givenAnswer.value.push(answer);
-        return;
-      }
-
-      if (wasSelected) {
-        const currentAnswer = givenAnswer.value;
-        let foundIndex;
-
-        for (let i = 0; i < currentAnswer.length; i++) {
-          if (currentAnswer[i].text === answer.text) {
-            foundIndex = i;
-          }
-        }
-
-        currentAnswer.splice(foundIndex, 1);
-        givenAnswer.value = currentAnswer;
-      }
+    
+    if (questionType === 'multipleAnswer') {
+      const index = givenAnswer.value.findIndex((item) => item.text === answer.text);
+      if (index === -1) return givenAnswer.value.push(answer);
+      givenAnswer.value.splice(index, 1);
       return;
     }
   };
@@ -72,11 +77,11 @@ export const useQuestionStore = defineStore('question', () => {
 
     const questionType = selectedQuestion.value.type;
 
-    if (questionType === 'singleChoice') {
+    if (questionType === 'singleAnswer') {
       return givenAnswer.value[0].value;
     }
 
-    if (questionType === 'multipleChoice') {
+    if (questionType === 'multipleAnswer') {
       const answerValues = givenAnswer.value.filter((item) => {
         return item.value === false;
       });
@@ -85,19 +90,21 @@ export const useQuestionStore = defineStore('question', () => {
   };
 
   const saveAnswer = () => {
-    showQuestionSlideIn.value = !showQuestionSlideIn.value;
     const isSuccess = checkAnswer();
-    console.log(`The answer was ${isSuccess ? 'correct' : 'incorrect'}`);
+    hasAnswered.value = !hasAnswered.value;
+    isAnswerCorrect.value = isSuccess
   };
 
   return {
+    isLoading,
     selectedQuestion,
     selectedTopics,
     givenAnswer,
-    showQuestionSlideIn,
+    isAnswerCorrect,
+    hasAnswered,
     answerIsGiven,
     toggleSelectedTopics,
-    getQuestions,
+    toNextQuestion,
     setAnswer,
     checkAnswer,
     saveAnswer,

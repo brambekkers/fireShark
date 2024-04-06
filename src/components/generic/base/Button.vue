@@ -1,7 +1,7 @@
 <script setup>
 const props = defineProps({
   title: { type: String, required: true },
-  disable: { type: Boolean, required: false },
+  disabled: { type: Boolean, required: false },
   type: { type: String, required: false, default: 'primary' },
   size: { type: String, required: false, default: 'lg' },
 });
@@ -20,7 +20,7 @@ const sizeClasses = computed(() => {
 });
 
 const typeClasses = computed(() => {
-  if (props.disable)
+  if (props.disabled)
     return 'bg-app-button-disabled-bg border-app-button-disabled-bg text-app-button-disabled-text';
 
   switch (props.type) {
@@ -39,8 +39,8 @@ const typeClasses = computed(() => {
 <template>
   <button
     type="button"
-    :disabled="props.disable"
     :class="`${sizeClasses} ${typeClasses}`"
+    :disabled="disabled"
     class="flex items-center justify-center font-medium border-2 rounded-full transition-all duration-200 ease-in-out text-nowrap"
   >
     {{ title }}

@@ -127,7 +127,7 @@ const nextStep = async () => {
     />
     <Button
       class="mt-10"
-      :disable="buttonDisabled"
+      :disabled="buttonDisabled"
       :title="currentStep < 2 ? $t('general.next') : $t('general.submit')"
       @click="nextStep"
     />

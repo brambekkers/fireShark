@@ -1,3 +1,24 @@
+<script setup>
+import { useQuestionStore } from '@stores/question';
+import Answer from './Answer.vue';
+import Button from '@/components/generic/base/Button.vue';
+
+const props = defineProps({
+  question: {
+    type: Object,
+    required: true,
+  },
+});
+
+const { hasAnswered, answerIsGiven } = storeToRefs(useQuestionStore());
+
+const title = computed(() =>
+  props?.question?.type === 'singleAnswer'
+    ? 'Choose one option.'
+    : 'You may choose multiple options.',
+);
+</script>
+
 <template>
   <form class="w-full">
     <fieldset>
@@ -5,53 +26,19 @@
         {{ title }}
       </legend>
       <Answer
-        v-for="answer in questionData?.answers || []"
+        v-for="answer in question?.answers || []"
         :key="answer"
         :answer="answer"
-        :type="questionData?.type"
+        :type="question?.type"
       />
     </fieldset>
-    <div class="button-save-answer">
+    <div class="flex justify-center my-12">
       <Button
         title="Save my answer"
-        :type="answerIsGiven ? 'primary' : 'disabled'"
-        :disabled="!answerIsGiven"
-        @click="saveAnswer"
+        :type="!answerIsGiven || hasAnswered ? 'disabled' : 'primary'"
+        :disabled="!answerIsGiven || hasAnswered"
+        @click="useQuestionStore().saveAnswer()"
       />
     </div>
   </form>
 </template>
-
-<script setup>
-import { useQuestionStore } from '@stores/question';
-import Answer from './Answer.vue';
-import Button from '@/components/generic/base/Button.vue';
-
-const props = defineProps({
-  questionData: {
-    type: Object,
-    required: true,
-  },
-});
-
-const store = useQuestionStore();
-const answerIsGiven = computed(() => store.answerIsGiven);
-const title = computed(() =>
-  props?.questionData?.type === 'singleChoice'
-    ? 'Choose one option.'
-    : 'You may choose multiple options.',
-);
-
-async function saveAnswer() {
-  store.saveAnswer();
-}
-</script>
-
-<style lang="scss" scoped>
-.button-save-answer {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 3rem;
-  margin-top: 3rem;
-}
-</style>
