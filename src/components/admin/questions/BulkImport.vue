@@ -1,7 +1,9 @@
 <script setup>
 import { nanoid } from 'nanoid';
 import { supportedTypes } from '@/constants/questions';
+import { generate32BitInt } from '@/utils/number';
 
+// Stores
 import { useQuestionsStore } from '@/stores/questions';
 
 // components
@@ -86,6 +88,7 @@ const importQuestions = () => {
       headerImage: '',
       imageRef: null,
       id: `question_${nanoid(15)}`,
+      random: generate32BitInt(),
       type: item.type,
       question: item.question,
       answers: item.answers || [],

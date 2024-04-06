@@ -5,7 +5,7 @@ import Settings from '@/pages/Settings.vue';
 import Practice from '@/pages/Practice.vue';
 
 // Admin
-import Admin from '@/pages/Admin.vue';
+import AdminDashboard from '@/pages/admin/Dashboard.vue';
 import AdminUsers from '@/pages/admin/Users.vue';
 import AdminGroups from '@/pages/admin/Groups.vue';
 import AdminQuestions from '@/pages/admin/Questions.vue';
@@ -53,11 +53,12 @@ export const routes = [
     children: [
       {
         path: '',
-        name: 'Admin',
-        component: Admin,
+        name: 'Admin dashboard',
+        component: AdminDashboard,
       },
       {
         path: 'users',
+        name: 'Admin users',
         component: AdminUsers,
         meta: {
           requiresAuth: true,
@@ -66,6 +67,7 @@ export const routes = [
       },
       {
         path: 'groups',
+        name: 'Admin groups',
         component: AdminGroups,
         meta: {
           requiresAuth: true,
@@ -74,6 +76,7 @@ export const routes = [
       },
       {
         path: 'questions',
+        name: 'Admin questions',
         component: AdminQuestions,
         meta: {
           requiresAuth: true,

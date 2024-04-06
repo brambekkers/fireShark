@@ -7,13 +7,14 @@ import ProgressBar from '@/components/generic/ProgressBar.vue';
 import CheckCircle from '@/components/generic/ui/CheckCircle.vue';
 const props = defineProps({
   title: { type: String, required: true },
+  id: { type: String, required: true },
   progress: { type: Number, required: true },
   allSelected: { type: Boolean, required: true },
 });
 
 const { topics } = storeToRefs(useUserStore());
 const { selectedTopics } = storeToRefs(useQuestionStore());
-const isChecked = ref(selectedTopics.value.includes(props.title));
+const isChecked = ref(selectedTopics.value.includes(props.id));
 const questionStore = computed(() => useQuestionStore());
 
 if (props.allSelected) {
@@ -29,12 +30,13 @@ watch(
 
 const toggleSelection = () => {
   isChecked.value = !isChecked.value;
-  questionStore.value.updateSelectedTopics(isChecked.value, props.title);
+  questionStore.value.updateSelectedTopics(isChecked.value, props.id);
 };
 </script>
 
 <template>
   <div
+    v-if="title && progress"
     class="cursor-pointer transition-all hover:scale-[1.01]"
     @click="toggleSelection"
     @keyup.enter="toggleSelection"
@@ -63,9 +65,9 @@ const toggleSelection = () => {
       <h3
         class="text-xl text-center font-bold leading-tight flex items-center justify-center text-primary min-h-14"
       >
-        {{ $t(`overview.topics.${title}`) }}
+        {{ title }}
       </h3>
-      <ProgressBar :progress="topics?.[title]?.score || 0" />
+      <ProgressBar :progress="topics?.[id]?.score || 0" />
     </div>
   </div>
 </template>

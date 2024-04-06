@@ -73,7 +73,9 @@ const text = computed(() => (layoutStore.isDarkMode ? '#f2f9f9' : '#242424'));
   <div id="main" class="mt-12">
     <!-- Accent on top -->
     <HeaderMain />
-    <slot></slot>
+    <main class="px-4 lg:px-10 pb-10">
+      <slot></slot>
+    </main>
   </div>
 </template>
 

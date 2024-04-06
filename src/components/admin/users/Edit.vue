@@ -40,6 +40,12 @@ const updateUser = async () => {
   toggleModal();
 };
 
+const removeGroup = (id) => {
+  user.value.settings.position = user.value.settings.position.filter(
+    (group) => group !== id,
+  );
+};
+
 watch(selectedGroup, (newGroup) => {
   if (!newGroup) return;
   user.value.settings.position.push(newGroup);
@@ -101,12 +107,13 @@ watch(user, (newVal) => {
       </div>
       <div class="flex gap-1 justify-end -mt-8">
         <template v-for="id in user.settings?.position" :key="id">
-          <p
+          <span
             v-if="groupsObject[id]?.name"
-            class="bg-primary/10 text-primary text-xs font-medium me-2 px-2.5 py-0.5 rounded"
+            class="bg-primary/10 text-primary text-xs font-medium me-2 px-2.5 py-0.5 rounded hover:line-through transition-all duration-300 ease-in-out cursor-pointer"
+            @click="removeGroup(id)"
           >
             {{ groupsObject[id]?.name }}
-          </p>
+          </span>
         </template>
       </div>
 

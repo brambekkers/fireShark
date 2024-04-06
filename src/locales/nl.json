@@ -34,7 +34,8 @@
     "position": "Functie",
     "or": "of",
     "confirm": "Bevestigen",
-    "cancel": "Annuleren"
+    "cancel": "Annuleren",
+    "dashboard": "Dashboard"
   },
   "components": {
     "fileUpload": {
@@ -60,7 +61,7 @@
     "rdyToDuel": "Klaar om te duelleren?"
   },
   "settings": {
-    "changeYourProfileHere": "Change your profile here.",
+    "changeYourProfileHere": "Pas hier je profiel aan",
     "notAllCanBeChanged": "Niet alle persoonlijke gegevens kun je zelf wijzigen",
     "personalSettings": "Persoonlijke gegevens",
     "language": "Taal",

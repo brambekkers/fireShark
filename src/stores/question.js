@@ -3,7 +3,7 @@ import { computed } from 'vue';
 
 export const useQuestionStore = defineStore('question', () => {
 
-  const selectedTopics = ref(['vue', 'javascript', 'general']);
+  const selectedTopics = ref([]);
   const selectedQuestions = ref([]);
   const selectedQuestion = ref({});
   const givenAnswer = ref([]);
@@ -22,10 +22,13 @@ export const useQuestionStore = defineStore('question', () => {
 
   const getQuestions = async () => {
     try {
-      const res = await fetch('http://localhost:3000/questions');
-      const data = await res.json();
+      // const res = await fetch('http://localhost:3000/questions');
+      // const data = await res.json();
+
       const randomNr = rand(0, selectedTopics.value.length - 1);
       const topic = selectedTopics.value[randomNr];
+      console.log(topic);
+
       selectedQuestions.value = data?.subjects?.[topic];
 
       const randomNumber = rand(0, data?.subjects?.[topic]?.questions.length - 1);

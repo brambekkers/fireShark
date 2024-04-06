@@ -35,7 +35,8 @@
     "position": "Position",
     "or": "or",
     "confirm": "Confirm",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "dashboard": "Dashboard"
   },
   "components": {
     "fileUpload": {
@@ -61,7 +62,7 @@
     "rdyToDuel": "Ready to duel?"
   },
   "settings": {
-    "changeYourProfileHere": "Pas hier je profiel aan.",
+    "changeYourProfileHere": "Change your profile here",
     "notAllCanBeChanged": "You cannot change all personal information yourself.",
     "personalSettings": "Personal settings",
     "language": "Language",

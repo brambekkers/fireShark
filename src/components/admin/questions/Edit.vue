@@ -2,7 +2,7 @@
 import { setDoc } from 'firebase/firestore';
 import { nanoid } from 'nanoid';
 import { supportedTypes } from '@/constants/questions';
-
+import { generate32BitInt } from '@/utils/number';
 // Composable
 import { useModal } from '@/composable/modal';
 
@@ -57,6 +57,7 @@ watch(
       editQuestion.value = { ...newQuestion };
       if (!newQuestion.id) {
         editQuestion.value.id = `question_${nanoid(15)}`;
+        editQuestion.value.random = generate32BitInt();
         editQuestion.value.parentId = selectedTopic.value;
       }
       toggleModal();

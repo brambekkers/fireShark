@@ -42,7 +42,7 @@ const text = computed(() => (layoutStore.isDarkMode ? '#f2f9f9' : '#242424'));
         <AdminSidebar />
       </aside>
 
-      <main class="pt-36 flex-grow px-6">
+      <main class="pt-36 pb-10 flex-grow px-6">
         <slot></slot>
       </main>
     </div>

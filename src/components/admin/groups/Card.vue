@@ -50,8 +50,8 @@ const stats = computed(() => [
     />
     <div class="col-span-4 flex flex-col h-full">
       <div class="p-4 flex-grow">
-        <h3 class="text-lg font-bold">{{ group.name }}</h3>
-        <p class="text-sm text-balance">
+        <h3 class="text-lg font-semibold tracking-wider">{{ group.name }}</h3>
+        <p class="text-sm">
           {{ group.description }}
         </p>
       </div>

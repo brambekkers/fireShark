@@ -1,6 +1,7 @@
 import { useCurrentUser, useDocument } from 'vuefire';
 import { doc, getFirestore } from 'firebase/firestore';
 import { getFunctions, httpsCallable } from 'firebase/functions';
+import { useGroupStore } from '@/stores/groups'
 
 export const useUserStore = defineStore('user', () => {
   const db = getFirestore();
@@ -13,8 +14,26 @@ export const useUserStore = defineStore('user', () => {
 
   const user = useDocument(userRef);
   const stats = computed(() => user.value?.stats || {});
-  const topics = computed(() => user.value?.topics || {});
   const settings = computed(() => user.value?.settings || {});
+  const topics = computed(() => {
+    if(!user.value) return {}
+    // Group the topics
+    const { groups } = useGroupStore()
+    const myGroups = settings.value?.position?.map((id) => groups.find((g)=> g.id === id)).filter(Boolean) || []
+    const myTopics = {}
+    myGroups.forEach(group => {
+      group.topics.forEach((topic) => {
+        const currentScore = user.value?.topics?.[topic.id]?.score
+        if(topic.questionAmount <= 0) return;
+        myTopics[topic.id] = {
+          id: topic.id,
+          name: topic.name,
+          score: currentScore || 0
+        }
+      })
+    });
+    return myTopics || {}
+  });
 
   const updateUser = async () => {
     try {
@@ -41,7 +60,6 @@ export const useUserStore = defineStore('user', () => {
     } catch (error) {
       return error
     }
-
   }
 
   const calculatePerformancePercentage = () => {

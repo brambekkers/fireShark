@@ -9,7 +9,7 @@ const menuItems = shallowRef([
   {
     title: 'Dashboard',
     icon: IconPieChart,
-    link: '/admin/dashboard',
+    link: '/admin',
   },
   {
     title: 'Groups',

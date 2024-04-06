@@ -41,7 +41,8 @@ const clearSelection = () => {
           <TopicButton
             v-for="topic in userStore.topics"
             :key="topic.id"
-            :title="topic.id || ''"
+            :id="topic.id"
+            :title="topic.name || ''"
             :progress="rand(1, 100)"
             :all-selected="allSelected"
           />
