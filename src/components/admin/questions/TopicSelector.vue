@@ -34,4 +34,3 @@ const { selectedGroup, selectedTopic } = storeToRefs(useCurriculumStore());
     </Select>
   </div>
 </template>
-@/stores/curriculum

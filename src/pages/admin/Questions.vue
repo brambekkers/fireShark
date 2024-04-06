@@ -37,4 +37,3 @@ const editQuestion = (question) => (selectedQuestion.value = question);
     <Edit :question="selectedQuestion" />
   </div>
 </template>
-@/stores/curriculum

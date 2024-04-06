@@ -159,7 +159,6 @@ const closeImport = () => {
       <Button
         title="Import"
         size="md"
-        :type="importDisabled"
         :disabled="importDisabled"
         @click="importQuestions()"
       />

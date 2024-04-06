@@ -132,4 +132,3 @@ watch(
     </div>
   </Modal>
 </template>
-@/stores/curriculum
