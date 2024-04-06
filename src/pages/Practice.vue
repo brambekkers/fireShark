@@ -7,16 +7,14 @@ import QuestionForm from '@/components/questions/QuestionForm.vue';
 import QuestionSlideIn from '@/components/questions/SlideIn/SlideIn.vue';
 import GenericModal from '@/components/GenericModal.vue';
 import LevelUp from '@/components/LevelUp.vue';
+import { useRouter } from 'vue-router';
 
-const store = useQuestionStore();
-const { selectedQuestion, showQuestionSlideIn, givenAnswer } =
-  storeToRefs(store);
-const { getQuestions } = store;
+const router = useRouter();
+const { selectedTopics, selectedQuestion, showQuestionSlideIn, givenAnswer } =
+  storeToRefs(useQuestionStore());
 const content = ref('very long content with a lot of text');
 const nextQuestion = ref('Continue practicing');
 const scoreMessage = ref(false);
-
-getQuestions();
 
 const showMessage = () => {
   if (store.checkAnswer()) {
@@ -34,13 +32,19 @@ const toNextQuestion = () => {
   showQuestionSlideIn.value = false;
   givenAnswer.value = [];
 };
+
+onMounted(() => {
+  // To do: Force navigation and skip the modal
+  if (!selectedTopics.value.length) router.push('/overview');
+  else useQuestionStore().getQuestions();
+});
 </script>
 
 <template>
   <div class="h-44 max-w-2xl mx-auto relative -mt-40">
     <div v-if="!scoreMessage" class="question relative flex flex-col">
       <HeaderButtons />
-      <QuestionHeader :question-data="selectedQuestion" />
+      <QuestionHeader :question="selectedQuestion" />
       <QuestionForm :question-data="selectedQuestion" />
       <QuestionSlideIn
         v-if="showQuestionSlideIn"

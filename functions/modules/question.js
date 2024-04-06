@@ -1,4 +1,4 @@
-const { onCall } = require('firebase-functions/v2/https');
+const { onCall, HttpsError } = require('firebase-functions/v2/https');
 const { db } = require('./firebase');
 
 const generate32BitInt = () => {
@@ -16,10 +16,10 @@ const getDocuments = async (collection) => {
 
 exports.getRandomQuestion = onCall(async ({ data }) => {
   try {
-    const randomDoc = await getDocuments(collection)
-    return res.send(randomDoc)
+    return await getDocuments(data)
   } catch (err) {
-    return res.send(err)
+    throw new HttpsError('unknown', `${error}`);
+
   }
 });
 

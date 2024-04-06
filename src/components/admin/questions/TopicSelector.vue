@@ -2,10 +2,10 @@
 import Select from '@/components/generic/inputs/Select.vue';
 import IconArrowRight from '~icons/lucide/arrow-big-right';
 import { useGroupStore } from '@/stores/groups';
-import { useQuestionsStore } from '@/stores/questions';
+import { useCurriculumStore } from '@/stores/curriculum';
 
 const { groups, groupsObject } = storeToRefs(useGroupStore());
-const { selectedGroup, selectedTopic } = storeToRefs(useQuestionsStore());
+const { selectedGroup, selectedTopic } = storeToRefs(useCurriculumStore());
 </script>
 
 <template>
@@ -34,3 +34,4 @@ const { selectedGroup, selectedTopic } = storeToRefs(useQuestionsStore());
     </Select>
   </div>
 </template>
+@/stores/curriculum

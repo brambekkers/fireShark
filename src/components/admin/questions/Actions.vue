@@ -1,6 +1,6 @@
 <script setup>
 // Stores
-import { useQuestionsStore } from '@/stores/questions';
+import { useCurriculumStore } from '@/stores/curriculum';
 
 // Icons
 import IconSearch from '~icons/lucide/search';
@@ -22,7 +22,7 @@ const { isModalOpen, toggleModal } = useModal();
 const { isModalOpen: isConfirmOpen, toggleModal: toggleConfirm } = useModal();
 
 const { selectedGroup, selectedTopic, selectedQuestions } =
-  storeToRefs(useQuestionsStore());
+  storeToRefs(useCurriculumStore());
 const searchText = ref('');
 
 const emit = defineEmits(['addQuestion', 'deleteQuestion']);

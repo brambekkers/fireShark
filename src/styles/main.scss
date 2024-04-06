@@ -31,6 +31,11 @@ html {
 body,
 #app {
   min-height: 100vh;
+  overflow: hidden;
+}
+
+#main {
+  overflow-y: auto;
   overflow-x: hidden;
 }
 
@@ -47,4 +52,17 @@ a {
 
 .ms-auto {
   margin-left: auto !important;
+}
+
+*::-webkit-scrollbar {
+  width: 0.4em;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: #f2f9f9;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #f0b502;
+  border-radius: 0.2em;
 }

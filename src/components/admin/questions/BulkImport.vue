@@ -4,7 +4,7 @@ import { supportedTypes } from '@/constants/questions';
 import { generate32BitInt } from '@/utils/number';
 
 // Stores
-import { useQuestionsStore } from '@/stores/questions';
+import { useCurriculumStore } from '@/stores/curriculum';
 
 // components
 import Modal from '@/components/generic/base/Modal.vue';
@@ -19,7 +19,7 @@ import IconWarning from '~icons/lucide/file-warning';
 import IconCheck from '~icons/lucide/square-check';
 import { storeToRefs } from 'pinia';
 
-const { selectedTopic } = storeToRefs(useQuestionsStore());
+const { selectedTopic } = storeToRefs(useCurriculumStore());
 
 const props = defineProps({
   isOpen: {
@@ -83,7 +83,7 @@ const handleJson = (file) => {
 const importQuestions = () => {
   if (importDisabled.value) return;
   importArray.value.forEach((item) => {
-    useQuestionsStore().addQuestion({
+    useCurriculumStore().addQuestion({
       parentId: selectedTopic.value,
       headerImage: '',
       imageRef: null,
@@ -129,7 +129,7 @@ const closeImport = () => {
         v-if="importArray.length"
         class="border-2 border-gray-300 border-dashed bg-gray-50 rounded-lg overflow-hidden"
       >
-        <div class="max-h-96 h-fit overflow-y-auto scrollbar-thin">
+        <div class="max-h-96 h-fit overflow-y-auto">
           <table class="w-full h-full overflow-y-auto">
             <tr
               v-for="(item, i) of importArray"
@@ -165,3 +165,4 @@ const closeImport = () => {
     </div>
   </Modal>
 </template>
+@/stores/curriculum

@@ -1,5 +1,4 @@
 <script setup>
-import { rand } from '@vueuse/core';
 import Button from '@/components/generic/base/Button.vue';
 import TopicButton from '@/components/overview/TopicButton.vue';
 import useUserStore from '@/stores/user';
@@ -7,26 +6,17 @@ import useQuestionStore from '@/stores/question';
 
 const userStore = useUserStore();
 const { selectedTopics } = storeToRefs(useQuestionStore());
-const selectAllButton = ref('Select all');
-const allSelected = ref(false);
-const isButtonDisabled = computed(() => !selectedTopics.value.length);
 
 const selectAll = () => {
-  userStore.topics.forEach((topic) => {
-    if (!selectedTopics.value.includes(topic.key)) {
-      selectedTopics.value.push(topic.key);
+  Object.values(userStore.topics).forEach((topic) => {
+    if (!selectedTopics.value.includes(topic.id)) {
+      selectedTopics.value.push(topic.id);
     }
   });
-  selectAllButton.value = 'Clear selection';
-  allSelected.value = true;
-  isButtonDisabled.value = false;
 };
 
 const clearSelection = () => {
   selectedTopics.value = [];
-  selectAllButton.value = 'Select all';
-  allSelected.value = false;
-  isButtonDisabled.value = true;
 };
 </script>
 
@@ -40,11 +30,8 @@ const clearSelection = () => {
         <div class="grid grid-cols-3 gap-x-6 gap-y-10 mt-12">
           <TopicButton
             v-for="topic in userStore.topics"
+            :topic="topic"
             :key="topic.id"
-            :id="topic.id"
-            :title="topic.name || ''"
-            :progress="rand(1, 100)"
-            :all-selected="allSelected"
           />
         </div>
       </section>
@@ -52,8 +39,7 @@ const clearSelection = () => {
       <div class="flex align-center justify-center mt-12">
         <router-link to="/practice">
           <Button
-            :class="{ 'disabled-button': isButtonDisabled }"
-            :disable="isButtonDisabled"
+            :disable="selectedTopics.length === 0"
             title="Practice this selection"
           >
           </Button>
@@ -61,11 +47,9 @@ const clearSelection = () => {
       </div>
       <div class="flex align-center justify-center mt-4">
         <Button
-          :title="selectAllButton"
+          :title="selectedTopics.length ? 'Clear selection' : 'Select all'"
           type="secondary"
-          @click="
-            selectAllButton === 'Select all' ? selectAll() : clearSelection()
-          "
+          @click="selectedTopics.length === 0 ? selectAll() : clearSelection()"
         />
       </div>
     </div>

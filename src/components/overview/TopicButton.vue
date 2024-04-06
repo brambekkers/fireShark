@@ -6,37 +6,26 @@ import { useQuestionStore } from '@stores/question';
 import ProgressBar from '@/components/generic/ProgressBar.vue';
 import CheckCircle from '@/components/generic/ui/CheckCircle.vue';
 const props = defineProps({
-  title: { type: String, required: true },
-  id: { type: String, required: true },
-  progress: { type: Number, required: true },
-  allSelected: { type: Boolean, required: true },
+  topic: { type: Object, required: true },
 });
 
-const { topics } = storeToRefs(useUserStore());
 const { selectedTopics } = storeToRefs(useQuestionStore());
-const isChecked = ref(selectedTopics.value.includes(props.id));
+const isChecked = computed(() =>
+  selectedTopics.value.includes(props.topic?.id),
+);
 const questionStore = computed(() => useQuestionStore());
 
 if (props.allSelected) {
   isChecked.value = true;
 }
 
-watch(
-  () => props.allSelected,
-  (newVal) => {
-    isChecked.value = newVal;
-  },
-);
-
-const toggleSelection = () => {
-  isChecked.value = !isChecked.value;
-  questionStore.value.updateSelectedTopics(isChecked.value, props.id);
-};
+const toggleSelection = () =>
+  questionStore.value.toggleSelectedTopics(props.topic?.id);
 </script>
 
 <template>
   <div
-    v-if="title && progress"
+    v-if="topic?.name"
     class="cursor-pointer transition-all hover:scale-[1.01]"
     @click="toggleSelection"
     @keyup.enter="toggleSelection"
@@ -65,9 +54,9 @@ const toggleSelection = () => {
       <h3
         class="text-xl text-center font-bold leading-tight flex items-center justify-center text-primary min-h-14"
       >
-        {{ title }}
+        {{ topic.name }}
       </h3>
-      <ProgressBar :progress="topics?.[id]?.score || 0" />
+      <ProgressBar :progress="topic.score || 0" />
     </div>
   </div>
 </template>

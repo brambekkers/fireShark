@@ -28,7 +28,8 @@ export const useUserStore = defineStore('user', () => {
         myTopics[topic.id] = {
           id: topic.id,
           name: topic.name,
-          score: currentScore || 0
+          score: currentScore || 0,
+          questionsRef: `groups/${group.id}/topics/${topic.id}/questions`
         }
       })
     });

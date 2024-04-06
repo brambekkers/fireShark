@@ -7,7 +7,7 @@ import { generate32BitInt } from '@/utils/number';
 import { useModal } from '@/composable/modal';
 
 // Stores
-import { useQuestionsStore } from '@/stores/questions';
+import { useCurriculumStore } from '@/stores/curriculum';
 import { useGroupStore } from '@/stores/groups';
 
 // components
@@ -31,14 +31,16 @@ const props = defineProps({
   },
 });
 const { isModalOpen, toggleModal } = useModal();
-const { selectedGroup, selectedTopic } = storeToRefs(useQuestionsStore());
+const { selectedGroup, selectedTopic } = storeToRefs(useCurriculumStore());
 const { groupsObject } = storeToRefs(useGroupStore());
 
 const editQuestion = ref(null);
 
 const updateQuestion = async (skipClose = false) => {
   if (!editQuestion.value) return;
-  const questionRef = useQuestionsStore().getQuestionRef(editQuestion.value.id);
+  const questionRef = useCurriculumStore().getQuestionRef(
+    editQuestion.value.id,
+  );
   await setDoc(questionRef, editQuestion.value);
   if (skipClose) return;
   toggleModal();
@@ -130,3 +132,4 @@ watch(
     </div>
   </Modal>
 </template>
+@/stores/curriculum

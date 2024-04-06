@@ -29,7 +29,7 @@ const text = computed(() => (layoutStore.isDarkMode ? '#f2f9f9' : '#242424'));
 </script>
 
 <template>
-  <div id="main">
+  <div id="main" class="scrollbar-thin">
     <!-- Accent on top -->
     <HeaderAuth />
     <main class="px-4 lg:px-10 py-10">

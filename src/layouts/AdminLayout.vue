@@ -33,8 +33,7 @@ const text = computed(() => (layoutStore.isDarkMode ? '#f2f9f9' : '#242424'));
 
 <template>
   <Navbar />
-
-  <div id="main" class="mt-12">
+  <div id="main" class="mt-12 scrollbar-thin">
     <!-- Accent on top -->
     <HeaderAdmin />
     <div class="flex absolute inset-0 pt-12 z-0">

@@ -1,5 +1,5 @@
 <script setup>
-import { useQuestionsStore } from '@/stores/questions';
+import { useCurriculumStore } from '@/stores/curriculum';
 
 // Icons
 import IconError from '~icons/bx/error-alt';
@@ -18,7 +18,7 @@ import Checkbox from '@/components/generic/inputs/Checkbox.vue';
 const emit = defineEmits(['deleteQuestion', 'editQuestion']);
 const { isModalOpen: isConfirmOpen, toggleModal: toggleConfirm } = useModal();
 const { questions, selectedGroup, selectedTopic, selectedQuestions } =
-  storeToRefs(useQuestionsStore());
+  storeToRefs(useCurriculumStore());
 
 const deleteId = ref('');
 const triggerConfirm = (id) => {
@@ -159,3 +159,4 @@ const toggleAllSelect = () => {
   transform-origin: 50% 50%;
 }
 </style>
+@/stores/curriculum

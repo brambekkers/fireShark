@@ -1,5 +1,5 @@
 <script setup>
-import { useQuestionsStore } from '@/stores/questions';
+import { useCurriculumStore } from '@/stores/curriculum';
 import Actions from '@/components/admin/questions/Actions.vue';
 import List from '@/components/admin/questions/List.vue';
 import TopicSelector from '@/components/admin/questions/TopicSelector.vue';
@@ -27,13 +27,14 @@ const editQuestion = (question) => (selectedQuestion.value = question);
     <h1 class="text-3xl font-semibold mb-4">{{ $t('general.questions') }}</h1>
     <Actions
       @add-question="addQuestion"
-      @delete-question="useQuestionsStore().deleteQuestion"
+      @delete-question="useCurriculumStore().deleteQuestion"
     />
     <TopicSelector />
     <List
       @edit-question="editQuestion"
-      @delete-question="useQuestionsStore().deleteQuestion"
+      @delete-question="useCurriculumStore().deleteQuestion"
     />
     <Edit :question="selectedQuestion" />
   </div>
 </template>
+@/stores/curriculum

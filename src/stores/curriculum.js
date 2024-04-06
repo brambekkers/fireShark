@@ -10,7 +10,7 @@ import {
 // Composables
 import { useImage } from '@/composable/image';
 
-export const useQuestionsStore = defineStore('questions', () => {
+export const useCurriculumStore = defineStore('curriculum', () => {
   const db = getFirestore();
 
   const selectedGroup = ref('');
@@ -73,4 +73,4 @@ export const useQuestionsStore = defineStore('questions', () => {
   };
 });
 
-export default useQuestionsStore;
+export default useCurriculumStore;
