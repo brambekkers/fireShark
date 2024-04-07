@@ -3,24 +3,6 @@ import { computed } from 'vue';
 import { useLayoutStore } from '@stores/layout';
 import HeaderAuth from '@/components/layout/header/HeaderAuth.vue';
 
-const router = useRouter();
-
-const selectedRoute = ref('');
-
-router.beforeEach((to, from) => {
-  if (from.name === 'Practice') {
-    toggleModal();
-
-    if (selectedRoute.value !== '') {
-      selectedRoute.value = '';
-      return true;
-    }
-    selectedRoute.value = to.path;
-    return false;
-  }
-  return true;
-});
-
 const layoutStore = useLayoutStore();
 const background = computed(() =>
   layoutStore.isDarkMode ? '#242424' : '#f2f9f9',

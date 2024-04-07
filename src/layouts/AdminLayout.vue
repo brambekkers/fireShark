@@ -6,24 +6,6 @@ import Navbar from '@components/layout/Navbar.vue';
 import HeaderAdmin from '@/components/layout/header/HeaderAdmin.vue';
 import AdminSidebar from '@/components/layout/sidebar/AdminSidebar.vue';
 
-const router = useRouter();
-
-const selectedRoute = ref('');
-
-router.beforeEach((to, from) => {
-  if (from.name === 'Practice') {
-    if (selectedRoute.value !== '') {
-      selectedRoute.value = '';
-      toggleModal(false);
-      return true;
-    }
-    selectedRoute.value = to.path;
-    toggleModal(true);
-    return false;
-  }
-  return true;
-});
-
 const layoutStore = useLayoutStore();
 const background = computed(() =>
   layoutStore.isDarkMode ? '#242424' : '#f2f9f9',

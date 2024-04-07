@@ -16,6 +16,7 @@ router.beforeEach(async (to, from, next) => {
   const requiresAdmin = to.meta.requiresAdmin || false;
   const requiresModerator = to.meta.requiresModerator || false;
   const requiresEditor = to.meta.requiresEditor || false;
+
   if (requiresAuth) {
     const currentUser = await getCurrentUser();
     if (!currentUser) {
@@ -37,5 +38,6 @@ router.beforeEach(async (to, from, next) => {
 
   next();
 });
+
 
 export default router;

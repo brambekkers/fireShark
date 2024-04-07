@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useLayoutStore } from '@stores/layout';
 import Navbar from '@components/layout/Navbar.vue';
-import ConfirmationModal from '@/components/ConfirmationModal.vue';
+import ExitConfirm from '@/components/generic/modals/ExitConfirm.vue';
 import useModal from '@/composable/modal';
 import HeaderMain from '@/components/layout/header/HeaderMain.vue';
 
@@ -17,38 +17,19 @@ const goToSelectedRoute = () => {
 };
 
 const clearRouteDestination = () => {
-  toggleModal(false);
+  toggleModal();
   selectedRoute.value = '';
 };
-
-// TODO: below method split up does not wait with routing, try async?
-// const setModalAndSelectedRoute = (to) => {
-//   if (selectedRoute.value !== '') {
-//     selectedRoute.value = '';
-//     toggleModal(false);
-//     return true;
-//   }
-//   selectedRoute.value = to.path;
-//   toggleModal(true);
-//   return false;
-// };
-
-// const shouldUserBeRouted = (to, from) => {
-//   if (from.name === 'Practice') {
-//     return setModalAndSelectedRoute(to);
-//   }
-//   return true;
-// };
 
 router.beforeEach((to, from) => {
   if (from.name === 'Practice') {
     if (selectedRoute.value !== '') {
       selectedRoute.value = '';
-      toggleModal(false);
+      toggleModal();
       return true;
     }
     selectedRoute.value = to.path;
-    toggleModal(true);
+    toggleModal();
     return false;
   }
   return true;
@@ -62,11 +43,10 @@ const text = computed(() => (layoutStore.isDarkMode ? '#f2f9f9' : '#242424'));
 </script>
 
 <template>
-  <ConfirmationModal
+  <ExitConfirm
     :is-open="isModalOpen"
-    @close-modal="toggleModal(false)"
-    @confirm-routing="goToSelectedRoute()"
-    @cancel-routing="clearRouteDestination()"
+    @confirm="goToSelectedRoute()"
+    @cancel="clearRouteDestination()"
   />
   <Navbar />
 
