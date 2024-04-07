@@ -1,6 +1,6 @@
 <script setup>
 import { nanoid } from 'nanoid';
-import { supportedTypes } from '@/constants/questions';
+import { supportedTypes, newQuestion } from '@/constants/questions';
 import { generate32BitInt } from '@/utils/number';
 
 // Stores
@@ -17,7 +17,6 @@ import Alert from '@/components/generic/base/Alert.vue';
 import IconClose from '~icons/uil/times';
 import IconWarning from '~icons/lucide/file-warning';
 import IconCheck from '~icons/lucide/square-check';
-import { storeToRefs } from 'pinia';
 
 const { selectedTopic } = storeToRefs(useCurriculumStore());
 
@@ -84,9 +83,8 @@ const importQuestions = () => {
   if (importDisabled.value) return;
   importArray.value.forEach((item) => {
     useCurriculumStore().addQuestion({
+      ...newQuestion,
       parentId: selectedTopic.value,
-      headerImage: '',
-      imageRef: null,
       id: `question_${nanoid(15)}`,
       random: generate32BitInt(),
       type: item.type,

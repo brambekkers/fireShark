@@ -1,5 +1,8 @@
 <script setup>
 import { useCurriculumStore } from '@/stores/curriculum';
+import { newQuestion } from '@/constants/questions';
+
+// Components
 import Actions from '@/components/admin/questions/Actions.vue';
 import List from '@/components/admin/questions/List.vue';
 import TopicSelector from '@/components/admin/questions/TopicSelector.vue';
@@ -8,15 +11,7 @@ import Edit from '@/components/admin/questions/Edit.vue';
 const selectedQuestion = ref(null);
 
 const addQuestion = () => {
-  selectedQuestion.value = {
-    parentId: '',
-    headerImage: '',
-    imageRef: null,
-    id: null,
-    type: 'singleAnswer',
-    question: '',
-    answers: [],
-  };
+  selectedQuestion.value = { ...newQuestion };
 };
 
 const editQuestion = (question) => (selectedQuestion.value = question);

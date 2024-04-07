@@ -36,10 +36,10 @@ const giveAnswer = () => {
           :id="answerId"
           type="checkbox"
           :value="answer.value"
-          @input="giveAnswer()"
           :checked="isSelected"
           :disabled="hasAnswered"
           class="sr-only"
+          @input="giveAnswer()"
         />
       </label>
     </div>

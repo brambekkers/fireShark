@@ -1,8 +1,12 @@
-import { getFunctions, httpsCallable } from 'firebase/functions';
+import {getFirestore, collection, query, where, limit, getDocs } from "firebase/firestore";  
+
 import { rand } from '@vueuse/core';
 import { useUserStore } from '@/stores/user'
+import { generate32BitInt } from '@/utils/number';
 
 export const useQuestionStore = defineStore('question', () => {
+  const db = getFirestore();
+
   const isLoading = ref(true);
   const selectedTopics = ref([]);
   const selectedQuestion = ref({});
@@ -11,8 +15,6 @@ export const useQuestionStore = defineStore('question', () => {
   const isAnswerCorrect = ref(true)
   const answerIsGiven = computed(() => givenAnswer.value.length > 0);
 
-  const cloudFunctions = getFunctions();
-  const getRandomQuestion = httpsCallable(cloudFunctions, 'getRandomQuestion');
 
   const toggleSelectedTopics = (id) => {
     const index = selectedTopics.value.indexOf(id);
@@ -22,14 +24,24 @@ export const useQuestionStore = defineStore('question', () => {
     }
     selectedTopics.value.push(id);
   };
+
+  const getRandomQuestion = async (collectionRef) => {
+    const randomNum = generate32BitInt()
+    const q = query(collection(db, collectionRef), where("random", ">=", randomNum), limit(1))
+    const snapshot = await getDocs(q)
+    if (snapshot.empty) {
+      return getDocuments(collectionRef)
+    }
+    return snapshot.docs[0].data()
+  }
+
   const getQuestion = async () => {
     try {
       const randomNr = rand(0, selectedTopics.value.length - 1);
       const topicId = selectedTopics.value[randomNr];
       const { topics } = useUserStore()
       const questionsRef = topics[topicId].questionsRef
-      const { data } = await getRandomQuestion(questionsRef)
-      selectedQuestion.value = data
+      selectedQuestion.value = await getRandomQuestion(questionsRef)
     } catch (error) {
       console.log('error', error);
     }

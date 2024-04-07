@@ -30,8 +30,8 @@ const clearSelection = () => {
         <div class="grid grid-cols-3 gap-x-6 gap-y-10 mt-12">
           <TopicButton
             v-for="topic in userStore.topics"
-            :topic="topic"
             :key="topic.id"
+            :topic="topic"
           />
         </div>
       </section>

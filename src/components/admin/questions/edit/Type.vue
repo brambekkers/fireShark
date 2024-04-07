@@ -17,9 +17,9 @@ const Qtype = defineModel('type', {
     </div>
     <Select v-model="Qtype" size="md" elevation="none" class="w-1/2">
       <option
-        :value="questionType"
         v-for="questionType of questionTypes"
         :key="questionType"
+        :value="questionType"
       >
         {{ questionType }}
       </option>

@@ -1,20 +1,8 @@
 const { onCall, HttpsError } = require('firebase-functions/v2/https');
 const { db } = require('./firebase');
 
-const generate32BitInt = () => {
-  return Math.floor(Math.random() * 0x100000000) | 0;
-}
-
-const getDocuments = async (collection) => {
-  const randomNum = generate32BitInt()
-  const snapshot = await db.collection(collection).where("random", ">=", randomNum).limit(1).get()
-  if (snapshot.empty) {
-    return getDocuments(collection)
-  }
-  return snapshot.docs[0].data()
-}
-
-exports.getRandomQuestion = onCall(async ({ data }) => {
+exports.handleQuestionOutcome = onCall(async ({ data }) => {
+  const { group, topic, question, time, isAnswerCorrect } = data
   try {
     return await getDocuments(data)
   } catch (err) {
