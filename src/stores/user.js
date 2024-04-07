@@ -63,26 +63,6 @@ export const useUserStore = defineStore('user', () => {
     }
   }
 
-  const calculatePerformancePercentage = () => {
-    // Type checking to ensure all inputs are numbers
-    if (
-      typeof stats.value?.totalQuestions !== 'number' ||
-      typeof stats.value?.correctAnswers !== 'number' ||
-      typeof stats.value?.wrongAnswers !== 'number' ||
-      typeof stats.value?.unansweredQuestions !== 'number'
-    ) {
-      console.error('All inputs must be numbers');
-      return;
-    }
-
-    // Calculate the percentage of correct answers
-    const calculatedPercentage =
-      (stats.value.correctAnswers / stats.value.totalQuestions) * 100;
-
-    // Update the reactive percentage ref, rounded to one decimal place
-    stats.value.percentage = Math.round(calculatedPercentage * 10) / 10;
-  };
-
   return {
     user,
     stats,
@@ -90,7 +70,6 @@ export const useUserStore = defineStore('user', () => {
     settings,
     createUser,
     updateUser,
-    calculatePerformancePercentage,
   };
 });
 

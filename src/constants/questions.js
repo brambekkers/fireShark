@@ -1,3 +1,5 @@
+import { average } from "firebase/firestore";
+
 export const questionTypes = [
   'singleAnswer', 
   'multipleAnswer',
@@ -22,11 +24,11 @@ export const newQuestion = {
   question: '',
   answers: [],
   data: {
-    correctAnswers: 0,
-    percentage: 0,
-    totalQuestions: 0,
-    totalTime: 0,
-    unansweredQuestions: 0,
     wrongAnswers: 0,
+    correctAnswers: 0,
+    percentageCorrect: 0,
+    answered: 0,
+    averageTime: 0,
+    unanswered: 0,
   },
 }
