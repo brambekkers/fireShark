@@ -1,7 +1,7 @@
 <script setup>
 import IconLeft from '~icons/lucide/chevron-left';
 import { useUserStore } from '@/stores/user';
-const { stats } = storeToRefs(useUserStore());
+const { userScore } = storeToRefs(useUserStore());
 const router = useRouter();
 </script>
 
@@ -21,11 +21,11 @@ const router = useRouter();
       class="relative text-center text-green-900 text-sm rounded-lg bg-app-body-bg overflow-hidden w-32 h-7 flex items-center px-2"
     >
       <div
-        :style="{ width: `${Math.round(stats?.percentage)}%` }"
+        :style="{ width: `${Math.round(userScore)}%` }"
         class="bg-slate-300 absolute left-0 h-full z-0"
       />
       <span class="relative z-1 font-black">
-        {{ Math.round(stats?.percentage) }}%
+        {{ Math.round(userScore) }}%
       </span>
       <span class="relative z-1 ms-1">up-to-date</span>
     </section>

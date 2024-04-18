@@ -36,6 +36,11 @@ export const useUserStore = defineStore('user', () => {
     return myTopics || {}
   });
 
+  const userScore = computed(() => {
+    const scores = Object.values(topics.value).map((topic) => topic.score)
+    return scores?.reduce((acc, score) => acc + score, 0) || 0
+  })
+
   const updateUser = async () => {
     try {
       await fetch(`http://localhost:3000/users/${user.value.id}`, {
@@ -68,6 +73,7 @@ export const useUserStore = defineStore('user', () => {
     stats,
     topics,
     settings,
+    userScore,
     createUser,
     updateUser,
   };

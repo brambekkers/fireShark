@@ -50,8 +50,8 @@ const updateQuestionData = async (data) => {
 
 const updateUserData = async (data) => {
   const { time, isAnswerCorrect, uid } = data;
-  const userRef = db.doc(`users/${uid}/data/stats`);
-  const userDoc = await userRef.get();
+  const userStatsRef = db.doc(`users/${uid}/data/stats`);
+  const userDoc = await userStatsRef.get();
   if (!userDoc.exists) {
     return new HttpsError('not-found', 'User not found');
   }
@@ -59,27 +59,32 @@ const updateUserData = async (data) => {
   const newData = calculateNewData(uData, isAnswerCorrect, time);
 
   // Save the updated question data
-  userRef.set(newData, { merge: true });
+  userStatsRef.set(newData, { merge: true });
 };
 
-const updateTopicScore = async () => {
-  const { topic, uid } = data;
+const updateTopicScore = async (data) => {
+  const { topic, uid, isAnswerCorrect } = data;
 
-  const userRef = db.doc(`users/${uid}/data/topics`);
-  const userTopics = await userRef.get();
+  const userTopicRef = db.doc(`users/${uid}/data/topics`);
+  const userTopics = await userTopicRef.get();
 
   let topics = {};
-  if (userTopics.exists) topics = userDoc.data();
+  if (userTopics.exists) topics = userTopics.data();
   if (!topics[topic]) topics[topic] = { id: topic, score: 0 };
 
   // Calculate the new score based on the current score and a random number between 0 and 1.
   const score = topics[topic].score;
-  const newScore = Math.min(score + (Math.random() * (100 - score)) / 100, 100);
+  let newScore = score
+
+  // If the answer is correct, increase the score
+  if (isAnswerCorrect) newScore = Math.min(score + (Math.random() * (100 - score)) / 100, 100);
+  else newScore = Math.max(score - (Math.random() * score) / 100, 0);
+
   // Update the score.
   topics[topic].score = newScore;
 
   // Save the updated topic data
-  userRef.set(topics, { merge: true });
+  userTopicRef.set(topics, { merge: true });
 };
 
 exports.handleQuestionOutcome = onCall(async ({ data }) => {

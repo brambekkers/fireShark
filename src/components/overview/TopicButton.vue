@@ -56,7 +56,7 @@ const toggleSelection = () =>
       >
         {{ topic.name }}
       </h3>
-      <ProgressBar :progress="topic.score || 0" />
+      <ProgressBar :progress="Math.round(topic.score) || 0" />
     </div>
   </div>
 </template>

@@ -3,7 +3,7 @@ import { useTimeout } from '@vueuse/core';
 import useUserStore from '@/stores/user';
 import Person from '@/assets/img/default/person.svg';
 
-const { settings, stats } = storeToRefs(useUserStore());
+const { settings, stats, userScore } = storeToRefs(useUserStore());
 
 const profileImageUrl = computed(() => settings?.value?.profileImageUrl);
 const profileStyle = computed(() => ({
@@ -45,7 +45,7 @@ const ready = useTimeout(10);
           r="40"
           fill="transparent"
           :stroke-dashoffset="
-            ready ? `calc(400 - (200 * ${stats.percentage}) / 100)` : '399'
+            ready ? `calc(400 - (200 * ${userScore}) / 100)` : '399'
           "
         />
       </svg>
@@ -54,7 +54,7 @@ const ready = useTimeout(10);
     <div
       class="absolute bg-app-warning w-14 h-14 -bottom-4 right-0 font-bold text-lg rounded-full flex items-center justify-center"
     >
-      {{ Math.round(stats?.percentage) || 0 }}%
+      {{ Math.round(userScore) || 0 }}%
     </div>
   </div>
 </template>

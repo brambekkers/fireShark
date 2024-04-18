@@ -112,7 +112,7 @@ const closeImport = () => {
         <IconClose class="h-6 w-6" />
       </ActionButton>
     </div>
-    <Alert class="mx-5" v-if="errorCode" :message="errorCode" />
+    <Alert v-if="errorCode" class="mx-5" :message="errorCode" />
     <!-- Modal body -->
     <div class="px-5 py-2 space-y-2 w-full">
       <FileInput
