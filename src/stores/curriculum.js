@@ -1,4 +1,5 @@
 import { useCollection } from 'vuefire';
+import { useSessionStorage } from '@vueuse/core';
 import {
   getFirestore,
   collection,
@@ -13,8 +14,8 @@ import { useImage } from '@/composable/image';
 export const useCurriculumStore = defineStore('curriculum', () => {
   const db = getFirestore();
 
-  const selectedGroup = ref('');
-  const selectedTopic = ref('');
+  const selectedGroup = useSessionStorage('sharkSelectedGroup', '');
+  const selectedTopic = useSessionStorage('sharkSelectedTopic', '');
   const selectedQuestions = ref([]);
 
   const questionsRef = computed(() => {

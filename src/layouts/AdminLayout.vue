@@ -18,12 +18,14 @@ const text = computed(() => (layoutStore.isDarkMode ? '#f2f9f9' : '#242424'));
   <div id="main" class="mt-12 scrollbar-thin">
     <!-- Accent on top -->
     <HeaderAdmin />
-    <div class="flex absolute inset-0 pt-12 z-0">
-      <aside class="min-w-72 bg-app-secondary pt-36">
+    <div class="flex flex-col sm:flex-row absolute inset-0 pt-12 z-0">
+      <aside
+        class="transition-all duration-150 min-w-full md:min-w-48 h-52 md:h-full flex items-center md:items-start justify-center md:justify-start xl:min-w-72 bg-app-secondary pt-36 pb-4"
+      >
         <AdminSidebar />
       </aside>
 
-      <main class="pt-36 pb-10 flex-grow px-6">
+      <main class="pt-6 md:pt-36 pb-10 flex-grow px-6">
         <slot></slot>
       </main>
     </div>
