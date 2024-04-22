@@ -14,6 +14,7 @@ import { useModal } from '@/composable/modal';
 import ActionButton from '@/components/generic/base/ActionButton.vue';
 import Confirm from '@/components/generic/modals/Confirm.vue';
 import Checkbox from '@/components/generic/inputs/Checkbox.vue';
+import Type from '@/components/admin/questions/Type.vue';
 
 const emit = defineEmits(['deleteQuestion', 'editQuestion']);
 const { isModalOpen: isConfirmOpen, toggleModal: toggleConfirm } = useModal();
@@ -25,6 +26,8 @@ const triggerConfirm = (id) => {
   deleteId.value = id;
   toggleConfirm();
 };
+
+const random = () => Math.floor(Math.random() * 100);
 
 const toggleSelect = (id) => {
   const index = selectedQuestions.value.indexOf(id);
@@ -41,6 +44,13 @@ const toggleAllSelect = () => {
     });
   }
 };
+
+const questionsWithProgress = computed(() =>
+  questions.value.map((q) => ({
+    ...q,
+    progress: random(),
+  })),
+);
 </script>
 
 <template>
@@ -60,14 +70,15 @@ const toggleAllSelect = () => {
         </th>
         <th class="p-2 font-medium text-sm text-center">#</th>
         <th class="p-2 font-medium text-sm">Question</th>
-        <th class="p-2 font-medium text-sm">Type</th>
+        <th class="p-2 font-medium text-sm">Number</th>
+        <th class="font-medium text-sm">Type</th>
         <th class="p-2 font-medium text-sm">Avg. score</th>
         <th class="p-2 font-medium text-sm"></th>
       </tr>
     </thead>
     <tbody>
       <tr
-        v-for="(question, i) of questions"
+        v-for="(question, i) of questionsWithProgress"
         :key="question.id"
         class="border-b border-slate-200"
       >
@@ -83,7 +94,17 @@ const toggleAllSelect = () => {
         <td class="font-bold truncate max-w-96 text-sm">
           {{ question.question }}
         </td>
-        <td>{{ question.type }}</td>
+        <td>
+          <span
+            class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-1 rounded"
+          >
+            {{ question.random }}
+          </span>
+        </td>
+
+        <td>
+          <Type :type="question.type" />
+        </td>
         <td class="py-2 flex gap-2 items-center">
           <div class="relative w-12 h-12">
             <svg class="w-full h-full" viewBox="0 0 100 100">
@@ -106,11 +127,11 @@ const toggleAllSelect = () => {
                 cy="50"
                 r="30"
                 fill="transparent"
-                :stroke-dashoffset="`calc(400 - (185 * 70 / 100)`"
+                :stroke-dashoffset="`calc(400 - (185 * ${question.progress} / 100)`"
               />
             </svg>
           </div>
-          <span class="text-sm"> 70% </span>
+          <span class="text-sm"> {{ question.progress }}% </span>
         </td>
         <td class="p-3 w-9">
           <div class="flex gap-1 justify-end pe-3">
@@ -133,8 +154,8 @@ const toggleAllSelect = () => {
     />
   </table>
   <div
-    class="border-4 border-app-navbar-inactive border-dashed h-96 rounded-xl flex flex-col items-center justify-center space-y-2"
     v-else
+    class="border-4 border-app-navbar-inactive border-dashed h-96 rounded-xl flex flex-col items-center justify-center space-y-2"
   >
     <IconError
       v-if="selectedGroup && selectedTopic"
