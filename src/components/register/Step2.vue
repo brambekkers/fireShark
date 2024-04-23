@@ -34,38 +34,24 @@ const newPosition = ref('');
 <template>
   <div class="flex flex-col">
     <div class="flex gap-4">
-      <Select class="flex-grow" v-model="newPosition" :icon="IconBriefcase">
-        <option
-          v-for="position in groups"
-          :key="position.id"
-          :value="position.id"
-        >
-          {{ position.name }}
+      <Select v-model="newPosition" class="flex-grow" :icon="IconBriefcase">
+        <option v-for="group in groups" :key="group.id" :value="group.id">
+          {{ group.name }}
         </option>
       </Select>
-      <Button
-        :title="$t('auth.register.addPosition')"
-        type="secondary"
-        @click="addPosition"
-      />
+      <Button :title="$t('auth.register.addPosition')" type="secondary" @click="addPosition" />
     </div>
 
     <!-- List of positions -->
     <div v-if="position.length">
-      <h2 class="mt-5 text-lg font-semibold">
-        {{ $t('auth.register.yourPositions') }}:
-      </h2>
+      <h2 class="mt-5 text-lg font-semibold">{{ $t('auth.register.yourPositions') }}:</h2>
       <div class="flex">
         <div v-for="id in position" :key="id" class="mt-2 relative">
-          <div
-            class="bg-primary text-white font-medium me-2 px-6 py-2 rounded-full"
-          >
+          <div class="bg-primary text-white font-medium me-2 px-6 py-2 rounded-full">
             {{ groupsObject[id]?.name }}
 
             <button @click="removePosition(id)">
-              <IconTimes
-                class="absolute -top-2 right-1 text-app-danger w-6 h-6 bg-white rounded-full"
-              />
+              <IconTimes class="absolute -top-2 right-1 text-app-danger w-6 h-6 bg-white rounded-full" />
             </button>
           </div>
         </div>
