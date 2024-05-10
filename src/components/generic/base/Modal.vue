@@ -34,12 +34,12 @@ const widthClass = computed(() => {
     <div
       id="modal-container"
       :tabindex="isOpen ? 'auto' : -1"
-      class="overflow-y-auto overflow-x-hidden fixed flex inset-0 z-50 justify-center items-center w-full max-h-screen backdrop-blur-sm bg-primary/70"
+      class="overflow-y-hidden overflow-x-hidden fixed flex inset-0 z-50 justify-center items-center w-full max-h-screen backdrop-blur-sm bg-primary/70"
       :class="{ hidden: !isOpen }"
     >
-      <div class="relative p-4 max-h-full mx-auto w-full" :class="widthClass">
+      <div class="p-4 flex max-h-full mx-auto w-full" :class="widthClass">
         <!-- Modal content -->
-        <div class="relative bg-white rounded-lg shadow">
+        <div class="bg-white max-h-full rounded-lg shadow overflow-auto w-full">
           <slot />
         </div>
       </div>

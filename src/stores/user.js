@@ -41,7 +41,8 @@ export const useUserStore = defineStore('user', () => {
 
   const userScore = computed(() => {
     const scores = Object.values(topics.value).map((topic) => topic.score);
-    return scores?.reduce((acc, score) => acc + score, 0) / scores.length || 0;
+    const totalScore = scores?.reduce((acc, score) => acc + score, 0) || 0;
+    return totalScore / scores.length
   });
 
   const updateUser = async () => {

@@ -125,7 +125,9 @@ const elevationClass = computed(() => {
         },
       ]"
     >
-      <div class="flex flex-col items-center justify-center pt-5 pb-6">
+      <div
+        class="flex flex-col items-center justify-center pt-5 pb-6 px-3 text-center"
+      >
         <IconUpload class="w-8 h-8 mb-4 text-gray-500" />
 
         <p class="mb-2 text-sm text-gray-500">
