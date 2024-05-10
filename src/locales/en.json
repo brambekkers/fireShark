@@ -90,6 +90,7 @@
     "questions": {
       "addQuestion": "Add question",
       "createQuestion": "Create question",
+      "editQuestion": "Edit question",
       "deleteQuestion": "Delete question?",
       "deleteQuestions": "Delete questions?",
       "deleteQuestionText": "Are you sure you want to delete this question?",

@@ -13,6 +13,7 @@ export const questionTypes = [
 
 export const supportedTypes = [
   'singleAnswer', 
+  'multipleAnswer', 
 ];
 
 export const newQuestion = {

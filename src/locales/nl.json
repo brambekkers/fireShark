@@ -89,6 +89,7 @@
     "questions": {
       "addQuestion": "Voeg vraag toe",
       "createQuestion": "Vraag aanmaken",
+      "editQuestion": "Vraag aanpassen",
       "deleteQuestion": "Vraag verwijderen?",
       "deleteQuestions": "Vragen verwijderen?",
       "deleteQuestionText": "Weet je zeker dat je de vraag wilt verwijderen?",

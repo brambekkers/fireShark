@@ -42,6 +42,32 @@ const addAnswer = () => {
     id: `answer_${nanoid(15)}`,
   });
 };
+
+const selectCorrectAnswer = (index) => {
+  console.log(index);
+  const answer = answers.value[index];
+
+  // If the answer is already selected, unselect it
+  if (answer.value) {
+    answer.value = false;
+    return;
+  }
+
+  // check how many correct answers are selected
+  const correctAnswers = answers.value.filter((a) => a.value);
+  console.log(correctAnswers.length, props.maxCorrect);
+  if (correctAnswers.length === props.maxCorrect) {
+    correctAnswers.forEach((a) => {
+      if (a.value) {
+        a.value = false;
+        return;
+      }
+    });
+    answer.value = true;
+  } else {
+    answer.value = true;
+  }
+};
 </script>
 
 <template>
@@ -64,7 +90,7 @@ const addAnswer = () => {
       <li
         v-for="(answer, i) in answers"
         :key="answer.id"
-        class="bg-white rounded-lg border py-2 pe-3 flex items-center"
+        class="bg-white rounded-lg border py-2 pe-3 my-1 flex items-center"
       >
         <IconDrag class="w-8 h-8 text-app-primary drag-handle cursor-grab" />
         <TextField
@@ -77,7 +103,7 @@ const addAnswer = () => {
         <CheckCircle
           class="ms-3"
           :is-checked="answer.value"
-          @click="answer.value = !answer.value"
+          @click="selectCorrectAnswer(i)"
         />
         <div
           class="border-t sm:border-t-0 sm:border-s border-gray-200 ms-3 me-1 h-8"

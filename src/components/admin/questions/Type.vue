@@ -1,5 +1,6 @@
 <script setup>
 import SingleAnswer from '@/assets/img/bearIcons/single.png';
+import MultipleAnswer from '@/assets/img/bearIcons/multiple.png';
 
 defineProps({
   type: {
@@ -15,6 +16,13 @@ defineProps({
     class="question-type-icon"
     :src="SingleAnswer"
     alt="Single answer"
+  />
+
+  <img
+    v-if="type === 'multipleAnswer'"
+    class="question-type-icon"
+    :src="MultipleAnswer"
+    alt="Multiple answer"
   />
 </template>
 

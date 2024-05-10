@@ -80,8 +80,8 @@ watch(
         <h3 class="text-xl font-semibold">
           {{
             question.id
-              ? $t('admin.groups.editGroup')
-              : $t('admin.groups.createGroup')
+              ? $t('admin.questions.editQuestion')
+              : $t('admin.questions.createQuestion')
           }}
         </h3>
         <ActionButton @click="toggleModal()">
@@ -119,8 +119,14 @@ watch(
         />
         <Question v-model:question="editQuestion.question" />
         <MultipleAnswer
+          v-if="editQuestion.type === 'singleAnswer'"
           v-model:answers="editQuestion.answers"
           :max-correct="1"
+        />
+        <MultipleAnswer
+          v-if="editQuestion.type === 'multipleAnswer'"
+          v-model:answers="editQuestion.answers"
+          :max-correct="Infinity"
         />
       </template>
       <NotSupported v-else />
@@ -128,7 +134,11 @@ watch(
 
     <!-- Modal footer -->
     <div class="flex items-center justify-end px-5 pb-5 pt-2">
-      <Button title="Import" size="md" @click="updateQuestion(false)" />
+      <Button
+        :title="question.id ? $t('general.change') : $t('general.add')"
+        size="md"
+        @click="updateQuestion(false)"
+      />
     </div>
   </Modal>
 </template>
