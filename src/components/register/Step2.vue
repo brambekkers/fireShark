@@ -35,8 +35,8 @@ const newPosition = ref('');
   <div class="flex flex-col">
     <div class="flex gap-4">
       <Select v-model="newPosition" class="flex-grow" :icon="IconBriefcase">
-        <option v-for="p in groups" :key="p.id" :value="p.id">
-          {{ p.name }}
+        <option v-for="group in groups" :key="group.id" :value="group.id">
+          {{ group.name }}
         </option>
       </Select>
       <Button

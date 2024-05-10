@@ -1,7 +1,7 @@
 import { useCurrentUser, useDocument } from 'vuefire';
 import { doc, getFirestore } from 'firebase/firestore';
 import { getFunctions, httpsCallable } from 'firebase/functions';
-import { useGroupStore } from '@/stores/groups'
+import { useGroupStore } from '@/stores/groups';
 
 export const useUserStore = defineStore('user', () => {
   const db = getFirestore();
@@ -16,30 +16,33 @@ export const useUserStore = defineStore('user', () => {
   const stats = computed(() => user.value?.stats || {});
   const settings = computed(() => user.value?.settings || {});
   const topics = computed(() => {
-    if(!user.value) return {}
+    if (!user.value) return {};
     // Group the topics
-    const { groups } = useGroupStore()
-    const myGroups = settings.value?.position?.map((id) => groups.find((g)=> g.id === id)).filter(Boolean) || []
-    const myTopics = {}
-    myGroups.forEach(group => {
+    const { groups } = useGroupStore();
+    const myGroups =
+      settings.value?.position
+        ?.map((id) => groups.find((g) => g.id === id))
+        .filter(Boolean) || [];
+    const myTopics = {};
+    myGroups.forEach((group) => {
       group.topics.forEach((topic) => {
-        const currentScore = user.value?.topics?.[topic.id]?.score
-        if(topic.questionAmount <= 0) return;
+        const currentScore = user.value?.topics?.[topic.id]?.score;
+        if (topic.questionAmount <= 0) return;
         myTopics[topic.id] = {
           id: topic.id,
           name: topic.name,
           score: currentScore || 0,
-          questionsRef: `groups/${group.id}/topics/${topic.id}/questions`
-        }
-      })
+          questionsRef: `groups/${group.id}/topics/${topic.id}/questions`,
+        };
+      });
     });
-    return myTopics || {}
+    return myTopics || {};
   });
 
   const userScore = computed(() => {
-    const scores = Object.values(topics.value).map((topic) => topic.score)
-    return scores?.reduce((acc, score) => acc + score, 0) || 0
-  })
+    const scores = Object.values(topics.value).map((topic) => topic.score);
+    return scores?.reduce((acc, score) => acc + score, 0) / scores.length || 0;
+  });
 
   const updateUser = async () => {
     try {
@@ -60,13 +63,13 @@ export const useUserStore = defineStore('user', () => {
     try {
       const cloudFunctions = getFunctions();
       const createUserFunction = httpsCallable(cloudFunctions, 'createUser');
-      const result = await createUserFunction(data)
-      console.log('result', result)
-      return result
+      const result = await createUserFunction(data);
+      console.log('result', result);
+      return result;
     } catch (error) {
-      return error
+      return error;
     }
-  }
+  };
 
   return {
     user,
