@@ -34,13 +34,9 @@ const newPosition = ref('');
 <template>
   <div class="flex flex-col">
     <div class="flex gap-4">
-      <Select class="flex-grow" v-model="newPosition" :icon="IconBriefcase">
-        <option
-          v-for="position in groups"
-          :key="position.id"
-          :value="position.id"
-        >
-          {{ position.name }}
+      <Select v-model="newPosition" class="flex-grow" :icon="IconBriefcase">
+        <option v-for="p in groups" :key="p.id" :value="p.id">
+          {{ p.name }}
         </option>
       </Select>
       <Button
