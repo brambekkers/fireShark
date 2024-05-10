@@ -1,4 +1,6 @@
 <script setup>
+import { exportData } from '@/utils/export';
+
 // Stores
 import { useCurriculumStore } from '@/stores/curriculum';
 
@@ -27,7 +29,7 @@ const showDropdown = ref(false);
 const { isModalOpen, toggleModal } = useModal();
 const { isModalOpen: isConfirmOpen, toggleModal: toggleConfirm } = useModal();
 
-const { selectedGroup, selectedTopic, selectedQuestions } =
+const { selectedGroup, selectedTopic, selectedQuestions, questions } =
   storeToRefs(useCurriculumStore());
 const searchText = ref('');
 
@@ -106,9 +108,12 @@ const deleteQuestions = () => {
             >
               Redistribute numbers
             </li>
-            <li class="ps-4 pe-6 py-2 hover:bg-gray-100 text-nowrap">Task 2</li>
-            <li class="ps-4 pe-6 py-2 hover:bg-gray-100 text-nowrap">Task 3</li>
-            <li class="ps-4 pe-6 py-2 hover:bg-gray-100 text-nowrap">Task 4</li>
+            <li
+              class="ps-4 pe-6 py-2 hover:bg-gray-100 text-nowrap"
+              @click="exportData(questions)"
+            >
+              Export questions
+            </li>
           </ul>
         </div>
       </ActionButton>

@@ -1,7 +1,8 @@
 <template>
   <div
+    ref="myHoverableElement"
     class="fixed inset-x-0 flex flex-col items-center bottom-0 slide-in-container"
-    :class="show ? 'show' : ''"
+    :class="{ show: show || isHovered }"
   >
     <div class="btn-container relative z-30 -mb-6">
       <div
@@ -12,7 +13,10 @@
         <div
           class="border-2 border-black rounded-full w-8 h-8 flex justify-center items-center"
         >
-          <ArrowUpward class="icon-size" :class="{ 'rotate-180': show }" />
+          <ArrowUpward
+            class="transition-all duration-300 icon-size"
+            :class="{ 'rotate-180': show }"
+          />
         </div>
       </div>
     </div>
@@ -34,11 +38,13 @@
 </template>
 
 <script setup>
+import { useElementHover } from '@vueuse/core';
 import { useQuestionStore } from '@stores/question';
 import ArrowUpward from '~icons/material-symbols/arrow-upward';
 import Button from '@/components/generic/base/Button.vue';
 
-const store = useQuestionStore();
+const myHoverableElement = ref(null);
+const isHovered = useElementHover(myHoverableElement);
 
 defineProps({
   content: {
@@ -65,13 +71,13 @@ const emitNextQuestion = () => {
 };
 
 onMounted(() => {
-  store.checkAnswer();
+  useQuestionStore().checkAnswer();
 });
 </script>
 
 <style scoped lang="scss">
 .slide-in-container {
-  transform: translateY(calc(calc(100% - 64px)));
+  transform: translateY(calc(100% - 64px));
   transition:
     bottom 0.35s ease,
     opacity 0.35s ease,

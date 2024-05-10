@@ -44,13 +44,6 @@ const toggleAllSelect = () => {
     });
   }
 };
-
-const questionsWithProgress = computed(() =>
-  questions.value.map((q) => ({
-    ...q,
-    progress: random(),
-  })),
-);
 </script>
 
 <template>
@@ -78,7 +71,7 @@ const questionsWithProgress = computed(() =>
     </thead>
     <tbody>
       <tr
-        v-for="(question, i) of questionsWithProgress"
+        v-for="(question, i) of questions"
         :key="question.id"
         class="border-b border-slate-200"
       >
@@ -105,33 +98,38 @@ const questionsWithProgress = computed(() =>
         <td>
           <Type :type="question.type" />
         </td>
-        <td class="py-2 flex gap-2 items-center">
-          <div class="relative w-12 h-12">
-            <svg class="w-full h-full" viewBox="0 0 100 100">
-              <!-- Background circle -->
-              <circle
-                class="text-app-button-danger-bg stroke-current"
-                stroke-width="12"
-                cx="50"
-                cy="50"
-                r="30"
-                fill="transparent"
-                :stroke-dashoffset="`calc(400 - (185 * 100 / 100)`"
-              />
-              <!-- Progress circle -->
-              <circle
-                class="text-app-primary progress-ring__circle stroke-current"
-                stroke-width="12"
-                stroke-linecap="round"
-                cx="50"
-                cy="50"
-                r="30"
-                fill="transparent"
-                :stroke-dashoffset="`calc(400 - (185 * ${question.progress} / 100)`"
-              />
-            </svg>
+        <td class="py-2">
+          <div v-if="question.data" class="flex gap-2 items-center">
+            <div class="relative w-12 h-12">
+              <svg class="w-full h-full" viewBox="0 0 100 100">
+                <!-- Background circle -->
+                <circle
+                  class="text-app-button-danger-bg stroke-current"
+                  stroke-width="12"
+                  cx="50"
+                  cy="50"
+                  r="30"
+                  fill="transparent"
+                  :stroke-dashoffset="`calc(400 - (185 * 100 / 100)`"
+                />
+                <!-- Progress circle -->
+                <circle
+                  class="text-app-primary progress-ring__circle stroke-current"
+                  stroke-width="12"
+                  stroke-linecap="round"
+                  cx="50"
+                  cy="50"
+                  r="30"
+                  fill="transparent"
+                  :stroke-dashoffset="`calc(400 - (185 * ${question.data?.percentageCorrect || 0} / 100)`"
+                />
+              </svg>
+            </div>
+            <span class="text-sm">
+              {{ Math.round(question.data?.percentageCorrect || 0) }}%
+            </span>
           </div>
-          <span class="text-sm"> {{ question.progress }}% </span>
+          <span v-else class="text-sm font-medium">No data</span>
         </td>
         <td class="p-3 w-9">
           <div class="flex gap-1 justify-end pe-3">

@@ -22,7 +22,8 @@ const clearRouteDestination = () => {
 };
 
 router.beforeEach((to, from) => {
-  if (from.name === 'Practice') {
+  const skipModal = to.query.skipModal === 'true';
+  if (from.name === 'Practice' && !skipModal) {
     if (selectedRoute.value !== '') {
       selectedRoute.value = '';
       toggleModal();

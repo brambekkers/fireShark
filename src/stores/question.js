@@ -101,10 +101,10 @@ export const useQuestionStore = defineStore('question', () => {
     }
 
     if (questionType === 'multipleAnswer') {
-      const answerValues = givenAnswer.value.filter((item) => {
+      const wrongAnswers = givenAnswer.value.filter((item) => {
         return item.value === false;
       });
-      return !!answerValues.indexOf(false) === -1;
+      return wrongAnswers.length === 0;
     }
   };
 

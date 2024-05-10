@@ -19,7 +19,9 @@ const {
   hasAnswered,
   isAnswerCorrect,
 } = storeToRefs(useQuestionStore());
-const content = ref('very long content with a lot of text');
+const content = ref(
+  'very long content with a lot of text, lorem ipsum and stuff like that to test the slide in component and see how it behaves with a lot of text and stuff like that',
+);
 const nextQuestion = ref('Continue practicing');
 const showScoreMessage = ref(false);
 
@@ -39,7 +41,8 @@ watch(hasAnswered, () => {
 onMounted(async () => {
   // To do: Force navigation and skip the modal
   if (!selectedTopics.value.length) {
-    router.push('/overview');
+    console.log('No topics selected');
+    router.push({ path: '/overview', query: { skipModal: true } });
     return;
   }
   await useQuestionStore().toNextQuestion();

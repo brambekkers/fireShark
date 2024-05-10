@@ -44,7 +44,6 @@ const addAnswer = () => {
 };
 
 const selectCorrectAnswer = (index) => {
-  console.log(index);
   const answer = answers.value[index];
 
   // If the answer is already selected, unselect it
