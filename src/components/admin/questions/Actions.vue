@@ -18,6 +18,12 @@ import Confirm from '@/components/generic/modals/Confirm.vue';
 import Button from '@/components/generic/base/Button.vue';
 import ActionButton from '@/components/generic/base/ActionButton.vue';
 
+import { onClickOutside } from '@vueuse/core';
+
+const dropdown = ref(null);
+onClickOutside(dropdown, () => (showDropdown.value = false));
+
+const showDropdown = ref(false);
 const { isModalOpen, toggleModal } = useModal();
 const { isModalOpen: isConfirmOpen, toggleModal: toggleConfirm } = useModal();
 
@@ -57,12 +63,12 @@ const deleteQuestions = () => {
       <div
         class="border-t sm:border-t-0 sm:border-s border-gray-200 ms-3 me-1 h-8"
       ></div>
-      <ActionButton>
+      <ActionButton :disabled="!selectedQuestions.length">
         <IconSettings class="h-6 w-6" />
       </ActionButton>
       <ActionButton
-        @click="toggleConfirm()"
         :disabled="!selectedQuestions.length"
+        @click="toggleConfirm()"
       >
         <IconTrash class="h-6 w-6" />
         <Confirm
@@ -80,9 +86,34 @@ const deleteQuestions = () => {
       <ActionButton>
         <IconInfo class="h-6 w-6" />
       </ActionButton>
-      <ActionButton>
+      <ActionButton
+        class="relative"
+        :class="{
+          'bg-app-navbar-inactive/20 ': showDropdown,
+        }"
+        @click="showDropdown = !showDropdown"
+      >
         <IconEllipsis class="h-6 w-6" />
+        <div
+          ref="dropdown"
+          class="absolute z-10 top-10 bg-white rounded-lg shadow"
+          :class="{ block: showDropdown, hidden: !showDropdown }"
+        >
+          <ul class="py-2 font-semibold text-sm text-left">
+            <li
+              class="ps-4 pe-6 py-2 hover:bg-gray-100 text-nowrap"
+              @click="useCurriculumStore().redistributeNumbers()"
+            >
+              Redistribute numbers
+            </li>
+            <li class="ps-4 pe-6 py-2 hover:bg-gray-100 text-nowrap">Task 2</li>
+            <li class="ps-4 pe-6 py-2 hover:bg-gray-100 text-nowrap">Task 3</li>
+            <li class="ps-4 pe-6 py-2 hover:bg-gray-100 text-nowrap">Task 4</li>
+          </ul>
+        </div>
       </ActionButton>
+
+      <!-- Dropdown menu -->
     </div>
     <!-- right side -->
     <div class="flex gap-2">

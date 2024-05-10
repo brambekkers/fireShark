@@ -10,14 +10,14 @@ const { selectedGroup, selectedTopic } = storeToRefs(useCurriculumStore());
 
 <template>
   <div class="flex items-center gap-2 mb-4">
-    <Select elevation="none" size="sm" v-model="selectedGroup" class="w-48">
+    <Select v-model="selectedGroup" elevation="none" size="sm" class="w-48">
       <option value="" hidden>Select group</option>
       <option v-for="group of groups" :key="group.id" :value="group.id">
         {{ group.name }}
       </option>
     </Select>
     <IconArrowRight class="w-6 h-6 text-app-primary" />
-    <Select elevation="none" size="sm" v-model="selectedTopic" class="w-48">
+    <Select v-model="selectedTopic" elevation="none" size="sm" class="w-48">
       <template v-if="!selectedGroup">
         <option value="" hidden>🡨 First select group</option>
       </template>

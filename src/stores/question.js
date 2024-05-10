@@ -31,10 +31,11 @@ export const useQuestionStore = defineStore('question', () => {
 
   const getRandomQuestion = async (collectionRef) => {
     const randomNum = generate32BitInt()
+    console.log('randomNum', randomNum)
     const q = query(collection(db, collectionRef), where("random", ">=", randomNum), limit(1))
     const snapshot = await getDocs(q)
     if (snapshot.empty) {
-      return getDocuments(collectionRef)
+      return getRandomQuestion(collectionRef)
     }
     return snapshot.docs[0].data()
   }

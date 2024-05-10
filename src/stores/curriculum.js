@@ -63,10 +63,29 @@ export const useCurriculumStore = defineStore('curriculum', () => {
     deleteDoc(questionRef);
   };
 
+  const redistributeNumbers = () => {
+    const minNumber = -2147483648;
+    const maxNumber = 2147483647;
+    const numQuestions = questions.value.length + 1;
+    const diff = maxNumber - minNumber;
+  
+    // Calculate the step size (integer division)
+    const stepSize = Math.floor(diff / numQuestions);
+    
+    let count = minNumber;
+
+    questions.value.forEach((question) => {
+      count += stepSize;
+      question.random = count;
+      addQuestion(question);
+    });
+  }
+
   return {
     addQuestion,
     deleteQuestion,
     getQuestionRef,
+    redistributeNumbers,
     selectedGroup,
     selectedTopic,
     selectedQuestions,
