@@ -1,6 +1,8 @@
 <script setup>
-import Select from '@/components/generic/inputs/Select.vue';
 import IconTarget from '~icons/lucide/target';
+
+import Select from '@/components/generic/inputs/Select.vue';
+import Type from '@/components/admin/questions/Type.vue';
 
 import { questionTypes } from '@/constants/questions';
 const Qtype = defineModel('type', {
@@ -15,17 +17,24 @@ const Qtype = defineModel('type', {
       <IconTarget class="w-5 text-app-primary" />
       <h4>Question type</h4>
     </div>
-    <Select v-model="Qtype" size="md" elevation="none" class="w-1/2">
-      <option
-        v-for="questionType of questionTypes"
-        :key="questionType"
-        :value="questionType"
+    <div class="flex">
+      <Select
+        v-model="Qtype"
+        size="md"
+        elevation="none"
+        class="grow-1 min-w-52"
       >
-        {{ questionType }}
-      </option>
-      <option value="editor">Editor</option>
-      <option value="moderator">Moderator</option>
-      <option value="admin">Admin</option>
-    </Select>
+        <option
+          v-for="questionType of questionTypes"
+          :key="questionType"
+          :value="questionType"
+        >
+          {{ questionType }}
+        </option>
+      </Select>
+      <div class="mx-4 flex items-center">
+        <Type :type="Qtype" />
+      </div>
+    </div>
   </div>
 </template>
