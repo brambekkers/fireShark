@@ -1,22 +1,9 @@
 <template>
-  <div
-    ref="myHoverableElement"
-    class="fixed inset-x-0 flex flex-col items-center bottom-0 slide-in-container"
-    :class="{ show: show || isHovered }"
-  >
+  <div ref="myHoverableElement" class="fixed inset-x-0 flex flex-col items-center bottom-0 slide-in-container" :class="{ show: show || isHovered }">
     <div class="btn-container relative z-30 -mb-6">
-      <div
-        class="bg-[#F3C000] rounded-full p-2 w-14 h-14 cursor-pointer flex justify-center items-center"
-        @click="show = !show"
-        @keydown="show = !show"
-      >
-        <div
-          class="border-2 border-black rounded-full w-8 h-8 flex justify-center items-center"
-        >
-          <ArrowUpward
-            class="transition-all duration-300 icon-size"
-            :class="{ 'rotate-180': show }"
-          />
+      <div class="bg-[#F3C000] rounded-full p-2 w-14 h-14 cursor-pointer flex justify-center items-center" @click="show = !show" @keydown="show = !show">
+        <div class="border-2 border-black rounded-full w-8 h-8 flex justify-center items-center">
+          <ArrowUpward class="transition-all duration-300 icon-size" :class="{ 'rotate-180': show }" />
         </div>
       </div>
     </div>
@@ -24,15 +11,11 @@
       <h3 class="text-xl font-bold title">
         {{ title }}
       </h3>
-      <p class="text-sm mt-2 content">
-        {{ content }}
+      <p v-if="question.answerText" class="text-sm mt-2 content">
+        {{ question.answerText }}
       </p>
 
-      <Button
-        :title="nextQuestion"
-        class="mx-auto mt-8"
-        @click="emitNextQuestion"
-      />
+      <Button title="Continue practicing" class="mx-auto mt-8" @click="emitNextQuestion" />
     </div>
   </div>
 </template>
@@ -47,27 +30,21 @@ const myHoverableElement = ref(null);
 const isHovered = useElementHover(myHoverableElement);
 
 defineProps({
-  content: {
-    type: String,
-    required: true,
-  },
-  nextQuestion: {
-    type: String,
+  question: {
+    type: Object,
     required: true,
   },
 });
 
 const { isAnswerCorrect } = storeToRefs(useQuestionStore());
 const show = ref(false);
-const title = computed(() =>
-  isAnswerCorrect.value ? 'Correct!' : 'Incorrect',
-);
+const title = computed(() => (isAnswerCorrect.value ? 'Correct!' : 'Incorrect'));
 
-const emit = defineEmits(['emit-next-question']);
+const emit = defineEmits(['nextQuestion']);
 
 const emitNextQuestion = () => {
   show.value = false;
-  emit('emit-next-question');
+  emit('nextQuestion');
 };
 
 onMounted(() => {
@@ -78,10 +55,7 @@ onMounted(() => {
 <style scoped lang="scss">
 .slide-in-container {
   transform: translateY(calc(100% - 64px));
-  transition:
-    bottom 0.35s ease,
-    opacity 0.35s ease,
-    transform 0.35s ease;
+  transition: bottom 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
   will-change: opacity, transform;
 }
 

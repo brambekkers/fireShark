@@ -12,17 +12,10 @@ import LevelUp from '@/components/LevelUp.vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
-const {
-  selectedTopics,
-  isLoading,
-  selectedQuestion,
-  hasAnswered,
-  isAnswerCorrect,
-} = storeToRefs(useQuestionStore());
+const { selectedTopics, isLoading, selectedQuestion, hasAnswered, isAnswerCorrect } = storeToRefs(useQuestionStore());
 const content = ref(
   'very long content with a lot of text, lorem ipsum and stuff like that to test the slide in component and see how it behaves with a lot of text and stuff like that',
 );
-const nextQuestion = ref('Continue practicing');
 const showScoreMessage = ref(false);
 
 watch(hasAnswered, () => {
@@ -57,12 +50,7 @@ onMounted(async () => {
       <HeaderButtons />
       <QuestionHeader :question="selectedQuestion" />
       <QuestionForm :question="selectedQuestion" />
-      <QuestionSlideIn
-        v-if="hasAnswered"
-        :next-question="nextQuestion"
-        :content="content"
-        @emit-next-question="useQuestionStore().toNextQuestion()"
-      />
+      <QuestionSlideIn v-if="hasAnswered" :question="selectedQuestion" @next-question="useQuestionStore().toNextQuestion()" />
     </div>
     <GenericModal :is-open="showScoreMessage" :fireworks="true">
       <LevelUp />

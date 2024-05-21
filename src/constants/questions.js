@@ -1,7 +1,5 @@
-import { average } from "firebase/firestore";
-
 export const questionTypes = [
-  'singleAnswer', 
+  'singleAnswer',
   'multipleAnswer',
   'trueFalse',
   'fillInTheBlank',
@@ -11,10 +9,7 @@ export const questionTypes = [
   'opinion',
 ];
 
-export const supportedTypes = [
-  'singleAnswer', 
-  'multipleAnswer', 
-];
+export const supportedTypes = ['singleAnswer', 'multipleAnswer', 'trueFalse'];
 
 export const newQuestion = {
   parentId: '',
@@ -22,6 +17,7 @@ export const newQuestion = {
   imageRef: null,
   id: null,
   type: 'singleAnswer',
+  answerText: '',
   question: '',
   answers: [],
   data: {
@@ -32,4 +28,9 @@ export const newQuestion = {
     averageTime: 0,
     unanswered: 0,
   },
-}
+};
+
+export const answerModelTrueFalse = {
+  true: false,
+  false: false,
+};
